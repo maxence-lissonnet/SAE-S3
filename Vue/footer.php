@@ -6,7 +6,6 @@
       <div class="eg-footer-logo-block">
         <img src="../Asset/image/univbl.png" alt="Le Mans Université" class="eg-footer-logo">
         <div class="eg-footer-uni-name">
-          Le Mans<br>Université
         </div>
       </div>
 
