@@ -4,7 +4,7 @@
     <!-- Colonne gauche : logo + adresse + gros boutons -->
     <div class="eg-footer-col eg-footer-left">
       <div class="eg-footer-logo-block">
-        <img src="image/univbl.png" alt="Le Mans Université" class="eg-footer-logo">
+        <img src="Asset/image/univbl.png" alt="Le Mans Université" class="eg-footer-logo">
         <div class="eg-footer-uni-name">
           Le Mans<br>Université
         </div>
@@ -49,16 +49,16 @@
 
       <div class="eg-footer-socials">
         <a href="#" aria-label="Instagram">
-          <img src="image/Logo Instagram.png" alt="Instagram">
+          <img src="Asset/image/Logo Instagram.png" alt="Instagram">
         </a>
         <a href="#" aria-label="LinkedIn">
-          <img src="image/Logo LinkedIn.png" alt="LinkedIn">
+          <img src="Asset/image/Logo LinkedIn.png" alt="LinkedIn">
         </a>
         <a href="#" aria-label="YouTube">
-          <img src="image/Logo YT.png" alt="YouTube">
+          <img src="Asset/image/Logo YT.png" alt="YouTube">
         </a>
         <a href="#" aria-label="Facebook">
-          <img src="image/Logo Facebook.png" alt="Facebook">
+          <img src="Asset/image/Logo Facebook.png" alt="Facebook">
         </a>
       </div>
 
