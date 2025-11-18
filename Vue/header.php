@@ -14,7 +14,7 @@
   <div class="eg-header-left">
     <div class="eg-logo-um">
       <!-- logo université -->
-      <img src="../Asset/image/univ.png" alt="Le Mans Université">
+      <img src="../Asset/image/header/univ.png" alt="Le Mans Université">
     </div>
 
     <div class="eg-header-separator"></div>
@@ -30,12 +30,12 @@
 
     <!-- icône profil -->
     <button class="eg-icon-btn" aria-label="Profil">
-      <img src="../Asset/image/profile.png" alt="Profil" class="eg-icon-img">
+      <img src="../Asset/image/header/profile.png" alt="Profil" class="eg-icon-img">
     </button>
 
     <!-- icône cloche -->
     <button class="eg-icon-btn eg-notif-btn" aria-label="Notifications">
-      <img src="../Asset/image/cloche.png" alt="Notifications" class="eg-icon-img">
+      <img src="../Asset/image/header/cloche.png" alt="Notifications" class="eg-icon-img">
       <span class="eg-notif-badge">2</span>
     </button>
 
