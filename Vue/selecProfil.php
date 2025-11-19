@@ -26,16 +26,16 @@
         </div>
         <div class="eg-footer-socials">
             <a href="https://www.instagram.com/lemansuniversite/?hl=fr" aria-label="Instagram">
-                <img src="../Asset/image/Logo Instagram (bleu).png" alt="Instagram">
+                <img src="../Asset/image/Logo_Instagram_(bleu).png" alt="Instagram">
             </a>
             <a href="https://www.linkedin.com/school/universit%C3%A9-du-maine-le-mans-laval/mycompany/" aria-label="LinkedIn">
-                <img src="../Asset/image/Logo LinkedIn (bleu).png" alt="LinkedIn">
+                <img src="../Asset/image/Logo_LinkedIn_(bleu).png" alt="LinkedIn">
             </a>
             <a href="https://www.youtube.com/channel/UCGcQ5RW44I0xEIg4pNS69pg" aria-label="YouTube">
-                <img src="../Asset/image/Logo YT (bleu).png" alt="YouTube">
+                <img src="../Asset/image/Logo_YT_(bleu).png" alt="YouTube">
             </a>
             <a href="https://www.facebook.com/LeMansUniversite" aria-label="Facebook">
-                <img src="../Asset/image/Logo Facebook (bleu).png" alt="Facebook">
+                <img src="../Asset/image/Logo_Facebook_(bleu).png" alt="Facebook">
             </a>
         </div>
     </div>
