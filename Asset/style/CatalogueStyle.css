@@ -1,0 +1,48 @@
+
+
+.row{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.box_feature{
+    width: 250px;
+    height: 300px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    padding: 50px;
+    background-color: #282F63;
+    border-radius: 50px;
+    color: white;
+    font-family: "DM Sans";
+}
+
+.logo-icon{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.input-field{
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    border: black 2px solid;
+    font-family: "DM Sans";
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
