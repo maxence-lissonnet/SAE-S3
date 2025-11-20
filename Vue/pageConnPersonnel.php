@@ -1,3 +1,5 @@
+<?php require '../Controller/pageConnexionController.php' ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,7 +19,7 @@
 <body>
     <div class="boxForm">
         <img id="logoUniv" src="../Asset/image/univ.png">
-        <h1>Connexion à EcoGestUM</h1>
+        <h1>Connexion à ÉcoGestUM</h1>
         <p>PERSONNELS</p>
         <div class="formConn">
             <form method="POST">
@@ -27,7 +29,18 @@
                 <input type="password" name="mdp" id="idTextBox">
                 <p style="font-size: 16px;">Mot de passe oublié ?</p>
                 <button id="boutonConnexion" type="submit">SE CONNECTER</button>
+                <button id="premiereConnexion">PREMIÈRE CONNEXION ?</button>
             </form>
+            <?php if ($msgErreur != null) : ?>
+                <div class="erreur">
+                    <?= htmlspecialchars($msgErreur); ?>
+                </div>
+            <?php endif; ?>
+            <?php if ($msgAcces !== true && $msgAcces != null) : ?>
+                <div class="erreur">
+                    <?= htmlspecialchars($msgAcces); ?>
+                </div>
+            <?php endif ?>
         </div>
     </div>
     <img id="imgFond" src="../Asset/image/imagePageConnexion.png">

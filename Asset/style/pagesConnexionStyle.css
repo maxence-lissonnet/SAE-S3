@@ -73,7 +73,7 @@ p {
 
 #boutonConnexion {
     background-color: #282F63;
-    color: white;
+    color: rgb(245, 229, 229);
     width: calc(100% - 35px);
     height: 50px;
     font-size: 18px;
@@ -81,4 +81,41 @@ p {
     font-weight: bold;
     border-radius: 30px;
     border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+#boutonConnexion:hover,
+#premiereConnexion:hover {
+    background-color: #D4451B;
+    border: solid 4px black;
+}
+
+#premiereConnexion {
+    background-color: #44474E;
+    color: rgb(245, 229, 229);
+    width: calc(100% - 35px);
+    height: 50px;
+    margin-top: 15px;
+    font-size: 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.erreur {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    color: white;
+    text-align: center;
+    width: calc(100% - 35px);
+    margin-top: 15px;
+    height: 40px;
+    border-radius: 30px;
+    font-weight: bold;
 }
