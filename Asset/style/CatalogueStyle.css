@@ -26,6 +26,12 @@
     margin-right: 10px;
 }
 
+.logo-icon-titre{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
 .logo{
     display: flex;
     flex-direction: row;
