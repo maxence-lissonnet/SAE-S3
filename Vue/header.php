@@ -5,8 +5,8 @@
   <title>EcoGestUM</title>
 
   <!-- Feuilles de style globales -->
-  <link rel="stylesheet" href="../Asset/style/headerstyle.css">
-  <link rel="stylesheet" href="../Asset/style/footerstyle.css">
+  <link rel="stylesheet" href="/SAE-S3/Asset/style/headerstyle.css">
+  <link rel="stylesheet" href="/SAE-S3/Asset/style/footerstyle.css">
 </head>
 <body>
 
@@ -40,10 +40,44 @@
     </button>
 
     <!-- burger -->
-    <button class="eg-icon-btn eg-burger-icon" aria-label="Menu">
+    <button class="eg-icon-btn eg-burger-icon" aria-label="Menu" id="burgerBtn">
       <span></span>
       <span></span>
       <span></span>
     </button>
   </div>
+
+  <!-- Menu déroulant burger -->
+  <nav class="eg-burger-menu" id="burgerMenu">
+    <a href="#dashboard">Tableau de bord</a>
+    <a href="#reports">Rapports</a>
+    <a href="#settings">Paramètres</a>
+    <a href="#help">Aide</a>
+    <a href="#logout">Déconnexion</a>
+  </nav>
 </header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const burgerBtn = document.getElementById('burgerBtn');
+    const burgerMenu = document.getElementById('burgerMenu');
+
+    if (burgerBtn && burgerMenu) {
+      // Ouvrir/fermer le menu au clic sur le burger
+      burgerBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        burgerMenu.classList.toggle('open');
+      });
+
+      // Fermer le menu si on clique ailleurs
+      document.addEventListener('click', function () {
+        burgerMenu.classList.remove('open');
+      });
+
+      // Garder le menu ouvert si on clique dedans
+      burgerMenu.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+    }
+  });
+</script>
