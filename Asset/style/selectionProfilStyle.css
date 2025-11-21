@@ -76,6 +76,12 @@ body {
     font-weight: bold;
     border-radius: 30px;
     border: none;
+    display: flex;
+    justify-content: center;
+    /* centre horizontalement */
+    align-items: center;
+    /* centre verticalement */
+    text-decoration: none;
 }
 
 #visit {
@@ -88,4 +94,10 @@ body {
     font-weight: bold;
     border-radius: 30px;
     border: none;
+    display: flex;
+    justify-content: center;
+    /* centre horizontalement */
+    align-items: center;
+    /* centre verticalement */
+    text-decoration: none;
 }

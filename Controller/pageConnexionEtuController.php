@@ -41,6 +41,9 @@ function verify_data()
 {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $items = get_item('UTILISATEUR', 'mdpUser', "emailUser", $_POST['id']);
+        if (!get_id($_POST['id'])) {
+            return "ERREUR : Permission non accordée";
+        }
         if ($items === null) {
             return "ERREUR : Utilisateur inconnu";
         }
@@ -77,13 +80,36 @@ function verify_table(string $table): bool
     return ($rs["COUNT(*)"] == 0);
 }
 
+function get_id(string $mail)
+{
+    $dtb = get_dtb();
+    $query = $dtb->query('SELECT idRole FROM UTILISATEUR WHERE emailUser = "' . $mail . '";');
+    $rs = $query->fetch(PDO::FETCH_ASSOC);
+    return ($rs['idRole'] === 6 || $rs['idRole'] === 8);
+}
+
+function get_user_info()
+{
+    $name = get_item('UTILISATEUR', 'prenomUser', 'emailUser', $_POST['id']);
+    $dtb = get_dtb();
+    $query = $dtb->query('SELECT nomRole FROM `role` 
+        INNER JOIN utilisateur ON `role`.idRole = utilisateur.idRole
+        WHERE utilisateur.emailUser = "' . $_POST['id'] . '"');
+    $role = $query->fetch(PDO::FETCH_ASSOC);
+    return array($name['prenomUser'], $role['nomRole']);
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $msgErreur = verify_fields();
     if ($msgErreur === null) {
         $msgAcces = verify_data();
         if ($msgAcces === true) {
+            $user_info = get_user_info();
+            session_start();
+            $_SESSION['prenom'] = $user_info[0];
+            $_SESSION['role'] = $user_info[1];
             header('Location: accueilVue.php');
-            session_start(['cookie_lifetime' => 86400]);
             exit;
         }
     }

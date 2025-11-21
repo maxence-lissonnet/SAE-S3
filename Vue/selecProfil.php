@@ -20,9 +20,9 @@
         <img class="logoUniv" src="../Asset/image/univ.png" alt="Logo Le Mans Un">
         <h1>Choisissez un profil</h1>
         <div class="boutons">
-            <button id="etu">Étudiant</button>
-            <button id="personnel">Personnel</button>
-            <button id="visit">Visiteur</button>
+            <a id="etu" href="../Vue/pageConnEtu.php">Étudiant</a>
+            <a id="personnel" href="../Vue/pageConnPersonnel.php">Personnel</a>
+            <a id="visit">Visiteur</a>
         </div>
         <div class="eg-footer-socials">
             <a href="https://www.instagram.com/lemansuniversite/?hl=fr" aria-label="Instagram">

@@ -1,4 +1,4 @@
-<?php require '../Controller/pageConnexionPersoController.php' ?>
+<?php require '../Controller/pageConnexionEtuController.php' ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,7 +20,7 @@
     <div class="boxForm">
         <img id="logoUniv" src="../Asset/image/univ.png">
         <h1>Connexion à ÉcoGestUM</h1>
-        <p>PERSONNELS</p>
+        <p>ÉTUDIANTS</p>
         <div class="formConn">
             <form method="POST">
                 <p id="idText">Identifiant <span style="color: red;">*</span></p>
