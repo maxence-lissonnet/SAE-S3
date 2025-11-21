@@ -57,24 +57,23 @@
   </nav>
 </header>
 
+
 <script>
+  // Faire le menu burger selon les rôles ou y'a des pages pour certains rôles etc
   document.addEventListener('DOMContentLoaded', function () {
     const burgerBtn = document.getElementById('burgerBtn');
     const burgerMenu = document.getElementById('burgerMenu');
 
     if (burgerBtn && burgerMenu) {
-      // Ouvrir/fermer le menu au clic sur le burger
       burgerBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         burgerMenu.classList.toggle('open');
       });
 
-      // Fermer le menu si on clique ailleurs
       document.addEventListener('click', function () {
         burgerMenu.classList.remove('open');
       });
 
-      // Garder le menu ouvert si on clique dedans
       burgerMenu.addEventListener('click', function (e) {
         e.stopPropagation();
       });
