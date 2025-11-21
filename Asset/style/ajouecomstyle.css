@@ -1,0 +1,181 @@
+/* Page création publication */
+.eg-ajout-page {
+  padding: 24px 40px 40px;
+  background: #ffffff; /* Fond de page blanc */
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+
+.eg-ajout-title {
+  margin: 0 0 24px;
+  font-size: 26px;
+}
+
+.eg-ajout-form {
+  margin: 0;
+}
+
+.eg-ajout-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+}
+
+.eg-ajout-left,
+.eg-ajout-right {
+  background: #f3f4f6; /* Gris clair (même teinte que les autres pages) */
+  border-radius: 24px;
+  padding: 20px 24px 28px;
+}
+
+.eg-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.eg-field-group input,
+.eg-field-group select,
+.eg-field-group textarea {
+  border-radius: 12px;
+  border: 1px solid #9ca3af;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.eg-field-group textarea {
+  resize: vertical;
+}
+
+.eg-form-errors {
+  margin: 0 0 12px;
+  padding-left: 18px;
+  color: #D4451B;
+  font-size: 13px;
+}
+
+/* Bloc illustration */
+.eg-ajout-illu-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.eg-ajout-label {
+  font-size: 13px;
+}
+
+.eg-btn-illu-disabled,
+.eg-btn-illu-url {
+  border-radius: 999px;
+  border: none;
+  padding: 8px 18px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.eg-btn-illu-disabled {
+  background: #c4c4c4;
+  color: #f9fafb;
+  cursor: not-allowed;
+}
+
+.eg-btn-illu-url {
+  background: #1f2855;
+  color: #ffffff;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.eg-input-url {
+  margin-top: 8px;
+  border-radius: 999px;
+  border: 1px solid #9ca3af;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.eg-ajout-url-preview {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #4b5563;
+  word-break: break-all;
+}
+
+/* Destination + bouton publier */
+.eg-ajout-destination {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 14px;
+}
+
+.eg-ajout-dest-label {
+  font-weight: 600;
+}
+
+.eg-ajout-dest-value {
+  color: #D4451B;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.eg-ajout-publish {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 12px;
+}
+
+.eg-btn-main {
+  border-radius: 999px;
+  border: none;
+  padding: 10px 26px;
+  font-size: 14px;
+  cursor: pointer;
+  background: #D4451B;
+  color: #ffffff;
+}
+
+.eg-ajout-info {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 10px;
+}
+
+@media (max-width: 1000px) {
+  .eg-ajout-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eg-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #4b5563;
+  text-decoration: none;
+}
+
+.eg-back-link:hover {
+  text-decoration: underline;
+}
+
+.eg-btn-secondary {
+  border-radius: 999px;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  background: #e5e7eb;
+}
+
+/* Supprimer le gris avant le footer : on force le fond global en blanc
+   pour cette page (si un autre CSS met un body gris). */
+body {
+  background: #ffffff;
+}

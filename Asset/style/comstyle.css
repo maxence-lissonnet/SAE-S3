@@ -1,0 +1,149 @@
+/* Page détail communication */
+
+.eg-com-full-page {
+  padding: 24px 40px 40px;
+  background: #ffffff;   /* fond page en blanc (aligné avec les autres pages) */
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+
+.eg-com-full-container {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px 32px 32px;
+}
+
+.eg-com-full-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.eg-com-full-title {
+  margin: 0 0 4px;
+  font-size: 26px;
+}
+
+.eg-com-full-meta {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.eg-com-full-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+  font-size: 13px;
+  color: #D4451B;
+}
+
+.eg-com-icon-text {
+  cursor: pointer;
+}
+
+.eg-com-full-body {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 24px;
+  margin-top: 12px;
+}
+
+.eg-com-full-article {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.eg-com-full-side {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.eg-com-full-illustration {
+  width: 260px;
+  height: 260px;
+  border-radius: 32px;
+  background: radial-gradient(circle at 30% 20%, #60a5fa, #111827);
+}
+
+.eg-com-back-link {
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+.eg-com-back-link a {
+  color: #111827;
+  text-decoration: none;
+}
+
+.eg-com-back-link a:hover {
+  text-decoration: underline;
+}
+
+/* Bouton secondaire générique (cohérent avec les autres fichiers) */
+.eg-btn-secondary {
+  border-radius: 999px;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  background: #e5e7eb;
+}
+
+/* Page liste communications (si jamais utilisée par cette feuille) */
+
+.eg-com-page {
+  padding: 24px 40px 40px;
+  background: #ffffff;   /* même fond blanc que page liste com */
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+
+/* Bouton retour */
+
+.eg-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  margin-bottom: 20px;
+  border-radius: 999px;
+  background: #D4451B;          /* orange bien visible */
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.eg-back-btn:hover {
+  filter: brightness(0.9);
+}
+
+/* Liens / boutons dans le bloc actions */
+
+.eg-com-full-actions a {
+  text-decoration: none;
+}
+
+.eg-com-icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+  .eg-com-full-body {
+    grid-template-columns: 1fr;
+  }
+
+  .eg-com-full-side {
+    justify-content: center;
+  }
+}

@@ -74,21 +74,38 @@ function getEventsFiltered(?int $idTypeEvent, ?string $dateFilter, ?string $lieu
             // année
             $sql .= " AND YEAR(e.dateEvent) = :year";
             $params[':year'] = $dateFilter;
+
         } elseif (preg_match('#^\d{4}-\d{2}$#', $dateFilter)) {
             // année-mois
             $sql .= " AND e.dateEvent BETWEEN :d1 AND :d2";
             $params[':d1'] = $dateFilter . '-01';
             $params[':d2'] = $dateFilter . '-31';
+
         } elseif (preg_match('#^\d{4}-\d{2}-\d{2}$#', $dateFilter)) {
             // date complète
             $sql .= " AND e.dateEvent = :dExact";
             $params[':dExact'] = $dateFilter;
+
         } else {
             // fallback : LIKE sur le début de la date
             $sql .= " AND e.dateEvent LIKE :dLike";
             $params[':dLike'] = $dateFilter . '%';
         }
     }
+
+    // filtre lieu
+    if (!empty($lieuSearch)) {
+        $sql .= " AND e.lieuEvent LIKE :lieu";
+        $params[':lieu'] = '%' . $lieuSearch . '%';
+    }
+
+    $sql .= " ORDER BY e.dateEvent, e.heureDebEvent";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->fetchAll();
+}
+
 /**
  * Dates d'évènements pour un mois donné (pour le calendrier).
  * $yearMonth doit être au format "YYYY-MM".
@@ -120,19 +137,6 @@ function getEventsForMonth(string $yearMonth, ?int $idTypeEvent, ?string $lieuSe
     }
 
     $sql .= " ORDER BY e.dateEvent";
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute($params);
-    return $stmt->fetchAll();
-}
-
-    // filtre lieu
-    if (!empty($lieuSearch)) {
-        $sql .= " AND e.lieuEvent LIKE :lieu";
-        $params[':lieu'] = '%' . $lieuSearch . '%';
-    }
-
-    $sql .= " ORDER BY e.dateEvent, e.heureDebEvent";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);

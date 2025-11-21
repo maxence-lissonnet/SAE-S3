@@ -1,21 +1,9 @@
 <?php
 // On exécute toute la logique (CRUD + filtres + récupération des données)
 require_once __DIR__ . '/../Controller/contrEven.php';
-
-// Sécurise les variables si jamais le contrôleur plante (optionnel)
-$events          = $events          ?? [];
-$typesEvenement  = $typesEvenement  ?? [];
-$idTypeEvent     = $idTypeEvent     ?? null;
-$dateEvent       = $dateEvent       ?? null;
-$lieuSearch      = $lieuSearch      ?? null;
-$eventToEdit     = $eventToEdit     ?? [];
-$formErrors      = $formErrors      ?? [];
-$calendarRefDate = $calendarRefDate ?? date('Y-m-01');
-$eventsCalendar  = $eventsCalendar  ?? [];
 ?>
 <link rel="stylesheet" href="../Asset/style/eventstyle.css">
 <?php require __DIR__ . '/header.php'; ?>
-
 
 <main class="eg-event-page">
 
@@ -30,25 +18,24 @@ $eventsCalendar  = $eventsCalendar  ?? [];
                 // On utilise maintenant la date fournie par le contrôleur
                 $refDateObj = new DateTime($calendarRefDate);
 
-               // Noms de mois en français (UTF-8, pas de souci d'encodage)
-$moisFr = [
-    '01' => 'JANVIER',
-    '02' => 'FÉVRIER',
-    '03' => 'MARS',
-    '04' => 'AVRIL',
-    '05' => 'MAI',
-    '06' => 'JUIN',
-    '07' => 'JUILLET',
-    '08' => 'AOÛT',
-    '09' => 'SEPTEMBRE',
-    '10' => 'OCTOBRE',
-    '11' => 'NOVEMBRE',
-    '12' => 'DÉCEMBRE',
-];
+                // Noms de mois en français
+                $moisFr = [
+                    '01' => 'JANVIER',
+                    '02' => 'FÉVRIER',
+                    '03' => 'MARS',
+                    '04' => 'AVRIL',
+                    '05' => 'MAI',
+                    '06' => 'JUIN',
+                    '07' => 'JUILLET',
+                    '08' => 'AOÛT',
+                    '09' => 'SEPTEMBRE',
+                    '10' => 'OCTOBRE',
+                    '11' => 'NOVEMBRE',
+                    '12' => 'DÉCEMBRE',
+                ];
 
-$moisNum = $refDateObj->format('m');
-$nomMois = $moisFr[$moisNum] ?? strtoupper($refDateObj->format('F'));
-
+                $moisNum = $refDateObj->format('m');
+                $nomMois = $moisFr[$moisNum] ?? strtoupper($refDateObj->format('F'));
 
                 // Jours du mois qui ont au moins un évènement (basé sur $eventsCalendar)
                 $daysWithEvents = [];
@@ -240,7 +227,22 @@ $nomMois = $moisFr[$moisNum] ?? strtoupper($refDateObj->format('F'));
                 </ul>
             <?php endif; ?>
 
-            <form method="post" class="eg-event-edit-form">
+            <!-- Formulaire principal : création / édition -->
+                        <!-- ========= FORMULAIRE CREATION / MODIFICATION ========= -->
+            <h2>
+                <?= isset($eventToEdit['idEvent']) ? 'Modifier un évènement' : 'Créer un évènement' ?>
+            </h2>
+
+            <?php if (!empty($formErrors)): ?>
+                <ul class="eg-form-errors">
+                    <?php foreach ($formErrors as $err): ?>
+                        <li><?= htmlspecialchars($err) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+
+            <!-- Formulaire principal : création / édition -->
+            <form method="post" class="eg-event-edit-form" id="validateForm">
                 <?php if (!empty($eventToEdit['idEvent'])): ?>
                     <input type="hidden" name="idEvent"
                            value="<?= (int)$eventToEdit['idEvent'] ?>">
@@ -301,19 +303,33 @@ $nomMois = $moisFr[$moisNum] ?? strtoupper($refDateObj->format('F'));
                 </label>
 
                 <div class="eg-event-edit-actions">
-                    <button type="submit" name="save" value="1" class="eg-btn-main">
+                    <!-- IMPORTANT : type="button" pour laisser JS gérer la soumission -->
+                    <button type="button"
+                            id="validateButton"
+                            name="save"
+                            value="1"
+                            class="eg-btn-main">
                         <?= isset($eventToEdit['idEvent']) ? 'Mettre à jour' : 'Créer l\'évènement' ?>
                     </button>
 
                     <?php if (isset($eventToEdit['idEvent'])): ?>
-                        <button type="submit" name="delete" value="1"
-                                class="eg-btn-danger"
-                                onclick="return confirm('Supprimer cet évènement ?');">
+                        <!-- bouton cliqué → ouverture popup JS de suppression -->
+                        <button type="button"
+                                id="eventDeleteButton"
+                                class="eg-btn-danger">
                             Supprimer
                         </button>
                     <?php endif; ?>
                 </div>
             </form>
+
+            <?php if (isset($eventToEdit['idEvent'])): ?>
+                <!-- Formulaire caché uniquement pour la suppression -->
+                <form id="eventDeleteForm" method="post" style="display:none;">
+                    <input type="hidden" name="idEvent" value="<?= (int)$eventToEdit['idEvent'] ?>">
+                    <input type="hidden" name="delete" value="1">
+                </form>
+            <?php endif; ?>
 
         </aside>
 
@@ -324,3 +340,4 @@ $nomMois = $moisFr[$moisNum] ?? strtoupper($refDateObj->format('F'));
 
 </body>
 </html>
+
