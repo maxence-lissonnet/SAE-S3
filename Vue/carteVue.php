@@ -1,0 +1,41 @@
+<?php
+session_start();
+require 'header.php';
+require '../Controller/pageCarteController.php';
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Points de collecte</title>
+    <link rel="icon" href="../Asset/image/favicon.ico">
+    <link rel="stylesheet" href="../Asset/style/carteStyle.css">
+
+    <!-- Inclusion des polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+    <!-- Inclusion carte -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+    <div class="title">
+        <img id="pin" src="../Asset/image/epingle.png">
+        <h1>Points de collecte</h1>
+    </div>
+    <div id="map"></div>
+
+    <script>
+        const lieux = <?php echo json_encode($lieux) ?>;
+    </script>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="../Asset/js/map.js"></script>
+</body>
+
+</html>

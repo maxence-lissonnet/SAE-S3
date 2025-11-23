@@ -1,0 +1,26 @@
+body {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 13px;
+    color: #44474E;
+    padding-top: 33px;
+    padding-left: 45px;
+    gap: 10px;
+}
+
+#pin {
+    width: 45px;
+}
+
+#map {
+    border-radius: 30px;
+    width: 50%;
+    height: 70vh;
+    margin-left: 45px;
+    margin-top: 15px;
+}
