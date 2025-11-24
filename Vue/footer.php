@@ -61,7 +61,7 @@
         </a>
       </div>
 
-      <a href="#" class="eg-footer-btn eg-footer-btn-secondary">
+      <a href="?page=politique" class="eg-footer-btn eg-footer-btn-secondary">
         Politique de recyclage
       </a>
     </div>
