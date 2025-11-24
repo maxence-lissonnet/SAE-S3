@@ -24,3 +24,41 @@ body {
     margin-left: 45px;
     margin-top: 15px;
 }
+
+#infos {
+    width: 60%;
+    color: #44474E;
+    font-weight: 650;
+}
+
+.carte {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+#textTitleZone {
+    font-size: 22px;
+    color: #44474E;
+}
+
+.nomLieu {
+    color: #D4451B;
+}
+
+.elementCarte {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.texteLieu {
+    flex-direction: column;
+}
+
+.itineraireImg {
+    height: 60px;
+    width: 60px;
+    margin-left: auto;
+    margin-right: 10%;
+}

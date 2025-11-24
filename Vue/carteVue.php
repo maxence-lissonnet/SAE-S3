@@ -28,12 +28,20 @@ require '../Controller/pageCarteController.php';
         <img id="pin" src="../Asset/image/epingle.png">
         <h1>Points de collecte</h1>
     </div>
-    <div id="map"></div>
+
+    <div class="carte">
+        <div id="map"></div>
+
+        <div id="infos">
+            <h1 id="textTitleZone">Dans cette zone</h1>
+            <p><i><strong>Cliquez pour voir le lieu sur la carte - Dézoomez pour plus de résultats</strong></i></p>
+            <div id="listeLieux"></div>
+        </div>
+    </div>
 
     <script>
         const lieux = <?php echo json_encode($lieux) ?>;
     </script>
-
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="../Asset/js/map.js"></script>
 </body>

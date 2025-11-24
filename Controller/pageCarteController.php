@@ -25,5 +25,6 @@ $lieux = [];
 $places = get_items('LIEU_RETRAIT');
 
 foreach ($places as $place) {
-    array_push($lieux, ["nom" => $place['nomLieuRetrait'], "lat" => floatval(mb_strimwidth($place['coordonneesLieuRetrait'], 0, 7)), 'long' => floatval(mb_strimwidth($place['coordonneesLieuRetrait'], 8, 13))]);
+    $latlon = explode(' ', $place['coordonneesLieuRetrait']);
+    array_push($lieux, ["nom" => $place['nomLieuRetrait'], "adr" => $place['adresseLieuRetrait'], "lat" => floatval($latlon[0]), 'long' => floatval($latlon[1])]);
 }
