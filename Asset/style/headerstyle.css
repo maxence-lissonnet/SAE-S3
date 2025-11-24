@@ -1,8 +1,8 @@
 /* Fond global */
 body {
   margin: 0;
-  font-family: "DM Sans", sans-serif;
-  background: #fff; 
+  background: #b3b3b3;
+  /* gris extérieur */
 }
 
 /* Barre du header : pleine largeur */
@@ -15,7 +15,10 @@ body {
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bolder;
 }
+
 /* Partie gauche : logo + nom appli */
 .eg-header-left {
   display: flex;
@@ -38,7 +41,7 @@ body {
 /* Nom de l'appli */
 .eg-app-name {
   font-size: 20px;
-  letter-spacing: 0.12em;
+  letter-spacing: 1.5px;
   color: #222;
 }
 
