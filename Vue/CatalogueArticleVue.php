@@ -36,8 +36,7 @@ require __DIR__ . '/../Controller/CatalogueArticleController.php';
             </div>
 
             <form class="form" method="post">
-
-                <label for="name">Categorie :</label>
+                <label for="name">Categorie :</label><br>
                 <select name="categorie" class="input-field">
                     <option value="Tous" <?php if (($selectedCategorie ?? 'Tous') === 'Tous') echo 'selected'; ?>>Tous</option>
                     <?php foreach($categories as $categorie): ?>
@@ -47,7 +46,7 @@ require __DIR__ . '/../Controller/CatalogueArticleController.php';
                     <?php endforeach; ?>
                 </select><br>
 
-                <label for="name">Localisation :</label>
+                <label for="name">Localisation :</label><br>
                 <select name="localisation" class="input-field">
                     <option value="Tous" <?php if (($selectedLocalisation ?? 'Tous') === 'Tous') echo 'selected'; ?>>Tous</option>
                     <?php foreach($locations as $location): ?>
@@ -58,7 +57,7 @@ require __DIR__ . '/../Controller/CatalogueArticleController.php';
                     <?php endforeach; ?>
                 </select><br>
 
-                <label for="name">Etat :</label>
+                <label for="name">Etat :</label><br>
                 <select name="etat" class="input-field">
                     <option value="Tous" <?php if (($selectedEtat ?? 'Tous') === 'Tous') echo 'selected'; ?>>Tous</option>
                     <?php foreach($etats as $etat): ?>

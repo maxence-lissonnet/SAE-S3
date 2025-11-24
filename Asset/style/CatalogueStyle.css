@@ -1,5 +1,5 @@
 .row{
-    margin-left: 50px;
+    margin-left: 40px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -42,7 +42,6 @@
 .container{
     display: flex;
     flex-direction: row;
-    
 }
 
 .input-field{
@@ -81,6 +80,7 @@
 
 .form {
     position: sticky;
+    width: 300px;
     top: 20px;               
     align-self: flex-start;  /* évite l'étirement si parent en flex */
     font-family: "DM Sans";
@@ -108,4 +108,3 @@
     background-color: #D4451B;
     border: solid 3px black;
 }
-
