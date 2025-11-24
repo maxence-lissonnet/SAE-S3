@@ -18,7 +18,7 @@
 
 <body>
     <div class="boxForm">
-        <img id="logoUniv" src="../Asset/image/univ.png">
+        <img id="logoUniv" src="../Asset/image/header/univ.png">
         <h1>Connexion à ÉcoGestUM</h1>
         <p>PERSONNELS</p>
         <div class="formConn">
