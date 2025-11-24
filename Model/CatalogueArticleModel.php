@@ -15,7 +15,7 @@ function get_bdd(){
 function get_obj(){
     $bdd = get_bdd();
     $query = $bdd->query('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
-                        etat_objet.nomEtatObjet, utilisateur.nomUser FROM objet 
+                        etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
                         INNER JOIN lieu_retrait ON lieu_retrait.idLieuRetrait = objet.idLieuRetrait 
                         INNER JOIN etat_objet ON etat_objet.idEtatObjet = objet.idEtatObjet');
@@ -25,21 +25,21 @@ function get_obj(){
 
 function get_categories(){
     $bdd = get_bdd();
-    $query = $bdd->query('SELECT * FROM categorie');
+    $query = $bdd->query('SELECT DISTINCT * FROM categorie');
     $categories = $query->fetchAll(PDO::FETCH_ASSOC);
     return $categories;
 }
 
 function get_locations(){
     $bdd = get_bdd();
-    $query = $bdd->query('SELECT adresseLieuRetrait FROM lieu_retrait');
+    $query = $bdd->query('SELECT DISTINCT adresseLieuRetrait FROM lieu_retrait');
     $locations = $query->fetchAll(PDO::FETCH_ASSOC);
     return $locations;
 }
 
 function get_etat(){
     $bdd = get_bdd();
-    $query = $bdd->query('SELECT nomEtatObjet FROM etat_objet');
+    $query = $bdd->query('SELECT DISTINCT nomEtatObjet FROM etat_objet');
     $states = $query->fetchAll(PDO::FETCH_ASSOC);
     return $states;
 }
@@ -47,7 +47,7 @@ function get_etat(){
 function filter_articles_categorie($categorie){
     $bdd = get_bdd();
     $query = $bdd->prepare('SELECT  objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
-                        etat_objet.nomEtatObjet, utilisateur.nomUser FROM objet 
+                        etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
                         INNER JOIN lieu_retrait ON lieu_retrait.idLieuRetrait = objet.idLieuRetrait 
                         INNER JOIN etat_objet ON etat_objet.idEtatObjet = objet.idEtatObjet
@@ -62,7 +62,7 @@ function filter_articles_categorie($categorie){
 function filter_articles_localisation($localisation){
     $bdd = get_bdd();
     $query = $bdd->prepare('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
-                        etat_objet.nomEtatObjet, utilisateur.nomUser FROM objet 
+                        etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
                         INNER JOIN lieu_retrait ON lieu_retrait.idLieuRetrait = objet.idLieuRetrait 
                         INNER JOIN etat_objet ON etat_objet.idEtatObjet = objet.idEtatObjet
@@ -77,7 +77,7 @@ function filter_articles_localisation($localisation){
 function filter_articles_etat($etat){
     $bdd = get_bdd();
     $query = $bdd->prepare('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
-                        etat_objet.nomEtatObjet, utilisateur.nomUser FROM objet 
+                        etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
                         INNER JOIN lieu_retrait ON lieu_retrait.idLieuRetrait = objet.idLieuRetrait 
                         INNER JOIN etat_objet ON etat_objet.idEtatObjet = objet.idEtatObjet
@@ -92,7 +92,7 @@ function filter_articles_etat($etat){
 function filter_articles_categorie_localisation($categorie, $localisation){
     $bdd = get_bdd();
     $query = $bdd->prepare('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
-                        etat_objet.nomEtatObjet, utilisateur.nomUser FROM objet 
+                        etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
                         INNER JOIN lieu_retrait ON lieu_retrait.idLieuRetrait = objet.idLieuRetrait 
                         INNER JOIN etat_objet ON etat_objet.idEtatObjet = objet.idEtatObjet
@@ -108,7 +108,7 @@ function filter_articles_categorie_localisation($categorie, $localisation){
 function filter_articles_categorie_etat($categorie, $etat){
     $bdd = get_bdd();
     $query = $bdd->prepare('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
-                        etat_objet.nomEtatObjet, utilisateur.nomUser FROM objet 
+                        etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
                         INNER JOIN lieu_retrait ON lieu_retrait.idLieuRetrait = objet.idLieuRetrait 
                         INNER JOIN etat_objet ON etat_objet.idEtatObjet = objet.idEtatObjet
@@ -124,7 +124,7 @@ function filter_articles_categorie_etat($categorie, $etat){
 function filter_articles_localisation_etat($localisation, $etat){
     $bdd = get_bdd();
     $query = $bdd->prepare('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
-                        etat_objet.nomEtatObjet, utilisateur.nomUser FROM objet 
+                        etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
                         INNER JOIN lieu_retrait ON lieu_retrait.idLieuRetrait = objet.idLieuRetrait 
                         INNER JOIN etat_objet ON etat_objet.idEtatObjet = objet.idEtatObjet
@@ -140,7 +140,7 @@ function filter_articles_localisation_etat($localisation, $etat){
 function filter_articles_all($categorie, $localisation, $etat){
     $bdd = get_bdd();
     $query = $bdd->prepare('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
-                        etat_objet.nomEtatObjet, utilisateur.nomUser FROM objet 
+                        etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
                         INNER JOIN lieu_retrait ON lieu_retrait.idLieuRetrait = objet.idLieuRetrait 
                         INNER JOIN etat_objet ON etat_objet.idEtatObjet = objet.idEtatObjet

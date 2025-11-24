@@ -6,7 +6,7 @@ require __DIR__ . '/../Controller/CatalogueArticleController.php';
 <link rel="stylesheet" href="../Asset/style/CatalogueStyle.css">
     <div id="banner-wrapper">
         <div id="banner" class="box container">
-            <div class="row">
+            <div ">
                 <div class="col-7 col-12-medium">
                     <h1 class="logo"><img src="../Asset/image/CatalogueArticle/logo catalogue.png" class="logo-icon-titre">Catalogue</h1>
                 </div>
@@ -25,7 +25,7 @@ require __DIR__ . '/../Controller/CatalogueArticleController.php';
                                     <img class="image" src="../Controller/ImageObjet.php?id=<?= (int)$article['idObjet'] ?>" alt="">
                                 </div>
                                 <h2><?php echo htmlspecialchars($article['nomObjet']); ?></h2>
-                                <p class="logo"><img src="../Asset/image/CatalogueArticle/logo personne.png" class="logo-icon"><?php echo htmlspecialchars($article['nomUser']); ?></p>
+                                <p class="logo"><img src="../Asset/image/CatalogueArticle/logo personne.png" class="logo-icon"><?php echo htmlspecialchars($article['nomUser']) . ' ' . htmlspecialchars($article['prenomUser']); ?></p>
                                 <p class="logo"><img src="../Asset/image/CatalogueArticle/logo point maps.png" class="logo-icon"><?php echo htmlspecialchars($article['adresseLieuRetrait']); ?></p>
                                 <p class="logo"><img src="../Asset/image/CatalogueArticle/logo etat.png" class="logo-icon"><?php echo htmlspecialchars($article['nomEtatObjet']); ?></p>
                             </header>
@@ -41,7 +41,7 @@ require __DIR__ . '/../Controller/CatalogueArticleController.php';
                 <select name="categorie" class="input-field">
                     <option value="Tous" <?php if (($selectedCategorie ?? 'Tous') === 'Tous') echo 'selected'; ?>>Tous</option>
                     <?php foreach($categories as $categorie): ?>
-                        <option value="<?php echo htmlspecialchars($categorie['idCategorie']); ?>" <?php if (($selectedCategorie ?? 'Tous') == $categorie['idCategorie']) echo 'selected'; ?>>
+                        <option class='valeur-option'value="<?php echo htmlspecialchars($categorie['idCategorie']); ?>" <?php if (($selectedCategorie ?? 'Tous') == $categorie['idCategorie']) echo 'selected'; ?>>
                             <?php echo htmlspecialchars($categorie['nomCategorie']); ?>
                         </option>
                     <?php endforeach; ?>
@@ -68,8 +68,8 @@ require __DIR__ . '/../Controller/CatalogueArticleController.php';
                         </option>
                     <?php endforeach; ?>
                 </select>
-                <button type="submit">Rechercher</button>
-                <button type="submit" name="reset" value="1">Supprimer filtre</button>
+                <button class="boutonFiltre" type="submit">Rechercher</button>
+                <button class="boutonFiltre" type="submit" name="reset" value="1">Supprimer filtre</button>
             </form>
         </div>
     </div>
