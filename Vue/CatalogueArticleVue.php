@@ -31,7 +31,7 @@
                 <?php endforeach;?>
             </div>
 
-            <form method="post">
+            <form class="form" method="post">
 
                 <label for="name">Categorie :</label>
                 <select name="categorie" class="input-field">

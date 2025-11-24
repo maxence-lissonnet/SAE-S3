@@ -72,3 +72,9 @@
     position: relative;
     left: -25px;
 }
+
+.form {
+    position: relative;
+    left: -40px;
+    font-family: "DM Sans";;
+}
