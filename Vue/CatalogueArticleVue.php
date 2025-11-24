@@ -1,4 +1,8 @@
-<?php require 'header.php'; ?>
+<?php require 'header.php'; 
+require __DIR__ . '/../Controller/CatalogueArticleController.php';
+?>
+
+
 <link rel="stylesheet" href="../Asset/style/CatalogueStyle.css">
     <div id="banner-wrapper">
         <div id="banner" class="box container">

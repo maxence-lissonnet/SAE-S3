@@ -48,5 +48,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require __DIR__ . '/../Vue/CatalogueArticleVue.php';
-?>
+    ?>
