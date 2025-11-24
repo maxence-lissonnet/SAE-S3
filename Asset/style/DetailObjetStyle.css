@@ -1,0 +1,137 @@
+.detail-container {
+    box-sizing: border-box;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 20px;
+    font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: #fff;
+    gap: 30px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.detail-container > img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    display: block;
+}
+
+.detail-card {
+    background: #282F63; 
+    width: 100%;
+    border-radius: 22px;
+    padding: 34px;
+    box-shadow: 0 8px 30px rgba(40,47,99,0.15);
+    position: relative;
+}
+
+.detail-card h1 {
+    margin: 0 0 8px 0;
+    font-size: 26px;
+    line-height: 1.06;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.detail-card .date {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-left: 6px;
+    font-weight: 400;
+}
+
+.detail-card .divider {
+    margin: 18px 0 22px;
+    border-top: 3px solid rgba(255,255,255,0.15);
+    width: 100%;
+}
+
+.detail-card .text {
+    flex: 1;
+    line-height: 1.35;
+}
+
+.detail-card .tag {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 10px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    font-size: 13px;
+}
+
+.detail-card .desc-title {
+    margin-top: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    display: block;
+    font-size: 16px;
+}
+
+.detail-card .desc {
+    margin-top: 8px;
+    color: rgba(255,255,255,0.85);
+    font-style: italic;
+    line-height: 1.5;
+    background: transparent;
+}
+
+.detail-container a.back-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 14px;
+    background: rgba(255,255,255,0.04);
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+/* Responsive : image au-dessus sur petits écrans */
+@media (max-width: 900px) {
+    .detail-container {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+    .detail-container > img {
+        order: 0;
+        margin-bottom: 18px;
+    }
+    .detail-card {
+        padding: 20px;
+    }
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.logo-icon{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.button {
+    width: 100%;
+    display: inline-block;
+    margin-top: 18px;
+    color: #ffffff;
+    background: #D4451B;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}

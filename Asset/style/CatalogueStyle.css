@@ -6,7 +6,7 @@
     align-items: center;
     border-right: solid 5px #282F63;
     border-radius: 30px;
-    
+    text-decoration: none ;    
 }
 
 .box_feature{
@@ -37,6 +37,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    
 }
 
 .container{
@@ -108,3 +109,11 @@
     background-color: #D4451B;
     border: solid 3px black;
 }
+
+#features-wrapper a,
+#features-wrapper a:link,
+#features-wrapper a:visited,
+#features-wrapper a * {
+    text-decoration: none;
+}
+
