@@ -24,11 +24,30 @@ require '../Controller/pageProfilController.php';
         <div class="contenu">
             <img src="../Asset/image/univ.png">
             <h1 style="font-size: 24px;"><span>Profil</span><span style="font-size: 12px;"> - <?php echo strtoupper($_SESSION['role']); ?></span></h1>
-            <div class="ligne1">
-                <p id="idText">Identifiant</p>
-                <div class="box"></div>
-                <p id="idText">Mot de passe <span style="color: red;">*</span></p>
-                <input type="password" name="mdp" id="idTextBox">
+            <div class="ligne">
+                <div class="elt">
+                    <p class="idText">Adresse e-mail</p>
+                    <div class="box"><?php echo $_SESSION['mail'] ?></div>
+                </div>
+                <div class="elt">
+                    <p class="idText">Nom</p>
+                    <div class="box"><?php echo $_SESSION['nom'] ?></div>
+                </div>
+                <div class="elt">
+                    <p class="idText">Prénom</p>
+                    <div class="box"><?php echo $_SESSION['prenom'] ?></div>
+                </div>
+            </div>
+
+            <div class="ligne">
+                <div class="elt">
+                    <p class="idText">Téléphone</p>
+                    <div class="box"><?php echo $_SESSION['tel'] ?></div>
+                </div>
+                <div class="elt">
+                    <p class="idText">Adresse</p>
+                    <div class="box"><?php echo $_SESSION['adr'] ?></div>
+                </div>
             </div>
         </div>
     </div>

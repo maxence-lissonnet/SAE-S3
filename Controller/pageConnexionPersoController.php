@@ -99,7 +99,6 @@ function get_user_info()
         WHERE utilisateur.emailUser = "' . $_POST['id'] . '"');
     $role = $query2->fetch(PDO::FETCH_ASSOC);
     $items['role'] = $role['nomRole'];
-    var_dump($items);
     return $items;
 }
 
@@ -131,8 +130,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if ($msgAcces === true) {
             $user_info = get_user_info();
             session_start();
-            $_SESSION['prenom'] = $user_info[0];
-            $_SESSION['role'] = $user_info[1];
+            $_SESSION['prenom'] = $user_info['prenomUser'];
+            $_SESSION['role'] = $user_info['role'];
+            $_SESSION['nom'] = $user_info['nomUser'];
+            $_SESSION['tel'] = $user_info['telUser'];
+            $_SESSION['adr'] = $user_info['adrUser'];
+            $_SESSION['mail'] = $user_info['emailUser'];
             header('Location: profilVue.php');
             exit;
         }
