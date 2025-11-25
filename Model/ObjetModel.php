@@ -158,13 +158,12 @@ function filter_articles_all($categorie, $localisation, $etat){
 function get_obj_by_id(int $id) {
     $bdd = get_bdd();
     $sql = "SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, objet.mesureObjet, objet.dateDispoObjet, objet.descriptionObjet, lieu_retrait.adresseLieuRetrait, 
-            etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser, categorie.nomCategorie FROM objet 
+            lieu_retrait.coordonneesLieuRetrait, etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser, categorie.nomCategorie FROM objet 
             INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
             INNER JOIN lieu_retrait ON lieu_retrait.idLieuRetrait = objet.idLieuRetrait 
             INNER JOIN etat_objet ON etat_objet.idEtatObjet = objet.idEtatObjet
             INNER JOIN categorie ON categorie.idCategorie = objet.idCategorie
-            WHERE objet.idObjet = :id
-            LIMIT 1";
+            WHERE objet.idObjet = :id";
     $stmt = $bdd->prepare($sql);
     $stmt->execute([':id' => $id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
