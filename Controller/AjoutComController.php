@@ -1,7 +1,7 @@
 <?php
 // Controller/contrajouecom.php
 
-require_once __DIR__ . '/../Model/modcom.php';
+require_once __DIR__ . '/../Model/ComModel.php';
 
 $formErrors = [];
 $formData   = [];
@@ -28,7 +28,6 @@ if (
             'titreCom'   => $current['titreCom'],
             'idTypeCom'  => $current['idTypeCom'],
             'contenuCom' => $current['contenuCom'],
-            // Pas encore gérés en base :
             'imageUrl'   => '',
             'roles'      => [],
         ];

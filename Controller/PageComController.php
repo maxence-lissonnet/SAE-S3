@@ -1,7 +1,7 @@
 <?php
 // Controller/contrpagecom.php
 
-require_once __DIR__ . '/../Model/modcom.php';
+require_once __DIR__ . '/../Model/ComModel.php';
 
 // Communication à afficher (ou null si introuvable)
 $com = null;

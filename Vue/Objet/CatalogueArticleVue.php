@@ -1,14 +1,14 @@
-<?php require 'header.php'; 
-require __DIR__ . '/../Controller/CatalogueArticleController.php';
+<?php require __DIR__ . '/../Header Footer/header.php'; 
+require __DIR__ . '/../../Controller/CatalogueArticleController.php';
 ?>
 
 
-<link rel="stylesheet" href="../Asset/style/CatalogueStyle.css">
+<link rel="stylesheet" href="../../Asset/style/CatalogueStyle.css">
     <div id="banner-wrapper">
         <div id="banner" class="box container">
             <div>
                 <div class="col-7 col-12-medium">
-                    <h1 class="logo"><img src="../Asset/image/CatalogueArticle/logo catalogue.png" class="logo-icon-titre">Catalogue</h1>
+                    <h1 class="logo"><img src="../../Asset/image/CatalogueArticle/logo catalogue.png" class="logo-icon-titre">Catalogue</h1>
                 </div>
             </div>
         </div>
@@ -22,12 +22,12 @@ require __DIR__ . '/../Controller/CatalogueArticleController.php';
                             <div class="inner" >
                                 <header>
                                     <div class="image-container">
-                                        <img class="image" src="../Controller/ImageObjet.php?id=<?= (int)$article['idObjet'] ?>" alt="">
+                                        <img class="image" src="../../Controller/ImageObjet.php?id=<?= (int)$article['idObjet'] ?>" alt="">
                                     </div>
                                     <h2><?php echo htmlspecialchars($article['nomObjet']); ?></h2>
-                                    <p class="logo"><img src="../Asset/image/CatalogueArticle/logo personne.png" class="logo-icon"><?php echo htmlspecialchars($article['nomUser']) . ' ' . htmlspecialchars($article['prenomUser']); ?></p>
-                                    <p class="logo"><img src="../Asset/image/CatalogueArticle/logo point maps.png" class="logo-icon"><?php echo htmlspecialchars($article['adresseLieuRetrait']); ?></p>
-                                    <p class="logo"><img src="../Asset/image/CatalogueArticle/logo etat.png" class="logo-icon"><?php echo htmlspecialchars($article['nomEtatObjet']); ?></p>
+                                    <p class="logo"><img src="../../Asset/image/CatalogueArticle/logo personne.png" class="logo-icon"><?php echo htmlspecialchars($article['nomUser']) . ' ' . htmlspecialchars($article['prenomUser']); ?></p>
+                                    <p class="logo"><img src="../../Asset/image/CatalogueArticle/logo point maps.png" class="logo-icon"><?php echo htmlspecialchars($article['adresseLieuRetrait']); ?></p>
+                                    <p class="logo"><img src="../../Asset/image/CatalogueArticle/logo etat.png" class="logo-icon"><?php echo htmlspecialchars($article['nomEtatObjet']); ?></p>
                                 </header>
                             </div>
                         </section>
@@ -73,4 +73,4 @@ require __DIR__ . '/../Controller/CatalogueArticleController.php';
             </form>
         </div>
     </div>
-<?php require 'footer.php'; ?>
+<?php require __DIR__ . '/../Header Footer/footer.php'; ?>

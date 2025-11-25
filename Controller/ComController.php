@@ -1,12 +1,11 @@
 <?php
 // Controller/contrcom.php
 
-require_once __DIR__ . '/../Model/modcom.php';
+require_once __DIR__ . '/../Model/ComModel.php';
 
 $idTypeCom = null;
 $dateCom   = null;
 
-// ====== GESTION DES FILTRES (GET) ======
 
 // Filtre par type de communication
 if (isset($_GET['type']) && $_GET['type'] !== '') {

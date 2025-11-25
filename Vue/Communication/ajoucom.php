@@ -1,7 +1,7 @@
 <?php
 // Vue/ajoucom.php
 
-require_once __DIR__ . '/../Controller/contrajouecom.php';
+require_once __DIR__ . '/../../Controller/AjoutComController.php';
 
 $formErrors = $formErrors ?? [];
 $formData   = $formData   ?? [];
@@ -9,8 +9,8 @@ $typesCom   = $typesCom   ?? [];
 $roles      = $roles      ?? [];
 $editId     = $editId     ?? null;     // id de la com si on est en mode édition
 ?>
-<link rel="stylesheet" href="../Asset/style/ajouecomstyle.css">
-<?php require __DIR__ . '/header.php'; ?>
+<link rel="stylesheet" href="../../Asset/style/ajouecomstyle.css">
+<?php require __DIR__ . '/../Header Footer/header.php'; ?>
 
 <main class="eg-ajout-page">
   <a href="pagecom.php" class="eg-back-link">
@@ -143,7 +143,7 @@ $editId     = $editId     ?? null;     // id de la com si on est en mode éditio
 
 </main>
 
-<?php require __DIR__ . '/footer.php'; ?>
+<?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 
 </body>
 </html>

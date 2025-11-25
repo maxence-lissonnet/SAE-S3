@@ -1,3 +1,3 @@
 <?php
-require 'Vue/selecProfil.php';
+require 'Vue/Connexion/selecProfil.php';
 ?>

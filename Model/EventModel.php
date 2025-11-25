@@ -4,6 +4,7 @@
 /**
  * Connexion PDO à la base EcoGestUM
  */
+
 function getPDO(): PDO
 {
     $host    = 'localhost';
@@ -46,23 +47,17 @@ function getEventsFiltered(?int $idTypeEvent, ?string $dateFilter, ?string $lieu
 {
     $pdo = getPDO();
 
-    $sql = "SELECT e.idEvent,
-                   e.nomEvent,
-                   e.descEvent,
-                   e.dateEvent,
-                   e.lieuEvent,
-                   e.heureDebEvent,
-                   e.heureFinEvent,
-                   te.nomTypeEvent,
-                   e.idTypeEvent
-            FROM EVENEMENT e
-            JOIN TYPE_EVENEMENT te ON te.idTypeEvent = e.idTypeEvent
+    $sql = "SELECT evenement.idEvent, evenement.nomEvent, evenement.descEvent, evenement.dateEvent,
+                   evenement.lieuEvent, evenement.heureDebEvent, evenement.heureFinEvent, type_evenement.nomTypeEvent,
+                   evenement.idTypeEvent
+            FROM EVENEMENT
+            JOIN TYPE_EVENEMENT  ON type_evenement.idTypeEvent = evenement.idTypeEvent
             WHERE 1";
     $params = [];
 
     // filtre type
     if (!empty($idTypeEvent)) {
-        $sql .= " AND e.idTypeEvent = :idTypeEvent";
+        $sql .= " AND evenement.idTypeEvent = :idTypeEvent";
         $params[':idTypeEvent'] = $idTypeEvent;
     }
 
@@ -72,7 +67,7 @@ function getEventsFiltered(?int $idTypeEvent, ?string $dateFilter, ?string $lieu
 
         if (preg_match('#^\d{4}$#', $dateFilter)) {
             // année
-            $sql .= " AND YEAR(e.dateEvent) = :year";
+            $sql .= " AND YEAR(evenement.dateEvent) = :year";
             $params[':year'] = $dateFilter;
 
         } elseif (preg_match('#^\d{4}-\d{2}$#', $dateFilter)) {
@@ -83,7 +78,7 @@ function getEventsFiltered(?int $idTypeEvent, ?string $dateFilter, ?string $lieu
 
         } elseif (preg_match('#^\d{4}-\d{2}-\d{2}$#', $dateFilter)) {
             // date complète
-            $sql .= " AND e.dateEvent = :dExact";
+            $sql .= " AND evenement.dateEvent = :dExact";
             $params[':dExact'] = $dateFilter;
 
         } else {
@@ -95,11 +90,11 @@ function getEventsFiltered(?int $idTypeEvent, ?string $dateFilter, ?string $lieu
 
     // filtre lieu
     if (!empty($lieuSearch)) {
-        $sql .= " AND e.lieuEvent LIKE :lieu";
+        $sql .= " AND evenement.lieuEvent LIKE :lieu";
         $params[':lieu'] = '%' . $lieuSearch . '%';
     }
 
-    $sql .= " ORDER BY e.dateEvent, e.heureDebEvent";
+    $sql .= " ORDER BY evenement.dateEvent, evenement.heureDebEvent";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
@@ -115,10 +110,10 @@ function getEventsForMonth(string $yearMonth, ?int $idTypeEvent, ?string $lieuSe
 {
     $pdo = getPDO();
 
-    $sql = "SELECT DISTINCT e.dateEvent
-            FROM EVENEMENT e
-            JOIN TYPE_EVENEMENT te ON te.idTypeEvent = e.idTypeEvent
-            WHERE e.dateEvent BETWEEN :d1 AND :d2";
+    $sql = "SELECT DISTINCT evenement.dateEvent
+            FROM EVENEMENT 
+            JOIN TYPE_EVENEMENT ON type_evenement.idTypeEvent = evenement.idTypeEvent
+            WHERE evenement.dateEvent BETWEEN :d1 AND :d2";
     $params = [
         ':d1' => $yearMonth . '-01',
         ':d2' => $yearMonth . '-31',
@@ -126,17 +121,17 @@ function getEventsForMonth(string $yearMonth, ?int $idTypeEvent, ?string $lieuSe
 
     // filtre type (optionnel)
     if (!empty($idTypeEvent)) {
-        $sql .= " AND e.idTypeEvent = :idTypeEvent";
+        $sql .= " AND evenement.idTypeEvent = :idTypeEvent";
         $params[':idTypeEvent'] = $idTypeEvent;
     }
 
     // filtre lieu (optionnel)
     if (!empty($lieuSearch)) {
-        $sql .= " AND e.lieuEvent LIKE :lieu";
+        $sql .= " AND evenement.lieuEvent LIKE :lieu";
         $params[':lieu'] = '%' . $lieuSearch . '%';
     }
 
-    $sql .= " ORDER BY e.dateEvent";
+    $sql .= " ORDER BY evenement.dateEvent";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
@@ -149,16 +144,10 @@ function getEventsForMonth(string $yearMonth, ?int $idTypeEvent, ?string $lieuSe
 function getEventById(int $idEvent): ?array
 {
     $pdo = getPDO();
-    $sql = "SELECT e.idEvent,
-                   e.nomEvent,
-                   e.descEvent,
-                   e.dateEvent,
-                   e.lieuEvent,
-                   e.heureDebEvent,
-                   e.heureFinEvent,
-                   e.idTypeEvent
-            FROM EVENEMENT e
-            WHERE e.idEvent = :id";
+    $sql = "SELECT evenement.idEvent, evenement.nomEvent, evenement.descEvent, evenement.dateEvent,
+            evenement.lieuEvent, evenement.heureDebEvent, evenement.heureFinEvent, evenement.idTypeEvent
+            FROM EVENEMENT 
+            WHERE evenement.idEvent = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':id' => $idEvent]);
     $row = $stmt->fetch();

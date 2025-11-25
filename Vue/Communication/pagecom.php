@@ -1,7 +1,7 @@
 <?php
 // Vue/pagecom.php
 
-require_once __DIR__ . '/../Controller/contrcom.php';
+require_once __DIR__ . '/../../Controller/ComController.php';
 
 // Sécurisation au cas où
 $comList   = $comList   ?? [];
@@ -9,8 +9,8 @@ $typesCom  = $typesCom  ?? [];
 $idTypeCom = $idTypeCom ?? null;
 $dateCom   = $dateCom   ?? null;
 ?>
-<link rel="stylesheet" href="../Asset/style/pagecomstyle.css">
-<?php require __DIR__ . '/header.php'; ?>
+<link rel="stylesheet" href="../../Asset/style/pagecomstyle.css">
+<?php require __DIR__ . '/../Header Footer/header.php'; ?>
 
 <main class="eg-com-page">
 
@@ -100,4 +100,4 @@ $dateCom   = $dateCom   ?? null;
 </main>
 
 
-<?php require __DIR__ . '/footer.php'; ?>
+<?php require __DIR__ . '/../Header Footer/footer.php'; ?>

@@ -130,27 +130,17 @@ function getCommunicationsFiltered(?int $idTypeCom, ?string $dateFilter): array
 {
     $pdo = getPDO();
 
-    $sql = "SELECT 
-                c.idCom,
-                c.titreCom,
-                c.contenuCom,
-                c.datePubCom,
-                c.heurePubCom,
-                c.dateModifCom,
-                c.heureModifCom,
-                c.PJCom,
-                tc.nomTypeCom,
-                u.prenomUser,
-                u.nomUser
-            FROM COMMUNICATION c
-            JOIN TYPE_COMMUNICATION tc ON tc.idTypeCom = c.idTypeCom
-            JOIN UTILISATEUR u         ON u.IdUser     = c.IdUser
+    $sql = "SELECT communication.idCom, communication.titreCom, communication.contenuCom, communication.datePubCom, communication.heurePubCom, communication.dateModifCom,
+            communication.heureModifCom, communication.PJCom, type_communication.nomTypeCom, utilisateur.prenomUser, utilisateur.nomUser
+            FROM COMMUNICATION
+            JOIN TYPE_COMMUNICATION ON type_communication.idTypeCom = communication.idTypeCom
+            JOIN UTILISATEUR        ON utilisateur.IdUser     = communication.IdUser
             WHERE 1";
     $params = [];
 
     // Filtre type
     if (!empty($idTypeCom)) {
-        $sql .= " AND c.idTypeCom = :idTypeCom";
+        $sql .= " AND communication.idTypeCom = :idTypeCom";
         $params[':idTypeCom'] = $idTypeCom;
     }
 
@@ -159,7 +149,7 @@ function getCommunicationsFiltered(?int $idTypeCom, ?string $dateFilter): array
         $dateFilter = trim($dateFilter);
 
         if (preg_match('#^\d{4}$#', $dateFilter)) {
-            $sql .= " AND YEAR(c.datePubCom) = :year";
+            $sql .= " AND YEAR(communication.datePubCom) = :year";
             $params[':year'] = $dateFilter;
 
         } elseif (preg_match('#^\d{4}-\d{2}$#', $dateFilter)) {
@@ -168,7 +158,7 @@ function getCommunicationsFiltered(?int $idTypeCom, ?string $dateFilter): array
             $params[':d2'] = $dateFilter . '-31';
 
         } elseif (preg_match('#^\d{4}-\d{2}-\d{2}$#', $dateFilter)) {
-            $sql .= " AND c.datePubCom = :dExact";
+            $sql .= " AND communication.datePubCom = :dExact";
             $params[':dExact'] = $dateFilter;
 
         } else {
@@ -177,7 +167,7 @@ function getCommunicationsFiltered(?int $idTypeCom, ?string $dateFilter): array
         }
     }
 
-    $sql .= " ORDER BY c.datePubCom DESC, c.heurePubCom DESC, c.idCom DESC";
+    $sql .= " ORDER BY communication.datePubCom DESC, communication.heurePubCom DESC, communication.idCom DESC";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
@@ -192,14 +182,14 @@ function getCommunicationById(int $idCom): ?array
     $pdo = getPDO();
 
     $sql = "SELECT
-                c.*,
-                tc.nomTypeCom,
-                u.prenomUser,
-                u.nomUser
-            FROM COMMUNICATION c
-            JOIN TYPE_COMMUNICATION tc ON tc.idTypeCom = c.idTypeCom
-            JOIN UTILISATEUR u         ON u.IdUser     = c.IdUser
-            WHERE c.idCom = :id";
+                communication.*,
+                type_communication.nomTypeCom,
+                utilisateur.prenomUser,
+                utilisateur.nomUser
+            FROM COMMUNICATION
+            JOIN TYPE_COMMUNICATION ON type_communication.idTypeCom = communication.idTypeCom
+            JOIN UTILISATEUR        ON utilisateur.IdUser     = communication.IdUser
+            WHERE communication.idCom = :id";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':id' => $idCom]);

@@ -1,7 +1,7 @@
 <?php
 // Controller/contrEven.php
 
-require_once __DIR__ . '/../Model/modEven.php';
+require_once __DIR__ . '/../Model/EventModel.php';
 
 $formErrors  = [];
 $eventToEdit = [];

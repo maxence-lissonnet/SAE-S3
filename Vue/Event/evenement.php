@@ -1,9 +1,9 @@
 <?php
 // On exécute toute la logique (CRUD + filtres + récupération des données)
-require_once __DIR__ . '/../Controller/contrEven.php';
+require_once __DIR__ . '/../../Controller/EventController.php';
 ?>
-<link rel="stylesheet" href="../Asset/style/eventstyle.css">
-<?php require __DIR__ . '/header.php'; ?>
+<link rel="stylesheet" href="../../Asset/style/eventstyle.css">
+<?php require __DIR__ . '/../Header Footer/header.php'; ?>
 
 <main class="eg-event-page">
 
@@ -336,7 +336,7 @@ require_once __DIR__ . '/../Controller/contrEven.php';
     </section>
 </main>
 
-<?php require __DIR__ . '/footer.php'; ?>
+<?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 
 </body>
 </html>

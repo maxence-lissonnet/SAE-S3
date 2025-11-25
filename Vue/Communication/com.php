@@ -1,11 +1,10 @@
 <?php
 // Vue/com.php
-require_once __DIR__ . '/../Controller/contrpagecom.php';
+require_once __DIR__ . '/../../Controller/PageComController.php';
 $com = $com ?? null;
 ?>
-<link rel="stylesheet" href="../Asset/style/comstyle.css">
-<?php require __DIR__ . '/header.php'; ?>
-
+<link rel="stylesheet" href="../../Asset/style/comstyle.css">
+<?php require __DIR__ . '/../Header Footer/header.php'; ?>
 <main class="eg-com-full-page">
 
   <a href="pagecom.php" class="eg-back-btn">
@@ -81,7 +80,7 @@ $com = $com ?? null;
 
 </main>
 
-<?php require __DIR__ . '/footer.php'; ?>
+<?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 
 </body>
 
