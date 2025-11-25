@@ -1,22 +1,13 @@
 <?php
 include '../Model/model.php';
+include '../Controller/statsController.php';
 include 'header.php';
 ?>
 
 <link rel="stylesheet" href="/SAE-S3/Asset/style/statsstyle.css">
 
 <?php
-// Récupérer les 3 dernières statistiques
-$pdo = get_dtb();
-$requete = "
-    SELECT idStat, titreStat, contenuStat, imageStat, dateCreaStat, idTypeStatistique
-    FROM STATISTIQUE
-    ORDER BY dateCreaStat DESC, idStat DESC
-    LIMIT 3
-";
-
-$result = $pdo->query($requete);
-$stats = $result->fetchAll(PDO::FETCH_ASSOC);
+$stats = getLastThreeStats();
 ?>
 
 <main>
