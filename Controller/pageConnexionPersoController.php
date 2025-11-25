@@ -90,13 +90,17 @@ function get_id(string $mail)
 
 function get_user_info()
 {
-    $name = get_item('UTILISATEUR', 'prenomUser', 'emailUser', $_POST['id']);
     $dtb = get_dtb();
-    $query = $dtb->query('SELECT nomRole FROM `role` 
+    $query = $dtb->query('SELECT * FROM UTILISATEUR WHERE emailUser = "' . $_POST['id'] . '";');
+    $items = $query->fetch(PDO::FETCH_ASSOC);
+
+    $query2 = $dtb->query('SELECT nomRole FROM `role` 
         INNER JOIN utilisateur ON `role`.idRole = utilisateur.idRole
         WHERE utilisateur.emailUser = "' . $_POST['id'] . '"');
-    $role = $query->fetch(PDO::FETCH_ASSOC);
-    return array($name['prenomUser'], $role['nomRole']);
+    $role = $query2->fetch(PDO::FETCH_ASSOC);
+    $items['role'] = $role['nomRole'];
+    var_dump($items);
+    return $items;
 }
 
 function change_passwords()
@@ -129,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             session_start();
             $_SESSION['prenom'] = $user_info[0];
             $_SESSION['role'] = $user_info[1];
-            header('Location: carteVue.php');
+            header('Location: profilVue.php');
             exit;
         }
     }

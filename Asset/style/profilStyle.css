@@ -1,0 +1,49 @@
+body {
+    background-image: url("../image/BackgroundSelecProfil.png");
+
+    min-height: 100vh;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    /* horizontal */
+    align-items: center;
+    /* vertical */
+    font-family: 'DM Sans', sans-serif;
+    color: #44474E;
+}
+
+.container {
+    background-color: white;
+    width: calc(100vw - 120px);
+    height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.contenu {
+    margin-left: 40px;
+}
+
+img {
+    height: 35px;
+}
+
+#idText {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+#idTextBox {
+    width: calc(100% - 51px);
+    border: solid 3px #44474E;
+    height: 35px;
+    border-radius: 30px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding-left: 10px;
+    font-weight: bold;
+    color: #44474E;
+    margin-bottom: 21px;
+}

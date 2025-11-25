@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             session_start();
             $_SESSION['prenom'] = $user_info[0];
             $_SESSION['role'] = $user_info[1];
-            header('Location: accueilVue.php');
+            header('Location: profilVue.php');
             exit;
         }
     }
