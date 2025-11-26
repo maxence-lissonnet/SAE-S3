@@ -216,3 +216,27 @@ function deleteEvent(int $idEvent): void
     $stmt = $pdo->prepare("DELETE FROM EVENEMENT WHERE idEvent = :id");
     $stmt->execute([':id' => $idEvent]);
 }
+/**
+ * Prochains évènements (pour l’accueil).
+ * $limit = nombre d’évènements à retourner.
+ */
+function getNextEvents(int $limit = 2): array
+{
+    $pdo = getPDO();
+
+    $sql = "SELECT
+                e.idEvent,
+                e.nomEvent,
+                e.dateEvent,
+                e.lieuEvent
+            FROM EVENEMENT e
+            WHERE e.dateEvent >= CURDATE()
+            ORDER BY e.dateEvent, e.heureDebEvent
+            LIMIT :lim";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':lim', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+}

@@ -18,7 +18,9 @@
     <div class="eg-logo-um">
       <!-- logo université -->
       <img src="../../Asset/image/header/univ.png" alt="Le Mans Université">
+
     </div>
+
 
     <div class="eg-header-right">
       <div class="eg-user-info">
