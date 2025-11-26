@@ -1,8 +1,12 @@
 /* Fond global */
 body {
   margin: 0;
-  font-family: "DM Sans", sans-serif;
+  <<<<<<< HEAD font-family: "DM Sans", sans-serif;
   background: #fff;
+  =======background: #b3b3b3;
+  /* gris extérieur */
+
+  >>>>>>>209ab4e7d85ecec8465d280b97cb4bf44a87a3e3
 }
 
 /* Barre du header : pleine largeur */
@@ -24,6 +28,22 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.eg-logo-um-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.eg-logo-um-link img {
+  display: block;
+  cursor: pointer;
+}
+
+.eg-logo-um-link:focus-visible {
+  outline: 2px solid #f97316;
+  /* petit focus accessible si tu veux */
+  border-radius: 4px;
 }
 
 .eg-logo-um img {
