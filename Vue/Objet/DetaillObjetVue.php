@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/..    /Header Footer/header.php'; ?>
+<?php require __DIR__ . '/../Header Footer/header.php'; ?>
 
 <link rel="stylesheet" href="/Annee_2_dev_web/SAE-S3/Asset/style/DetailObjetStyle.css">
 
