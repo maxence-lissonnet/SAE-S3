@@ -34,7 +34,7 @@ require '../Controller/pageCarteController.php';
 
         <div id="infos">
             <h1 id="textTitleZone">Dans cette zone</h1>
-            <p><i><strong>Cliquez pour voir le lieu sur la carte - Dézoomez pour plus de résultats</strong></i></p>
+            <p style="font-size: 14px;"><i><strong>Cliquez pour voir le lieu sur la carte - Dézoomez pour plus de résultats</strong></i></p>
             <div id="listeLieux"></div>
         </div>
     </div>

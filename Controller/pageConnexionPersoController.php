@@ -90,13 +90,16 @@ function get_id(string $mail)
 
 function get_user_info()
 {
-    $name = get_item('UTILISATEUR', 'prenomUser', 'emailUser', $_POST['id']);
     $dtb = get_dtb();
-    $query = $dtb->query('SELECT nomRole FROM `role` 
+    $query = $dtb->query('SELECT * FROM UTILISATEUR WHERE emailUser = "' . $_POST['id'] . '";');
+    $items = $query->fetch(PDO::FETCH_ASSOC);
+
+    $query2 = $dtb->query('SELECT nomRole FROM `role` 
         INNER JOIN utilisateur ON `role`.idRole = utilisateur.idRole
         WHERE utilisateur.emailUser = "' . $_POST['id'] . '"');
-    $role = $query->fetch(PDO::FETCH_ASSOC);
-    return array($name['prenomUser'], $role['nomRole']);
+    $role = $query2->fetch(PDO::FETCH_ASSOC);
+    $items['role'] = $role['nomRole'];
+    return $items;
 }
 
 function change_passwords()
@@ -127,9 +130,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if ($msgAcces === true) {
             $user_info = get_user_info();
             session_start();
-            $_SESSION['prenom'] = $user_info[0];
-            $_SESSION['role'] = $user_info[1];
-            header('Location: carteVue.php');
+            $_SESSION['prenom'] = $user_info['prenomUser'];
+            $_SESSION['role'] = $user_info['role'];
+            $_SESSION['nom'] = $user_info['nomUser'];
+            $_SESSION['tel'] = $user_info['telUser'];
+            $_SESSION['adr'] = $user_info['adrUser'];
+            $_SESSION['mail'] = $user_info['emailUser'];
+            header('Location: profilVue.php');
             exit;
         }
     }

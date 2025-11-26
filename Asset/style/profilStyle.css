@@ -1,0 +1,175 @@
+body {
+    background-image: url("../image/BackgroundSelecProfil.png");
+
+    min-height: 100vh;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    /* horizontal */
+    align-items: center;
+    /* vertical */
+    font-family: 'DM Sans', sans-serif;
+    color: #44474E;
+}
+
+.container {
+    background-color: white;
+    width: calc(100vw - 120px);
+    height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.contenu {
+    margin-left: 40px;
+}
+
+img {
+    height: 35px;
+}
+
+.idText {
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.elt {
+    display: flex;
+    flex-direction: column;
+}
+
+.box {
+    height: 50px;
+    border: solid 3px #44474E;
+    border-radius: 30px;
+    font-size: 14px;
+    padding-left: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#retourPage:hover {
+    background-color: #D4451B;
+    border: solid 4px black;
+}
+
+#retourPage {
+    background-color: #44474E;
+    color: white;
+    width: 185px;
+    height: 50px;
+    margin-top: 15px;
+    font-size: 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+@media only screen and (max-width: 770px) {
+    .ligne {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .box {
+        width: 40vw;
+        height: 50px;
+        border: solid 3px #44474E;
+        border-radius: 30px;
+        font-size: 14px;
+        padding-left: 10px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 750px;
+    }
+
+    .contenu {
+        margin-left: 0;
+    }
+
+    .contenu img {
+        display: block;
+        margin: 0 auto 10px auto;
+    }
+
+    #retourPage {
+        margin: 15px auto 0 auto;
+        display: block;
+        width: 40vw;
+    }
+}
+
+/* GRANDS ÉCRANS */
+@media only screen and (min-width: 770px) {
+    .ligne {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .box {
+        width: 170px;
+        height: 50px;
+    }
+
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .contenu {
+        margin-left: 40px;
+    }
+
+    #retourPage {
+        justify-content: center;
+    }
+
+}
+
+@media only screen and (min-width: 900px) {
+    .ligne {
+        gap: 50px;
+    }
+
+    .box {
+        width: 185px;
+    }
+
+    #retourPage {
+        width: 200px;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    .ligne {
+        gap: 50px;
+    }
+
+    .box {
+        width: 250px;
+        height: 30px;
+    }
+
+    #retourPage {
+        width: 266px;
+        height: 40px;
+    }
+}
