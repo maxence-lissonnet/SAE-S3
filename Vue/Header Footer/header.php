@@ -27,6 +27,9 @@
         <img src="../../Asset/image/header/univ.png" alt="Le Mans Université">
 
       </div>
+      <div class="eg-header-separator"></div>
+
+      <span class="eg-app-name">ÉcoGestUM</span>
     </div>
 
     <div class="eg-header-right">
