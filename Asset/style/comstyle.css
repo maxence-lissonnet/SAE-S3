@@ -32,18 +32,59 @@
   color: #6b7280;
 }
 
+/* Bloc des actions (Modifier / Supprimer) */
+
 .eg-com-full-actions {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   align-items: flex-end;
-  font-size: 13px;
-  color: #D4451B;
 }
 
-.eg-com-icon-text {
-  cursor: pointer;
+.eg-com-delete-form {
+  margin: 0;
 }
+
+/* Style commun des gros boutons type "Appliquer les filtres" */
+
+.eg-com-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 26px;
+  border-radius: 999px;
+  min-width: 260px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* Primaire : orange (comme "Appliquer les filtres") */
+
+.eg-com-action-primary {
+  background: #D4451B;    /* même orange que les autres éléments du site */
+  color: #ffffff;
+}
+
+.eg-com-action-primary:hover {
+  filter: brightness(0.95);
+}
+
+/* Secondaire : gris clair (comme "Supprimer les filtres") */
+
+.eg-com-action-secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.eg-com-action-secondary:hover {
+  filter: brightness(0.96);
+}
+
+/* Corps de la page */
 
 .eg-com-full-body {
   display: grid;
@@ -70,6 +111,8 @@
   background: radial-gradient(circle at 30% 20%, #60a5fa, #111827);
 }
 
+/* Bloc retour / lien simple */
+
 .eg-com-back-link {
   margin-top: 20px;
   font-size: 13px;
@@ -85,6 +128,7 @@
 }
 
 /* Bouton secondaire générique (cohérent avec les autres fichiers) */
+
 .eg-btn-secondary {
   border-radius: 999px;
   border: none;
@@ -98,7 +142,7 @@
 
 .eg-com-page {
   padding: 24px 40px 40px;
-  background: #ffffff;   /* même fond blanc que page liste com */
+  background: #ffffff;
   box-sizing: border-box;
   font-family: "DM Sans", sans-serif;
 }
@@ -123,19 +167,6 @@
   filter: brightness(0.9);
 }
 
-/* Liens / boutons dans le bloc actions */
-
-.eg-com-full-actions a {
-  text-decoration: none;
-}
-
-.eg-com-icon-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-}
-
 /* Responsive */
 
 @media (max-width: 1000px) {
@@ -145,5 +176,14 @@
 
   .eg-com-full-side {
     justify-content: center;
+  }
+
+  .eg-com-full-actions {
+    align-items: stretch;
+  }
+
+  .eg-com-action-btn {
+    width: 100%;
+    min-width: 0;
   }
 }

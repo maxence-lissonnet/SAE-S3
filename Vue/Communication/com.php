@@ -5,6 +5,7 @@ $com = $com ?? null;
 ?>
 <link rel="stylesheet" href="../../Asset/style/comstyle.css">
 <?php require __DIR__ . '/../Header Footer/header.php'; ?>
+
 <main class="eg-com-full-page">
 
   <a href="pagecom.php" class="eg-back-btn">
@@ -27,41 +28,44 @@ $com = $com ?? null;
     <div class="eg-com-full-container">
 
       <header class="eg-com-full-header">
-  <div>
-    <h1 class="eg-com-full-title">
-      <?= htmlspecialchars($com['titreCom']) ?>
-    </h1>
-    <p class="eg-com-full-meta">
-      publié à
-      <?= htmlspecialchars(substr($com['heurePubCom'], 0, 5)) ?>
-      –
-      <?php
-      $d = new DateTime($com['datePubCom']);
-      echo htmlspecialchars($d->format('d/m/Y'));
-      ?>
-      · <?= htmlspecialchars($com['nomTypeCom']) ?>
-    </p>
-  </div>
+        <div>
+          <h1 class="eg-com-full-title">
+            <?= htmlspecialchars($com['titreCom']) ?>
+          </h1>
+          <p class="eg-com-full-meta">
+            publié à
+            <?= htmlspecialchars(substr($com['heurePubCom'], 0, 5)) ?>
+            –
+            <?php
+            $d = new DateTime($com['datePubCom']);
+            echo htmlspecialchars($d->format('d/m/Y'));
+            ?>
+            · <?= htmlspecialchars($com['nomTypeCom']) ?>
+          </p>
+        </div>
 
-  <div class="eg-com-full-actions">
-    <a href="ajoucom.php?id=<?= (int)$com['idCom'] ?>" class="eg-com-icon-text">
-      Modifier
-    </a>
+        <div class="eg-com-full-actions">
+          <!-- Bouton "Modifier" dans le style des autres boutons principaux -->
+          <a href="ajoucom.php?id=<?= (int)$com['idCom'] ?>"
+             class="eg-com-action-btn eg-com-action-primary">
+            Modifier
+          </a>
 
-    <form id="deleteForm"
-          method="post"
-          action="com.php?id=<?= (int)$com['idCom'] ?>">
-      <input type="hidden" name="idCom" value="<?= (int)$com['idCom'] ?>">
-      <input type="hidden" name="delete" value="1">
-      <button type="button"
-              id="deleteButton"
-              class="eg-com-icon-text eg-com-icon-btn">
-        Supprimer
-      </button>
-    </form>
-  </div>
-</header>
-
+          <!-- Bouton "Supprimer" dans le style des boutons secondaires -->
+          <form id="deleteForm"
+                class="eg-com-delete-form"
+                method="post"
+                action="com.php?id=<?= (int)$com['idCom'] ?>">
+            <input type="hidden" name="idCom" value="<?= (int)$com['idCom'] ?>">
+            <input type="hidden" name="delete" value="1">
+            <button type="button"
+                    id="deleteButton"
+                    class="eg-com-action-btn eg-com-action-secondary">
+              Supprimer
+            </button>
+          </form>
+        </div>
+      </header>
 
       <section class="eg-com-full-body">
         <article class="eg-com-full-article">
@@ -83,5 +87,4 @@ $com = $com ?? null;
 <?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 
 </body>
-
 </html>

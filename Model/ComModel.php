@@ -3,30 +3,39 @@
 
 /**
  * Connexion PDO à la base EcoGestUM
+ * (si getPDO existe déjà dans un autre modèle, on ne le redéfinit pas)
  */
-function getPDO(): PDO
-{
-    $host    = 'localhost';
-    $db      = 'EcoGestUM';
-    $user    = 'root';      // adapte si besoin
-    $pass    = '';          // adapte si besoin
-    $charset = 'utf8mb4';
+if (!function_exists('getPDO')) {
 
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    function getPDO(): PDO
+    {
+        $host    = 'localhost';
+        $db      = 'EcoGestUM';   // adapte si besoin
+        $user    = 'root';        // adapte si besoin
+        $pass    = '';            // adapte si besoin
+        $charset = 'utf8mb4';
 
-    $options = [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES   => false,
-    ];
+        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
-    return new PDO($dsn, $user, $pass, $options);
+        $options = [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ];
+
+        return new PDO($dsn, $user, $pass, $options);
+    }
 }
+
+/* ============================================================
+   LISTES / LECTURE
+   ============================================================ */
 
 /**
  * Tous les types de communication.
+ * (nom historique utilisé dans certains contrôleurs)
  */
-function getAllTypeCom(): array
+function getAllComTypes(): array
 {
     $pdo = getPDO();
     $sql = "SELECT idTypeCom, nomTypeCom
@@ -36,7 +45,15 @@ function getAllTypeCom(): array
 }
 
 /**
- * Tous les rôles.
+ * Alias pour compatibilité avec l’ancien nom getAllTypeCom()
+ */
+function getAllTypeCom(): array
+{
+    return getAllComTypes();
+}
+
+/**
+ * Tous les rôles (si utilisé dans les écrans associés).
  */
 function getAllRoles(): array
 {
@@ -46,6 +63,128 @@ function getAllRoles(): array
             ORDER BY nomRole";
     return $pdo->query($sql)->fetchAll();
 }
+
+/**
+ * Liste des communications avec filtres type + date.
+ * $dateFilter : "2025", "2025-10" ou "2025-10-02".
+ */
+function getCommunicationsFiltered(?int $idTypeCom, ?string $dateFilter): array
+{
+    $pdo = getPDO();
+
+    $sql = "SELECT 
+                c.idCom,
+                c.titreCom,
+                c.contenuCom,
+                c.datePubCom,
+                c.heurePubCom,
+                c.dateModifCom,
+                c.heureModifCom,
+                c.PJCom,
+                tc.nomTypeCom,
+                u.prenomUser,
+                u.nomUser
+            FROM COMMUNICATION c
+            JOIN TYPE_COMMUNICATION tc ON tc.idTypeCom = c.idTypeCom
+            JOIN UTILISATEUR u         ON u.IdUser     = c.IdUser
+            WHERE 1";
+    $params = [];
+
+    // Filtre type
+    if (!empty($idTypeCom)) {
+        $sql .= " AND c.idTypeCom = :idTypeCom";
+        $params[':idTypeCom'] = $idTypeCom;
+    }
+
+    // Filtre date
+    if (!empty($dateFilter)) {
+        $dateFilter = trim($dateFilter);
+
+        if (preg_match('#^\d{4}$#', $dateFilter)) {
+            // année
+            $sql .= " AND YEAR(c.datePubCom) = :year";
+            $params[':year'] = $dateFilter;
+
+        } elseif (preg_match('#^\d{4}-\d{2}$#', $dateFilter)) {
+            // année-mois
+            $sql .= " AND c.datePubCom BETWEEN :d1 AND :d2";
+            $params[':d1'] = $dateFilter . '-01';
+            $params[':d2'] = $dateFilter . '-31';
+
+        } elseif (preg_match('#^\d{4}-\d{2}-\d{2}$#', $dateFilter)) {
+            // date complète
+            $sql .= " AND c.datePubCom = :dExact";
+            $params[':dExact'] = $dateFilter;
+
+        } else {
+            // fallback sur LIKE
+            $sql .= " AND c.datePubCom LIKE :dLike";
+            $params[':dLike'] = $dateFilter . '%';
+        }
+    }
+
+    $sql .= " ORDER BY c.datePubCom DESC, c.heurePubCom DESC, c.idCom DESC";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->fetchAll();
+}
+
+/**
+ * Une communication par son id (pour la page com.php, etc.).
+ */
+function getCommunicationById(int $idCom): ?array
+{
+    $pdo = getPDO();
+
+    $sql = "SELECT 
+                c.*,
+                tc.nomTypeCom,
+                u.prenomUser,
+                u.nomUser,
+                CONCAT(u.prenomUser, ' ', u.nomUser) AS auteur
+            FROM COMMUNICATION c
+            JOIN TYPE_COMMUNICATION tc ON tc.idTypeCom = c.idTypeCom
+            JOIN UTILISATEUR u         ON u.IdUser     = c.IdUser
+            WHERE c.idCom = :idCom";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':idCom' => $idCom]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $row ?: null;
+}
+
+/**
+ * Dernières communications pour la page d’accueil.
+ * $limit = nombre maximum d’actus à afficher.
+ */
+function getLastCommunications(int $limit = 3): array
+{
+    $pdo = getPDO();
+
+    $sql = "SELECT
+                c.idCom,
+                c.titreCom,
+                c.contenuCom,
+                c.datePubCom,
+                c.heurePubCom,
+                tc.nomTypeCom
+            FROM COMMUNICATION c
+            JOIN TYPE_COMMUNICATION tc ON tc.idTypeCom = c.idTypeCom
+            ORDER BY c.datePubCom DESC, c.heurePubCom DESC, c.idCom DESC
+            LIMIT :lim";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':lim', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+}
+
+/* ============================================================
+   ÉCRITURE / CRUD
+   ============================================================ */
 
 /**
  * Insertion d’une communication.
@@ -120,80 +259,4 @@ function deleteCommunication(int $idCom): void
     $pdo = getPDO();
     $stmt = $pdo->prepare("DELETE FROM COMMUNICATION WHERE idCom = :id");
     $stmt->execute([':id' => $idCom]);
-}
-
-/**
- * Liste des communications avec filtres type + date.
- * $dateFilter : "2025", "2025-10" ou "2025-10-02".
- */
-function getCommunicationsFiltered(?int $idTypeCom, ?string $dateFilter): array
-{
-    $pdo = getPDO();
-
-    $sql = "SELECT communication.idCom, communication.titreCom, communication.contenuCom, communication.datePubCom, communication.heurePubCom, communication.dateModifCom,
-            communication.heureModifCom, communication.PJCom, type_communication.nomTypeCom, utilisateur.prenomUser, utilisateur.nomUser
-            FROM COMMUNICATION
-            JOIN TYPE_COMMUNICATION ON type_communication.idTypeCom = communication.idTypeCom
-            JOIN UTILISATEUR        ON utilisateur.IdUser     = communication.IdUser
-            WHERE 1";
-    $params = [];
-
-    // Filtre type
-    if (!empty($idTypeCom)) {
-        $sql .= " AND communication.idTypeCom = :idTypeCom";
-        $params[':idTypeCom'] = $idTypeCom;
-    }
-
-    // Filtre date
-    if (!empty($dateFilter)) {
-        $dateFilter = trim($dateFilter);
-
-        if (preg_match('#^\d{4}$#', $dateFilter)) {
-            $sql .= " AND YEAR(communication.datePubCom) = :year";
-            $params[':year'] = $dateFilter;
-
-        } elseif (preg_match('#^\d{4}-\d{2}$#', $dateFilter)) {
-            $sql .= " AND c.datePubCom BETWEEN :d1 AND :d2";
-            $params[':d1'] = $dateFilter . '-01';
-            $params[':d2'] = $dateFilter . '-31';
-
-        } elseif (preg_match('#^\d{4}-\d{2}-\d{2}$#', $dateFilter)) {
-            $sql .= " AND communication.datePubCom = :dExact";
-            $params[':dExact'] = $dateFilter;
-
-        } else {
-            $sql .= " AND c.datePubCom LIKE :dLike";
-            $params[':dLike'] = $dateFilter . '%';
-        }
-    }
-
-    $sql .= " ORDER BY communication.datePubCom DESC, communication.heurePubCom DESC, communication.idCom DESC";
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute($params);
-    return $stmt->fetchAll();
-}
-
-/**
- * Récupère une communication complète par son id (page com.php).
- */
-function getCommunicationById(int $idCom): ?array
-{
-    $pdo = getPDO();
-
-    $sql = "SELECT
-                communication.*,
-                type_communication.nomTypeCom,
-                utilisateur.prenomUser,
-                utilisateur.nomUser
-            FROM COMMUNICATION
-            JOIN TYPE_COMMUNICATION ON type_communication.idTypeCom = communication.idTypeCom
-            JOIN UTILISATEUR        ON utilisateur.IdUser     = communication.IdUser
-            WHERE communication.idCom = :id";
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([':id' => $idCom]);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    return $row ?: null;
 }
