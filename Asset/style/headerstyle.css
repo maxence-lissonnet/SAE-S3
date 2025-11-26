@@ -1,9 +1,12 @@
 /* Fond global */
 body {
   margin: 0;
-  background: #b3b3b3;
+  <<<<<<< HEAD font-family: "DM Sans", sans-serif;
+  background: #fff;
+  =======background: #b3b3b3;
   /* gris extérieur */
 
+  >>>>>>>209ab4e7d85ecec8465d280b97cb4bf44a87a3e3
 }
 
 /* Barre du header : pleine largeur */
@@ -11,7 +14,7 @@ body {
   width: 100%;
   padding: 12px 48px;
   background: #b3b3b3;
-  border-radius: 0 0 18px 18px;  
+  border-radius: 0 0 18px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,6 +29,7 @@ body {
   align-items: center;
   gap: 16px;
 }
+
 .eg-logo-um-link {
   display: inline-flex;
   align-items: center;
@@ -37,7 +41,8 @@ body {
 }
 
 .eg-logo-um-link:focus-visible {
-  outline: 2px solid #f97316; /* petit focus accessible si tu veux */
+  outline: 2px solid #f97316;
+  /* petit focus accessible si tu veux */
   border-radius: 4px;
 }
 
