@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../Controller/contrNotif.php';
 ?>
 <link rel="stylesheet" href="../Asset/style/notificationstyle.css">
-<?php require __DIR__ . '/header.php'; ?>
+<?php require __DIR__ . '/Header Footer/header.php'; ?>
 
 <main class="eg-notif-page">
 
@@ -161,7 +161,7 @@ require_once __DIR__ . '/../Controller/contrNotif.php';
 
 </main>
 
-<?php require __DIR__ . '/footer.php'; ?>
+<?php require __DIR__ . '/Header Footer/footer.php'; ?>
 
 <script src="../Asset/style/notif.js"></script>
 </body>
