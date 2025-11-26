@@ -1,6 +1,5 @@
 <?php
 session_start();
-require '../Controller/pageProfilController.php';
 ?>
 
 <!DOCTYPE html>
