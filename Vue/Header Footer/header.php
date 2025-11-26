@@ -24,7 +24,7 @@
     <div class="eg-header-left">
       <div class="eg-logo-um">
         <!-- logo université -->
-        <img src="../../Asset/image/header/univ.png" alt="Le Mans Université">
+        <a href="../Autre/accueil.php"><img src="../../Asset/image/header/univ.png" alt="Le Mans Université"></a>
 
       </div>
       <div class="eg-header-separator"></div>
