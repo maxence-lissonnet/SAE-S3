@@ -1,26 +1,23 @@
 /* Fond global */
 body {
   margin: 0;
-  <<<<<<< HEAD font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans", sans-serif;
   background: #fff;
-  =======background: #b3b3b3;
   /* gris extérieur */
-
-  >>>>>>>209ab4e7d85ecec8465d280b97cb4bf44a87a3e3
 }
 
 /* Barre du header : pleine largeur */
 .eg-header {
-  width: 100%;
+  width: 100vw;
   padding: 12px 48px;
-  background: #b3b3b3;
+  background: #D9D9D9;
   border-radius: 0 0 18px 18px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   box-sizing: border-box;
   font-family: 'DM Sans', sans-serif;
   font-weight: bolder;
+  justify-content: space-between;
 }
 
 /* Partie gauche : logo + nom appli */

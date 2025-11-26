@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $_SESSION['tel'] = $user_info['telUser'];
             $_SESSION['adr'] = $user_info['adrUser'];
             $_SESSION['mail'] = $user_info['emailUser'];
-            header('Location: profilVue.php');
+            header('Location: ../../Vue/Autre/politique.php');
             exit;
         }
     }

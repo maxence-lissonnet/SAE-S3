@@ -1,7 +1,3 @@
-<?php
-// Vue/politique.php
-// Page purement statique pour l’instant
-?>
 <link rel="stylesheet" href="../../Asset/style/politiquestyle.css">
 <?php require __DIR__ . '/../Header Footer/header.php'; ?>
 
@@ -102,8 +98,7 @@
       type="text"
       id="faqSearch"
       class="eg-faq-search"
-      placeholder="Rechercher une question..."
-    >
+      placeholder="Rechercher une question...">
 
     <div class="eg-faq-list">
 
@@ -221,4 +216,5 @@
 
 <?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 </body>
+
 </html>
