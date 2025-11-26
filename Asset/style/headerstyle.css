@@ -47,6 +47,7 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
+  position: relative;
 }
 
 /* Infos utilisateur */
@@ -163,5 +164,42 @@ body {
 }
 
 .eg-burger-menu a:hover {
+  background: #d0d0d0;
+}
+
+/* Menu déroulant du compte (profil) */
+.eg-menu-compte {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #e3e3e3;
+  border-radius: 0 0 12px 12px;
+  padding: 16px 0;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  margin-top: 0;
+}
+
+.eg-menu-compte.open {
+  display: block;
+}
+
+.eg-menu-compte a {
+  display: block;
+  padding: 12px 20px;
+  color: #222;
+  text-decoration: none;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background 0.2s ease;
+}
+
+.eg-menu-compte a:last-child {
+  border-bottom: none;
+}
+
+.eg-menu-compte a:hover {
   background: #d0d0d0;
 }
