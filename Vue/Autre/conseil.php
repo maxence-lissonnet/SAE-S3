@@ -107,6 +107,6 @@
 
 </main>
 
-<?php require __DIR__ . '/../Header Footer/footer.php'; ?>
+<?php require __DIR__ . '/../Header Footer/footer.php'; ?> 
 </body>
 </html>
