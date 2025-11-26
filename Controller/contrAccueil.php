@@ -1,7 +1,7 @@
 <?php
 // Controller/contrAccueil.php
 
-require_once __DIR__ . '/../Model/modEven.php';
+require_once __DIR__ . '/../Model/EventModel.php';
 require_once __DIR__ . '/../Model/modpagecom.php'; // même modèle que pour pagecom.php
 
 // ------------------------------------------------------------------

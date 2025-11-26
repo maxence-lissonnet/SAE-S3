@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../Model/ObjetModel.php';
+require_once __DIR__ . '/../../Model/ObjetModel.php';
 
 // Valeurs par défaut
 $selectedCategorie = 'Tous';

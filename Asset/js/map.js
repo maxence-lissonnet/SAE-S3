@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <h2 class="nomLieu">${place.nom}</h2>
                     <p><i>${place.adr}</i></p>
                 </div>
-                <a class="itineraireImg" href="https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=${place.lat},${place.long}"><img src="../Asset/image/itineraire.png"></a>
+                <a class="itineraireImg" href="https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=${place.lat},${place.long}"><img src="../../Asset/image/logo/itineraire.png"></a>
             </div>
         `;
             liste.appendChild(div);

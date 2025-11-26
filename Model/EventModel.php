@@ -72,7 +72,7 @@ function getEventsFiltered(?int $idTypeEvent, ?string $dateFilter, ?string $lieu
 
         } elseif (preg_match('#^\d{4}-\d{2}$#', $dateFilter)) {
             // année-mois
-            $sql .= " AND e.dateEvent BETWEEN :d1 AND :d2";
+            $sql .= " AND evenement.dateEvent BETWEEN :d1 AND :d2";
             $params[':d1'] = $dateFilter . '-01';
             $params[':d2'] = $dateFilter . '-31';
 
@@ -83,7 +83,7 @@ function getEventsFiltered(?int $idTypeEvent, ?string $dateFilter, ?string $lieu
 
         } else {
             // fallback : LIKE sur le début de la date
-            $sql .= " AND e.dateEvent LIKE :dLike";
+            $sql .= " AND evenement.dateEvent LIKE :dLike";
             $params[':dLike'] = $dateFilter . '%';
         }
     }

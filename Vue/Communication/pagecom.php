@@ -1,7 +1,7 @@
 <?php
 // Vue/pagecom.php
 
-require_once __DIR__ . '/../../Controller/ComController.php';
+require_once __DIR__ . '/../../Controller/Com/ComController.php';
 
 // Sécurisation au cas où
 $comList   = $comList   ?? [];

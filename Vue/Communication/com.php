@@ -1,6 +1,6 @@
 <?php
 // Vue/com.php
-require_once __DIR__ . '/../../Controller/PageComController.php';
+require_once __DIR__ . '/../../Controller/Com/PageComController.php';
 $com = $com ?? null;
 ?>
 <link rel="stylesheet" href="../../Asset/style/comstyle.css">
