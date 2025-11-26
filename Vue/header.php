@@ -127,6 +127,12 @@ $menuItems = $GLOBALS['permissions'][getCurrentUserRole()]['pages'] ?? [];
       foreach ($allPages as $page => $link) {
         if (in_array($page, $userPages)) {
           $label = ucfirst(str_replace('-', ' ', $page));
+          foreach($allLogoPages as $logoPage => $logoTag) {
+            if ($logoPage === $page) {
+              $label = $logoTag . ' ' . $label;
+              break;
+            }
+          }
           echo '<a href="' . $link . '">' . $label . '</a>';
         }
       }
