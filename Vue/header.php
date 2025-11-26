@@ -5,14 +5,14 @@
   <title>EcoGestUM</title>
 
   <!-- Feuilles de style globales -->
-  <link rel="stylesheet" href="/SAE-S3/Asset/style/headerstyle.css">
-  <link rel="stylesheet" href="/SAE-S3/Asset/style/footerstyle.css">
+  <link rel="stylesheet" href="../Asset/style/headerstyle.css">
+  <link rel="stylesheet" href="../Asset/style/footerstyle.css">
 </head>
 <body>
 
 <?php
 include '../Controller/authController.php';
-$menuItems = getMenuItems();
+$menuItems = $GLOBALS['permissions'][getCurrentUserRole()]['pages'] ?? [];
 ?>
 
 <header class="eg-header">
@@ -97,6 +97,29 @@ $menuItems = getMenuItems();
         'parametrage' => '/SAE-S3/Vue/parametrage.php',
         'traçage-activites' => '/SAE-S3/Vue/traçage-activites.php',
         'gestion-comptes' => '/SAE-S3/Vue/gestion-comptes.php'
+      ];
+
+      $allLogoPages = [
+        'statistiques' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'communication' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'rapports' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'catalogue' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'points-collecte' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'signalements' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'evenements' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'donner' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'gestion-demandes' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'donnees-recyclage' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'historique' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'inventaire' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'demande-objets' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'conseils-recyclage' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'echanges' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'recyclage' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'suivi-publications' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'parametrage' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'traçage-activites' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
+        'gestion-comptes' => '<img src="/SAE-S3/assets/logo/" alt="Logo">',
       ];
       
       $userPages = $GLOBALS['permissions'][getCurrentUserRole()]['pages'] ?? [];
