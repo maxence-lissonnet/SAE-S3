@@ -3,7 +3,7 @@
 // Page de conseils recyclage (statique pour l’instant)
 ?>
 <link rel="stylesheet" href="../Asset/style/conseilstyle.css">
-<?php require __DIR__ . '/header.php'; ?>
+<?php require __DIR__ . '/Header Footer/header.php'; ?>
 
 <main class="eg-tips-page">
 
@@ -107,6 +107,6 @@
 
 </main>
 
-<?php require __DIR__ . '/footer.php'; ?>
+<?php require __DIR__ . '/Header Footer/footer.php'; ?>
 </body>
 </html>
