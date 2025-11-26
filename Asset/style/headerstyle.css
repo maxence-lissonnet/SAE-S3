@@ -25,6 +25,20 @@ body {
   align-items: center;
   gap: 16px;
 }
+.eg-logo-um-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.eg-logo-um-link img {
+  display: block;
+  cursor: pointer;
+}
+
+.eg-logo-um-link:focus-visible {
+  outline: 2px solid #f97316; /* petit focus accessible si tu veux */
+  border-radius: 4px;
+}
 
 .eg-logo-um img {
   height: 40px;

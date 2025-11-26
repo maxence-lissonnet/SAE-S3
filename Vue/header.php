@@ -16,9 +16,12 @@
 <header class="eg-header">
   <div class="eg-header-left">
     <div class="eg-logo-um">
-      <!-- logo université -->
-      <img src="../Asset/image/header/univ.png" alt="Le Mans Université">
+      <!-- logo université cliquable -->
+      <a href="accueil.php" class="eg-logo-um-link">
+        <img src="../Asset/image/header/univ.png" alt="Le Mans Université">
+      </a>
     </div>
+
 
     <div class="eg-header-right">
       <div class="eg-user-info">
