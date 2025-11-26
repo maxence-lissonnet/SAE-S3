@@ -49,6 +49,10 @@ require '../Controller/pageProfilController.php';
                     <div class="box"><?php echo $_SESSION['adr'] ?></div>
                 </div>
             </div>
+
+            <div class="ligne">
+                <button id="retourPage" onclick="history.back();">RETOUR</button>
+            </div>
         </div>
     </div>
 </body>
