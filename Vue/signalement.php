@@ -5,21 +5,47 @@ include '../Controller/categorieController.php';
 include 'header.php';
 ?>
 
-<link rel="stylesheet" href="/SAE-S3/Asset/style/signalementstyle.css">
+<link rel="stylesheet" href="../Asset/style/signalementstyle.css">
+<link rel="stylesheet" href="../Asset/style/footerstyle.css">
 
 <?php
+session_start();
 $message_success = '';
 $message_error = '';
+$image_status = '';
+$image_status_type = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Valider l'image avant de traiter le formulaire
+    if (!empty($_FILES['image']['tmp_name'])) {
+        $mimeType = mime_content_type($_FILES['image']['tmp_name']);
+        $validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        
+        if (!in_array($mimeType, $validTypes)) {
+            $image_status = '❌ Format invalide (JPG, PNG, GIF acceptés)';
+            $image_status_type = 'error';
+        } else if ($_FILES['image']['size'] > 5 * 1024 * 1024) {
+            $image_status = '❌ Fichier trop gros (Max 5MB)';
+            $image_status_type = 'error';
+        } else {
+            $image_status = '✓ Image acceptée (' . round($_FILES['image']['size'] / 1024, 1) . ' KB)';
+            $image_status_type = 'success';
+        }
+    }
+    
     $response = traiterSignalement();
     if ($response['success']) {
-        $message_success = $response['message'];
-        header('Location: ' . $_SERVER['PHP_SELF']);
-        exit();
+        $_SESSION['message_success'] = $response['message'];
+        $_SESSION['image_status'] = ''; // Réinitialiser le statut
     } else {
         $message_error = $response['message'];
     }
+}
+
+// Afficher le message de session s'il existe
+if (isset($_SESSION['message_success'])) {
+    $message_success = $_SESSION['message_success'];
+    unset($_SESSION['message_success']);
 }
 
 $categories = getCategories();
@@ -30,22 +56,21 @@ $types = getTypesSignalement();
   <h1>Signalements</h1>
 
   <?php if ($message_success): ?>
-    <div style="background: #e8f5e9; color: #2e7d32; padding: 16px; border-radius: 8px; margin-bottom: 24px; border-left: 4px solid #4caf50;">
-      ✓ <?php echo htmlspecialchars($message_success); ?>
+    <div class="message-success">
+      <?php echo htmlspecialchars($message_success); ?>
     </div>
   <?php endif; ?>
 
   <?php if ($message_error): ?>
-    <div style="background: #ffebee; color: #c62828; padding: 16px; border-radius: 8px; margin-bottom: 24px; border-left: 4px solid #f44336;">
-      ✗ <?php echo htmlspecialchars($message_error); ?>
+    <div class="message-error">
+      <?php echo htmlspecialchars($message_error); ?>
     </div>
   <?php endif; ?>
 
-  <div class="signalement-container">
-    <!-- Colonne gauche : Formulaire -->
-    <div class="signalement-form-section">
-      <form method="POST" enctype="multipart/form-data" id="signalementForm">
-        
+  <form method="POST" enctype="multipart/form-data" id="signalementForm">
+    <div class="signalement-container">
+      <!-- Colonne gauche : Formulaire -->
+      <div class="signalement-form-section">
         <div class="form-group">
           <label for="nomObjet">Nom de l'objet<span class="required">*</span></label>
           <input type="text" id="nomObjet" name="nomObjet" placeholder="Ex: Chaise bleue" required>
@@ -79,42 +104,95 @@ $types = getTypesSignalement();
           <label for="description">Description du dysfonctionnement<span class="required">*</span></label>
           <textarea id="description" name="description" placeholder="Décrivez le problème en détail..." required></textarea>
         </div>
-
-      </form>
-    </div>
-
-    <!-- Colonne centrale : Upload image -->
-    <div class="signalement-image-section">
-      <label for="imageUpload" class="image-upload-area" id="imageUploadArea">
-        <div class="upload-icon">📤</div>
-        <div class="upload-text">Cliquer sur le rectangle ou glisser-coller la fichier</div>
-        <input type="file" id="imageUpload" name="image" form="signalementForm" accept="image/*">
-      </label>
-      <p style="font-size: 12px; color: #999; text-align: center; margin: 0;">Formats acceptés: JPG, PNG, GIF (Max 5MB)</p>
-    </div>
-
-    <!-- Colonne droite : Informations -->
-    <div class="signalement-info-section">
-      <div class="info-block">
-        <h3>Informations complémentaires</h3>
-        <p>Les services concernés traiteront votre signalement dans les plus brefs délais.</p>
       </div>
 
-      <div class="info-block">
-        <p>Sachez que la demande a dû subir des traitements spécifiques. Vous recevrez un mail de l'Université afin de connaître l'avancement de votre demande régulièrement; ces deux services pour connaître l'avancement de votre demande.</p>
-      </div>
-
-      <div class="consent-block">
-        <input type="checkbox" id="consent" name="consent" form="signalementForm" required>
-        <label for="consent">
-          J'accepte que Le Mans Université traite ma demande. J'assure avoir pris connaissance des <a href="#" style="color: #d14a1f; text-decoration: none;">informations complémentaires</a> ci-<span style="display: block;"></span>dessus.
+      <!-- Colonne centrale : Upload image -->
+      <div class="signalement-image-section">
+        <label for="imageUpload" class="image-upload-area" id="imageUploadArea">
+          <div class="upload-icon"><img src="../Asset/image/header/image_televerser.png" alt="Image_televerser_ici"></div>
+          <div class="upload-text">Cliquer sur le rectangle ou glisser-coller la fichier</div>
+          <input type="file" id="imageUpload" name="image" accept="image/*">
         </label>
+        <div id="imageStatus" style="display: none; margin-top: 8px; padding: 8px; border-radius: 6px; font-size: 12px; text-align: center;"></div>
+        <button type="button" id="clearImageBtn" style="display: none; margin-top: 8px; background: #f44336; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 12px;">Supprimer l'image</button>
+        <p style="font-size: 12px; color: #999; text-align: center; margin: 0; margin-top: 8px;">Formats acceptés: JPG, PNG, GIF (Max 5MB)</p>
       </div>
 
-      <button type="submit" form="signalementForm" class="submit-btn">ENVOYER</button>
+      <!-- Colonne droite : Informations -->
+      <div class="signalement-info-section">
+        <div class="info-block">
+          <h3>Informations complémentaires</h3>
+          <p>Les services concernés traiteront votre signalement dans les plus brefs délais.</p>
+        </div>
+
+        <div class="info-block">
+          <p>Sachez que la demande a dû subir des traitements spécifiques. Vous recevrez un mail de l'Université afin de connaître l'avancement de votre demande régulièrement; ces deux services pour connaître l'avancement de votre demande.</p>
+        </div>
+
+        <div class="consent-block">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">
+            J'accepte que Le Mans Université traite ma demande. J'assure avoir pris connaissance des <a href="#" style="color: #d14a1f; text-decoration: none;">informations complémentaires</a> ci-<span style="display: block;"></span>dessus.
+          </label>
+        </div>
+
+        <button type="submit" class="submit-btn">ENVOYER</button>
+      </div>
     </div>
-  </div>
+  </form>
 </main>
+
+<script>
+// Validation de l'image en temps réel
+const imageUpload = document.getElementById('imageUpload');
+const statusDiv = document.getElementById('imageStatus');
+const clearBtn = document.getElementById('clearImageBtn');
+
+imageUpload.addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  
+  if (!file) {
+    statusDiv.style.display = 'none';
+    clearBtn.style.display = 'none';
+    return;
+  }
+  
+  // Vérifier le format
+  const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+  if (!validTypes.includes(file.type)) {
+    statusDiv.style.display = 'block';
+    statusDiv.style.background = '#ffebee';
+    statusDiv.style.color = '#c62828';
+    statusDiv.textContent = '❌ Format invalide (JPG, PNG, GIF acceptés)';
+    clearBtn.style.display = 'block';
+    return;
+  }
+  
+  // Vérifier la taille (5MB = 5 * 1024 * 1024)
+  if (file.size > 5 * 1024 * 1024) {
+    statusDiv.style.display = 'block';
+    statusDiv.style.background = '#ffebee';
+    statusDiv.style.color = '#c62828';
+    statusDiv.textContent = '❌ Fichier trop gros (Max 5MB)';
+    clearBtn.style.display = 'block';
+    return;
+  }
+  
+  // Tout est bon
+  statusDiv.style.display = 'block';
+  statusDiv.style.background = '#e8f5e9';
+  statusDiv.style.color = '#2e7d32';
+  statusDiv.textContent = '✓ Image acceptée (' + (file.size / 1024).toFixed(1) + ' KB)';
+  clearBtn.style.display = 'block';
+});
+
+// Bouton pour supprimer l'image
+clearBtn.addEventListener('click', function() {
+  imageUpload.value = '';
+  statusDiv.style.display = 'none';
+  clearBtn.style.display = 'none';
+});
+</script>
 
 <?php
 include 'footer.php';
