@@ -20,8 +20,7 @@ require '../Header Footer/header.php';
 <body>
     <div class="container">
         <div class="contenu">
-            <h1 style="font-size: 24px;"><span>Profil</span><span style="font-size: 12px;"> - <?php echo strtoupper($_SESSION['role']); ?></span></h1>
-
+            <div class=""><img id="iconeDon" src="../../Asset/image/dons/recyclage.png"> Donner</div>
         </div>
     </div>
 </body>
