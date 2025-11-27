@@ -16,29 +16,16 @@ $image_status = '';
 $image_status_type = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Valider l'image avant de traiter le formulaire
-    if (!empty($_FILES['image']['tmp_name'])) {
-        $mimeType = mime_content_type($_FILES['image']['tmp_name']);
-        $validTypes = ['image/jpeg', 'image/png', 'image/gif'];
-        
-        if (!in_array($mimeType, $validTypes)) {
-            $image_status = '❌ Format invalide (JPG, PNG, GIF acceptés)';
-            $image_status_type = 'error';
-        } else if ($_FILES['image']['size'] > 5 * 1024 * 1024) {
-            $image_status = '❌ Fichier trop gros (Max 5MB)';
-            $image_status_type = 'error';
-        } else {
-            $image_status = '✓ Image acceptée (' . round($_FILES['image']['size'] / 1024, 1) . ' KB)';
-            $image_status_type = 'success';
-        }
-    }
-    
     $response = traiterSignalement();
     if ($response['success']) {
         $_SESSION['message_success'] = $response['message'];
-        $_SESSION['image_status'] = ''; // Réinitialiser le statut
+        // Redirection pour éviter la resoumission du formulaire
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit;
     } else {
         $message_error = $response['message'];
+        $image_status = $response['image_status'] ?? '';
+        $image_status_type = $response['image_status_type'] ?? '';
     }
 }
 
@@ -113,8 +100,11 @@ $types = getTypesSignalement();
           <div class="upload-text">Cliquer sur le rectangle ou glisser-coller la fichier</div>
           <input type="file" id="imageUpload" name="image" accept="image/*">
         </label>
-        <div id="imageStatus" style="display: none; margin-top: 8px; padding: 8px; border-radius: 6px; font-size: 12px; text-align: center;"></div>
-        <button type="button" id="clearImageBtn" style="display: none; margin-top: 8px; background: #f44336; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 12px;">Supprimer l'image</button>
+        <?php if (!empty($image_status)): ?>
+            <div class="image-status <?php echo $image_status_type === 'success' ? 'message-success' : 'message-error'; ?>" style="padding: 10px; font-size: 12px; text-align: center;">
+                <?php echo htmlspecialchars($image_status); ?>
+            </div>
+        <?php endif; ?>
         <p style="font-size: 12px; color: #999; text-align: center; margin: 0; margin-top: 8px;">Formats acceptés: JPG, PNG, GIF (Max 5MB)</p>
       </div>
 
@@ -142,57 +132,7 @@ $types = getTypesSignalement();
   </form>
 </main>
 
-<script>
-// Validation de l'image en temps réel
-const imageUpload = document.getElementById('imageUpload');
-const statusDiv = document.getElementById('imageStatus');
-const clearBtn = document.getElementById('clearImageBtn');
 
-imageUpload.addEventListener('change', function(e) {
-  const file = e.target.files[0];
-  
-  if (!file) {
-    statusDiv.style.display = 'none';
-    clearBtn.style.display = 'none';
-    return;
-  }
-  
-  // Vérifier le format
-  const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
-  if (!validTypes.includes(file.type)) {
-    statusDiv.style.display = 'block';
-    statusDiv.style.background = '#ffebee';
-    statusDiv.style.color = '#c62828';
-    statusDiv.textContent = '❌ Format invalide (JPG, PNG, GIF acceptés)';
-    clearBtn.style.display = 'block';
-    return;
-  }
-  
-  // Vérifier la taille (5MB = 5 * 1024 * 1024)
-  if (file.size > 5 * 1024 * 1024) {
-    statusDiv.style.display = 'block';
-    statusDiv.style.background = '#ffebee';
-    statusDiv.style.color = '#c62828';
-    statusDiv.textContent = '❌ Fichier trop gros (Max 5MB)';
-    clearBtn.style.display = 'block';
-    return;
-  }
-  
-  // Tout est bon
-  statusDiv.style.display = 'block';
-  statusDiv.style.background = '#e8f5e9';
-  statusDiv.style.color = '#2e7d32';
-  statusDiv.textContent = '✓ Image acceptée (' + (file.size / 1024).toFixed(1) + ' KB)';
-  clearBtn.style.display = 'block';
-});
-
-// Bouton pour supprimer l'image
-clearBtn.addEventListener('click', function() {
-  imageUpload.value = '';
-  statusDiv.style.display = 'none';
-  clearBtn.style.display = 'none';
-});
-</script>
 
 <?php
 include 'footer.php';
