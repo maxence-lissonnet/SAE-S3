@@ -8,6 +8,7 @@ if (session_status() != 2) {
 <head>
   <meta charset="UTF-8">
   <title>EcoGestUM</title>
+  <link rel="icon" href="../../Asset/image/logo/favicon.ico">
 
   <!-- Feuilles de style globales -->
   <link rel="stylesheet" href="../../Asset/style/headerstyle.css">

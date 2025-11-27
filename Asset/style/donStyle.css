@@ -1,0 +1,28 @@
+body {
+    background-image: url("../image/Background/BackgroundSelecProfil.png");
+
+    min-height: 100vh;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    /* horizontal */
+    align-items: center;
+    /* vertical */
+    font-family: 'DM Sans', sans-serif;
+    color: #44474E;
+}
+
+.container {
+    background-color: white;
+    width: calc(100vw - 120px);
+    height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    margin-top: 73px;
+}
+
+.contenu {
+    margin-left: 40px;
+}

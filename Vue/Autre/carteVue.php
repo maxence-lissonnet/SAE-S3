@@ -11,7 +11,6 @@ require '../../Controller/pageCarteController.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Points de collecte</title>
-    <link rel="icon" href="../../Asset/image/favicon.ico">
     <link rel="stylesheet" href="../../Asset/style/carteStyle.css">
 
     <!-- Inclusion des polices -->
