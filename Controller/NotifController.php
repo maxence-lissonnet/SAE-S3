@@ -1,8 +1,15 @@
 <?php
+// Controller/contrNotif.php<?php
 // Controller/contrNotif.php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+
+
 require_once __DIR__ . '/../Model/NotificationModel.php';
+
 
 // TEMPORAIRE : utilisateur de test qui a des notifications en BDD
 // (dans ton script SQL, l'utilisateur 6 a plusieurs notifs)
