@@ -1,0 +1,360 @@
+.eg-home-page {
+  padding: 24px 40px 40px;
+  font-family: "DM Sans", system-ui, sans-serif;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+/* HERO -------------------------------------------------- */
+
+.eg-home-hero {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.eg-home-hello {
+  font-size: 20px;
+  margin: 0 0 4px;
+}
+
+.eg-home-counter {
+  margin: 0;
+  font-size: 16px;
+}
+
+.eg-home-counter-number {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* TITRES + liens ---------------------------------------- */
+
+.eg-home-section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.eg-home-section-title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.eg-home-link-all {
+  font-size: 13px;
+  text-decoration: underline;
+  color: #c45c27;
+}
+
+/* OBJETS RÉCENTS ---------------------------------------- */
+
+.eg-home-latest {
+  margin-bottom: 40px;
+}
+
+.eg-home-latest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.eg-home-object-card {
+  background: #1e2554;
+  border-radius: 32px;
+  padding: 18px 18px 16px;
+  color: #ffffff;
+  display: grid;
+  grid-template-rows: 140px auto;
+  row-gap: 10px;
+}
+
+.eg-home-object-image {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+}
+
+.eg-home-object-body {
+  font-size: 13px;
+}
+
+.eg-home-object-title {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.eg-home-object-meta {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.eg-home-object-state {
+  margin: 6px 0 2px;
+}
+
+.eg-home-object-time {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* ÉVÈNEMENTS -------------------------------------------- */
+
+.eg-home-events {
+  margin-bottom: 40px;
+}
+
+.eg-home-events-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1.3fr;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* Mini calendrier */
+
+.eg-home-events-calendar {
+  max-width: 520px;
+}
+
+.eg-home-cal-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 20px 24px 24px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.eg-home-cal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.eg-home-cal-title {
+  text-align: center;
+}
+
+.eg-home-cal-month {
+  display: block;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+}
+
+.eg-home-cal-year {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.eg-home-cal-nav {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #111827;
+  font-size: 18px;
+}
+
+.eg-home-cal-nav:hover {
+  background: #f3f4f6;
+}
+
+.eg-home-cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.eg-home-cal-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.eg-home-cal-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.eg-home-cal-day.empty {
+  background: transparent;
+}
+
+.eg-home-cal-day.has-event {
+  background: #f97316;
+  color: #ffffff;
+}
+
+/* Liste des événements */
+
+.eg-home-events-right {
+  max-width: 480px;
+}
+
+.eg-home-empty-text {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.eg-home-events-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.eg-home-event-item {
+  margin: 0;
+}
+
+.eg-home-event-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.eg-home-event-date {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: #1e2554;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.eg-home-event-day {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.eg-home-event-month {
+  font-size: 11px;
+}
+
+.eg-home-event-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.eg-home-event-sub {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* Boutons "voir tout" */
+
+.eg-home-section-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 999px;
+  background: #3f3f46;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.eg-home-section-btn:hover {
+  filter: brightness(0.95);
+}
+
+.eg-home-events-btn-row,
+.eg-home-news-btn-row {
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* ACTUALITÉS -------------------------------------------- */
+
+.eg-home-news {
+  margin-bottom: 24px;
+  padding: 24px 32px 28px;
+  border-radius: 40px;
+  color: #ffffff;
+  background-color: #1e2554;
+  background-image: url("../image/accueil/fondacac.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.eg-home-news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 12px;
+}
+
+.eg-home-news-card {
+  background: rgba(15, 23, 42, 0.9);
+  color: #ffffff;
+  border-radius: 24px;
+  padding: 18px 20px 16px;
+  font-size: 13px;
+}
+
+.eg-home-news-title {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.eg-home-news-meta {
+  margin: 0 0 8px;
+  opacity: 0.85;
+  font-size: 12px;
+}
+
+.eg-home-news-excerpt {
+  margin: 0 0 10px;
+}
+
+.eg-home-news-link {
+  font-size: 13px;
+  color: #ffd29c;
+  text-decoration: underline;
+}
+
+/* Responsive -------------------------------------------- */
+
+@media (max-width: 1100px) {
+  .eg-home-latest-grid,
+  .eg-home-news-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .eg-home-events-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .eg-home-events-right {
+    max-width: none;
+  }
+}
+
+@media (max-width: 750px) {
+  .eg-home-latest-grid,
+  .eg-home-news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eg-home-page {
+    padding: 16px 16px 32px;
+  }
+}

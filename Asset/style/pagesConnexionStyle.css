@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    font-family: 'DM Sans', sans-serif;
+    text-align: center;
+}
+
+#imgFond {
+    position: fixed;
+    right: 0;
+    max-width: 72vw;
+}
+
+.boxForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    position: relative;
+    width: calc(28vw + 50px);
+    height: 100%;
+    z-index: 1;
+    background-color: white;
+    border-radius: 0px 30px 30px 0px;
+    color: #44474E;
+}
+
+#logoUniv {
+    width: 180px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: -5px;
+}
+
+#idText {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+#idTextBox {
+    width: calc(100% - 51px);
+    border: solid 3px #44474E;
+    height: 35px;
+    border-radius: 30px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding-left: 10px;
+    font-weight: bold;
+    color: #44474E;
+    margin-bottom: 21px;
+}
+
+.formConn {
+    display: block;
+    max-width: 100%;
+    width: calc(100% - 51px);
+}
+
+#boutonConnexion {
+    background-color: #282F63;
+    color: rgb(245, 229, 229);
+    width: calc(100% - 35px);
+    height: 50px;
+    font-size: 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+#boutonConnexion:hover,
+#premiereConnexion:hover {
+    background-color: #D4451B;
+    border: solid 4px black;
+}
+
+#premiereConnexion {
+    background-color: #44474E;
+    color: rgb(245, 229, 229);
+    width: calc(100% - 35px);
+    height: 50px;
+    margin-top: 15px;
+    font-size: 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.erreur {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    color: white;
+    text-align: center;
+    width: calc(100% - 35px);
+    margin-top: 15px;
+    height: 40px;
+    border-radius: 30px;
+    font-weight: bold;
+}

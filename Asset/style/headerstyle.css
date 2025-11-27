@@ -1,26 +1,49 @@
 /* Fond global */
 body {
   margin: 0;
-  font-family: dm-sans, sans-serif;
-  background: #b3b3b3; /* gris extérieur */
+font-family: "DM Sans", sans-serif;
+  background: #fff;
+  background: #b3b3b3;
+  /* gris extérieur */
+
+
 }
 
 /* Barre du header : pleine largeur */
 .eg-header {
   width: 100%;
   padding: 12px 48px;
-  background: #e3e3e3;
-  border-radius: 0 0 18px 18px;  
+  background: #D9D9D9;
+  border-radius: 0 0 18px 18px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bolder;
+  justify-content: space-between;
 }
+
 /* Partie gauche : logo + nom appli */
 .eg-header-left {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.eg-logo-um-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.eg-logo-um-link img {
+  display: block;
+  cursor: pointer;
+}
+
+.eg-logo-um-link:focus-visible {
+  outline: 2px solid #f97316;
+  /* petit focus accessible si tu veux */
+  border-radius: 4px;
 }
 
 .eg-logo-um img {
@@ -38,7 +61,7 @@ body {
 /* Nom de l'appli */
 .eg-app-name {
   font-size: 20px;
-  letter-spacing: 0.12em;
+  letter-spacing: 1.5px;
   color: #222;
 }
 
@@ -47,6 +70,7 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
+  position: relative;
 }
 
 /* Infos utilisateur */
@@ -123,4 +147,82 @@ body {
   height: 2px;
   border-radius: 999px;
   background: #333;
+}
+
+/* Menu burger déroulant */
+.eg-header {
+  position: relative;
+}
+
+.eg-burger-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 48px;
+  background: #e3e3e3;
+  border-radius: 0 0 12px 12px;
+  padding: 16px 0;
+  min-width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  margin-top: 0;
+}
+
+.eg-burger-menu.open {
+  display: block;
+}
+
+.eg-burger-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: #222;
+  text-decoration: none;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background 0.2s ease;
+}
+
+.eg-burger-menu a:last-child {
+  border-bottom: none;
+}
+
+.eg-burger-menu a:hover {
+  background: #d0d0d0;
+}
+
+/* Menu déroulant du compte (profil) */
+.eg-menu-compte {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #e3e3e3;
+  border-radius: 0 0 12px 12px;
+  padding: 16px 0;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  margin-top: 0;
+}
+
+.eg-menu-compte.open {
+  display: block;
+}
+
+.eg-menu-compte a {
+  display: block;
+  padding: 12px 20px;
+  color: #222;
+  text-decoration: none;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background 0.2s ease;
+}
+
+.eg-menu-compte a:last-child {
+  border-bottom: none;
+}
+
+.eg-menu-compte a:hover {
+  background: #d0d0d0;
 }
