@@ -1,5 +1,4 @@
 <?php
-session_start();
 require '../Header Footer/header.php';
 require '../../Controller/pageCarteController.php';
 ?>

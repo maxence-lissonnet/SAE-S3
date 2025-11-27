@@ -9,16 +9,15 @@ if (session_status() != 2) {
   <meta charset="UTF-8">
   <title>EcoGestUM</title>
 
-  <!-- Feuilles de style globales -->
+  <!-- CSS global -->
   <link rel="stylesheet" href="../../Asset/style/headerstyle.css">
   <link rel="stylesheet" href="../../Asset/style/footerstyle.css">
   <link rel="stylesheet" href="../../Asset/style/popup.css">
 
-  <!-- Inclusion des polices -->
+  <!-- Polices -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
@@ -26,9 +25,10 @@ if (session_status() != 2) {
   <header class="eg-header">
     <div class="eg-header-left">
       <div class="eg-logo-um">
-        <!-- logo université -->
-        <a href="../Autre/accueil.php"><img src="../../Asset/image/header/univ.png" alt="Le Mans Université"></a>
-
+        <!-- logo université cliquable vers l'accueil -->
+        <a href="../Autre/accueil.php">
+          <img src="../../Asset/image/header/univ.png" alt="Le Mans Université">
+        </a>
       </div>
       <div class="eg-header-separator"></div>
 
@@ -37,8 +37,12 @@ if (session_status() != 2) {
 
     <div class="eg-header-right">
       <div class="eg-user-info">
-        <span class="eg-user-name"><?php echo $_SESSION['prenom']; ?></span>
-        <span class="eg-user-role"><?php echo strtoupper($_SESSION['role']); ?></span>
+        <span class="eg-user-name">
+          <?= htmlspecialchars($prenom) ?>
+        </span>
+        <span class="eg-user-role">
+          <?= htmlspecialchars($role) ?>
+        </span>
       </div>
 
       <!-- icône profil -->
