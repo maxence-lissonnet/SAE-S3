@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sélection profil</title>
-    <link rel="icon" href="Asset/image/favicon.ico">
+    <link rel="icon" href="Asset/image/logo/favicon.ico">
     <link rel="stylesheet" href="Asset/style/selectionProfilStyle.css">
 
     <!-- Inclusion des polices -->
@@ -26,16 +26,16 @@
         </div>
         <div class="eg-footer-socials">
             <a href="https://www.instagram.com/lemansuniversite/?hl=fr" aria-label="Instagram">
-                <img src="Asset/image/Logo_Instagram_(bleu).png" alt="Instagram">
+                <img src="Asset/image/logo/Logo_Instagram_(bleu).png" alt="Instagram">
             </a>
             <a href="https://www.linkedin.com/school/universit%C3%A9-du-maine-le-mans-laval/mycompany/" aria-label="LinkedIn">
-                <img src="Asset/image/Logo_LinkedIn_(bleu).png" alt="LinkedIn">
+                <img src="Asset/image/logo/Logo_LinkedIn_(bleu).png" alt="LinkedIn">
             </a>
             <a href="https://www.youtube.com/channel/UCGcQ5RW44I0xEIg4pNS69pg" aria-label="YouTube">
-                <img src="Asset/image/Logo_YT_(bleu).png" alt="YouTube">
+                <img src="Asset/image/logo/Logo_YT_(bleu).png" alt="YouTube">
             </a>
             <a href="https://www.facebook.com/LeMansUniversite" aria-label="Facebook">
-                <img src="Asset/image/Logo_Facebook_(bleu).png" alt="Facebook">
+                <img src="Asset/image/logo/Logo_Facebook_(bleu).png" alt="Facebook">
             </a>
         </div>
     </div>

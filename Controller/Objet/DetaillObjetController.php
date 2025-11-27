@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../Model/ObjetModel.php';
+require_once __DIR__ . '/../../Model/ObjetModel.php';
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -19,5 +19,5 @@ if (!$article) {
 }
 
 // affiche la vue de détail
-require __DIR__ . '/../Vue/Objet/DetaillObjetVue.php';
+require __DIR__ . '/../../Vue/Objet/DetaillObjetVue.php';
 ?>

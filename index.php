@@ -1,3 +1,3 @@
 <?php
-require 'Vue/Connexion/selecProfil.php';
+require __DIR__ . '/Vue/Connexion/selecProfil.php';
 ?>

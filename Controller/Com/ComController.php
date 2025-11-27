@@ -1,7 +1,7 @@
 <?php
 // Controller/contrcom.php
 
-require_once __DIR__ . '/../Model/ComModel.php';
+require_once __DIR__ . '/../../Model/ComModel.php';
 
 $idTypeCom = null;
 $dateCom   = null;

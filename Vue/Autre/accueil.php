@@ -1,9 +1,9 @@
 <?php
 // Vue/accueil.php
-require_once __DIR__ . '/../Controller/contrAccueil.php';
+require_once __DIR__ . '/../../Controller/contrAccueil.php';
 ?>
-<link rel="stylesheet" href="../Asset/style/accueilstyle.css">
-<?php require __DIR__ . '/header.php'; ?>
+<link rel="stylesheet" href="../../Asset/style/accueilstyle.css">
+<?php require __DIR__ . '/../Header Footer/header.php'; ?>
 
 <main class="eg-home-page">
 
@@ -231,7 +231,7 @@ require_once __DIR__ . '/../Controller/contrAccueil.php';
 
 </main>
 
-<?php require __DIR__ . '/footer.php'; ?>
+<?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 
 </body>
 </html>

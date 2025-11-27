@@ -1,9 +1,9 @@
 <?php
 // Vue/notification.php
-require_once __DIR__ . '/../Controller/contrNotif.php';
+require_once __DIR__ . '/../../Controller/NotifController.php';
 ?>
-<link rel="stylesheet" href="../Asset/style/notificationstyle.css">
-<?php require __DIR__ . '/Header Footer/header.php'; ?>
+<link rel="stylesheet" href="../../Asset/style/notificationstyle.css">
+<?php require __DIR__ . '/../Header Footer/header.php'; ?>
 
 <main class="eg-notif-page">
 
@@ -161,8 +161,8 @@ require_once __DIR__ . '/../Controller/contrNotif.php';
 
 </main>
 
-<?php require __DIR__ . '/Header Footer/footer.php'; ?>
+<?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 
-<script src="../Asset/style/notif.js"></script>
+<script src="../../Asset/js/notif.js"></script>
 </body>
 </html>

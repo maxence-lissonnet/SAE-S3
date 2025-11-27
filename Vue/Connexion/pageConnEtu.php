@@ -1,4 +1,4 @@
-<?php require '../../Controller/pageConnexionEtuController.php' ?>
+<?php require '../../Controller/Connexion/pageConnexionEtuController.php' ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -43,7 +43,7 @@
             <?php endif ?>
         </div>
     </div>
-    <img id="imgFond" src="../../Asset/image/imagePageConnexion.png">
+    <img id="imgFond" src="../../Asset/image/Background/imagePageConnexion.png">
 </body>
 
 </html>

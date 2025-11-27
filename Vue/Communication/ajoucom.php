@@ -1,7 +1,7 @@
 <?php
 // Vue/ajoucom.php
 
-require_once __DIR__ . '/../../Controller/AjoutComController.php';
+require_once __DIR__ . '/../../Controller/Com/AjoutComController.php';
 
 $formErrors = $formErrors ?? [];
 $formData   = $formData   ?? [];
