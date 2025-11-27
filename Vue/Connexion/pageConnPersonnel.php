@@ -23,7 +23,7 @@
         <p>PERSONNELS</p>
         <div class="formConn">
             <form method="POST">
-                <p id="idText">Identifiant <span style="color: red;">*</span></p>
+                <p id="idText">Adresse mail<span style="color: red;">*</span></p>
                 <input type="text" name="id" id="idTextBox">
                 <p id="idText">Mot de passe <span style="color: red;">*</span></p>
                 <input type="password" name="mdp" id="idTextBox">
