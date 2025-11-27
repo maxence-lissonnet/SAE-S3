@@ -7,6 +7,9 @@ if (session_status() === PHP_SESSION_NONE) {
 // Valeurs à afficher dans le header
 $prenom = $_SESSION['prenom'] ?? 'Utilisateur';
 $role   = isset($_SESSION['role']) ? strtoupper($_SESSION['role']) : 'VISITEUR';
+
+// Nombre de notifications non lues (mis à jour par contrNotif.php)
+$notifUnreadCount = $_SESSION['notif_unread_count'] ?? 0;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -57,9 +60,12 @@ $role   = isset($_SESSION['role']) ? strtoupper($_SESSION['role']) : 'VISITEUR';
       </button>
 
       <!-- icône cloche -->
-      <button class="eg-icon-btn eg-notif-btn" aria-label="Notifications">
+      <button class="eg-icon-btn eg-notif-btn" aria-label="Notifications"
+              onclick="window.location.href='../Autre/notification.php'">
         <img src="../../Asset/image/header/cloche.png" alt="Notifications" class="eg-icon-img">
-        <span class="eg-notif-badge">2</span>
+        <?php if ($notifUnreadCount > 0): ?>
+          <span class="eg-notif-badge"><?= (int)$notifUnreadCount ?></span>
+        <?php endif; ?>
       </button>
 
       <!-- burger -->

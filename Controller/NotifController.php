@@ -13,7 +13,7 @@ require_once __DIR__ . '/../Model/NotificationModel.php';
 
 // TEMPORAIRE : utilisateur de test qui a des notifications en BDD
 // (dans ton script SQL, l'utilisateur 6 a plusieurs notifs)
-$idUser = $_SESSION['idUser'] ?? 6;
+$idUser = $_SESSION['idUser'] ?? 5;
 
 // 1) Récupération de toutes les notifications de la BDD
 $allNotifications = notif_getAllForUser($idUser) ?? [];
@@ -141,3 +141,6 @@ unset($n);
 
 // 9) Total (réception + archive) sans les supprimées
 $totalCount = count($notificationsInbox) + count($notificationsArchive);
+
+// 10) Nombre de non lues dispo pour le header
+$_SESSION['notif_unread_count'] = $unreadCount;

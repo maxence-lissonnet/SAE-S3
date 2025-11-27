@@ -34,12 +34,12 @@
   border: 1px solid #d1d5db;
   font-size: 13px;
   text-decoration: none;
-  color: #4b5563;
-  background: #f9fafb;
+  color: #d1d5db;
+  background: #1e2554;
 }
 
 .eg-notif-tab.is-active {
-  background: #111827;
+  background: #b45309;
   color: #ffffff;
   border-color: #111827;
 }
