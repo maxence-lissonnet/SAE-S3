@@ -12,7 +12,7 @@
 
 <?php
 include '../Controller/authController.php';
-$menuItems = $GLOBALS['permissions'][getCurrentUserRole()]['pages'] ?? [];
+$menuItems = $GLOBALS['permissions'][getCurrentUserRole()]['menu'] ?? [];
 ?>
 
 <header class="eg-header">
@@ -48,10 +48,22 @@ $menuItems = $GLOBALS['permissions'][getCurrentUserRole()]['pages'] ?? [];
             'mes-dons' => '/SAE-S3/Vue/mes-dons.php',
             'deconnexion' => '/SAE-S3/Vue/deconnexion.php'
           ];
+          $menuCompte = [
+            'profil' => '<img src="/SAE-S3/images/logo/" alt="Profil">',
+            'reservations' => '<img src="/SAE-S3/images/logo/" alt="Reservations">',
+            'mes-dons' => '<img src="/SAE-S3/images/logo/" alt="Mes Dons">',
+            'deconnexion' => '<img src="/SAE-S3/images/logo/" alt="Déconnexion">s'
+          ];
           
           foreach ($menuCompte as $item => $link) {
             if (in_array($item, $menuItems)) {
               $label = ucfirst(str_replace('-', ' ', $item));
+              foreach($menuCompte as $logoItem => $logoTag) {
+                if ($logoItem === $item) {
+                  $label = $logoTag . ' ' . $label;
+                  break;
+                }
+              }
               echo '<a href="' . $link . '">' . $label . '</a>';
             }
           }
