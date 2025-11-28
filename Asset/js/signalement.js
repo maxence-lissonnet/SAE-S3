@@ -12,18 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const imageSize = document.getElementById('image-size');
     const deleteImageBtn = document.getElementById('delete-image-btn');
     
+    // Empêcher la propagation du clic pour éviter la double ouverture
+    imageUploadInput.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+
     // Fallback in case the new elements aren't in the HTML yet.
     if (!imageUploadInput || !imagePreviewContainer || !imagePreview || !imageName || !imageSize || !deleteImageBtn) {
         console.error('One or more required elements for signalement image preview are missing.');
         return;
     }
 
-    imageUploadArea.addEventListener('click', (e) => {
-        // Prevent the label's default behavior which might be causing a double-trigger.
-        e.preventDefault();
-        // Trigger the file input click programmatically.
-        imageUploadInput.click();
-    });
+    // The 'click' event on the label 'imageUploadArea' is no longer needed.
+    // The browser's default behavior for a label connected to an input (via the 'for' attribute)
+    // is to trigger the input. The previous JavaScript was redundant and caused a double-trigger.
 
     imageUploadInput.addEventListener('change', function(event) {
         const file = event.target.files[0];

@@ -1,8 +1,8 @@
 <?php
-include_once __DIR__ . '/../../Model/signalementModel.php';
-include_once __DIR__ . '/../../Controller/signalementController.php';
-include_once __DIR__ . '/../../Controller/categorieController.php';
-include_once __DIR__ . '/../Header Footer/header.php';
+require_once __DIR__ . '/../../Model/signalementModel.php';
+require_once __DIR__ . '/../../Controller/signalementController.php';
+require_once __DIR__ . '/../../Controller/categorieController.php';
+require_once __DIR__ . '/../Header Footer/header.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

@@ -1,6 +1,6 @@
 <footer class="eg-footer">
   <div class="eg-footer-main">
-    <link rel="stylesheet" href="../Asset/style/footerstyle.css">
+    
     <!-- Colonne gauche : logo + adresse + gros boutons -->
     <div class="eg-footer-col eg-footer-left">
       <div class="eg-footer-logo-block">
@@ -93,6 +93,6 @@
   </div>
 </div>
 
-<script src="../../Asset/js/popup.js"></script>
+<script src="../../Asset/style/popup.js"></script>
 </body>
 </html>

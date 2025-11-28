@@ -1,4 +1,3 @@
-/* Page Signalements */
 main {
   padding: 40px 48px;
   background: #f5f5f5;
@@ -29,7 +28,6 @@ main h1::before {
   font-size: 18px;
 }
 
-/* Messages de succès et erreur */
 .message-success {
   background: #e8f5e9;
   color: #2e7d32;
@@ -73,7 +71,6 @@ main h1::before {
   margin: 0 auto;
 }
 
-/* Colonne gauche : Formulaire */
 .signalement-form-section {
   background: #ffffff;
   border-radius: 12px;
@@ -126,7 +123,6 @@ main h1::before {
   min-height: 120px;
 }
 
-/* Colonne centrale : Zone d'upload image */
 .signalement-image-section {
   background: #ffffff;
   border-radius: 12px;
@@ -191,7 +187,80 @@ main h1::before {
   cursor: pointer;
 }
 
-/* Colonne droite : Informations */
+#image-preview-container {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fafafa;
+  animation: fadeIn 0.3s ease;
+}
+
+#image-preview {
+  max-width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#image-name {
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 4px;
+}
+
+#image-size {
+  font-size: 12px;
+  color: #888;
+}
+
+.delete-image-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.2s ease;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 4px rgba(231, 76, 60, 0.3);
+}
+
+.delete-image-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.4);
+}
+
+.delete-image-btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .signalement-info-section {
   background: #ffffff;
   border-radius: 12px;

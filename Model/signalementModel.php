@@ -19,20 +19,20 @@ function getTypesSignalementFromDB() {
     return $pdo->query("SELECT idTypeSignalement, libelleTypeSig FROM TYPE_SIGNALEMENT ORDER BY libelleTypeSig")->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function enregistrerSignalement($description, $imageData, $idTypeSignalement, $idUser = 1) {
+function enregistrerSignalement($description, $imageData, $idTypeSignalement, $idUser) {
     try {
         $pdo = get_dtb();
         
         $stmt = $pdo->prepare(
-            "INSERT INTO SIGNALEMENT (descSignalement, imageSignalement, idTypeSignalement, IdUser)"
-            ."VALUES (?, ?, ?, ?)"
+            "INSERT INTO SIGNALEMENT (descSignalement, imageSignalement, idTypeSignalement, IdUser) 
+             VALUES (?, ?, ?, ?)"
         );
         
         $result = $stmt->execute([
             $description,
             $imageData,
             $idTypeSignalement,
-            $idUser
+            $idUser // L'ID est maintenant obligatoire, plus de valeur par défaut
         ]);
         
         return $result;
@@ -40,3 +40,4 @@ function enregistrerSignalement($description, $imageData, $idTypeSignalement, $i
         throw new Exception('Erreur lors de l\'enregistrement : ' . $e->getMessage());
     }
 }
+?>
