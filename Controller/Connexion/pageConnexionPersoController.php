@@ -46,25 +46,6 @@ function verify_data()
     }
 }
 
-function change_passwords()
-{
-    $pdo = get_dtb();
-    $q = $pdo->query("SELECT idUser, mdpUser FROM UTILISATEUR");
-
-    while ($row = $q->fetch(PDO::FETCH_ASSOC)) {
-        $mdp = $row['mdpUser'];
-
-        // Détecter si déjà hashé (commence par "$2y$")
-        if (!str_starts_with($mdp, '$2y$')) {
-
-            $hash = password_hash($mdp, PASSWORD_DEFAULT);
-
-            $stmt = $pdo->prepare("UPDATE UTILISATEUR SET mdpUser = ? WHERE idUser = ?");
-            $stmt->execute([$hash, $row['idUser']]);
-        }
-    }
-}
-
 change_passwords();
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
