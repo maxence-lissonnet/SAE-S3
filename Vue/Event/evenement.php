@@ -1,9 +1,5 @@
-<?php
-// On exécute toute la logique (CRUD + filtres + récupération des données)
-require_once __DIR__ . '/../../Controller/EventController.php';
-?>
 <link rel="stylesheet" href="../../Asset/style/eventstyle.css">
-<?php require __DIR__ . '/../Header Footer/header.php'; ?>
+<?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
 <main class="eg-event-page">
 

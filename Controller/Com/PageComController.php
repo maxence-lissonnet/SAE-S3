@@ -2,6 +2,7 @@
 // Controller/contrpagecom.php
 
 require_once __DIR__ . '/../../Model/ComModel.php';
+require_once __DIR__ . '/../../Vue/Communication/pagecom.php';
 
 // Communication à afficher (ou null si introuvable)
 $com = null;

@@ -1,26 +1,3 @@
-<?php
-// Toujours TOUT en haut, avant le moindre HTML
-if (session_status() === PHP_SESSION_NONE) {
-  session_start();
-}
-
-// Valeurs à afficher dans le header
-$prenom = $_SESSION['prenom'] ?? 'Utilisateur';
-$role   = isset($_SESSION['role']) ? strtoupper($_SESSION['role']) : 'VISITEUR';
-
-// Vérifiez que ce chemin est correct par rapport à l'emplacement de ce fichier.
-include '../../Controller/authController.php'; 
-// Récupère les items de menu (profil, reservations, etc.) et les pages (stats, catalogue, etc.) 
-// basés sur le rôle de l'utilisateur.
-$menuItems = $GLOBALS['permissions'][getCurrentUserRole()]['menu'] ?? [];
-$userPages = $GLOBALS['permissions'][getCurrentUserRole()]['pages'] ?? [];
-
-if (session_status() != 2) {
-  session_start();
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -117,16 +94,16 @@ if (session_status() != 2) {
         // 1. Définition des liens/URLs des pages (Clé -> URL)
         $allPages = [
           'statistiques' => '../Autre/stats.php',
-          'communication' => '../Communication/pagecom.php',
+          'communication' => '../../Controller/Com/PageComController.php',
           'rapports' => '../Autre/rapports.php',
-          'catalogue' => '../Objet/CatalogueArticleVue.php',
-          'points-collecte' => '../autre/carteVue.php',
+          'catalogue' => '../../Controller/Objet/CatalogueArticleController.php',
+          'points-collecte' => '../../Controller/Autre/pageCarteController.php',
           'signalements' => '../signalement.php',
-          'evenements' => '../Event/evenement.php',
+          'evenements' => '../../Controller/Autre/eventController.php',
           'donner' => '../Vue/donner.php',
           'donnees-recyclage' => '../Vue/donnees-recyclage.php',
           'demande-objets' => '../Vue/demande-objets.php',
-          'conseils-recyclage' => '../Autre/conseil.php',
+          'conseils-recyclage' => '../../Controller/Autre/ConseilrecyclageController.php',
           'recyclage' => '../Vue/recyclage.php',
         ];
 

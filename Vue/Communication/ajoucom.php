@@ -1,8 +1,6 @@
 <?php
 // Vue/ajoucom.php
 
-require_once __DIR__ . '/../../Controller/Com/AjoutComController.php';
-
 $formErrors = $formErrors ?? [];
 $formData   = $formData   ?? [];
 $typesCom   = $typesCom   ?? [];
@@ -10,10 +8,10 @@ $roles      = $roles      ?? [];
 $editId     = $editId     ?? null;     // id de la com si on est en mode édition
 ?>
 <link rel="stylesheet" href="../../Asset/style/ajouecomstyle.css">
-<?php require __DIR__ . '/../Header Footer/header.php'; ?>
+<?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
 <main class="eg-ajout-page">
-  <a href="pagecom.php" class="eg-back-link">
+  <a href="PageComController.php" class="eg-back-link">
     ← Retour aux communications
   </a>
 

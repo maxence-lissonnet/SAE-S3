@@ -1,7 +1,7 @@
 <?php
 // Controller/contrEven.php
 
-require_once __DIR__ . '/../Model/EventModel.php';
+require_once __DIR__ . '/../../Model/EventModel.php';
 
 $formErrors  = [];
 $eventToEdit = [];
@@ -116,3 +116,7 @@ if (isset($_GET['month']) && preg_match('#^\d{4}-\d{2}$#', $_GET['month'])) {
 
 // Evènements du mois pour colorer les jours du calendrier
 $eventsCalendar = getEventsForMonth(substr($calendarRefDate, 0, 7), $idTypeEvent, $lieuSearch);
+
+require_once __DIR__ . '/../../Vue/Event/evenement.php';
+
+?>

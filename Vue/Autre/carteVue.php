@@ -1,6 +1,5 @@
 <?php
-require '../Header Footer/header.php';
-require '../../Controller/pageCarteController.php';
+require __DIR__ . '/../../Controller/Autre/HeaderController.php'; 
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
-<?php require __DIR__ . '/../Header Footer/header.php'; 
-require __DIR__ . '/../../Controller/Objet/CatalogueArticleController.php';
+<?php 
+require __DIR__ . '/../../Controller/Autre/HeaderController.php'; 
 ?>
 
 

@@ -21,10 +21,4 @@ function get_items(string $table)
     return $items;
 }
 
-$lieux = [];
-$places = get_items('LIEU_RETRAIT');
-
-foreach ($places as $place) {
-    $latlon = explode(' ', $place['coordonneesLieuRetrait']);
-    array_push($lieux, ["nom" => $place['nomLieuRetrait'], "adr" => $place['adresseLieuRetrait'], "lat" => floatval($latlon[0]), 'long' => floatval($latlon[1])]);
-}
+?>

@@ -10,7 +10,7 @@ $idTypeCom = $idTypeCom ?? null;
 $dateCom   = $dateCom   ?? null;
 ?>
 <link rel="stylesheet" href="../../Asset/style/pagecomstyle.css">
-<?php require __DIR__ . '/../Header Footer/header.php'; ?>
+<?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
 <main class="eg-com-page">
 
@@ -58,7 +58,7 @@ $dateCom   = $dateCom   ?? null;
 
       <div class="eg-com-publish-block">
         <span class="eg-com-publish-label">Publier</span>
-        <a href="ajoucom.php" class="eg-btn-publish">Créer une publication</a>
+        <a href="../../Controller/Com/AjoutComController.php" class="eg-btn-publish">Créer une publication</a>
       </div>
 
       <h2 class="eg-com-filter-title">Filtrer par</h2>
