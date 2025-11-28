@@ -8,7 +8,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// --- Traitement du formulaire principal ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $response = traiterSignalement();
     if ($response['success']) {
@@ -17,18 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     } else {
         $_SESSION['message_error'] = $response['message'];
-        $_SESSION['form_data'] = $_POST; // Sauvegarder les données en cas d'erreur
+        $_SESSION['form_data'] = $_POST; 
         header('Location: ' . $_SERVER['PHP_SELF']);
         exit;
     }
 }
 
-// --- Récupération des messages et données pour l'affichage ---
 $message_success = $_SESSION['message_success'] ?? '';
 $message_error = $_SESSION['message_error'] ?? '';
 $form_data = $_SESSION['form_data'] ?? [];
 
-// Nettoyer les messages et données de la session après les avoir récupérés
 unset($_SESSION['message_success'], $_SESSION['message_error'], $_SESSION['form_data']);
 
 $categories = getCategories();
@@ -54,7 +51,6 @@ $types = getTypesSignalement();
 
   <form method="POST" enctype="multipart/form-data" id="signalementForm">
     <div class="signalement-container">
-      <!-- Colonne gauche : Formulaire -->
       <div class="signalement-form-section">
         <div class="form-group">
           <label for="nomObjet">Nom de l'objet<span class="required">*</span></label>
@@ -91,16 +87,13 @@ $types = getTypesSignalement();
         </div>
       </div>
 
-      <!-- Colonne centrale : Upload image -->
       <div class="signalement-image-section">
-        <!-- Zone de téléversement initiale -->
         <label for="imageUpload" class="image-upload-area" id="imageUploadArea">
             <div class="upload-icon"><img src="../../Asset/image/header/image_televerser.png" alt="Image_televerser_ici"></div>
             <div class="upload-text">Cliquer sur le rectangle pour choisir un fichier</div>
             <input type="file" id="imageUpload" name="image" accept="image/png, image/jpeg, image/gif" style="display:none;">
         </label>
         
-        <!-- Conteneur de l'aperçu, caché par défaut -->
         <div id="image-preview-container" style="display: none;">
             <img id="image-preview" src="#" alt="Aperçu de l'image" style="max-width: 100%; max-height: 200px; margin-bottom: 10px;"/>
             <p>
@@ -114,7 +107,6 @@ $types = getTypesSignalement();
       </div>
 
 
-      <!-- Colonne droite : Informations -->
       <div class="signalement-info-section">
         <div class="info-block">
           <h3>Informations complémentaires</h3>

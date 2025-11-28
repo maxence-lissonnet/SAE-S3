@@ -7,7 +7,7 @@ require_once __DIR__ . '/../../Controller/EventController.php';
 
 <main class="eg-event-page">
 
-    <h1 class="eg-event-title">Evènements</h1>
+    <h1 class="eg-event-title">Évènements</h1>
 
     <section class="eg-event-layout">
 
