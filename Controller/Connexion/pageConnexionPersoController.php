@@ -41,12 +41,13 @@ function verify_data()
 {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $items = get_item('UTILISATEUR', 'mdpUser', "emailUser", $_POST['id']);
-        if (get_id($_POST['id'])) {
-            return "ERREUR : Permission non accordée";
-        }
         if ($items === null) {
             return "ERREUR : Utilisateur inconnu";
         }
+        if (get_id($_POST['id'])) {
+            return "ERREUR : Permission non accordée";
+        }
+
         if (!password_verify($_POST['mdp'], $items['mdpUser'])) {
             return "ERREUR : Mot de passe incorrect";
         }
@@ -85,6 +86,7 @@ function get_id(string $mail)
     $dtb = get_dtb();
     $query = $dtb->query('SELECT idRole FROM UTILISATEUR WHERE emailUser = "' . $mail . '";');
     $rs = $query->fetch(PDO::FETCH_ASSOC);
+
     return ($rs['idRole'] === 6 || $rs['idRole'] === 8);
 }
 
@@ -136,6 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $_SESSION['tel'] = $user_info['telUser'];
             $_SESSION['adr'] = $user_info['adrUser'];
             $_SESSION['mail'] = $user_info['emailUser'];
+            $_SESSION['idUser'] = $user_info['idUser'];  
             header('Location: ../../Vue/Autre/politique.php');
             exit;
         }
