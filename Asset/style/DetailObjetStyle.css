@@ -83,16 +83,17 @@
     background: transparent;
 }
 
-.detail-container a.back-link {
+.detail-container .back-link {
     display: inline-block;
+    cursor: pointer;
     margin-top: 18px;
     color: rgba(255,255,255,0.9);
-    text-decoration: none;
     font-size: 14px;
     background: rgba(255,255,255,0.04);
     padding: 8px 12px;
     border-radius: 10px;
 }
+
 
 /* Responsive : image au-dessus sur petits écrans */
 @media (max-width: 900px) {
@@ -131,16 +132,16 @@
 .signaler{
     width: 25px;
     height: 25px;
-    content: url("../image/CatalogueArticle/logo white flag.png");
+    content: url("../image/Logo/logo white flag.png");
     cursor: pointer;
 }
 
 .signaler:hover{
-    content: url("../image/CatalogueArticle/logo red flag.png");
+    content: url("../image/Logo/logo red flag.png");
 }
 
 .signaler:active{
-    content: url("../image/CatalogueArticle/logo red flag.png");
+    content: url("../image/Logo/logo red flag.png");
 }
 
 .bouton-signaler{

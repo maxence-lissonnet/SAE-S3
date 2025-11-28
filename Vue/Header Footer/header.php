@@ -13,13 +13,14 @@ include '../../Controller/authController.php';
 // Récupère les items de menu (profil, reservations, etc.) et les pages (stats, catalogue, etc.) 
 // basés sur le rôle de l'utilisateur.
 $menuItems = $GLOBALS['permissions'][getCurrentUserRole()]['menu'] ?? [];
-$userPages = $GLOBALS['permissions'][getCurrentUserRole()]['pages'] ?? []; // Utilisé pour le menu burger
+$userPages = $GLOBALS['permissions'][getCurrentUserRole()]['pages'] ?? [];
 
-
-?>
 if (session_status() != 2) {
   session_start();
-} ?>
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
