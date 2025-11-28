@@ -1,13 +1,7 @@
 <?php
-// Toujours TOUT en haut, avant le moindre HTML
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Valeurs à afficher dans le header
-$prenom = $_SESSION['prenom'] ?? 'Utilisateur';
-$role   = isset($_SESSION['role']) ? strtoupper($_SESSION['role']) : 'VISITEUR';
-?>
+if (session_status() != 2) {
+  session_start();
+} ?>
 <!DOCTYPE html>
 <html lang="fr">
 
