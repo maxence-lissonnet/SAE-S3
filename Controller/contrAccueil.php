@@ -3,11 +3,12 @@
 
 require_once __DIR__ . '/../Model/EventModel.php';
 require_once __DIR__ . '/../Model/ComModel.php'; // même modèle que pour pagecom.php
+require_once __DIR__ . '/../Model/ObjetModel.php';
 
 // ------------------------------------------------------------------
 // Compteur d’objets (pour l’instant en dur, à brancher plus tard)
 // ------------------------------------------------------------------
-$nbObjetsEnLigne = 535;
+$nbObjetsEnLigne = get_number_of_objects();
 
 // ------------------------------------------------------------------
 // Objets récents (pour l’instant : données factices)

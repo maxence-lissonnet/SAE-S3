@@ -157,7 +157,7 @@ require_once __DIR__ . '/../../Controller/contrAccueil.php';
               $dateString = $d->format('Y-m-d');
               ?>
               <li class="eg-home-event-item">
-                <a href="evenement.php?date=<?= urlencode($dateString) ?>" class="eg-home-event-link">
+                <a href="../Event/evenement.php?date=<?= urlencode($dateString) ?>" class="eg-home-event-link">
                   <div class="eg-home-event-date">
                     <span class="eg-home-event-day"><?= $d->format('d') ?></span>
                     <span class="eg-home-event-month"><?= $d->format('m') ?></span>
@@ -177,7 +177,7 @@ require_once __DIR__ . '/../../Controller/contrAccueil.php';
         <?php endif; ?>
 
         <div class="eg-home-events-btn-row">
-          <a href="evenement.php" class="eg-home-section-btn">
+          <a href="../event/evenement.php" class="eg-home-section-btn">
             Voir tous les évènements
           </a>
         </div>
@@ -214,7 +214,7 @@ require_once __DIR__ . '/../../Controller/contrAccueil.php';
             <p class="eg-home-news-excerpt">
               <?= nl2br(htmlspecialchars($extrait)) ?>
             </p>
-            <a href="com.php?id=<?= (int)$news['idCom'] ?>" class="eg-home-news-link">
+            <a href="../Communication/com.php?id=<?= (int)$news['idCom'] ?>" class="eg-home-news-link">
               Voir l’article
             </a>
           </article>
@@ -222,7 +222,7 @@ require_once __DIR__ . '/../../Controller/contrAccueil.php';
       </div>
 
       <div class="eg-home-news-btn-row">
-        <a href="pagecom.php" class="eg-home-section-btn">
+        <a href="../Communication/pagecom.php" class="eg-home-section-btn">
           Voir toutes les actualités
         </a>
       </div>
