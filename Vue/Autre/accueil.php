@@ -177,7 +177,7 @@ require_once __DIR__ . '/../../Controller/contrAccueil.php';
         <?php endif; ?>
 
         <div class="eg-home-events-btn-row">
-          <a href="evenement.php" class="eg-home-section-btn">
+          <a href="../event/evenement.php" class="eg-home-section-btn">
             Voir tous les évènements
           </a>
         </div>
