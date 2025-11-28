@@ -22,7 +22,7 @@ $GLOBALS['permissions'] = [
 ];
 
 function getCurrentUserRole() {
-    return $_SESSION['idRole'] ?? 6;
+    return $_SESSION['idRole'] ?? 5;
 }
 
 

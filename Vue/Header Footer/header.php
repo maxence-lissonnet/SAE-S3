@@ -118,23 +118,15 @@ if (session_status() != 2) {
           'statistiques' => '../Autre/stats.php',
           'communication' => '../Communication/pagecom.php',
           'rapports' => '../Autre/rapports.php',
-          'catalogue' => '../Vue/catalogue.php',
-          'points-collecte' => '../Vue/points-collecte.php',
-          'signalements' => '../Vue/signalement.php',
-          'evenements' => '../Vue/evenements.php',
+          'catalogue' => '../Objet/CatalogueArticleVue.php',
+          'points-collecte' => '../autre/carteVue.php',
+          'signalements' => '../signalement.php',
+          'evenements' => '../Event/evenement.php',
           'donner' => '../Vue/donner.php',
-          'gestion-demandes' => '../Vue/gestion-demandes.php',
           'donnees-recyclage' => '../Vue/donnees-recyclage.php',
-          'historique' => '../Vue/historique.php',
-          'inventaire' => '../Vue/inventaire.php',
           'demande-objets' => '../Vue/demande-objets.php',
-          'conseils-recyclage' => '../Vue/conseils-recyclage.php',
-          'echanges' => '../Vue/echanges.php',
+          'conseils-recyclage' => '../Autre/conseil.php',
           'recyclage' => '../Vue/recyclage.php',
-          'suivi-publications' => '../Vue/suivi-publications.php',
-          'parametrage' => '../Vue/parametrage.php',
-          'traçage-activites' => '../Vue/traçage-activites.php',
-          'gestion-comptes' => '../Vue/gestion-comptes.php'
         ];
 
         // 2. Définition des tags <img> des logos (Clé -> Tag HTML)
