@@ -1,6 +1,6 @@
 <?php
-require '../Header Footer/header.php';
-require '../../Controller/pageCarteController.php';
+require_once __DIR__ . '/../Header Footer/header.php';
+require_once __DIR__ . '/../../Controller/pageCarteController.php';
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +43,10 @@ require '../../Controller/pageCarteController.php';
     </script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="../../Asset/js/map.js"></script>
+
+<?php
+require_once __DIR__ . '/../Header Footer/footer.php';
+?>
 </body>
 
 </html>

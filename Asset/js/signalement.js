@@ -18,7 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    imageUploadArea.addEventListener('click', () => {
+    imageUploadArea.addEventListener('click', (e) => {
+        // Prevent the label's default behavior which might be causing a double-trigger.
+        e.preventDefault();
+        // Trigger the file input click programmatically.
         imageUploadInput.click();
     });
 
@@ -50,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             imageName.textContent = file.name;
             imageSize.textContent = `${(file.size / 1024).toFixed(1)} KB`;
             
-            imageUploadArea.style.display = 'none';
+            imageUploadArea.classList.add('hidden-by-js');
             imagePreviewContainer.style.display = 'block';
         };
         reader.readAsDataURL(file);
@@ -65,6 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         imageUploadInput.value = ''; // Important pour pouvoir re-sélectionner le même fichier
         imagePreview.src = '#';
         imagePreviewContainer.style.display = 'none';
-        imageUploadArea.style.display = 'flex'; // ou 'block' selon votre CSS
+        imageUploadArea.classList.remove('hidden-by-js');
     }
 });
