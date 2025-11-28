@@ -168,4 +168,12 @@ function get_obj_by_id(int $id) {
     $stmt->execute([':id' => $id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
+function get_number_of_objects() {
+    $bdd = get_bdd();
+    $query = $bdd->query('SELECT COUNT(*) AS total FROM objet');
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    return $result['total'];
+}
+
 ?>
