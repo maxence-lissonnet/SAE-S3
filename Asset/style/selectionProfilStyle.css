@@ -1,0 +1,103 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("../image/Background/BackgroundSelecProfil.png");
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.eg-footer-socials {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 18px;
+}
+
+.eg-footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eg-footer-socials img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.formBox {
+    /*TAILLE ET COULEURS*/
+    width: 439px;
+    height: 485px;
+    background-color: white;
+    border-radius: 30px;
+    gap: 22px;
+
+    /*ALIGNEMENTS*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 80px;
+
+    /*FORMATAGE DU TEXTE*/
+    font-family: 'DM Sans', sans-serif;
+    color: #44474E;
+    font-size: 10px;
+}
+
+.logoUniv {
+    width: 180px;
+    height: auto;
+}
+
+.boutons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#etu,
+#personnel {
+    background-color: #D4451B;
+    color: white;
+    width: 326px;
+    height: 50px;
+    font-size: 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    border-radius: 30px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    /* centre horizontalement */
+    align-items: center;
+    /* centre verticalement */
+    text-decoration: none;
+}
+
+#visit {
+    background-color: #555555;
+    color: white;
+    width: 326px;
+    height: 50px;
+    font-size: 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    border-radius: 30px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    /* centre horizontalement */
+    align-items: center;
+    /* centre verticalement */
+    text-decoration: none;
+}

@@ -1,0 +1,189 @@
+/* Page détail communication */
+
+.eg-com-full-page {
+  padding: 24px 40px 40px;
+  background: #ffffff;   /* fond page en blanc (aligné avec les autres pages) */
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+
+.eg-com-full-container {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px 32px 32px;
+}
+
+.eg-com-full-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.eg-com-full-title {
+  margin: 0 0 4px;
+  font-size: 26px;
+}
+
+.eg-com-full-meta {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Bloc des actions (Modifier / Supprimer) */
+
+.eg-com-full-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.eg-com-delete-form {
+  margin: 0;
+}
+
+/* Style commun des gros boutons type "Appliquer les filtres" */
+
+.eg-com-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 26px;
+  border-radius: 999px;
+  min-width: 260px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* Primaire : orange (comme "Appliquer les filtres") */
+
+.eg-com-action-primary {
+  background: #D4451B;    /* même orange que les autres éléments du site */
+  color: #ffffff;
+}
+
+.eg-com-action-primary:hover {
+  filter: brightness(0.95);
+}
+
+/* Secondaire : gris clair (comme "Supprimer les filtres") */
+
+.eg-com-action-secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.eg-com-action-secondary:hover {
+  filter: brightness(0.96);
+}
+
+/* Corps de la page */
+
+.eg-com-full-body {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 24px;
+  margin-top: 12px;
+}
+
+.eg-com-full-article {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.eg-com-full-side {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.eg-com-full-illustration {
+  width: 260px;
+  height: 260px;
+  border-radius: 32px;
+  background: radial-gradient(circle at 30% 20%, #60a5fa, #111827);
+}
+
+/* Bloc retour / lien simple */
+
+.eg-com-back-link {
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+.eg-com-back-link a {
+  color: #111827;
+  text-decoration: none;
+}
+
+.eg-com-back-link a:hover {
+  text-decoration: underline;
+}
+
+/* Bouton secondaire générique (cohérent avec les autres fichiers) */
+
+.eg-btn-secondary {
+  border-radius: 999px;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  background: #e5e7eb;
+}
+
+/* Page liste communications (si jamais utilisée par cette feuille) */
+
+.eg-com-page {
+  padding: 24px 40px 40px;
+  background: #ffffff;
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+
+/* Bouton retour */
+
+.eg-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  margin-bottom: 20px;
+  border-radius: 999px;
+  background: #D4451B;          /* orange bien visible */
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.eg-back-btn:hover {
+  filter: brightness(0.9);
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+  .eg-com-full-body {
+    grid-template-columns: 1fr;
+  }
+
+  .eg-com-full-side {
+    justify-content: center;
+  }
+
+  .eg-com-full-actions {
+    align-items: stretch;
+  }
+
+  .eg-com-action-btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
