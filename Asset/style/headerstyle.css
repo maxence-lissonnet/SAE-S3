@@ -226,3 +226,16 @@ font-family: "DM Sans", sans-serif;
 .eg-menu-compte a:hover {
   background: #d0d0d0;
 }
+
+.logo-icon{
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.logo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
