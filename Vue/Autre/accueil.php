@@ -1,6 +1,6 @@
 <?php
 // Vue/accueil.php
-require_once __DIR__ . '/../../Controller/contrAccueil.php';
+require_once __DIR__ . '/../../Controller/Autre/contrAccueil.php';
 ?>
 <link rel="stylesheet" href="../../Asset/style/accueilstyle.css">
 <?php require __DIR__ . '/../Header Footer/header.php'; ?>
