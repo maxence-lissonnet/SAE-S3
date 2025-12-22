@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-image: url("../image/Background/BackgroundSelecProfil.png");
 
@@ -10,18 +14,174 @@ body {
 .container {
     background-color: white;
     width: calc(100vw - 120px);
-    height: calc(100vh - 120px);
+    height: calc(100vh - 60px);
     display: flex;
-    align-items: center;
     border-radius: 30px;
     margin: 73px auto 73px auto;
 }
 
 .contenu {
     margin-left: 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 #iconeDon {
     width: 40px;
     height: 40px;
+}
+
+.titrePage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: 30px 0px;
+}
+
+.input-field {
+    border: solid 3px #44474E;
+    border-radius: 30px;
+    width: 287px;
+    height: 46px;
+    font-family: 'DM Sans', sans-serif;
+    font-style: italic;
+    font-size: 14px;
+    font-weight: 700;
+    color: #44474E;
+    padding-left: 10px;
+    -webkit-appearance: none;
+    background-image: url("../image/dons/arrow.svg");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.textBox {
+    border: solid 3px #44474E;
+    border-radius: 30px;
+    height: 46px;
+    width: 287px;
+    font-family: 'DM Sans', sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    color: #44474E;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.idText {
+    font-weight: bold;
+    margin: 0;
+}
+
+.champ {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    gap: 63px
+}
+
+#description {
+    resize: none;
+    height: 144px;
+    padding: 10px 10px 15px 15px;
+}
+
+input[type=file] {
+    display: none;
+}
+
+.chooser {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    background-color: #D4451B;
+    color: white;
+    padding: 5px 0px 5px 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: solid 4px transparent;
+    transition: all 0.25s ease;
+}
+
+.chooser:hover {
+    border-color: black;
+}
+
+.preview {
+    color: #44474E;
+    font-weight: bold;
+    width: 287px;
+    height: 73px;
+
+    /* 1. L'astuce pour que la barre ne sorte pas des arrondis */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /* 2. Ajoute un peu de marge interne pour que la barre ne touche pas le bord */
+    padding: 10px;
+
+    /* 3. Style visuel */
+    border: solid 3px #44474E;
+    border-radius: 30px;
+    /* Un arrondi plus petit que le container global */
+    background-color: #f9f9f9;
+}
+
+.preview p {
+    margin: 5px;
+}
+
+.text-error {
+    color: #D4451B;
+}
+
+.preview::-webkit-scrollbar {
+    width: 16px;
+    /* On l'élargit un peu pour inclure l'espace */
+}
+
+/* Le bouton que l'on fait défiler */
+.preview::-webkit-scrollbar-thumb {
+    background-color: #D4451B;
+    border-radius: 10px;
+    /* L'astuce : une bordure épaisse et transparente crée le vide à droite */
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+}
+
+.preview::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+#boutonPublier {
+    background-color: #44474E;
+    color: rgb(245, 229, 229);
+    height: 50px;
+    font-size: 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+    margin-top: 118px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+#boutonPublier:hover {
+    background-color: #D4451B;
+    border: solid 4px black;
 }
