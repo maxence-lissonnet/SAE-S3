@@ -28,11 +28,12 @@ require __DIR__ . '/../../Controller/Objet/donController.php';
                 <div class="col">
                     <div class="champ">
                         <p class="idText">Nom de l'objet<span style="color: #D4451B;">*</span> - <span id="compteurNom" style="font-size: 12px; color: #44474E; text-align: right; font-weight:bold;">0 / 150</span></p>
-                        <input type="text" name="id" id="nomObjet" class="textBox" maxlength="150" required>
+                        <input type="text" name="nom" id="nomObjet" class="textBox" maxlength="150" required>
                     </div>
                     <div class="champ">
                         <p class="idText">Catégorie<span style="color: red;">*</span></p>
                         <select name="categorie" class="input-field" required>
+                            <option value="" selected disabled>------</option>
                             <?php foreach ($categories as $categorie): ?>
                                 <option class='valeur-option' value="<?php echo htmlspecialchars($categorie['idCategorie']); ?>">
                                     <?php echo htmlspecialchars($categorie['nomCategorie']); ?>
@@ -43,6 +44,7 @@ require __DIR__ . '/../../Controller/Objet/donController.php';
                     <div class="champ">
                         <p class="idText">État<span style="color: red;">*</span></p>
                         <select name="etat" class="input-field" required>
+                            <option value="" selected disabled>------</option>
                             <?php foreach ($etats as $etat): ?>
                                 <option class='valeur-option' value="<?php echo htmlspecialchars($etat['idEtatObjet']); ?>" ?>
                                     <?php echo htmlspecialchars($etat['nomEtatObjet']); ?>
@@ -57,7 +59,7 @@ require __DIR__ . '/../../Controller/Objet/donController.php';
                             <span>CHARGER DES IMAGES</span>
                             <span id="fileName"></span>
                         </label>
-                        <input type="file" id="fileInput" accept=".png, .jpg, .jpeg" multiple="true" required>
+                        <input type="file" id="fileInput" name="files" accept=".png, .jpg, .jpeg" multiple="true" required>
                     </div>
                 </div>
                 <div class="col">
@@ -83,11 +85,32 @@ require __DIR__ . '/../../Controller/Objet/donController.php';
                         <input type="text" name="mesures" id="mesures" class="textBox">
                     </div>
                     <div class="champ">
+                        <p class="idText">Lieu de retrait<span style="color: red;">*</span></p>
+                        <select name="lieuRetrait" class="input-field" id="lieuRetrait-field" required>
+                            <option value="" selected disabled>------</option>
+                            <?php foreach ($locations as $location): ?>
+                                <option class='valeur-option' value="<?php echo htmlspecialchars($location['idLieuRetrait']); ?>">
+                                    <?php echo htmlspecialchars($location['nomLieuRetrait']); ?>
+                                    - <?php echo htmlspecialchars($location['adresseLieuRetrait']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="champ">
                         <input type="submit" value="PUBLIER" id="boutonPublier">
                     </div>
                 </div>
             </form>
         </div>
+        <?php if (isset($_SESSION['message'])): ?>
+            <dialog id="popup" class="modal">
+                <div class="modal-content">
+                    <p><?php echo $_SESSION['message']; ?></p>
+                    <button onclick="this.closest('dialog').close()">FERMER</button>
+                </div>
+            </dialog>
+            <?php unset($_SESSION['message']) ?>
+        <?php endif; ?>
     </div>
     <script src="../../Asset/js/don.js"></script>
 </body>

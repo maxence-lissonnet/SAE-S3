@@ -14,4 +14,12 @@ function get_dates()
     return array($date->format('Y-m-d'), $limitDate->format('Y-m-d'));
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST)) {
+    if (add_object()) {
+        $_SESSION['message'] = "<strong>L'objet a bien été publié !</strong></br><em>Retrouvez le dans la page des Dons actifs.</em>";
+    } else {
+        $_SESSION['message'] = "<strong>Erreur d'insertion dans la base de données !</strong>";
+    }
+}
+
 $dates = get_dates();

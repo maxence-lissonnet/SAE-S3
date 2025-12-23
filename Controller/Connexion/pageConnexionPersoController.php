@@ -130,6 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if ($msgAcces === true) {
             $user_info = get_user_info();
             session_start();
+            $_SESSION['idUser'] = $user_info['IdUser'];
             $_SESSION['prenom'] = $user_info['prenomUser'];
             $_SESSION['role'] = $user_info['role'];
             $_SESSION['nom'] = $user_info['nomUser'];

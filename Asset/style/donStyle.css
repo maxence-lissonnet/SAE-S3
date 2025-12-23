@@ -18,12 +18,14 @@ body {
     display: flex;
     border-radius: 30px;
     margin: 73px auto 73px auto;
+    min-width: 1150px
 }
 
 .contenu {
-    margin-left: 40px;
     display: flex;
     flex-direction: column;
+    padding: 0 40px;
+    width: 100%;
 }
 
 #iconeDon {
@@ -42,7 +44,7 @@ body {
 .input-field {
     border: solid 3px #44474E;
     border-radius: 30px;
-    width: 287px;
+    width: 350px;
     height: 46px;
     font-family: 'DM Sans', sans-serif;
     font-style: italic;
@@ -60,7 +62,7 @@ body {
     border: solid 3px #44474E;
     border-radius: 30px;
     height: 46px;
-    width: 287px;
+    width: 350px;
     font-family: 'DM Sans', sans-serif;
     font-style: italic;
     font-weight: 700;
@@ -89,7 +91,8 @@ body {
 .form {
     display: flex;
     flex-direction: row;
-    gap: 63px
+    justify-content: space-between;
+    width: 100%;
 }
 
 #description {
@@ -99,7 +102,7 @@ body {
 }
 
 input[type=file] {
-    display: none;
+    opacity: 0;
 }
 
 .chooser {
@@ -124,20 +127,13 @@ input[type=file] {
 .preview {
     color: #44474E;
     font-weight: bold;
-    width: 287px;
+    width: 350px;
     height: 73px;
-
-    /* 1. L'astuce pour que la barre ne sorte pas des arrondis */
     overflow-y: auto;
     overflow-x: hidden;
-
-    /* 2. Ajoute un peu de marge interne pour que la barre ne touche pas le bord */
     padding: 10px;
-
-    /* 3. Style visuel */
     border: solid 3px #44474E;
     border-radius: 30px;
-    /* Un arrondi plus petit que le container global */
     background-color: #f9f9f9;
 }
 
@@ -174,7 +170,7 @@ input[type=file] {
     font-size: 18px;
     font-family: 'DM Sans', sans-serif;
     font-weight: bold;
-    margin-top: 118px;
+    margin-top: 20px;
     border-radius: 30px;
     border: none;
     cursor: pointer;
@@ -184,4 +180,52 @@ input[type=file] {
 #boutonPublier:hover {
     background-color: #D4451B;
     border: solid 4px black;
+}
+
+
+
+.modal {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    margin: 0;
+    border: 5px solid #44474E;
+    width: 400px;
+
+    background: #282F63;
+    color: white;
+    padding: 20px;
+    border-radius: 30px;
+    z-index: 2000;
+}
+
+/* L'arrière-plan flouté/sombre */
+.modal::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+.modal button {
+    margin-top: 20px;
+    border: 3px solid #44474E;
+    font-weight: bold;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    background-color: #44474E;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    height: 40px;
+    width: 100px;
+}
+
+.modal button:hover {
+    background-color: #D4451B;
+    border-color: black;
+}
+
+#lieuRetrait-field {
+    padding-right: 40px;
 }

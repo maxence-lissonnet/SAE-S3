@@ -45,6 +45,7 @@ inputDescription.addEventListener('input', () => {
 var input = document.querySelector("#fileInput");
 var preview = document.querySelector(".preview");
 var fileTypes = ["image/jpeg", "image/jpg", "image/png"];
+preview.style.borderRadius = '30px';
 
 input.addEventListener('change', updateImageDisplay);
 
@@ -59,6 +60,7 @@ function updateImageDisplay() {
         var para = document.createElement("p");
         para.textContent = "Pas de fichier sélectionné";
         preview.appendChild(para);
+        preview.style.borderRadius = '30px';
     } else {
         var list = document.createElement("p");
         preview.appendChild(list);
@@ -91,6 +93,7 @@ function updateImageDisplay() {
             }
             list.appendChild(listItem);
         }
+        preview.style.borderRadius = '30px 0 0 30px';
     }
 }
 
@@ -112,4 +115,7 @@ function returnFileSize(number) {
     } else if (number >= 1048576) {
         return (number / 1048576).toFixed(1) + " Mo";
     }
-}
+};
+
+const popup = document.getElementById("popup");
+popup.showModal();

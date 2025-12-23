@@ -90,6 +90,7 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #555;
+  text-align: right;
 }
 
 /* Boutons icônes */
