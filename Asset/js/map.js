@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <h2 class="nomLieu">${place.nom}</h2>
                     <p><i>${place.adr}</i></p>
                 </div>
-                <a class="itineraireImg" href="https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=${place.lat},${place.long}"><img src="../../Asset/image/logo/itineraire.png"></a>
+                <a class="itineraireImg" href="https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=${place.lat},${place.long}"><img src="/SAE-S3/Asset/image/logo/itineraire.png"></a>
             </div>
         `;
             liste.appendChild(div);
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateInfos(visibles);
 
         // optionnel : envoyer au serveur
-        fetch("../Controller/pageCarteController.php", {
+        fetch("Controller/pageCarteController.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(visibles)

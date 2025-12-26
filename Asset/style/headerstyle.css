@@ -21,6 +21,7 @@ body {
   font-family: 'DM Sans', sans-serif;
   font-weight: bolder;
   justify-content: space-between;
+  z-index: 1000;
 }
 
 /* Partie gauche : logo + nom appli */

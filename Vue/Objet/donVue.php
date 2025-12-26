@@ -1,7 +1,5 @@
 <?php
-require '../Header Footer/header.php';
-require __DIR__ . '/../../Controller/Objet/donController.php';
-?>
+require __DIR__ . '/../Header Footer/header.php'; ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,7 +8,7 @@ require __DIR__ . '/../../Controller/Objet/donController.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Don - EcoGestUM</title>
-    <link rel="stylesheet" href="../../Asset/style/donStyle.css">
+    <link rel="stylesheet" href="/SAE-S3/Asset/style/donStyle.css">
 
     <!-- Inclusion des polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +19,8 @@ require __DIR__ . '/../../Controller/Objet/donController.php';
 <body>
     <div class="container">
         <div class="contenu">
-            <div class="titrePage"><img id="iconeDon" src="../../Asset/image/dons/recyclage.png">
+            <div class="titrePage">
+                <img id="iconeDon" src="/SAE-S3/Asset/image/dons/recyclage.png">
                 <h1 style="font-size: 24px;">Donner</h1>
             </div>
             <form method="POST" class="form">
@@ -55,7 +54,7 @@ require __DIR__ . '/../../Controller/Objet/donController.php';
                     <div class="champ">
                         <p class="idText">Images (.png/.jpg/.jpeg)<span style="color: #D4451B;">*</span></p>
                         <label for="fileInput" class="chooser">
-                            <span class="material-icons"><img src="../../Asset/image/dons/cloud.svg"></span>
+                            <span class="material-icons"><img src="/SAE-S3/Asset/image/dons/cloud.svg"></span>
                             <span>CHARGER DES IMAGES</span>
                             <span id="fileName"></span>
                         </label>
@@ -112,7 +111,7 @@ require __DIR__ . '/../../Controller/Objet/donController.php';
             <?php unset($_SESSION['message']) ?>
         <?php endif; ?>
     </div>
-    <script src="../../Asset/js/don.js"></script>
+    <script src="/SAE-S3/Asset/js/don.js"></script>
 </body>
 
 </html>

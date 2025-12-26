@@ -1,0 +1,11 @@
+.title {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    color: #44474E;
+    margin: 10px 0 30px 30px;
+}
+
+#coeur {
+    width: 45px;
+}

@@ -8,12 +8,12 @@ if (session_status() != 2) {
 <head>
   <meta charset="UTF-8">
   <title>EcoGestUM</title>
-  <link rel="icon" href="../../Asset/image/logo/favicon.ico">
+  <link rel="icon" href="/SAE-S3/Asset/image/logo/favicon.ico">
 
   <!-- Feuilles de style globales -->
-  <link rel="stylesheet" href="../../Asset/style/headerstyle.css">
-  <link rel="stylesheet" href="../../Asset/style/footerstyle.css">
-  <link rel="stylesheet" href="../../Asset/style/popup.css">
+  <link rel="stylesheet" href="/SAE-S3/Asset/style/headerstyle.css">
+  <link rel="stylesheet" href="/SAE-S3/Asset/style/footerstyle.css">
+  <link rel="stylesheet" href="/SAE-S3/Asset/style/popup.css">
 
   <!-- Inclusion des polices -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,7 @@ if (session_status() != 2) {
     <div class="eg-header-left">
       <div class="eg-logo-um">
         <!-- logo université -->
-        <a href="../Autre/accueil.php"><img src="../../Asset/image/header/univ.png" alt="Le Mans Université"></a>
+        <a href="../Autre/accueil.php"><img src="/SAE-S3/Asset/image/header/univ.png" alt="Le Mans Université"></a>
 
       </div>
       <div class="eg-header-separator"></div>
@@ -44,12 +44,12 @@ if (session_status() != 2) {
 
       <!-- icône profil -->
       <button class="eg-icon-btn" aria-label="Profil">
-        <img src="../../Asset/image/header/profile.png" alt="Profil" class="eg-icon-img">
+        <img src="/SAE-S3/Asset/image/header/profile.png" alt="Profil" class="eg-icon-img">
       </button>
 
       <!-- icône cloche -->
       <button class="eg-icon-btn eg-notif-btn" aria-label="Notifications">
-        <img src="../../Asset/image/header/cloche.png" alt="Notifications" class="eg-icon-img">
+        <img src="/SAE-S3/Asset/image/header/cloche.png" alt="Notifications" class="eg-icon-img">
         <span class="eg-notif-badge">2</span>
       </button>
 

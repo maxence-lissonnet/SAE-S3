@@ -1,6 +1,5 @@
 <?php
-require __DIR__ . '/../../Model/DonModel.php';
-
+require_once __DIR__ . '/../../Model/DonModel.php';
 // Valeurs par défaut
 $categories = get_categories();
 $locations = get_locations();
@@ -23,3 +22,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST)) {
 }
 
 $dates = get_dates();
+
+require __DIR__ . "/../../Vue/Objet/donVue.php";

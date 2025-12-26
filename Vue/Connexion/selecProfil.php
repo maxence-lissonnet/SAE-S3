@@ -21,7 +21,7 @@
         <h1>Choisissez un profil</h1>
         <div class="boutons">
             <a id="etu" href="Vue/Connexion/pageConnEtu.php">Étudiant</a>
-            <a id="personnel" href="Vue/Connexion/pageConnPersonnel.php">Personnel</a>
+            <a id="personnel" href="index.php?page=ConnexionPerso">Personnel</a>
             <a id="visit">Visiteur</a>
         </div>
         <div class="eg-footer-socials">

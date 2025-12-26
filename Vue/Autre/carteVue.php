@@ -1,7 +1,5 @@
 <?php
-session_start();
-require '../Header Footer/header.php';
-require '../../Controller/pageCarteController.php';
+require_once __DIR__ . '/../Header Footer/header.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +9,7 @@ require '../../Controller/pageCarteController.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Points de collecte</title>
-    <link rel="stylesheet" href="../../Asset/style/carteStyle.css">
+    <link rel="stylesheet" href="/SAE-S3/Asset/style/carteStyle.css">
 
     <!-- Inclusion des polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +22,7 @@ require '../../Controller/pageCarteController.php';
 
 <body>
     <div class="title">
-        <img id="pin" src="../../Asset/image/logo/epingle.png">
+        <img id="pin" src="/SAE-S3/Asset/image/logo/epingle.png">
         <h1>Points de collecte</h1>
     </div>
 
@@ -42,7 +40,7 @@ require '../../Controller/pageCarteController.php';
         const lieux = <?php echo json_encode($lieux) ?>;
     </script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="../../Asset/js/map.js"></script>
+    <script src="/SAE-S3/Asset/js/map.js"></script>
 </body>
 
 </html>

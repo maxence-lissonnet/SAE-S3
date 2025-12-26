@@ -137,8 +137,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $_SESSION['tel'] = $user_info['telUser'];
             $_SESSION['adr'] = $user_info['adrUser'];
             $_SESSION['mail'] = $user_info['emailUser'];
-            header('Location: ../../Vue/Autre/politique.php');
+            header('Location: index.php?page=Don');
             exit;
         }
     }
 }
+
+require __DIR__ . '/../../Vue/Connexion/pageConnPersonnel.php';
