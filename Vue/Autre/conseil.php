@@ -1,8 +1,4 @@
-<?php
-// Vue/conseil.php
-// Page de conseils recyclage (statique pour l’instant)
-?>
-<link rel="stylesheet" href="../../Asset/style/conseilstyle.css">
+<link rel="stylesheet" href="Asset/style/conseilstyle.css">
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
 <main class="eg-tips-page">
@@ -19,7 +15,7 @@
 
     <div class="eg-tips-hero-right">
       <!-- Mets l’image que tu veux ici -->
-      <img src="../../Asset/image/conseil/main.png"
+      <img src="Asset/image/conseil/main.png"
            alt="Objets du quotidien prêts à être recyclés"
            class="eg-tips-main-img">
     </div>
@@ -98,7 +94,7 @@
 
       <div class="eg-tips-logos">
         <!-- remplace les src par tes vraies images si tu en as -->
-        <img src="../../Asset/image/conseil/tri.png" alt="Pictogramme réemploi">
+        <img src="Asset/image/conseil/tri.png" alt="Pictogramme réemploi">
        
       </div>
     </aside>

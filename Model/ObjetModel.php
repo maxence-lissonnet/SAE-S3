@@ -1,19 +1,10 @@
 <?php
 
-function get_bdd(){
-    $hostname = 'localhost';
-    $user = 'root';
-    $password = '';
-    $db_name = 'ecogestum';
+require_once __DIR__ . '/BDDModel.php';
 
-    $dsn = "mysql:host=$hostname;dbname=$db_name;charset=utf8mb4";
-    $pdo =  new PDO($dsn, $user, $password);
-
-    return $pdo;
-}
 
 function get_obj(){
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->query('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
                         etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
@@ -24,28 +15,28 @@ function get_obj(){
 }
 
 function get_categories(){
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->query('SELECT DISTINCT * FROM categorie');
     $categories = $query->fetchAll(PDO::FETCH_ASSOC);
     return $categories;
 }
 
 function get_locations(){
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->query('SELECT DISTINCT adresseLieuRetrait FROM lieu_retrait');
     $locations = $query->fetchAll(PDO::FETCH_ASSOC);
     return $locations;
 }
 
 function get_etat(){
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->query('SELECT DISTINCT nomEtatObjet FROM etat_objet');
     $states = $query->fetchAll(PDO::FETCH_ASSOC);
     return $states;
 }
 
 function filter_articles_categorie($categorie){
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->prepare('SELECT  objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
                         etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
@@ -60,7 +51,7 @@ function filter_articles_categorie($categorie){
 }
 
 function filter_articles_localisation($localisation){
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->prepare('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
                         etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
@@ -75,7 +66,7 @@ function filter_articles_localisation($localisation){
 }
 
 function filter_articles_etat($etat){
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->prepare('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
                         etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
@@ -90,7 +81,7 @@ function filter_articles_etat($etat){
 }
 
 function filter_articles_categorie_localisation($categorie, $localisation){
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->prepare('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
                         etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
@@ -106,7 +97,7 @@ function filter_articles_categorie_localisation($categorie, $localisation){
 }
 
 function filter_articles_categorie_etat($categorie, $etat){
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->prepare('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
                         etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
@@ -122,7 +113,7 @@ function filter_articles_categorie_etat($categorie, $etat){
 }
 
 function filter_articles_localisation_etat($localisation, $etat){
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->prepare('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
                         etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
@@ -138,7 +129,7 @@ function filter_articles_localisation_etat($localisation, $etat){
 }
 
 function filter_articles_all($categorie, $localisation, $etat){
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->prepare('SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, lieu_retrait.adresseLieuRetrait, 
                         etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser FROM objet 
                         INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
@@ -156,7 +147,7 @@ function filter_articles_all($categorie, $localisation, $etat){
 }
 
 function get_obj_by_id(int $id) {
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $sql = "SELECT objet.idObjet, objet.nomObjet, objet.imageObjet, objet.mesureObjet, objet.dateDispoObjet, objet.descriptionObjet, lieu_retrait.adresseLieuRetrait, 
             lieu_retrait.coordonneesLieuRetrait, etat_objet.nomEtatObjet, utilisateur.nomUser, utilisateur.prenomUser, categorie.nomCategorie FROM objet 
             INNER JOIN utilisateur ON utilisateur.IdUser = objet.idUser 
@@ -170,7 +161,7 @@ function get_obj_by_id(int $id) {
 }
 
 function get_number_of_objects() {
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->query('SELECT COUNT(*) AS total FROM objet');
     $result = $query->fetch(PDO::FETCH_ASSOC);
     return $result['total'];

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../Asset/style/eventstyle.css">
+<link rel="stylesheet" href="Asset/style/eventstyle.css">
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
 <main class="eg-event-page">

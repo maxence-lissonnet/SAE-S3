@@ -1,35 +1,12 @@
 <?php
-// Model/modEven.php
-
-/**
- * Connexion PDO à la base EcoGestUM
- */
-
-function getPDO(): PDO
-{
-    $host    = 'localhost';
-    $db      = 'EcoGestUM';
-    $user    = 'root';      // adapte si besoin
-    $pass    = '';          // adapte si besoin
-    $charset = 'utf8mb4';
-
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-
-    $options = [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES   => false,
-    ];
-
-    return new PDO($dsn, $user, $pass, $options);
-}
+require_once __DIR__ . '/BDDModel.php';
 
 /**
  * Tous les types d'évènements (pour les listes déroulantes).
  */
 function getAllEventTypes(): array
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
     $sql = "SELECT idTypeEvent, nomTypeEvent
             FROM TYPE_EVENEMENT
             ORDER BY nomTypeEvent";
@@ -45,7 +22,7 @@ function getAllEventTypes(): array
  */
 function getEventsFiltered(?int $idTypeEvent, ?string $dateFilter, ?string $lieuSearch): array
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
 
     $sql = "SELECT evenement.idEvent, evenement.nomEvent, evenement.descEvent, evenement.dateEvent,
                    evenement.lieuEvent, evenement.heureDebEvent, evenement.heureFinEvent, type_evenement.nomTypeEvent,
@@ -108,7 +85,7 @@ function getEventsFiltered(?int $idTypeEvent, ?string $dateFilter, ?string $lieu
  */
 function getEventsForMonth(string $yearMonth, ?int $idTypeEvent, ?string $lieuSearch): array
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
 
     $sql = "SELECT DISTINCT evenement.dateEvent
             FROM EVENEMENT 
@@ -143,7 +120,7 @@ function getEventsForMonth(string $yearMonth, ?int $idTypeEvent, ?string $lieuSe
  */
 function getEventById(int $idEvent): ?array
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
     $sql = "SELECT evenement.idEvent, evenement.nomEvent, evenement.descEvent, evenement.dateEvent,
             evenement.lieuEvent, evenement.heureDebEvent, evenement.heureFinEvent, evenement.idTypeEvent
             FROM EVENEMENT 
@@ -160,7 +137,7 @@ function getEventById(int $idEvent): ?array
  */
 function insertEvent(array $data): int
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
     $sql = "INSERT INTO EVENEMENT
               (nomEvent, descEvent, dateEvent, lieuEvent,
                heureDebEvent, heureFinEvent, idTypeEvent)
@@ -184,7 +161,7 @@ function insertEvent(array $data): int
  */
 function updateEvent(int $idEvent, array $data): void
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
     $sql = "UPDATE EVENEMENT
             SET nomEvent      = :nom,
                 descEvent     = :descr,
@@ -212,7 +189,7 @@ function updateEvent(int $idEvent, array $data): void
  */
 function deleteEvent(int $idEvent): void
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
     $stmt = $pdo->prepare("DELETE FROM EVENEMENT WHERE idEvent = :id");
     $stmt->execute([':id' => $idEvent]);
 }
@@ -222,7 +199,7 @@ function deleteEvent(int $idEvent): void
  */
 function getNextEvents(int $limit = 2): array
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
 
     $sql = "SELECT
                 e.idEvent,

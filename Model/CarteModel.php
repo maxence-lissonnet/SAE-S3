@@ -1,17 +1,5 @@
 <?php
-
-function get_dtb()
-{
-    $hostname = 'localhost';
-    $user = 'root';
-    $password = '';
-    $db_name = 'ecogestum';
-
-    $dsn = "mysql:host=$hostname;dbname=$db_name;utf8mb4";
-    $pdo =  new PDO($dsn, $user, $password);
-
-    return $pdo;
-}
+require_once __DIR__ . '/BDDModel.php';
 
 function get_items(string $table)
 {

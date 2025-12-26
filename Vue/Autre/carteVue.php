@@ -1,6 +1,5 @@
-<?php
-require __DIR__ . '/../../Controller/Autre/HeaderController.php'; 
-?>
+<?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -9,8 +8,8 @@ require __DIR__ . '/../../Controller/Autre/HeaderController.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Points de collecte</title>
-    <link rel="icon" href="../../Asset/image/favicon.ico">
-    <link rel="stylesheet" href="../../Asset/style/carteStyle.css">
+    <link rel="icon" href="Asset/image/favicon.ico">
+    <link rel="stylesheet" href="Asset/style/carteStyle.css">
 
     <!-- Inclusion des polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +22,7 @@ require __DIR__ . '/../../Controller/Autre/HeaderController.php';
 
 <body>
     <div class="title">
-        <img id="pin" src="../../Asset/image/logo/epingle.png">
+        <img id="pin" src="Asset/image/logo/epingle.png">
         <h1>Points de collecte</h1>
     </div>
 
@@ -41,7 +40,7 @@ require __DIR__ . '/../../Controller/Autre/HeaderController.php';
         const lieux = <?php echo json_encode($lieux) ?>;
     </script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="../../Asset/js/map.js"></script>
+    <script src="Asset/js/map.js"></script>
 </body>
 
 </html>

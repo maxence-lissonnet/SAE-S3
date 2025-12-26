@@ -1,5 +1,4 @@
 <?php
-// Vue/ajoucom.php
 
 $formErrors = $formErrors ?? [];
 $formData   = $formData   ?? [];
@@ -7,7 +6,7 @@ $typesCom   = $typesCom   ?? [];
 $roles      = $roles      ?? [];
 $editId     = $editId     ?? null;     // id de la com si on est en mode édition
 ?>
-<link rel="stylesheet" href="../../Asset/style/ajouecomstyle.css">
+<link rel="stylesheet" href="Asset/style/ajouecomstyle.css">
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
 <main class="eg-ajout-page">

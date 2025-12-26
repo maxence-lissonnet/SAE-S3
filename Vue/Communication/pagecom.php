@@ -1,15 +1,11 @@
 <?php
-// Vue/pagecom.php
-
-require_once __DIR__ . '/../../Controller/Com/ComController.php';
-
 // Sécurisation au cas où
 $comList   = $comList   ?? [];
 $typesCom  = $typesCom  ?? [];
 $idTypeCom = $idTypeCom ?? null;
 $dateCom   = $dateCom   ?? null;
 ?>
-<link rel="stylesheet" href="../../Asset/style/pagecomstyle.css">
+<link rel="stylesheet" href="Asset/style/pagecomstyle.css">
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
 <main class="eg-com-page">

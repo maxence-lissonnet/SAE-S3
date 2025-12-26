@@ -1,9 +1,5 @@
-<?php
-// Vue/notification.php
-require_once __DIR__ . '/../../Controller/NotifController.php';
-?>
-<link rel="stylesheet" href="../../Asset/style/notificationstyle.css">
-<?php require __DIR__ . '/../Header Footer/header.php'; ?>
+<link rel="stylesheet" href="Asset/style/notificationstyle.css">
+<?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
 <main class="eg-notif-page">
 

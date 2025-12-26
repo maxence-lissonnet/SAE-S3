@@ -1,5 +1,4 @@
 <?php
-require '../../Model/CarteModel.php';
 $lieux = [];
 $places = get_items('LIEU_RETRAIT');
 
