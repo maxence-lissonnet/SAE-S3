@@ -1,8 +1,6 @@
 <?php
 // Controller/contrcom.php
 
-require_once __DIR__ . '/../../Model/ComModel.php';
-
 $idTypeCom = null;
 $dateCom   = null;
 
@@ -26,3 +24,5 @@ if (isset($_GET['reset'])) {
 // Données pour la vue
 $typesCom = getAllTypeCom();
 $comList  = getCommunicationsFiltered($idTypeCom, $dateCom);
+
+require_once __DIR__ . '/../../Vue/Communication/com.php';

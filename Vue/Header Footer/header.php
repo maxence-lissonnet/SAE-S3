@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <title>EcoGestUM</title>
 
-    <link rel="stylesheet" href="../../Asset/style/headerstyle.css">
-  <link rel="stylesheet" href="../../Asset/style/footerstyle.css">
-  <link rel="stylesheet" href="../../Asset/style/popup.css">
+    <link rel="stylesheet" href="Asset/style/headerstyle.css">
+  <link rel="stylesheet" href="Asset/style/footerstyle.css">
+  <link rel="stylesheet" href=" Asset/style/popup.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,8 @@
   <header class="eg-header">
     <div class="eg-header-left">
       <div class="eg-logo-um">
-                <a href="../Autre/accueil.php">
-          <img src="../../Asset/image/header/univ.png" alt="Le Mans Université">
+                <a href="index.php?page=contrAccueil">
+          <img src="Asset/image/header/univ.png" alt="Le Mans Université">
         </a>
       </div>
       <div class="eg-header-separator"></div>
@@ -40,23 +40,23 @@
 
             <div style="position: relative;">
         <button class="eg-icon-btn" aria-label="Profil" id="profilBtn">
-                    <img src="../../Asset/image/header/profile.png" alt="Profil" class="eg-icon-img">
+                    <img src="Asset/image/header/profile.png" alt="Profil" class="eg-icon-img">
         </button>
 
                 <nav class="eg-menu-compte" id="menuCompte">
           <?php
              $menuCompteLinks = [
-              'profil' => ' ../Autre/profilVue.php',
-              'reservations' => '/../Autre/ReservationVue.php',
-              'mes-dons' => '/../Autre/MesDonsVue.php',
-              'deconnexion' => '/../Autre/deconnexion.php'
+              'profil' => ' index.php?page=ProfilController',
+              'reservations' => ' index.php?page=ReservationController',
+              'mes-dons' => ' index.php?page=MesDonsController',
+              'deconnexion' => ' index.php?page=Deconnexion'
             ];
             
             $menuCompteLogos = [
-              'profil' => '<img src="../../Asset/image/header/profile.png" alt="Profil" class="logo-icon">',
-              'reservations' => '<img src="../../Asset/image/header/panier.png" alt="Réservations" class="logo-icon" >', // À vérifier
-              'mes-dons' => '<img src="../../Asset/image/header/heart.png" alt="Mes Dons" class="logo-icon">', // À vérifier
-              'deconnexion' => '<img src="../../Asset/image/header/off.png" alt="Déconnexion" class="logo-icon">', // À vérifier
+              'profil' => '<img src="Asset/image/header/profile.png" alt="Profil" class="logo-icon">',
+              'reservations' => '<img src="Asset/image/header/panier.png" alt="Réservations" class="logo-icon" >', // À vérifier
+              'mes-dons' => '<img src="Asset/image/header/heart.png" alt="Mes Dons" class="logo-icon">', // À vérifier
+              'deconnexion' => '<img src="Asset/image/header/off.png" alt="Déconnexion" class="logo-icon">', // À vérifier
             ];
             
             // $menuItems contient les clés ('profil', 'reservations', etc.) autorisées par le rôle
@@ -78,7 +78,7 @@
       </div>
 
             <button class="eg-icon-btn eg-notif-btn" aria-label="Notifications">
-        <img src="../../Asset/image/header/cloche.png" alt="Notifications" class="eg-icon-img">
+        <img src="Asset/image/header/cloche.png" alt="Notifications" class="eg-icon-img">
         <span class="eg-notif-badge">2</span>
       </button>
 
@@ -94,34 +94,34 @@
         // 1. Définition des liens/URLs des pages (Clé -> URL)
         $allPages = [
           'statistiques' => '../Autre/stats.php',
-          'communication' => '../../Controller/Com/PageComController.php',
+          'communication' => 'index.php?page=ComController',
           'rapports' => '../Autre/rapports.php',
-          'catalogue' => '../../Controller/Objet/CatalogueArticleController.php',
-          'points-collecte' => '../../Controller/Autre/pageCarteController.php',
+          'catalogue' => 'index.php?page=CatalogueArticleController',
+          'points-collecte' => 'index.php?page=pageCarteController',
           'signalements' => '../signalement.php',
-          'evenements' => '../../Controller/Autre/eventController.php',
+          'evenements' => 'index.php?page=EventController',
           'donner' => '../Vue/donner.php',
           'donnees-recyclage' => '../Vue/donnees-recyclage.php',
           'demande-objets' => '../Vue/demande-objets.php',
-          'conseils-recyclage' => '../../Controller/Autre/ConseilrecyclageController.php',
+          'conseils-recyclage' => 'index.php?page=ConseilRecyclageController',
           'recyclage' => '../Vue/recyclage.php',
         ];
 
         // 2. Définition des tags <img> des logos (Clé -> Tag HTML)
         $allLogoPages = [
           // ATTENTION : Mettez à jour tous les chemins d'accès pour qu'ils soient valides.
-          'statistiques' => '<img src="../../Asset/image/header/graph.png" alt="Statistiques" class="logo-icon">',
-          'communication' => '<img src="../../Asset/image/header/megaphone.png" alt="Communication" class="logo-icon">',
-          'rapports' => '<img src="../../Asset/image/header/rapport.png" alt="Rapports" class="logo-icon">',
-          'catalogue' => '<img src="../../Asset/image/logo/logo catalogue.png" alt="Catalogue" class="logo-icon">',
-          'points-collecte' => '<img src="../../Asset/image/logo/epingle.png" alt="Points de collecte" class="logo-icon">',
-          'signalements' => '<img src="../../Asset/image/header/exclamation-mark.png" alt="Signalements" class="logo-icon">',
-          'evenements' => '<img src="../../Asset/image/header/calendar.png" alt="Évènements" class="logo-icon">',
-          'donner' => '<img src="../../Asset/image/header/recycle.png" alt="Donner" class="logo-icon">',
-          'donnees-recyclage' => '<img src="../../Asset/image/header/donnees-recyclage.png" alt="Données de recyclage"  class="logo-icon">',
-          'demande-objets' => '<img src="../../Asset/image/header/plus.png" alt="Demande d\'objets" class="logo-icon">',
-          'conseils-recyclage' => '<img src="../../Asset/image/header/light.png" alt="Conseils de recyclage" class="logo-icon">',
-          'recyclage' => '<img src="../../Asset/image/header/recyclage.png" alt="Recyclage" class="logo-icon">'
+          'statistiques' => '<img src="Asset/image/header/graph.png" alt="Statistiques" class="logo-icon">',
+          'communication' => '<img src="Asset/image/header/megaphone.png" alt="Communication" class="logo-icon">',
+          'rapports' => '<img src="Asset/image/header/rapport.png" alt="Rapports" class="logo-icon">',
+          'catalogue' => '<img src="Asset/image/logo/logo catalogue.png" alt="Catalogue" class="logo-icon">',
+          'points-collecte' => '<img src="Asset/image/logo/epingle.png" alt="Points de collecte" class="logo-icon">',
+          'signalements' => '<img src="Asset/image/header/exclamation-mark.png" alt="Signalements" class="logo-icon">',
+          'evenements' => '<img src="Asset/image/header/calendar.png" alt="Évènements" class="logo-icon">',
+          'donner' => '<img src="Asset/image/header/recycle.png" alt="Donner" class="logo-icon">',
+          'donnees-recyclage' => '<img src="Asset/image/header/donnees-recyclage.png" alt="Données de recyclage"  class="logo-icon">',
+          'demande-objets' => '<img src="Asset/image/header/plus.png" alt="Demande d\'objets" class="logo-icon">',
+          'conseils-recyclage' => '<img src="Asset/image/header/light.png" alt="Conseils de recyclage" class="logo-icon">',
+          'recyclage' => '<img src="Asset/image/header/recyclage.png" alt="Recyclage" class="logo-icon">'
         ];
         
         // 3. Boucle et affichage (LOGIQUE OPTIMISÉE)

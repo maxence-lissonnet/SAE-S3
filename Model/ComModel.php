@@ -1,43 +1,8 @@
 <?php
-// Model/modcom.php
+require_once __DIR__ . '/BDDModel.php';
 
-/**
- * Connexion PDO à la base EcoGestUM
- * (si getPDO existe déjà dans un autre modèle, on ne le redéfinit pas)
- */
-if (!function_exists('getPDO')) {
-
-    function getPDO(): PDO
-    {
-        $host    = 'localhost';
-        $db      = 'EcoGestUM';   // adapte si besoin
-        $user    = 'root';        // adapte si besoin
-        $pass    = '';            // adapte si besoin
-        $charset = 'utf8mb4';
-
-        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-
-        $options = [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES   => false,
-        ];
-
-        return new PDO($dsn, $user, $pass, $options);
-    }
-}
-
-/* ============================================================
-   LISTES / LECTURE
-   ============================================================ */
-
-/**
- * Tous les types de communication.
- * (nom historique utilisé dans certains contrôleurs)
- */
-function getAllComTypes(): array
-{
-    $pdo = getPDO();
+function getAllComTypes(): array{
+    $pdo = get_dtb();
     $sql = "SELECT idTypeCom, nomTypeCom
             FROM TYPE_COMMUNICATION
             ORDER BY nomTypeCom";
@@ -57,7 +22,7 @@ function getAllTypeCom(): array
  */
 function getAllRoles(): array
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
     $sql = "SELECT idRole, nomRole
             FROM ROLE
             ORDER BY nomRole";
@@ -70,7 +35,7 @@ function getAllRoles(): array
  */
 function getCommunicationsFiltered(?int $idTypeCom, ?string $dateFilter): array
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
 
     $sql = "SELECT 
                 c.idCom,
@@ -135,7 +100,7 @@ function getCommunicationsFiltered(?int $idTypeCom, ?string $dateFilter): array
  */
 function getCommunicationById(int $idCom): ?array
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
 
     $sql = "SELECT 
                 c.*,
@@ -161,7 +126,7 @@ function getCommunicationById(int $idCom): ?array
  */
 function getLastCommunications(int $limit = 3): array
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
 
     $sql = "SELECT
                 c.idCom,
@@ -191,7 +156,7 @@ function getLastCommunications(int $limit = 3): array
  */
 function insertCommunication(array $data): int
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
 
     $sql = "INSERT INTO COMMUNICATION
               (titreCom, contenuCom,
@@ -227,7 +192,7 @@ function insertCommunication(array $data): int
  */
 function updateCommunication(int $idCom, array $data): void
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
 
     $sql = "UPDATE COMMUNICATION
             SET titreCom      = :titre,
@@ -256,7 +221,7 @@ function updateCommunication(int $idCom, array $data): void
  */
 function deleteCommunication(int $idCom): void
 {
-    $pdo = getPDO();
+    $pdo = get_dtb();
     $stmt = $pdo->prepare("DELETE FROM COMMUNICATION WHERE idCom = :id");
     $stmt->execute([':id' => $idCom]);
 }

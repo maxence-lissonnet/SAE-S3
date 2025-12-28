@@ -1,4 +1,3 @@
-<?php require '../../Controller/Connexion/pageConnexionEtuController.php' ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -6,9 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion - Personnels</title>
-    <link rel="icon" href="../../Asset/image/favicon.ico">
-    <link rel="stylesheet" href="../../Asset/style/pagesConnexionStyle.css">
+    <title>Connexion - Étudiants</title>
+    <link rel="icon" href="Asset/image/favicon.ico">
+    <link rel="stylesheet" href="Asset/style/pagesConnexionStyle.css">
 
     <!-- Inclusion des polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +17,7 @@
 
 <body>
     <div class="boxForm">
-        <img id="logoUniv" src="../../Asset/image/header/univ.png">
+        <img id="logoUniv" src="Asset/image/header/univ.png">
         <h1>Connexion à ÉcoGestUM</h1>
         <p>ÉTUDIANTS</p>
         <div class="formConn">
@@ -43,7 +42,7 @@
             <?php endif ?>
         </div>
     </div>
-    <img id="imgFond" src="../../Asset/image/Background/imagePageConnexion.png">
+    <img id="imgFond" src="Asset/image/Background/imagePageConnexion.png">
 </body>
 
 </html>

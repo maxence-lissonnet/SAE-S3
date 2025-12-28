@@ -1,10 +1,9 @@
 <?php
 // Vue/com.php
-require_once __DIR__ . '/../../Controller/Com/PageComController.php';
 $com = $com ?? null;
 ?>
-<link rel="stylesheet" href="../../Asset/style/comstyle.css">
-<?php require __DIR__ . '/../Header Footer/header.php'; ?>
+<link rel="stylesheet" href="Asset/style/comstyle.css">
+<?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
 <main class="eg-com-full-page">
 

@@ -48,16 +48,16 @@
 
       <div class="eg-footer-socials">
         <a href="#" aria-label="Instagram">
-          <img src="../../Asset/image/footer/Logo Instagram.png" alt="Instagram">
+          <img src="Asset/image/footer/Logo Instagram.png" alt="Instagram">
         </a>
         <a href="#" aria-label="LinkedIn">
-          <img src="../../Asset/image/footer/Logo LinkedIn.png" alt="LinkedIn">
+          <img src="Asset/image/footer/Logo LinkedIn.png" alt="LinkedIn">
         </a>
         <a href="#" aria-label="YouTube">
-          <img src="../../Asset/image/footer/Logo YT.png" alt="YouTube">
+          <img src="Asset/image/footer/Logo YT.png" alt="YouTube">
         </a>
         <a href="#" aria-label="Facebook">
-          <img src="../../Asset/image/footer/Logo Facebook.png" alt="Facebook">
+          <img src="Asset/image/footer/Logo Facebook.png" alt="Facebook">
         </a>
       </div>
 
@@ -93,6 +93,6 @@
   </div>
 </div>
 
-<script src="../../Asset/style/popup.js"></script>
+<script src="Asset/style/popup.js"></script>
 </body>
 </html>
