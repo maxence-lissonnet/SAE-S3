@@ -1,33 +1,5 @@
 <?php
-// Controller/contrAccueil.php
 
-require_once __DIR__ . '/../../Model/EventModel.php';
-require_once __DIR__ . '/../../Model/ComModel.php'; // même modèle que pour pagecom.php
-require_once __DIR__ . '/../../Model/ObjetModel.php';
-
-
-
-$prenom = $_SESSION['prenom'] ?? 'Invité';
-$role   = $_SESSION['role'] ?? 'visiteur';
-if (!isset($userPages)) {
-    $userPages = []; 
-}
-if (!isset($prenom)) {
-    $prenom = 'Invité';
-}
-$menuItems = [
-    'accueil',
-    'carte',
-    'events',
-    'objet',
-    'communication',
-    'statistiques',
-    'profil' 
-];
-
-// ------------------------------------------------------------------
-// Compteur d’objets (pour l’instant en dur, à brancher plus tard)
-// ------------------------------------------------------------------
 $nbObjetsEnLigne = get_number_of_objects();
 
 // ------------------------------------------------------------------

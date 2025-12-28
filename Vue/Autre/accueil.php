@@ -1,8 +1,8 @@
-<?php
-// Vue/accueil.php
- ?>
+
+
 <link rel="stylesheet" href="Asset/style/accueilstyle.css">
-<?php require __DIR__ . '/../Header Footer/header.php'; ?>
+<?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
+
 <main class="eg-home-page">
 
   <!-- ========= BLOC HERO / COMPTEUR D’OBJETS ========= -->
