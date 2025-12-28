@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>EcoGestUM</title>
 
-    <link rel="stylesheet" href="Asset/style/headerstyle.css">
+  <link rel="stylesheet" href="Asset/style/headerstyle.css">
   <link rel="stylesheet" href="Asset/style/footerstyle.css">
   <link rel="stylesheet" href=" Asset/style/popup.css">
 
