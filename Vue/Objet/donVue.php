@@ -23,7 +23,7 @@ require __DIR__ . '/../Header Footer/header.php'; ?>
                 <img id="iconeDon" src="/SAE-S3/Asset/image/dons/recyclage.png">
                 <h1 style="font-size: 24px;">Donner</h1>
             </div>
-            <form method="POST" class="form">
+            <form method="POST" class="form" enctype="multipart/form-data">
                 <div class="col">
                     <div class="champ">
                         <p class="idText">Nom de l'objet<span style="color: #D4451B;">*</span> - <span id="compteurNom" style="font-size: 12px; color: #44474E; text-align: right; font-weight:bold;">0 / 150</span></p>
@@ -58,7 +58,7 @@ require __DIR__ . '/../Header Footer/header.php'; ?>
                             <span>CHARGER DES IMAGES</span>
                             <span id="fileName"></span>
                         </label>
-                        <input type="file" id="fileInput" name="files" accept=".png, .jpg, .jpeg" multiple="true" required>
+                        <input type="file" id="fileInput" name="files" accept=".png, .jpg, .jpeg" required>
                     </div>
                 </div>
                 <div class="col">
@@ -104,7 +104,7 @@ require __DIR__ . '/../Header Footer/header.php'; ?>
         <?php if (isset($_SESSION['message'])): ?>
             <dialog id="popup" class="modal">
                 <div class="modal-content">
-                    <p><?php echo $_SESSION['message']; ?></p>
+                    <p><?php echo $_SESSION['message'] ?></p>
                     <button onclick="this.closest('dialog').close()">FERMER</button>
                 </div>
             </dialog>

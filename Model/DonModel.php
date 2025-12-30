@@ -9,7 +9,7 @@ function get_bdd()
         $db_name = $_ENV['DB_NAME'];
 
         $dsn = "mysql:host=$hostname;dbname=$db_name;charset=utf8mb4";
-        $pdo =  new PDO($dsn, $user, $password);
+        $pdo = new PDO($dsn, $user, $password);
     }
 
     return $pdo;
@@ -39,10 +39,10 @@ function get_etats()
     return $states;
 }
 
-function add_object()
+function add_object($image)
 {
     $bdd = get_bdd();
     $query = $bdd->prepare('INSERT INTO OBJET(nomObjet, descriptionObjet, imageObjet, quantiteObjet, dateDispoObjet, mesureObjet, idCategorie, idLieuRetrait, idEtatObjet, idUser)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);');
-    return $query->execute([$_POST['nom'], $_POST['description'], $_POST['files'], $_POST['quantite'], $_POST['disponibilite'], $_POST['mesures'], $_POST['categorie'], $_POST['lieuRetrait'], $_POST['etat'], $_SESSION['idUser']]);
+    return $query->execute([$_POST['nom'], $_POST['description'], $image, $_POST['quantite'], $_POST['disponibilite'], $_POST['mesures'], $_POST['categorie'], $_POST['lieuRetrait'], $_POST['etat'], $_SESSION['idUser']]);
 }

@@ -1,14 +1,17 @@
 <?php
 
-function get_dtb()
+function get_bdd()
 {
-    $hostname = 'localhost';
-    $user = 'root';
-    $password = '';
-    $db_name = 'ecogestum';
+    static $pdo = null;
+    if ($pdo === null) {
+        $hostname = $_ENV['DB_HOST_NAME'];
+        $user = $_ENV['DB_USER'];
+        $password = $_ENV['DB_PASS'];
+        $db_name = $_ENV['DB_NAME'];
 
-    $dsn = "mysql:host=$hostname;dbname=$db_name;utf8mb4";
-    $pdo =  new PDO($dsn, $user, $password);
+        $dsn = "mysql:host=$hostname;dbname=$db_name;charset=utf8mb4";
+        $pdo = new PDO($dsn, $user, $password);
+    }
 
     return $pdo;
 }
@@ -58,7 +61,7 @@ function verify_data()
 
 function get_item(string $table, string $column, string $param, string $value)
 {
-    $dtb = get_dtb();
+    $dtb = get_bdd();
     if (verify_table($table) == false) {
         $query = $dtb->query('SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $param . ' = "' . $value . '"');
         $items = $query->fetch(PDO::FETCH_ASSOC);
@@ -72,7 +75,7 @@ function get_item(string $table, string $column, string $param, string $value)
 
 function verify_table(string $table): bool
 {
-    $dtb = get_dtb();
+    $dtb = get_bdd();
     $query = $dtb->query('SELECT COUNT(*)
                         FROM information_schema.tables
                         WHERE table_name = "' . $table . '";');
@@ -82,7 +85,7 @@ function verify_table(string $table): bool
 
 function get_id(string $mail)
 {
-    $dtb = get_dtb();
+    $dtb = get_bdd();
     $query = $dtb->query('SELECT idRole FROM UTILISATEUR WHERE emailUser = "' . $mail . '";');
     $rs = $query->fetch(PDO::FETCH_ASSOC);
     return ($rs['idRole'] === 6 || $rs['idRole'] === 8);
@@ -90,7 +93,7 @@ function get_id(string $mail)
 
 function get_user_info()
 {
-    $dtb = get_dtb();
+    $dtb = get_bdd();
     $query = $dtb->query('SELECT * FROM UTILISATEUR WHERE emailUser = "' . $_POST['id'] . '";');
     $items = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -104,7 +107,7 @@ function get_user_info()
 
 function change_passwords()
 {
-    $pdo = get_dtb();
+    $pdo = get_bdd();
     $q = $pdo->query("SELECT idUser, mdpUser FROM UTILISATEUR");
 
     while ($row = $q->fetch(PDO::FETCH_ASSOC)) {
