@@ -1,0 +1,178 @@
+/* --- BASE --- */
+body {
+    font-family: Arial, sans-serif;
+    /* Police standard, pas besoin d'import */
+    background-color: #f4f4f4;
+    /* Fond gris clair */
+    margin: 0;
+    color: #333;
+}
+
+/* --- NAVIGATION (HEADER) --- */
+.navbar {
+    background-color: #fff;
+    border-bottom: 3px solid #E2001A;
+    /* Rouge Le Mans Université */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #001F3F;
+    /* Bleu foncé */
+}
+
+.logo span {
+    color: #E2001A;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    background-color: #ccc;
+    border-radius: 50%;
+    /* Cercle */
+}
+
+/* --- MISE EN PAGE --- */
+.container {
+    max-width: 1000px;
+    /* Largeur max de la page */
+    margin: 30px auto;
+    /* Centré au milieu */
+    padding: 0 20px;
+}
+
+.header-titre {
+    margin-bottom: 20px;
+}
+
+/* --- CARTES (Boites blanches) --- */
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    /* Coins arrondis */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Ombre légère */
+    margin-bottom: 20px;
+}
+
+/* --- FILTRES --- */
+.filtres form {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+select,
+.btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.btn {
+    background-color: #001F3F;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #E2001A;
+    /* Change de couleur au survol */
+}
+
+.btn-outline {
+    text-decoration: none;
+    color: #001F3F;
+    border: 1px solid #001F3F;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* --- KPI (Les 4 chiffres en haut) --- */
+.grid-kpi {
+    display: flex;
+    /* Alignement horizontal */
+    gap: 20px;
+    /* Espace entre les cartes */
+    flex-wrap: wrap;
+    /* Passe à la ligne si pas de place */
+}
+
+.kpi {
+    flex: 1;
+    /* Elles prennent toutes la même largeur */
+    text-align: center;
+    min-width: 150px;
+}
+
+.kpi h3 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.kpi .valeur {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Couleurs spécifiques pour les chiffres */
+.bleu {
+    color: #001F3F !important;
+}
+
+.vert {
+    color: #28a745 !important;
+}
+
+/* --- TABLEAU --- */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Enlève les espaces entre les cellules */
+    margin-top: 10px;
+}
+
+.table th {
+    text-align: left;
+    background-color: #f8f8f8;
+    padding: 12px;
+    border-bottom: 2px solid #ddd;
+}
+
+.table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Barre de progression dans le tableau */
+.progress-bg {
+    background-color: #eee;
+    height: 8px;
+    width: 100px;
+    border-radius: 4px;
+}
+
+.progress-bar {
+    background-color: #001F3F;
+    height: 100%;
+    border-radius: 4px;
+}
