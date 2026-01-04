@@ -18,6 +18,8 @@ require_once 'Model/EventModel.php';
 require_once 'Model/NotificationModel.php';
 require_once 'Model/ObjetModel.php';
 require_once 'Model/BDDModel.php'; 
+require_once 'Model/ReservationModel.php';
+
 
 
 if (isset($_GET['page'])) {
@@ -68,6 +70,9 @@ if (isset($_GET['page'])) {
     }
     else if ($_GET['page'] === 'MesDonsController') {
         require_once 'Controller/Autre/MesDonsController.php'; 
+    }
+     else if ($_GET['page'] === 'ListReservationController') {
+        require_once 'Controller/Objet/ListReservationController.php'; 
     }
     elseif ($_GET['page'] === 'Deconnexion') {
         require_once 'Controller/ConnexionController.php';

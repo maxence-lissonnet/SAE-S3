@@ -47,7 +47,7 @@
           <?php
              $menuCompteLinks = [
               'profil' => ' index.php?page=ProfilController',
-              'reservations' => ' index.php?page=ReservationController',
+              'reservations' => ' index.php?page=ListReservationController',
               'mes-dons' => ' index.php?page=MesDonsController',
               'deconnexion' => ' index.php?page=Deconnexion'
             ];
