@@ -1,10 +1,10 @@
 <footer class="eg-footer">
   <div class="eg-footer-main">
-    
+
     <!-- Colonne gauche : logo + adresse + gros boutons -->
     <div class="eg-footer-col eg-footer-left">
       <div class="eg-footer-logo-block">
-        <img src="../../Asset/image/footer/univbl.png" alt="Le Mans Université" class="eg-footer-logo">
+        <img src="Asset/image/footer/univbl.png" alt="Le Mans Université" class="eg-footer-logo">
         <div class="eg-footer-uni-name">
         </div>
       </div>
@@ -95,4 +95,5 @@
 
 <script src="Asset/style/popup.js"></script>
 </body>
+
 </html>

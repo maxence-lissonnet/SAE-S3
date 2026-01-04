@@ -67,17 +67,17 @@ require __DIR__ . '/../../Controller/Autre/HeaderController.php' ?>
             <p class="display-text">Affichez ici les informations de l'objet.</p>
         </div>
     </div>
-    <script src="/SAE-S3/Asset/js/donsActifs.js"></script>
+    <script src="Asset/js/donsActifs.js"></script>
     <?php if (isset($_SESSION['message']) || isset($_SESSION['message2'])): ?>
         <dialog id="popup" class="modal">
             <div class="modal-content">
                 <?php if (!isset($_SESSION['message2'])): ?>
                     <p><?php echo $_SESSION['message'] ?></p>
                     <button onclick="this.closest('dialog').close()">FERMER</button>
-                    <button onclick="window.location.href='index.php?page=DonsActifs&id=<?php echo $_GET['id'] ?>&action=delete'">CONFIRMER</button>
+                    <button onclick="window.location.href='index.php?page=MesDons&id=<?php echo $_GET['id'] ?>&action=delete'">CONFIRMER</button>
                 <?php else: ?>
                     <p><?php echo $_SESSION['message2'] ?></p>
-                    <button onclick="this.closest('dialog').close();window.location.href='index.php?page=DonsActifs'">FERMER</button>
+                    <button onclick="this.closest('dialog').close();window.location.href='index.php?page=MesDons'">FERMER</button>
                 <?php endif; ?>
             </div>
         </dialog>
