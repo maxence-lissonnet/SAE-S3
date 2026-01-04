@@ -19,6 +19,8 @@ require_once 'Model/NotificationModel.php';
 require_once 'Model/ObjetModel.php';
 require_once 'Model/BDDModel.php'; 
 require_once 'Model/ReservationModel.php';
+require_once 'Model/DonsActifsModel.php';
+
 
 if (isset($_GET['page'])) {
     $page = ucfirst($_GET['page']);
@@ -66,7 +68,7 @@ if (isset($_GET['page'])) {
             require_once 'Controller/Objet/ListReservationController.php';
             break;
         case 'MesDons':
-            require_once 'Controller/Autre/MesDonsController.php';
+            require_once 'Controller/Objet/donsActifsController.php';
             break;
         case 'Rapport':
             require_once 'Controller/Com/rapport.php';

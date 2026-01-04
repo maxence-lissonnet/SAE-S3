@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/BDDModel.php';
+
 function get_bdd()
 {
     static $pdo = null;

@@ -1,5 +1,4 @@
 <?php
-require_once ROOT . '/Model/DonsActifsModel.php';
 
 $objects = get_objects($_SESSION['idUser']);
 $date = date('Y-m-d');

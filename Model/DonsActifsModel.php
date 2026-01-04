@@ -1,24 +1,9 @@
 <?php
-
-function get_bdd()
-{
-    static $pdo = null;
-    if ($pdo === null) {
-        $hostname = $_ENV['DB_HOST_NAME'];
-        $user = $_ENV['DB_USER'];
-        $password = $_ENV['DB_PASS'];
-        $db_name = $_ENV['DB_NAME'];
-
-        $dsn = "mysql:host=$hostname;dbname=$db_name;charset=utf8mb4";
-        $pdo = new PDO($dsn, $user, $password);
-    }
-
-    return $pdo;
-}
+require_once __DIR__ . '/BDDModel.php';
 
 function get_objects($user)
 {
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->query("SELECT * FROM OBJET 
     INNER JOIN LIEU_RETRAIT ON OBJET.idLieuRetrait = LIEU_RETRAIT.idLieuRetrait 
     WHERE idUser = " . $user . ";");
@@ -28,7 +13,7 @@ function get_objects($user)
 
 function get_object_by_id($id)
 {
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->query("SELECT * FROM OBJET
     INNER JOIN CATEGORIE ON CATEGORIE.idCategorie = OBJET.idCategorie
     INNER JOIN UTILISATEUR ON UTILISATEUR.IdUser = OBJET.IdUser
@@ -40,7 +25,7 @@ function get_object_by_id($id)
 
 function delete_object($id)
 {
-    $bdd = get_bdd();
+    $bdd = get_dtb();
     $query = $bdd->prepare('DELETE FROM OBJET WHERE idObjet = ?;');
     return $query->execute([$id]);
 }
