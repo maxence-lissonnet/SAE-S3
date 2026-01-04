@@ -63,7 +63,7 @@ if (isset($_GET['page'])) {
             require_once 'Controller/Autre/ProfilController.php';
             break;
         case 'Reservation':
-            require_once 'Controller/Autre/ReservationController.php';
+            require_once 'Controller/Objet/ListReservationController.php';
             break;
         case 'MesDons':
             require_once 'Controller/Autre/MesDonsController.php';

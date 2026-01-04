@@ -32,7 +32,7 @@
                     <img src="Asset/image/icon/trash.svg">
                     <p>Annuler réservation</p>
                 </a>
-                <a href="index.php?page=CatalogueArticleController" class="option" id="add">
+                <a href="index.php?page=Catalogue" class="option" id="add">
                     <img src="Asset/image/icon/plus.svg">
                     <p>Effectuer une nouvelle réservation</p>
                 </a>
@@ -68,10 +68,10 @@
                 <?php if (!isset($_SESSION['message2'])): ?>
                     <p><?php echo $_SESSION['message'] ?></p>
                     <button onclick="this.closest('dialog').close()">FERMER</button>
-                    <button onclick="window.location.href='index.php?page=ListReservationController&id=<?php echo $_GET['id'] ?>&action=delete'">CONFIRMER</button>
+                    <button onclick="window.location.href='index.php?page=Reservation&id=<?php echo $_GET['id'] ?>&action=delete'">CONFIRMER</button>
                 <?php else: ?>
                     <p><?php echo $_SESSION['message2'] ?></p>
-                    <button onclick="this.closest('dialog').close();window.location.href='index.php?page=ListReservationController'">FERMER</button>
+                    <button onclick="this.closest('dialog').close();window.location.href='index.php?page=Reservation'">FERMER</button>
                 <?php endif; ?>
             </div>
         </dialog>

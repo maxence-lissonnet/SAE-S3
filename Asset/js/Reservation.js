@@ -12,12 +12,12 @@ document.querySelectorAll('.object.clickable').forEach(item => {
     item.addEventListener('click', function () {
         const id = this.getAttribute('data-id');
         const rightContainer = document.querySelector('.right-container');
-        fetch(`index.php?page=ListReservationController&id=${id}`)
+        fetch(`index.php?page=Reservation&id=${id}`)
             .then(response => response.text())
             .then(html => { rightContainer.innerHTML = html; })
         const deleteBtn = document.getElementById('delete');
         deleteBtn.style.display = 'flex';
-        deleteBtn.href = `index.php?page=ListReservationController&id=${id}&action=deleteConfirmation`;
+        deleteBtn.href = `index.php?page=Reservation&id=${id}&action=deleteConfirmation`;
 
 
     });
