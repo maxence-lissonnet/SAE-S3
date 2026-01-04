@@ -17,8 +17,8 @@ require_once 'Model/ConnexionModel.php';
 require_once 'Model/EventModel.php';
 require_once 'Model/NotificationModel.php';
 require_once 'Model/ObjetModel.php';
-require_once 'Model/BDDModel.php';
-
+require_once 'Model/BDDModel.php'; 
+require_once 'Model/ReservationModel.php';
 
 if (isset($_GET['page'])) {
     $page = ucfirst($_GET['page']);
