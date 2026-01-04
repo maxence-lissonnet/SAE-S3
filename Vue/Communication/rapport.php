@@ -1,115 +1,174 @@
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
-<?php
-
-$chiffres_cles = [
-    'poids_total' => 1250,      // Total kg
-    'taux_recyclage' => 78,     // %
-    'economie_co2' => 450,      // kg CO2
-    'objets_revalorises' => 342 // Nb objets
-];
-
-// 2. Les données du tableau (Détail mensuel)
-$donnees_mois = [
-    ['mois' => 'Janvier', 'poids' => 200, 'taux' => 80],
-    ['mois' => 'Février', 'poids' => 150, 'taux' => 70],
-    ['mois' => 'Mars', 'poids' => 300, 'taux' => 90],
-    ['mois' => 'Avril', 'poids' => 250, 'taux' => 75],
-];
-
-// Gestion simple du formulaire (juste pour l'exemple)
-$annee = $_POST['annee'] ?? '2025';
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ÉcoGestUM - Rapport</title>
+    <title>ÉcoGestUM - Rapports</title>
     <link rel="stylesheet" href="Asset/style/rapportStyle.css">
+    <!-- Pour PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="Asset/js/pdfDownload.js"></script>
 </head>
 
 <body>
 
-
-
-    <div class="container">
+    <main class="container-rapport-page">
 
         <div class="header-titre">
-            <h1>Rapport d'activité</h1>
-            [cite_start]<p>Suivi des objectifs de développement durable [cite: 104]</p>
+            <h1>Rapports d'activité</h1>
+            <p>Gestion et archivage des rapports de développement durable</p>
         </div>
 
-        <div class="card filtres">
-            <form method="POST">
-                <label>Période :</label>
-                <select name="annee">
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                </select>
-                <button type="submit" class="btn">Actualiser</button>
-            </form>
-        </div>
+        <div class="layout-rapport">
 
-        <div class="grid-kpi">
-            <div class="card kpi">
-                <h3>Masse Recyclée</h3>
-                <div class="valeur"><?php echo $chiffres_cles['poids_total']; ?> kg</div>
-            </div>
-            <div class="card kpi">
-                <h3>Taux de Recyclage</h3>
-                <div class="valeur bleu"><?php echo $chiffres_cles['taux_recyclage']; ?> %</div>
-            </div>
-            <div class="card kpi">
-                <h3>CO2 Économisé</h3>
-                <div class="valeur vert"><?php echo $chiffres_cles['economie_co2']; ?> kg</div>
-            </div>
-            <div class="card kpi">
-                <h3>Objets Réutilisés</h3>
-                <div class="valeur"><?php echo $chiffres_cles['objets_revalorises']; ?></div>
-            </div>
-        </div>
+            <!-- ================= COLONNE GAUCHE : LISTE ================= -->
+            <aside class="col-liste">
+                <h2>Historique</h2>
+                <div class="liste-rapports">
+                    <a href="?page=rapport"
+                        class="card-rapport-item <?php echo empty($_GET['edit']) ? 'active' : ''; ?> nouvelle-saisie">
+                        <span class="icon">+</span>
+                        <span>Nouveau rapport</span>
+                    </a>
 
-        <div class="card">
-            <h2>Détail mensuel</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Mois</th>
-                        <th>Quantité (kg)</th>
-                        <th>Performance</th>
-                        <th>Taux</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($donnees_mois as $ligne): ?>
-                        <tr>
-                            <td><?php echo $ligne['mois']; ?></td>
-                            <td><?php echo $ligne['poids']; ?> kg</td>
-                            <td>
-                                <div class="progress-bg">
-                                    <div class="progress-bar" style="width: <?php echo $ligne['taux']; ?>%;"></div>
+                    <?php if (empty($listOfReports)): ?>
+                        <p class="empty-msg">Aucun rapport archivé.</p>
+                    <?php else: ?>
+                        <?php foreach ($listOfReports as $rap): ?>
+                            <?php
+                            $isActive = (isset($_GET['edit']) && $_GET['edit'] == $rap['idRapport']) ? 'active' : '';
+                            $dateObj = new DateTime($rap['periodeRapport']);
+                            $annee = $dateObj->format('Y');
+                            // Petite description courte
+                            $descCourt = !empty($rap['descRapport']) && $rap['descRapport'] !== 'Pas de contenu'
+                                ? htmlspecialchars($rap['descRapport'])
+                                : 'Rapport ' . $annee;
+                            ?>
+                            <a href="?page=rapport&edit=<?php echo $rap['idRapport']; ?>"
+                                class="card-rapport-item <?php echo $isActive; ?>">
+                                <div class="item-header">
+                                    <span class="annee"><?php echo $annee; ?></span>
+                                    <span class="date-creation">Créé le <?php echo $dateObj->format('d/m/Y'); ?></span>
                                 </div>
-                            </td>
-                            <td><?php echo $ligne['taux']; ?>%</td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                                <div class="item-desc"><?php echo $descCourt; ?></div>
+                            </a>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+            </aside>
 
-            <div style="margin-top: 15px; text-align: right;">
-                <a href="#" class="btn-outline">Télécharger le PDF</a>
-            </div>
+            <!-- ================= COLONNE DROITE : FORMULAIRE / DETAILS ================= -->
+            <section class="col-formulaire">
+                <div class="card form-card">
+                    <div class="form-header">
+                        <h2>
+                            <?php echo !empty($reportToEdit['idRapport']) ? 'Modifier un rapport' : 'Créer un rapport'; ?>
+                        </h2>
+                        <?php if (!empty($reportToEdit['idRapport'])): ?>
+                            <div class="actions-header" data-html2pdf-ignore="true">
+                                <button onclick="downloadPDF()" class="btn-pdf small">
+                                    Télécharger PDF
+                                </button>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <!-- Ce conteneur a l'ID pour le PDF -->
+                    <div id="report-container">
+
+                        <!-- En-tête visible uniquement sur le PDF (via CSS ou gestion du contenu) -->
+                        <div class="pdf-only-header" style="display:none;">
+                            <h1>Rapport d'activité <?php echo $reportToEdit['periode']; ?></h1>
+                            <p><?php echo htmlspecialchars($reportToEdit['descRapport']); ?></p>
+                            <hr>
+                        </div>
+
+                        <form method="POST" class="form-rapport-complet">
+                            <?php if (!empty($reportToEdit['idRapport'])): ?>
+                                <input type="hidden" name="idRapport" value="<?php echo $reportToEdit['idRapport']; ?>">
+                            <?php endif; ?>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Année concernée</label>
+                                    <select name="annee">
+                                        <?php
+                                        $currentYear = date('Y');
+                                        $selectedYear = $reportToEdit['periode'] ?? $currentYear;
+                                        for ($y = $currentYear; $y >= $currentYear - 5; $y--):
+                                            ?>
+                                            <option value="<?php echo $y; ?>" <?php echo ($selectedYear == $y) ? 'selected' : ''; ?>>
+                                                <?php echo $y; ?>
+                                            </option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
+                                <div class="form-group flex-2">
+                                    <label>Description</label>
+                                    <input type="text" name="desc" maxlength="100"
+                                        placeholder="Ex: Bilan carbone annuel..."
+                                        value="<?php echo htmlspecialchars($reportToEdit['descRapport'] ?? ''); ?>">
+                                </div>
+                            </div>
+
+                            <!-- 
+                             Les inputs KPI "Masse", "Taux", "CO2", "Objets" ont été retirés 
+                             car non présents en BDD.
+                        -->
+
+                            <!-- Section Visualisation (Tableau) maintenue pour l'instant comme info statique/démo -->
+                            <div class="preview-section">
+                                <h3>Aperçu des données mensuelles</h3>
+                                <table class="table small-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Mois</th>
+                                            <th>Quantité</th>
+                                            <th>Performance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($donnees_mois as $ligne): ?>
+                                            <tr>
+                                                <td><?php echo $ligne['mois']; ?></td>
+                                                <td><?php echo $ligne['poids']; ?> kg</td>
+                                                <td>
+                                                    <div class="progress-bg">
+                                                        <div class="progress-bar"
+                                                            style="width: <?php echo $ligne['taux']; ?>%;"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="form-actions" data-html2pdf-ignore="true">
+                                <button type="submit" name="save_metrics" class="btn btn-primary">
+                                    <?php echo !empty($reportToEdit['idRapport']) ? 'Mettre à jour' : 'Enregistrer le rapport'; ?>
+                                </button>
+
+                                <?php if (!empty($reportToEdit['idRapport'])): ?>
+                                    <button type="submit" name="delete_rapport" class="btn btn-danger"
+                                        onclick="return confirm('Supprimer ce rapport ?');">
+                                        Supprimer
+                                    </button>
+                                <?php endif; ?>
+                            </div>
+
+                        </form>
+                    </div> <!-- fin #report-container -->
+
+                </div>
+            </section>
+
         </div>
 
-    </div>
+    </main>
 
 </body>
 
 </html>
-
-
-
-
-<?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>

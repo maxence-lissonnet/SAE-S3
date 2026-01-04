@@ -1,9 +1,9 @@
 <?php
 // Sécurisation au cas où
-$comList   = $comList   ?? [];
-$typesCom  = $typesCom  ?? [];
+$comList = $comList ?? [];
+$typesCom = $typesCom ?? [];
 $idTypeCom = $idTypeCom ?? null;
-$dateCom   = $dateCom   ?? null;
+$dateCom = $dateCom ?? null;
 ?>
 <link rel="stylesheet" href="Asset/style/pagecomstyle.css">
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
@@ -22,7 +22,7 @@ $dateCom   = $dateCom   ?? null;
       <?php else: ?>
         <?php foreach ($comList as $com): ?>
           <article class="eg-com-item">
-            <a href="com.php?id=<?= (int)$com['idCom'] ?>" class="eg-com-item-main">
+            <a href="com.php?id=<?= (int) $com['idCom'] ?>" class="eg-com-item-main">
               <div class="eg-com-thumb">
                 <!-- on met juste un fond gris pour rappeler la maquette -->
                 <div class="eg-com-thumb-circle"></div>
@@ -66,8 +66,7 @@ $dateCom   = $dateCom   ?? null;
           <select name="type">
             <option value="">Tous les types</option>
             <?php foreach ($typesCom as $type): ?>
-              <option value="<?= $type['idTypeCom'] ?>"
-                <?= ($idTypeCom === (int)$type['idTypeCom']) ? 'selected' : '' ?>>
+              <option value="<?= $type['idTypeCom'] ?>" <?= ($idTypeCom === (int) $type['idTypeCom']) ? 'selected' : '' ?>>
                 <?= htmlspecialchars($type['nomTypeCom']) ?>
               </option>
             <?php endforeach; ?>
@@ -76,10 +75,8 @@ $dateCom   = $dateCom   ?? null;
 
         <label class="eg-field-group">
           <span>Date</span>
-          <input type="text"
-                 name="date"
-                 placeholder="AAAA, AAAA-MM ou AAAA-MM-JJ"
-                 value="<?= htmlspecialchars($dateCom ?? '') ?>">
+          <input type="text" name="date" placeholder="AAAA, AAAA-MM ou AAAA-MM-JJ"
+            value="<?= htmlspecialchars($dateCom ?? '') ?>">
         </label>
 
         <div class="eg-com-filter-actions">

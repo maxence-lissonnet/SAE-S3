@@ -1,178 +1,260 @@
-/* --- BASE --- */
-body {
-    font-family: Arial, sans-serif;
-    /* Police standard, pas besoin d'import */
-    background-color: #f4f4f4;
-    /* Fond gris clair */
-    margin: 0;
-    color: #333;
-}
-
-/* --- NAVIGATION (HEADER) --- */
-.navbar {
-    background-color: #fff;
-    border-bottom: 3px solid #E2001A;
-    /* Rouge Le Mans Université */
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 20px;
-    font-weight: bold;
-    color: #001F3F;
-    /* Bleu foncé */
-}
-
-.logo span {
-    color: #E2001A;
-}
-
-.user {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.avatar {
-    width: 35px;
-    height: 35px;
-    background-color: #ccc;
-    border-radius: 50%;
-    /* Cercle */
-}
-
-/* --- MISE EN PAGE --- */
-.container {
-    max-width: 1000px;
-    /* Largeur max de la page */
+/* --- PAGE LAYOUT --- */
+.container-rapport-page {
+    max-width: 1200px;
     margin: 30px auto;
-    /* Centré au milieu */
     padding: 0 20px;
 }
 
-.header-titre {
-    margin-bottom: 20px;
+.layout-rapport {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
 }
 
-/* --- CARTES (Boites blanches) --- */
-.card {
-    background-color: #fff;
-    padding: 20px;
+/* --- COLONNE GAUCHE (LISTE) --- */
+.col-liste {
+    flex: 1;
+    /* ~33% */
+    min-width: 300px;
+}
+
+.col-liste h2 {
+    font-size: 18px;
+    color: #001F3F;
+    border-bottom: 2px solid #E2001A;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.liste-rapports {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-rapport-item {
+    background: white;
+    padding: 15px;
     border-radius: 8px;
-    /* Coins arrondis */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    /* Ombre légère */
-    margin-bottom: 20px;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s, border-left 0.2s;
+    border-left: 4px solid transparent;
 }
 
-/* --- FILTRES --- */
-.filtres form {
+.card-rapport-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card-rapport-item.active {
+    border-left-color: #E2001A;
+    background-color: #fff5f5;
+}
+
+.card-rapport-item.nouvelle-saisie {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #001F3F;
+    border: 2px dashed #ccc;
+    background: transparent;
+    justify-content: center;
+}
+
+.card-rapport-item.nouvelle-saisie:hover {
+    border-color: #001F3F;
+    background: white;
+}
+
+.card-rapport-item.nouvelle-saisie .icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.item-header .annee {
+    font-weight: bold;
+    font-size: 16px;
+    color: #001F3F;
+}
+
+.item-header .date-creation {
+    font-size: 12px;
+    color: #888;
+}
+
+.item-desc {
+    font-size: 14px;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- COLONNE DROITE (FORMULAIRE) --- */
+.col-formulaire {
+    flex: 2;
+    /* ~66% */
+}
+
+.form-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.form-header h2 {
+    margin: 0;
+    color: #001F3F;
+}
+
+.form-row {
     display: flex;
     gap: 15px;
-    align-items: center;
+    margin-bottom: 15px;
 }
 
-select,
-.btn {
-    padding: 8px 15px;
-    border-radius: 5px;
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.form-group.flex-2 {
+    flex: 2;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
     border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.kpi-grid-inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.input-kpi {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-kpi label {
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: #444;
+}
+
+.input-kpi input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.preview-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.preview-section h3 {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.small-table {
+    font-size: 14px;
+}
+
+.small-table th,
+.small-table td {
+    padding: 8px;
+}
+
+.form-actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-primary {
+    background-color: #001F3F;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.btn {
-    background-color: #001F3F;
+.btn-primary:hover {
+    background-color: #00162d;
+}
+
+.btn-danger {
+    background-color: #dc3545;
     color: white;
-    font-weight: bold;
     border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.btn:hover {
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-pdf {
+    /* Style précédent conservé ou redéfini amélioré */
     background-color: #E2001A;
-    /* Change de couleur au survol */
-}
-
-.btn-outline {
-    text-decoration: none;
-    color: #001F3F;
-    border: 1px solid #001F3F;
+    color: white;
+    border: none;
     padding: 8px 15px;
     border-radius: 5px;
-    display: inline-block;
-}
-
-/* --- KPI (Les 4 chiffres en haut) --- */
-.grid-kpi {
-    display: flex;
-    /* Alignement horizontal */
-    gap: 20px;
-    /* Espace entre les cartes */
-    flex-wrap: wrap;
-    /* Passe à la ligne si pas de place */
-}
-
-.kpi {
-    flex: 1;
-    /* Elles prennent toutes la même largeur */
-    text-align: center;
-    min-width: 150px;
-}
-
-.kpi h3 {
-    margin: 0 0 10px 0;
-    font-size: 14px;
-    color: #666;
-    text-transform: uppercase;
-}
-
-.kpi .valeur {
-    font-size: 28px;
     font-weight: bold;
-    color: #333;
+    cursor: pointer;
 }
 
-/* Couleurs spécifiques pour les chiffres */
-.bleu {
-    color: #001F3F !important;
+.btn-pdf:hover {
+    background: #c00016;
 }
 
-.vert {
-    color: #28a745 !important;
-}
-
-/* --- TABLEAU --- */
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    /* Enlève les espaces entre les cellules */
-    margin-top: 10px;
-}
-
-.table th {
-    text-align: left;
-    background-color: #f8f8f8;
-    padding: 12px;
-    border-bottom: 2px solid #ddd;
-}
-
-.table td {
-    padding: 12px;
-    border-bottom: 1px solid #eee;
-}
-
-/* Barre de progression dans le tableau */
-.progress-bg {
-    background-color: #eee;
-    height: 8px;
-    width: 100px;
-    border-radius: 4px;
-}
-
-.progress-bar {
-    background-color: #001F3F;
-    height: 100%;
-    border-radius: 4px;
+.btn-pdf.small {
+    font-size: 14px;
+    padding: 6px 12px;
 }
