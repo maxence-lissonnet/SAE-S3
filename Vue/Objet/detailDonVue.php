@@ -7,23 +7,23 @@
     </div>
     <div class="right-text">
         <div class="element">
-            <img src="/SAE-S3/Asset/image/donsActifs/maps.svg">
+            <img src="Asset/image/donsActifs/maps.svg">
             <p><?php echo htmlspecialchars($item['nomLieuRetrait']) ?><br /><?php echo htmlspecialchars($item['adresseLieuRetrait']) ?></p>
         </div>
         <div class="element">
-            <img src="/SAE-S3/Asset/image/donsActifs/shapes.svg">
+            <img src="Asset/image/donsActifs/shapes.svg">
             <p><?php echo htmlspecialchars($item['nomCategorie']) ?></p>
         </div>
         <div class="element">
-            <img src="/SAE-S3/Asset/image/donsActifs/smiley.svg">
+            <img src="Asset/image/donsActifs/smiley.svg">
             <p><?php echo htmlspecialchars($item['nomEtatObjet']) ?></p>
         </div>
         <div class="element">
-            <img src="/SAE-S3/Asset/image/donsActifs/basket.svg">
+            <img src="Asset/image/donsActifs/basket.svg">
             <p>Lot de <?php echo htmlspecialchars($item['quantiteObjet']) ?></p>
         </div>
         <div class="element">
-            <img src="/SAE-S3/Asset/image/donsActifs/ruler.svg">
+            <img src="Asset/image/donsActifs/ruler.svg">
             <?php if (!empty($item['mesureObjet'])): ?>
                 <p><?php echo htmlspecialchars($item['mesureObjet']) ?></p>
             <?php else: ?>
@@ -31,7 +31,7 @@
             <?php endif; ?>
         </div>
         <div class="element">
-            <img src="/SAE-S3/Asset/image/donsActifs/text.svg">
+            <img src="Asset/image/donsActifs/text.svg">
             <p><?php echo $item['descriptionObjet'] ?></p>
         </div>
     </div>

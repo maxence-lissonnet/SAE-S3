@@ -33,7 +33,7 @@ require __DIR__ . '/../../Controller/Autre/HeaderController.php' ?>
                     <img src="Asset/image/donsActifs/trash.svg">
                     <p>Supprimer don</p>
                 </a>
-                <a href="index.php?page=Don" class="option" id="add">
+                <a href="Donner" class="option" id="add">
                     <img src="Asset/image/donsActifs/plus.svg">
                     <p>Ajouter don</p>
                 </a>

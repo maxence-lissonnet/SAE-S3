@@ -70,6 +70,9 @@ if (isset($_GET['page'])) {
         case 'MesDons':
             require_once 'Controller/Objet/donsActifsController.php';
             break;
+        case 'Donner':
+            require_once 'Controller/Objet/donController.php';
+            break;
         case 'Rapport':
             require_once 'Controller/Com/rapport.php';
             break;

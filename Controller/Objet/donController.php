@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/../../Model/DonModel.php';
 // Valeurs par défaut
-$categories = get_categories();
-$locations = get_locations();
-$etats = get_etats();
+$categories = get_categories_Don();
+$locations = get_locations_Don();
+$etats = get_etats_Don();
 
 function get_dates()
 {
@@ -15,7 +15,7 @@ function get_dates()
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST)) {
     $image = file_get_contents($_FILES['files']['tmp_name']);
-    if (add_object($image)) {
+    if (add_object_Don($image)) {
         $_SESSION['message'] = "<strong>L'objet a bien été publié !</strong></br><em>Retrouvez le dans la page des Dons actifs.</em>";
     } else {
         $_SESSION['message'] = "<strong>Erreur d'insertion dans la base de données !</strong>";
