@@ -29,7 +29,7 @@ if (isset($_GET['id']) && isset($_GET['action']) && $_GET['action'] === 'deleteC
 if (isset($_GET['id']) && isset($_GET['action']) && $_GET['action'] === 'delete') {
     delete_object($_GET['id']);
     $_SESSION['message2'] = "<span style='font-size:22px;'><strong>Succès</strong></span><br>L'objet a été supprimé";
-    require_once ROOT . '/Vue/Objet/DonsActifsVue.php';
+    require_once __DIR__ . '/Vue/Objet/DonsActifsVue.php';
 }
 
 if (isset($_GET['id'])) {
@@ -38,9 +38,9 @@ if (isset($_GET['id'])) {
     $item = change_item($item);
 
     if (!isset($_GET['action'])) {
-        require ROOT . '/Vue/Objet/detailDonVue.php';
+        require __DIR__ . '/Vue/Objet/detailDonVue.php';
         exit();
     }
 }
 
-require_once ROOT . '/Vue/Objet/DonsActifsVue.php';
+require_once __DIR__ . '/Vue/Objet/DonsActifsVue.php';
