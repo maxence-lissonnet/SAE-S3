@@ -37,7 +37,7 @@
                 $daysWithEvents = [];
                 foreach ($eventsCalendar as $ev) {
                     $d = new DateTime($ev['dateEvent']);
-                    $day = (int)$d->format('j');
+                    $day = (int) $d->format('j');
                     $daysWithEvents[$day] = true;
                 }
 
@@ -47,14 +47,14 @@
 
                 $baseFilters = '';
                 if (!empty($idTypeEvent)) {
-                    $baseFilters .= '&type=' . (int)$idTypeEvent;
+                    $baseFilters .= '&type=' . (int) $idTypeEvent;
                 }
                 if (!empty($lieuSearch)) {
                     $baseFilters .= '&lieu=' . urlencode($lieuSearch);
                 }
 
-                $prevLink = '?page=evenement&month=' . $prevMonthObj->format('Y-m') . $baseFilters;
-                $nextLink = '?page=evenement&month=' . $nextMonthObj->format('Y-m') . $baseFilters;
+                $prevLink = 'Evenement?month=' . $prevMonthObj->format('Y-m') . $baseFilters;
+                $nextLink = 'Evenement?month=' . $nextMonthObj->format('Y-m') . $baseFilters;
                 ?>
 
                 <div class="eg-event-month-header">
@@ -79,18 +79,18 @@
                 <div class="eg-event-days">
                     <?php
                     // On positionne le 1er jour du mois sur la bonne colonne
-                    $firstDay  = new DateTime($refDateObj->format('Y-m-01'));
-                    $month     = (int)$firstDay->format('m');
-                    $dayOfWeek = (int)$firstDay->format('N'); // 1 = lundi
-
+                    $firstDay = new DateTime($refDateObj->format('Y-m-01'));
+                    $month = (int) $firstDay->format('m');
+                    $dayOfWeek = (int) $firstDay->format('N'); // 1 = lundi
+                    
                     // Cases vides avant le 1er
                     for ($i = 1; $i < $dayOfWeek; $i++) {
                         echo '<span class="eg-event-day empty"></span>';
                     }
 
                     // Jours du mois
-                    while ((int)$firstDay->format('m') === $month) {
-                        $dayNum  = (int)$firstDay->format('j');
+                    while ((int) $firstDay->format('m') === $month) {
+                        $dayNum = (int) $firstDay->format('j');
                         $dayDate = $firstDay->format('Y-m-d');
 
                         $classes = 'eg-event-day';
@@ -99,7 +99,7 @@
                         }
 
                         // Cliquer sur le jour filtre la liste par date
-                        $href = '?page=evenement&date=' . $dayDate;
+                        $href = 'Evenement?date=' . $dayDate;
                         echo '<a href="' . htmlspecialchars($href) . '" class="' . $classes . '">' . $dayNum . '</a>';
 
                         $firstDay->modify('+1 day');
@@ -149,8 +149,7 @@
 
                             <div class="eg-event-item-actions">
                                 <!-- Lien pour charger l'évènement dans le formulaire de droite -->
-                                <a href="?page=evenement&edit=<?= (int)$event['idEvent'] ?>"
-                                   class="eg-btn-link">
+                                <a href="Evenement?edit=<?= (int) $event['idEvent'] ?>" class="eg-btn-link">
                                     Modifier / détails
                                 </a>
                             </div>
@@ -166,16 +165,14 @@
         <aside class="eg-event-filters">
             <h2>Filtrer par</h2>
 
-            <form method="get" class="eg-event-filter-form">
-                <input type="hidden" name="page" value="evenement">
+            <form method="get" action="Evenement" class="eg-event-filter-form">
 
                 <label class="eg-field-group">
                     <span>Type</span>
                     <select name="type">
                         <option value="">Tous les types</option>
                         <?php foreach ($typesEvenement as $type): ?>
-                            <option value="<?= $type['idTypeEvent'] ?>"
-                                <?= ($idTypeEvent === (int)$type['idTypeEvent']) ? 'selected' : '' ?>>
+                            <option value="<?= $type['idTypeEvent'] ?>" <?= ($idTypeEvent === (int) $type['idTypeEvent']) ? 'selected' : '' ?>>
                                 <?= htmlspecialchars($type['nomTypeEvent']) ?>
                             </option>
                         <?php endforeach; ?>
@@ -184,17 +181,14 @@
 
                 <label class="eg-field-group">
                     <span>Date</span>
-                    <input type="text"
-                           name="date"
-                           placeholder="AAAA, AAAA-MM ou AAAA-MM-JJ"
-                           value="<?= htmlspecialchars($dateEvent ?? '') ?>">
+                    <input type="text" name="date" placeholder="AAAA, AAAA-MM ou AAAA-MM-JJ"
+                        value="<?= htmlspecialchars($dateEvent ?? '') ?>">
                 </label>
 
                 <label class="eg-field-group">
                     <span>Lieu</span>
-                    <input type="text" name="lieu"
-                           placeholder="Campus, bâtiment..."
-                           value="<?= htmlspecialchars($lieuSearch ?? '') ?>">
+                    <input type="text" name="lieu" placeholder="Campus, bâtiment..."
+                        value="<?= htmlspecialchars($lieuSearch ?? '') ?>">
                 </label>
 
                 <div class="eg-event-filter-actions">
@@ -224,7 +218,7 @@
             <?php endif; ?>
 
             <!-- Formulaire principal : création / édition -->
-                        <!-- ========= FORMULAIRE CREATION / MODIFICATION ========= -->
+            <!-- ========= FORMULAIRE CREATION / MODIFICATION ========= -->
             <h2>
                 <?= isset($eventToEdit['idEvent']) ? 'Modifier un évènement' : 'Créer un évènement' ?>
             </h2>
@@ -240,14 +234,12 @@
             <!-- Formulaire principal : création / édition -->
             <form method="post" class="eg-event-edit-form" id="validateForm">
                 <?php if (!empty($eventToEdit['idEvent'])): ?>
-                    <input type="hidden" name="idEvent"
-                           value="<?= (int)$eventToEdit['idEvent'] ?>">
+                    <input type="hidden" name="idEvent" value="<?= (int) $eventToEdit['idEvent'] ?>">
                 <?php endif; ?>
 
                 <label class="eg-field-group">
                     <span>Nom de l'évènement</span>
-                    <input type="text" name="nomEvent"
-                           value="<?= htmlspecialchars($eventToEdit['nomEvent'] ?? '') ?>">
+                    <input type="text" name="nomEvent" value="<?= htmlspecialchars($eventToEdit['nomEvent'] ?? '') ?>">
                 </label>
 
                 <label class="eg-field-group">
@@ -257,8 +249,10 @@
                         <?php foreach ($typesEvenement as $type): ?>
                             <?php
                             $selected = '';
-                            if (!empty($eventToEdit['idTypeEvent']) &&
-                                (int)$eventToEdit['idTypeEvent'] === (int)$type['idTypeEvent']) {
+                            if (
+                                !empty($eventToEdit['idTypeEvent']) &&
+                                (int) $eventToEdit['idTypeEvent'] === (int) $type['idTypeEvent']
+                            ) {
                                 $selected = 'selected';
                             }
                             ?>
@@ -272,47 +266,42 @@
                 <label class="eg-field-group">
                     <span>Date</span>
                     <input type="date" name="dateEvent"
-                           value="<?= htmlspecialchars($eventToEdit['dateEvent'] ?? '') ?>">
+                        value="<?= htmlspecialchars($eventToEdit['dateEvent'] ?? '') ?>">
                 </label>
 
                 <label class="eg-field-group">
                     <span>Heure début</span>
                     <input type="time" name="heureDebEvent"
-                           value="<?= htmlspecialchars($eventToEdit['heureDebEvent'] ?? '') ?>">
+                        value="<?= htmlspecialchars($eventToEdit['heureDebEvent'] ?? '') ?>">
                 </label>
 
                 <label class="eg-field-group">
                     <span>Heure fin (optionnel)</span>
                     <input type="time" name="heureFinEvent"
-                           value="<?= htmlspecialchars($eventToEdit['heureFinEvent'] ?? '') ?>">
+                        value="<?= htmlspecialchars($eventToEdit['heureFinEvent'] ?? '') ?>">
                 </label>
 
                 <label class="eg-field-group">
                     <span>Lieu</span>
                     <input type="text" name="lieuEvent"
-                           value="<?= htmlspecialchars($eventToEdit['lieuEvent'] ?? '') ?>">
+                        value="<?= htmlspecialchars($eventToEdit['lieuEvent'] ?? '') ?>">
                 </label>
 
                 <label class="eg-field-group">
                     <span>Description</span>
-                    <textarea name="descEvent" rows="4"><?= htmlspecialchars($eventToEdit['descEvent'] ?? '') ?></textarea>
+                    <textarea name="descEvent"
+                        rows="4"><?= htmlspecialchars($eventToEdit['descEvent'] ?? '') ?></textarea>
                 </label>
 
                 <div class="eg-event-edit-actions">
                     <!-- IMPORTANT : type="button" pour laisser JS gérer la soumission -->
-                    <button type="button"
-                            id="validateButton"
-                            name="save"
-                            value="1"
-                            class="eg-btn-main">
+                    <button type="button" id="validateButton" name="save" value="1" class="eg-btn-main">
                         <?= isset($eventToEdit['idEvent']) ? 'Mettre à jour' : 'Créer l\'évènement' ?>
                     </button>
 
                     <?php if (isset($eventToEdit['idEvent'])): ?>
                         <!-- bouton cliqué → ouverture popup JS de suppression -->
-                        <button type="button"
-                                id="eventDeleteButton"
-                                class="eg-btn-danger">
+                        <button type="button" id="eventDeleteButton" class="eg-btn-danger">
                             Supprimer
                         </button>
                     <?php endif; ?>
@@ -322,7 +311,7 @@
             <?php if (isset($eventToEdit['idEvent'])): ?>
                 <!-- Formulaire caché uniquement pour la suppression -->
                 <form id="eventDeleteForm" method="post" style="display:none;">
-                    <input type="hidden" name="idEvent" value="<?= (int)$eventToEdit['idEvent'] ?>">
+                    <input type="hidden" name="idEvent" value="<?= (int) $eventToEdit['idEvent'] ?>">
                     <input type="hidden" name="delete" value="1">
                 </form>
             <?php endif; ?>
@@ -335,5 +324,5 @@
 <?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 
 </body>
-</html>
 
+</html>

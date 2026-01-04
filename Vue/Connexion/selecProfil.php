@@ -11,7 +11,9 @@
     <!-- Inclusion des polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
 
 </head>
 
@@ -20,15 +22,16 @@
         <img class="logoUniv" src="Asset/image/header/univ.png" alt="Logo Le Mans Un">
         <h1>Choisissez un profil</h1>
         <div class="boutons">
-            <a id="etu" href="index.php?page=pageConnexionEtuController">Étudiant</a>
-            <a id="personnel" href="index.php?page=pageConnexionPersonnelController">Personnel</a>
+            <a id="etu" href="ConnexionEtu">Étudiant</a>
+            <a id="personnel" href="ConnexionPersonnel">Personnel</a>
             <a id="visit">Visiteur</a>
         </div>
         <div class="eg-footer-socials">
             <a href="https://www.instagram.com/lemansuniversite/?hl=fr" aria-label="Instagram">
                 <img src="Asset/image/logo/Logo_Instagram_(bleu).png" alt="Instagram">
             </a>
-            <a href="https://www.linkedin.com/school/universit%C3%A9-du-maine-le-mans-laval/mycompany/" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/school/universit%C3%A9-du-maine-le-mans-laval/mycompany/"
+                aria-label="LinkedIn">
                 <img src="Asset/image/logo/Logo_LinkedIn_(bleu).png" alt="LinkedIn">
             </a>
             <a href="https://www.youtube.com/channel/UCGcQ5RW44I0xEIg4pNS69pg" aria-label="YouTube">

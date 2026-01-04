@@ -19,13 +19,13 @@ $idUser = $_SESSION['idUser'] ?? 6;
 $allNotifications = notif_getAllForUser($idUser) ?? [];
 
 // 2) États en session (soft delete / archive / lu)
-$_SESSION['notif_deleted']  = $_SESSION['notif_deleted']  ?? [];
+$_SESSION['notif_deleted'] = $_SESSION['notif_deleted'] ?? [];
 $_SESSION['notif_archived'] = $_SESSION['notif_archived'] ?? [];
-$_SESSION['notif_read']     = $_SESSION['notif_read']     ?? [];
+$_SESSION['notif_read'] = $_SESSION['notif_read'] ?? [];
 
-$deleted  =& $_SESSION['notif_deleted'];
+$deleted =& $_SESSION['notif_deleted'];
 $archived =& $_SESSION['notif_archived'];
-$read     =& $_SESSION['notif_read'];
+$read =& $_SESSION['notif_read'];
 
 // 3) Traitement des actions POST (delete / archive / unarchive / mark_read / mark_unread)
 if (
@@ -65,7 +65,7 @@ if (
         $box = 'inbox';
     }
 
-    header('Location: ?page=notification&id=' . $id . '&box=' . $box);
+    header('Location: Notifications?id=' . $id . '&box=' . $box);
     exit;
 }
 
@@ -76,7 +76,7 @@ if (!in_array($box, ['inbox', 'archive'], true)) {
 }
 
 // 5) Construire les listes réception / archive
-$notificationsInbox   = [];
+$notificationsInbox = [];
 $notificationsArchive = [];
 
 foreach ($allNotifications as $n) {
@@ -125,7 +125,7 @@ if (!empty($notifications)) {
 
     if ($currentNotif === null) {
         $currentNotif = $notifications[0];
-        $currentId    = $currentNotif['id'];
+        $currentId = $currentNotif['id'];
     }
 
     // celle qu’on lit passe automatiquement en “lu”

@@ -6,12 +6,12 @@ require_once __DIR__ . '/../../Vue/Communication/ajoucom.php';
 
 
 $formErrors = [];
-$formData   = [];
-$editId     = null;
+$formData = [];
+$editId = null;
 
 // Types de com + rôles (pour le formulaire)
 $typesCom = getAllTypeCom();
-$roles    = getAllRoles();
+$roles = getAllRoles();
 
 /*
  * MODE ÉDITION : on arrive en GET avec ?id=...
@@ -22,16 +22,16 @@ if (
     && isset($_GET['id'])
     && ctype_digit($_GET['id'])
 ) {
-    $editId  = (int) $_GET['id'];
+    $editId = (int) $_GET['id'];
     $current = getCommunicationById($editId);
 
     if ($current) {
         $formData = [
-            'titreCom'   => $current['titreCom'],
-            'idTypeCom'  => $current['idTypeCom'],
+            'titreCom' => $current['titreCom'],
+            'idTypeCom' => $current['idTypeCom'],
             'contenuCom' => $current['contenuCom'],
-            'imageUrl'   => '',
-            'roles'      => [],
+            'imageUrl' => '',
+            'roles' => [],
         ];
     }
 }
@@ -47,13 +47,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $formData = [
-        'titreCom'   => trim($_POST['titreCom'] ?? ''),
-        'idTypeCom'  => (int) ($_POST['idTypeCom'] ?? 0),
+        'titreCom' => trim($_POST['titreCom'] ?? ''),
+        'idTypeCom' => (int) ($_POST['idTypeCom'] ?? 0),
         'contenuCom' => trim($_POST['contenuCom'] ?? ''),
-        'imageUrl'   => trim($_POST['imageUrl'] ?? ''),
-        'roles'      => isset($_POST['roles']) && is_array($_POST['roles'])
-                        ? array_map('intval', $_POST['roles'])
-                        : [],
+        'imageUrl' => trim($_POST['imageUrl'] ?? ''),
+        'roles' => isset($_POST['roles']) && is_array($_POST['roles'])
+            ? array_map('intval', $_POST['roles'])
+            : [],
     ];
 
     // Validations
@@ -70,10 +70,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($formErrors)) {
         // Données communes pour insert / update
         $dataPersist = [
-            'titreCom'   => $formData['titreCom'],
-            'idTypeCom'  => $formData['idTypeCom'],
+            'titreCom' => $formData['titreCom'],
+            'idTypeCom' => $formData['idTypeCom'],
             'contenuCom' => $formData['contenuCom'],
-            'IdUser'     => 1,  // plus tard : IdUser connecté
+            'IdUser' => 1,  // plus tard : IdUser connecté
         ];
 
         if ($editId !== null) {
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // après création / modification, on affiche la fiche
-        header('Location: com.php?id=' . $idCom);
+        header('Location: Communication?id=' . $idCom);
         exit;
     }
 }
