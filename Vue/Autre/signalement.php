@@ -1,25 +1,24 @@
 <?php
 require_once __DIR__ . '/../../Model/signalementModel.php';
 require_once __DIR__ . '/../../Controller/signalementController.php';
-require_once __DIR__ . '/../../Controller/categorieController.php';
 require_once __DIR__ . '/../Header Footer/header.php';
 
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+  session_start();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $response = traiterSignalement();
-    if ($response['success']) {
-        $_SESSION['message_success'] = $response['message'];
-        header('Location: ' . $_SERVER['PHP_SELF']);
-        exit;
-    } else {
-        $_SESSION['message_error'] = $response['message'];
-        $_SESSION['form_data'] = $_POST; 
-        header('Location: ' . $_SERVER['PHP_SELF']);
-        exit;
-    }
+  $response = traiterSignalement();
+  if ($response['success']) {
+    $_SESSION['message_success'] = $response['message'];
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    exit;
+  } else {
+    $_SESSION['message_error'] = $response['message'];
+    $_SESSION['form_data'] = $_POST;
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    exit;
+  }
 }
 
 $message_success = $_SESSION['message_success'] ?? '';
@@ -54,7 +53,8 @@ $types = getTypesSignalement();
       <div class="signalement-form-section">
         <div class="form-group">
           <label for="nomObjet">Nom de l'objet<span class="required">*</span></label>
-          <input type="text" id="nomObjet" name="nomObjet" placeholder="Ex: Chaise bleue" required value="<?php echo htmlspecialchars($form_data['nomObjet'] ?? ''); ?>">
+          <input type="text" id="nomObjet" name="nomObjet" placeholder="Ex: Chaise bleue" required
+            value="<?php echo htmlspecialchars($form_data['nomObjet'] ?? ''); ?>">
         </div>
 
         <div class="form-group">
@@ -83,26 +83,30 @@ $types = getTypesSignalement();
 
         <div class="form-group">
           <label for="description">Description du dysfonctionnement<span class="required">*</span></label>
-          <textarea id="description" name="description" placeholder="Décrivez le problème en détail..." required><?php echo htmlspecialchars($form_data['description'] ?? ''); ?></textarea>
+          <textarea id="description" name="description" placeholder="Décrivez le problème en détail..."
+            required><?php echo htmlspecialchars($form_data['description'] ?? ''); ?></textarea>
         </div>
       </div>
 
       <div class="signalement-image-section">
         <label for="imageUpload" class="image-upload-area" id="imageUploadArea">
-            <div class="upload-icon"><img src="../../Asset/image/header/image_televerser.png" alt="Image_televerser_ici"></div>
-            <div class="upload-text">Cliquer sur le rectangle pour choisir un fichier</div>
-            <input type="file" id="imageUpload" name="image" accept="image/png, image/jpeg, image/gif" style="display:none;">
+          <div class="upload-icon"><img src="../../Asset/image/header/image_televerser.png" alt="Image_televerser_ici">
+          </div>
+          <div class="upload-text">Cliquer sur le rectangle pour choisir un fichier</div>
+          <input type="file" id="imageUpload" name="image" accept="image/png, image/jpeg, image/gif"
+            style="display:none;">
         </label>
-        
+
         <div id="image-preview-container" style="display: none;">
-            <img id="image-preview" src="#" alt="Aperçu de l'image" style="max-width: 100%; max-height: 200px; margin-bottom: 10px;"/>
-            <p>
-                <strong>Nom:</strong> <span id="image-name"></span><br>
-                <strong>Taille:</strong> <span id="image-size"></span>
-            </p>
-            <button id="delete-image-btn" class="delete-image-btn">Supprimer l'image</button>
+          <img id="image-preview" src="#" alt="Aperçu de l'image"
+            style="max-width: 100%; max-height: 200px; margin-bottom: 10px;" />
+          <p>
+            <strong>Nom:</strong> <span id="image-name"></span><br>
+            <strong>Taille:</strong> <span id="image-size"></span>
+          </p>
+          <button id="delete-image-btn" class="delete-image-btn">Supprimer l'image</button>
         </div>
-        
+
         <p>Formats acceptés: JPG, PNG, GIF (Max 5MB)</p>
       </div>
 
@@ -114,13 +118,16 @@ $types = getTypesSignalement();
         </div>
 
         <div class="info-block">
-          <p>Sachez que la demande a dû subir des traitements spécifiques. Vous recevrez un mail de l'Université afin de connaître l'avancement de votre demande régulièrement; ces deux services pour connaître l'avancement de votre demande.</p>
+          <p>Sachez que la demande a dû subir des traitements spécifiques. Vous recevrez un mail de l'Université afin de
+            connaître l'avancement de votre demande régulièrement; ces deux services pour connaître l'avancement de
+            votre demande.</p>
         </div>
 
         <div class="consent-block">
           <input type="checkbox" id="consent" name="consent" required <?php echo !empty($form_data['consent']) ? 'checked' : ''; ?>>
           <label for="consent">
-            J'accepte que Le Mans Université traite ma demande. J'assure avoir pris connaissance des <a href="#">informations complémentaires</a> ci-<span></span>dessus.
+            J'accepte que Le Mans Université traite ma demande. J'assure avoir pris connaissance des <a
+              href="#">informations complémentaires</a> ci-<span></span>dessus.
           </label>
         </div>
 
