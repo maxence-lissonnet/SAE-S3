@@ -38,9 +38,9 @@ if (isset($_GET['id'])) {
     $item = change_item($item);
 
     if (!isset($_GET['action'])) {
-        require __DIR__ . '/Vue/Objet/detailDonVue.php';
+        require __DIR__ . '/../../Vue/Objet/detailDonVue.php';
         exit();
     }
 }
 
-require_once __DIR__ . '/Vue/Objet/DonsActifsVue.php';
+require_once __DIR__ . '/../../Vue/Objet/DonsActifsVue.php';

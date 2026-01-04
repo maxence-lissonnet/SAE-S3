@@ -34,10 +34,10 @@
     <div class="eg-header-right">
       <div class="eg-user-info">
         <span class="eg-user-name">
-          <?= htmlspecialchars($prenom) ?>
+          <?= htmlspecialchars($_SESSION['prenom']) ?>
         </span>
         <span class="eg-user-role">
-          <?= htmlspecialchars($role) ?>
+          <?= htmlspecialchars($_SESSION['role']) ?>
         </span>
       </div>
 
@@ -70,7 +70,7 @@
 
               // 2. Récupérer le logo (s'il existe)
               $logoTag = $menuCompteLogos[$item] ?? ''; // Utilisation de l'opérateur de coalescence
-          
+
               // 3. Afficher le lien avec le logo et l'URL
               $content = $logoTag . ' ' . $label;
               echo '<a href="' . htmlspecialchars($link) . '" class="logo">' . $content . '</a>';
@@ -80,13 +80,13 @@
         </nav>
       </div>
 
-      <a href = "Notifications">
-        <button  class="eg-icon-btn eg-notif-btn" aria-label="Notifications">
+      <a href="Notifications">
+        <button class="eg-icon-btn eg-notif-btn" aria-label="Notifications">
           <img src="Asset/image/header/cloche.png" alt="Notifications" class="eg-icon-img">
           <span class="eg-notif-badge">2</span>
         </button>
       </a>
-  
+
 
       <button class="eg-icon-btn eg-burger-icon" aria-label="Menu" id="burgerBtn">
         <span></span>
@@ -150,7 +150,7 @@
 
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
       const burgerBtn = document.getElementById('burgerBtn');
       const burgerMenu = document.getElementById('burgerMenu');
       const profilBtn = document.getElementById('profilBtn');
@@ -158,7 +158,7 @@
 
       // Gestion du menu Burger
       if (burgerBtn && burgerMenu) {
-        burgerBtn.addEventListener('click', function (e) {
+        burgerBtn.addEventListener('click', function(e) {
           e.stopPropagation();
           burgerMenu.classList.toggle('open');
           // Ferme l'autre menu s'il est ouvert
@@ -168,7 +168,7 @@
 
       // Gestion du menu de Compte
       if (profilBtn && menuCompte) {
-        profilBtn.addEventListener('click', function (e) {
+        profilBtn.addEventListener('click', function(e) {
           e.stopPropagation();
           menuCompte.classList.toggle('open');
           // Ferme l'autre menu s'il est ouvert
@@ -177,21 +177,21 @@
       }
 
       // Gestion des clics externes (pour fermer les menus)
-      document.addEventListener('click', function () {
+      document.addEventListener('click', function() {
         if (burgerMenu) burgerMenu.classList.remove('open');
         if (menuCompte) menuCompte.classList.remove('open');
       });
 
       // Empêche la fermeture du menu si on clique DEDANS
       if (burgerMenu) {
-        burgerMenu.addEventListener('click', function (e) {
+        burgerMenu.addEventListener('click', function(e) {
           e.stopPropagation();
         });
       }
 
       // Empêche la fermeture du menu si on clique DEDANS
       if (menuCompte) {
-        menuCompte.addEventListener('click', function (e) {
+        menuCompte.addEventListener('click', function(e) {
           e.stopPropagation();
         });
       }

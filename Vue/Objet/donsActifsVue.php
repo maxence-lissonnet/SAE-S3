@@ -1,5 +1,5 @@
 <?php
-require ROOT . '/Vue/Header Footer/header.php'; ?>
+require __DIR__ . '/../../Controller/Autre/HeaderController.php' ?>
 
 
 <!DOCTYPE html>
@@ -87,8 +87,7 @@ require ROOT . '/Vue/Header Footer/header.php'; ?>
 </body>
 
 <footer>
-    <?php require ROOT . '/Vue/Header Footer/footer.php';
-    ?>
+    <?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 </footer>
 
 
