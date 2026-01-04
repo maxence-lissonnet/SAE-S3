@@ -14,7 +14,7 @@ body {
 .container {
     background-color: white;
     width: calc(100vw - 120px);
-    height: calc(100vh - 10px);
+    height: calc(100vh - 60px);
     display: flex;
     border-radius: 30px;
     margin: 73px auto 73px auto;
