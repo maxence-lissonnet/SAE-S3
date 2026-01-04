@@ -62,8 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $_SESSION['adr'] = $user_info['adrUser'];
             $_SESSION['mail'] = $user_info['emailUser'];
             $_SESSION['idUser'] = $user_info['idUser'];
-            header('Location: Evenement');
+            header('Location: Accueil');
             exit;
         }
     }
 }
+
+require_once __DIR__ . '/../../Vue/Connexion/pageConnPersonnel.php';
+?>

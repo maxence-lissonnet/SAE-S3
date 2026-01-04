@@ -51,7 +51,7 @@ if (isset($_GET['page'])) {
             require_once 'Controller/Connexion/pageConnexionEtuController.php';
             break;
         case 'ConnexionPersonnel':
-            require_once 'Controller/Connexion/pageConnexionPersonnelController.php';
+            require_once 'Controller/Connexion/pageConnexionPersoController.php';
             break;
         case 'Catalogue':
             require_once 'Controller/Objet/CatalogueArticleController.php';
@@ -70,6 +70,9 @@ if (isset($_GET['page'])) {
             break;
         case 'Rapport':
             require_once 'Controller/Com/rapport.php';
+            break;
+        case 'Politique':
+            require_once 'Controller/Autre/PolitiqueController.php';
             break;
         case 'Deconnexion':
             require_once 'Controller/ConnexionController.php';

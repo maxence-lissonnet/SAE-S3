@@ -1,4 +1,3 @@
-<?php require '../../Controller/Connexion/pageConnexionPersoController.php' ?>
 
 <!DOCTYPE html>
 <html lang="fr">

@@ -79,10 +79,13 @@
         </nav>
       </div>
 
-      <button class="eg-icon-btn eg-notif-btn" aria-label="Notifications">
-        <img src="Asset/image/header/cloche.png" alt="Notifications" class="eg-icon-img">
-        <span class="eg-notif-badge">2</span>
-      </button>
+      <a href = "Notifications">
+        <button  class="eg-icon-btn eg-notif-btn" aria-label="Notifications">
+          <img src="Asset/image/header/cloche.png" alt="Notifications" class="eg-icon-img">
+          <span class="eg-notif-badge">2</span>
+        </button>
+      </a>
+  
 
       <button class="eg-icon-btn eg-burger-icon" aria-label="Menu" id="burgerBtn">
         <span></span>

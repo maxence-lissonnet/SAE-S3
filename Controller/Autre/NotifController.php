@@ -6,11 +6,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-
-
-require_once __DIR__ . '/../Model/NotificationModel.php';
-
-
 // TEMPORAIRE : utilisateur de test qui a des notifications en BDD
 // (dans ton script SQL, l'utilisateur 6 a plusieurs notifs)
 $idUser = $_SESSION['idUser'] ?? 6;
@@ -141,3 +136,5 @@ unset($n);
 
 // 9) Total (réception + archive) sans les supprimées
 $totalCount = count($notificationsInbox) + count($notificationsArchive);
+
+require __DIR__ . '/../../Vue/Autre/notification.php';

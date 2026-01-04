@@ -16,7 +16,7 @@
         <span class="desc-title">Description de l'objet</span>
         <p class="desc"><?php echo nl2br(htmlspecialchars($article['descriptionObjet'] ?? '')); ?></p>
 
-        <a class="back-link" onclick="history.back();">Retour au catalogue</a><br>
+        <a class="back-link" href="Catalogue">Retour au catalogue</a><br>
         <button class="button">Réserver cet objet</button>
     </div>
 </div>
