@@ -1,6 +1,5 @@
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
-
 <!DOCTYPE html>
 <html lang="fr">
 

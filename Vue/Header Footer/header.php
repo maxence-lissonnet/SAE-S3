@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>EcoGestUM</title>
+  <link rel="icon" href="/SAE-S3/Asset/image/logo/favicon.ico">
 
   <link rel="stylesheet" href="Asset/style/headerstyle.css">
   <link rel="stylesheet" href="Asset/style/footerstyle.css">
