@@ -16,12 +16,10 @@
 
       <!-- Onglets boîte de réception / archivées -->
       <div class="eg-notif-tabs">
-        <a href="?page=notification&box=inbox"
-           class="eg-notif-tab <?= $box === 'inbox' ? 'is-active' : '' ?>">
+        <a href="Notifications?box=inbox" class="eg-notif-tab <?= $box === 'inbox' ? 'is-active' : '' ?>">
           Boîte de réception
         </a>
-        <a href="?page=notification&box=archive"
-           class="eg-notif-tab <?= $box === 'archive' ? 'is-active' : '' ?>">
+        <a href="Notifications?box=archive" class="eg-notif-tab <?= $box === 'archive' ? 'is-active' : '' ?>">
           Archivées
         </a>
       </div>
@@ -32,11 +30,8 @@
         <?php else: ?>
           <?php foreach ($notifications as $notif): ?>
             <?php $isActive = ($currentNotif && $notif['id'] === $currentNotif['id']); ?>
-            <a
-              href="?page=notification&box=<?= htmlspecialchars($box) ?>&id=<?= (int)$notif['id'] ?>"
-
-              class="eg-notif-item <?= $isActive ? 'is-active' : '' ?>"
-            >
+            <a href="Notifications?box=<?= htmlspecialchars($box) ?>&id=<?= (int) $notif['id'] ?>"
+              class="eg-notif-item <?= $isActive ? 'is-active' : '' ?>">
               <div class="eg-notif-dot <?= $notif['isUnread'] ? 'is-unread' : '' ?>"></div>
 
               <div class="eg-notif-item-content">
@@ -66,7 +61,7 @@
           <div class="eg-notif-bar-actions">
             <button type="button" class="eg-notif-bar-btn" data-bar-action="cancel">Non</button>
             <button type="button" class="eg-notif-bar-btn eg-notif-bar-btn--yes"
-                    data-bar-action="confirm-delete">Oui</button>
+              data-bar-action="confirm-delete">Oui</button>
           </div>
         </div>
 
@@ -79,7 +74,7 @@
           <div class="eg-notif-bar-actions">
             <button type="button" class="eg-notif-bar-btn" data-bar-action="cancel">Non</button>
             <button type="button" class="eg-notif-bar-btn eg-notif-bar-btn--yes"
-                    data-bar-action="confirm-archive">Oui</button>
+              data-bar-action="confirm-archive">Oui</button>
           </div>
         </div>
 
@@ -100,48 +95,48 @@
 
         <!-- Carte de notification -->
         <!-- Carte de notification -->
-<article class="eg-notif-card">
-  <header class="eg-notif-card-header">
-    <h2 class="eg-notif-card-title">
-      <?= htmlspecialchars($currentNotif['detailTitre']) ?>
-    </h2>
-    <p class="eg-notif-card-source">
-      <?= htmlspecialchars($currentNotif['source']) ?>
-    </p>
-    <p class="eg-notif-card-date">
-      <?= htmlspecialchars($currentNotif['dateTxt']) ?>
-    </p>
-  </header>
+        <article class="eg-notif-card">
+          <header class="eg-notif-card-header">
+            <h2 class="eg-notif-card-title">
+              <?= htmlspecialchars($currentNotif['detailTitre']) ?>
+            </h2>
+            <p class="eg-notif-card-source">
+              <?= htmlspecialchars($currentNotif['source']) ?>
+            </p>
+            <p class="eg-notif-card-date">
+              <?= htmlspecialchars($currentNotif['dateTxt']) ?>
+            </p>
+          </header>
 
-  <hr class="eg-notif-card-separator">
+          <hr class="eg-notif-card-separator">
 
-  <p class="eg-notif-card-text">
-    <?= nl2br(htmlspecialchars($currentNotif['detailTexte'])) ?>
-  </p>
+          <p class="eg-notif-card-text">
+            <?= nl2br(htmlspecialchars($currentNotif['detailTexte'])) ?>
+          </p>
 
-  <?php if (!empty($currentNotif['canReserve'])): ?>
-    <div class="eg-notif-card-main-action">
-      <button type="button" class="eg-notif-main-btn">
-        Réserver
-      </button>
-    </div>
+          <?php if (!empty($currentNotif['canReserve'])): ?>
+            <div class="eg-notif-card-main-action">
+              <button type="button" class="eg-notif-main-btn">
+                Réserver
+              </button>
+            </div>
 
-    <p class="eg-notif-card-footnote">
-      Ce don permet d’éviter 330 kg de CO₂.
-    </p>
-  <?php endif; ?>
-</article>
+            <p class="eg-notif-card-footnote">
+              Ce don permet d’éviter 330 kg de CO₂.
+            </p>
+          <?php endif; ?>
+        </article>
 
-        
+
 
         <!-- Formulaires cachés pour POST -->
         <form id="notifDeleteForm" method="post" style="display:none;">
-          <input type="hidden" name="notif_id" value="<?= (int)$currentNotif['id'] ?>">
+          <input type="hidden" name="notif_id" value="<?= (int) $currentNotif['id'] ?>">
           <input type="hidden" name="action" value="delete">
         </form>
 
         <form id="notifArchiveForm" method="post" style="display:none;">
-          <input type="hidden" name="notif_id" value="<?= (int)$currentNotif['id'] ?>">
+          <input type="hidden" name="notif_id" value="<?= (int) $currentNotif['id'] ?>">
           <input type="hidden" name="action" value="<?= $box === 'archive' ? 'unarchive' : 'archive' ?>">
         </form>
 
@@ -161,4 +156,5 @@
 
 <script src="../../Asset/js/notif.js"></script>
 </body>
+
 </html>

@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="Asset/style/accueilstyle.css">
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
@@ -10,7 +9,7 @@
       Bonjour <?= htmlspecialchars($_SESSION['prenom'] ?? 'Emma') ?> !
     </p>
     <p class="eg-home-counter">
-      Il y a actuellement <span class="eg-home-counter-number"><?= (int)$nbObjetsEnLigne ?></span>
+      Il y a actuellement <span class="eg-home-counter-number"><?= (int) $nbObjetsEnLigne ?></span>
       objets en ligne&nbsp;!
     </p>
   </section>
@@ -19,7 +18,7 @@
   <section class="eg-home-latest">
     <div class="eg-home-section-title-row">
       <h2 class="eg-home-section-title">Mis en ligne récemment</h2>
-      <a href="?page=objet" class="eg-home-link-all">Voir tous les objets mis en ligne</a>
+      <a href="Catalogue" class="eg-home-link-all">Voir tous les objets mis en ligne</a>
     </div>
 
     <div class="eg-home-latest-grid">
@@ -81,8 +80,8 @@
         // jours du mois qui ont au moins un évènement
         $daysWithEvents = [];
         foreach ($homeCalEventsRaw as $ev) {
-          $d   = new DateTime($ev['dateEvent']);
-          $day = (int)$d->format('j');
+          $d = new DateTime($ev['dateEvent']);
+          $day = (int) $d->format('j');
           $daysWithEvents[$day] = true;
         }
 
@@ -90,12 +89,12 @@
         $prevMonthObj = (clone $refDateObj)->modify('-1 month');
         $nextMonthObj = (clone $refDateObj)->modify('+1 month');
 
-        $prevLink = '?page=accueil&month=' . $prevMonthObj->format('Y-m');
-        $nextLink = '?page=accueil&month=' . $nextMonthObj->format('Y-m');
+        $prevLink = 'Accueil?month=' . $prevMonthObj->format('Y-m');
+        $nextLink = 'Accueil?month=' . $nextMonthObj->format('Y-m');
 
-        $firstDay  = new DateTime($refDateObj->format('Y-m-01'));
-        $monthInt  = (int)$firstDay->format('m');
-        $dayOfWeek = (int)$firstDay->format('N'); // 1 = lundi
+        $firstDay = new DateTime($refDateObj->format('Y-m-01'));
+        $monthInt = (int) $firstDay->format('m');
+        $dayOfWeek = (int) $firstDay->format('N'); // 1 = lundi
         ?>
 
         <div class="eg-home-cal-card">
@@ -126,8 +125,8 @@
             }
 
             // jours du mois
-            while ((int)$firstDay->format('m') === $monthInt) {
-              $dayNum = (int)$firstDay->format('j');
+            while ((int) $firstDay->format('m') === $monthInt) {
+              $dayNum = (int) $firstDay->format('j');
 
               $classes = 'eg-home-cal-day';
               if (isset($daysWithEvents[$dayNum])) {
@@ -142,7 +141,7 @@
         </div>
       </aside>
 
-            <!-- ===== Liste des événements à droite ===== -->
+      <!-- ===== Liste des événements à droite ===== -->
       <div class="eg-home-events-right">
         <?php if (empty($homeEvents)): ?>
           <p class="eg-home-empty-text">Aucun évènement programmé pour ce mois.</p>
@@ -150,11 +149,11 @@
           <ul class="eg-home-events-list">
             <?php foreach ($homeEvents as $ev): ?>
               <?php
-              $d          = new DateTime($ev['dateEvent']);
+              $d = new DateTime($ev['dateEvent']);
               $dateString = $d->format('Y-m-d');
               ?>
               <li class="eg-home-event-item">
-                <a href="../Event/evenement.php?date=<?= urlencode($dateString) ?>" class="eg-home-event-link">
+                <a href="Evenement?date=<?= urlencode($dateString) ?>" class="eg-home-event-link">
                   <div class="eg-home-event-date">
                     <span class="eg-home-event-day"><?= $d->format('d') ?></span>
                     <span class="eg-home-event-month"><?= $d->format('m') ?></span>
@@ -174,7 +173,7 @@
         <?php endif; ?>
 
         <div class="eg-home-events-btn-row">
-          <a href="../event/evenement.php" class="eg-home-section-btn">
+          <a href="Evenement" class="eg-home-section-btn">
             Voir tous les évènements
           </a>
         </div>
@@ -211,7 +210,7 @@
             <p class="eg-home-news-excerpt">
               <?= nl2br(htmlspecialchars($extrait)) ?>
             </p>
-            <a href="../Communication/com.php?id=<?= (int)$news['idCom'] ?>" class="eg-home-news-link">
+            <a href="Communication?id=<?= (int) $news['idCom'] ?>" class="eg-home-news-link">
               Voir l’article
             </a>
           </article>
@@ -219,7 +218,7 @@
       </div>
 
       <div class="eg-home-news-btn-row">
-        <a href="../Communication/pagecom.php" class="eg-home-section-btn">
+        <a href="Communication" class="eg-home-section-btn">
           Voir toutes les actualités
         </a>
       </div>
@@ -231,4 +230,5 @@
 <?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 
 </body>
+
 </html>

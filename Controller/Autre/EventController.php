@@ -3,7 +3,7 @@
 
 require_once __DIR__ . '/../../Model/EventModel.php';
 
-$formErrors  = [];
+$formErrors = [];
 $eventToEdit = [];
 
 // ====== GESTION POST : CREATION / MODIF / SUPPRESSION ======
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $idEvent = (int) $_POST['idEvent'];
         deleteEvent($idEvent);
 
-        header('Location: ?page=evenement');
+        header('Location: Evenement');
         exit;
     }
 
@@ -22,13 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['save'])) {
 
         $data = [
-            'nomEvent'      => trim($_POST['nomEvent'] ?? ''),
-            'idTypeEvent'   => (int) ($_POST['idTypeEvent'] ?? 0),
-            'dateEvent'     => $_POST['dateEvent'] ?? '',
+            'nomEvent' => trim($_POST['nomEvent'] ?? ''),
+            'idTypeEvent' => (int) ($_POST['idTypeEvent'] ?? 0),
+            'dateEvent' => $_POST['dateEvent'] ?? '',
             'heureDebEvent' => $_POST['heureDebEvent'] ?? '',
             'heureFinEvent' => $_POST['heureFinEvent'] ?? '',
-            'lieuEvent'     => trim($_POST['lieuEvent'] ?? ''),
-            'descEvent'     => trim($_POST['descEvent'] ?? ''),
+            'lieuEvent' => trim($_POST['lieuEvent'] ?? ''),
+            'descEvent' => trim($_POST['descEvent'] ?? ''),
         ];
 
         // === validations ===
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             // PRG : on repasse en GET pour éviter le re-submit
-            header('Location: ?page=evenement&edit=' . $idEvent);
+            header('Location: Evenement?edit=' . $idEvent);
             exit;
         } else {
             // on renvoie les données dans le formulaire
@@ -85,19 +85,19 @@ $lieuSearch = isset($_GET['lieu']) && $_GET['lieu'] !== ''
 // reset des filtres
 if (isset($_GET['reset'])) {
     $idTypeEvent = null;
-    $dateEvent   = null;
-    $lieuSearch  = null;
+    $dateEvent = null;
+    $lieuSearch = null;
 }
 
 // Évènement à éditer (bouton "Modifier / détails")
 if (isset($_GET['edit']) && ctype_digit($_GET['edit'])) {
-    $idEdit      = (int) $_GET['edit'];
+    $idEdit = (int) $_GET['edit'];
     $eventToEdit = getEventById($idEdit) ?? [];
 }
 
 // Données à passer à la vue
 $typesEvenement = getAllEventTypes();
-$events         = getEventsFiltered($idTypeEvent, $dateEvent, $lieuSearch);
+$events = getEventsFiltered($idTypeEvent, $dateEvent, $lieuSearch);
 
 // ====== DATE DE RÉFÉRENCE POUR LE CALENDRIER ======
 
