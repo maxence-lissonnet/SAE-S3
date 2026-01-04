@@ -14,7 +14,6 @@
 /* --- COLONNE GAUCHE (LISTE) --- */
 .col-liste {
     flex: 1;
-    /* ~33% */
     min-width: 300px;
 }
 
@@ -102,7 +101,6 @@
 /* --- COLONNE DROITE (FORMULAIRE) --- */
 .col-formulaire {
     flex: 2;
-    /* ~66% */
 }
 
 .form-card {
@@ -240,7 +238,6 @@
 }
 
 .btn-pdf {
-    /* Style précédent conservé ou redéfini amélioré */
     background-color: #E2001A;
     color: white;
     border: none;

@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ÉcoGestUM - Rapports</title>
     <link rel="stylesheet" href="Asset/style/rapportStyle.css">
-    <!-- Pour PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="Asset/js/pdfDownload.js"></script>
 </head>
@@ -41,7 +40,6 @@
                             $isActive = (isset($_GET['edit']) && $_GET['edit'] == $rap['idRapport']) ? 'active' : '';
                             $dateObj = new DateTime($rap['periodeRapport']);
                             $annee = $dateObj->format('Y');
-                            // Petite description courte
                             $descCourt = !empty($rap['descRapport']) && $rap['descRapport'] !== 'Pas de contenu'
                                 ? htmlspecialchars($rap['descRapport'])
                                 : 'Rapport ' . $annee;
@@ -75,10 +73,8 @@
                         <?php endif; ?>
                     </div>
 
-                    <!-- Ce conteneur a l'ID pour le PDF -->
                     <div id="report-container">
 
-                        <!-- En-tête visible uniquement sur le PDF (via CSS ou gestion du contenu) -->
                         <div class="pdf-only-header" style="display:none;">
                             <h1>Rapport d'activité <?php echo $reportToEdit['periode']; ?></h1>
                             <p><?php echo htmlspecialchars($reportToEdit['descRapport']); ?></p>
@@ -113,12 +109,7 @@
                                 </div>
                             </div>
 
-                            <!-- 
-                             Les inputs KPI "Masse", "Taux", "CO2", "Objets" ont été retirés 
-                             car non présents en BDD.
-                        -->
 
-                            <!-- Section Visualisation (Tableau) maintenue pour l'instant comme info statique/démo -->
                             <div class="preview-section">
                                 <h3>Aperçu des données mensuelles</h3>
                                 <table class="table small-table">
@@ -160,7 +151,7 @@
                             </div>
 
                         </form>
-                    </div> <!-- fin #report-container -->
+                    </div>
 
                 </div>
             </section>
