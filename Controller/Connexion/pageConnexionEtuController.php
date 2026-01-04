@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../../Model/ConnexionModel.php';
-
 $msgErreur = null;
 $msgAcces = null;
 
@@ -44,8 +42,6 @@ function verify_data()
         }
     }
 }
-
-
 
 change_passwords();
 

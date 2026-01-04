@@ -1,7 +1,5 @@
 <?php
-
 require_once __DIR__ . '/BDDModel.php';
-
 
 function get_item(string $table, string $column, string $param, mixed $value)
 {
