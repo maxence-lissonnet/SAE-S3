@@ -1,9 +1,8 @@
 /* Fond global */
 body {
   margin: 0;
-font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans", sans-serif;
   background: #fff;
-  padding-top: 80px;
   /* gris extérieur */
 
 
@@ -231,15 +230,15 @@ font-family: "DM Sans", sans-serif;
   background: #d0d0d0;
 }
 
-.logo-icon{
+.logo-icon {
   width: 25px;
   height: 25px;
   margin-right: 10px;
 }
 
-.logo{
+.logo {
   display: flex;
   flex-direction: row;
   align-items: center;
-  
+
 }

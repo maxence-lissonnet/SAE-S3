@@ -65,6 +65,3 @@ function change_passwords()
         }
     }
 }
-
-?>
-
