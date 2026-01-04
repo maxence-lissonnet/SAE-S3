@@ -11,8 +11,9 @@ a {
     color: #44474E;
 }
 
-#coeur {
-    width: 45px;
+#panier {
+    width: auto;
+    height: 55px;
 }
 
 .title {
