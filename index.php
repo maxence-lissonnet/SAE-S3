@@ -117,6 +117,10 @@ switch ($page) {
         require_once 'Controller/Com/rapport.php';
         break;
 
+    case 'signalement':
+        require_once 'Controller/Autre/signalementController.php';
+        break;
+
     case 'politique':
         require_once 'Controller/Autre/PolitiqueController.php';
         break;
