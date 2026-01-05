@@ -60,3 +60,35 @@ function notif_getAllForUser(int $idUser): array
 
     return $notifications;
 }
+
+// Dans NotificationModel.php
+
+/**
+ * Calcule le nombre de notifications non lues en tenant compte de la session
+ */
+function notif_getUnreadCount(int $idUser): int
+{
+    $pdo = get_dtb();
+
+    // 1. On compte tout ce qui est en base pour l'utilisateur
+    $sql = "SELECT idNotif FROM RECEPTION WHERE idUser = :idUser";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':idUser' => $idUser]);
+    $allIds = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    if (!$allIds) return 0;
+
+    // 2. On récupère les états en session (comme dans votre controller)
+    $deleted = $_SESSION['notif_deleted'] ?? [];
+    $read = $_SESSION['notif_read'] ?? [];
+
+    $count = 0;
+    foreach ($allIds as $id) {
+        // Si la notif n'est pas supprimée ET n'est pas lue, on compte
+        if (empty($deleted[$id]) && empty($read[$id])) {
+            $count++;
+        }
+    }
+
+    return $count;
+}
