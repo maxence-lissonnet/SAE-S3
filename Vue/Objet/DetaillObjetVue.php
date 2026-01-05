@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="Asset/style/DetailObjetStyle.css">
 
 <div class="detail-container">
-    <img src="/Annee_2_dev_web/SAE-S3/Controller/ImageObjet.php?id=<?php echo (int)$article['idObjet']; ?>" alt="">
+    <img src="index.php?page=Image&id=<?php echo (int)$article['idObjet']; ?>" alt="">
     <div class="detail-card">
         <h1 class='position-signaler'> <div class='titre-objet'> <?php echo htmlspecialchars($article['nomObjet']); ?> <div class="date">- <?php echo htmlspecialchars($article['dateDispoObjet']); ?> </div> </div> <img src="../../Asset/image/logo/logo white flag.png" class="signaler"></button> </a></h1>
         <div class="divider"></div>
