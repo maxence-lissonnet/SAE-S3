@@ -29,7 +29,6 @@ if (isset($_GET['page'])) {
         $_SESSION['unreadCount'] = notif_getUnreadCount((int)$_SESSION['idUser']);
     }
 
-
     $publicPages = [
         'Auth',
         'ConnexionEtu',
