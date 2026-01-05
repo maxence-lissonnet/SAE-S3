@@ -83,7 +83,7 @@
       <a href="Notifications">
         <button class="eg-icon-btn eg-notif-btn" aria-label="Notifications">
           <img src="Asset/image/header/cloche.png" alt="Notifications" class="eg-icon-img">
-          <span class="eg-notif-badge">2</span>
+          <span class="eg-notif-badge"><?php echo $unreadCount ?></span>
         </button>
       </a>
 
