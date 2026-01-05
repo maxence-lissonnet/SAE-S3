@@ -31,7 +31,7 @@ $dateCom   = $dateCom   ?? null;
                 <div class="eg-com-item-meta">
                   <?php
                   $d = new DateTime($com['datePubCom']);
-                  echo htmlspecialchars($d->format('H:i')) . ' – ' . htmlspecialchars($d->format('d/m/Y'));
+                  echo htmlspecialchars($d->format('d/m/Y'));
                   ?>
                   &nbsp;·&nbsp;
                   <?= htmlspecialchars($com['nomTypeCom']) ?>

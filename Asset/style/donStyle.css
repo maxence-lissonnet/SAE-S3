@@ -4,7 +4,7 @@
 
 body {
     background-image: url("../image/Background/BackgroundSelecProfil.png");
-
+    background-size: cover;
     min-height: 100vh;
     margin: 0;
     font-family: 'DM Sans', sans-serif;
