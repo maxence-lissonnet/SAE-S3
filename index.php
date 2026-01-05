@@ -23,102 +23,114 @@ require_once 'Model/DonsActifsModel.php';
 require_once 'Model/signalementModel.php';
 
 
+$page = isset($_GET['page']) ? strtolower($_GET['page']) : 'selectprofil';
 
+if (isset($_SESSION['idUser'])) {
+    $_SESSION['unreadCount'] = notif_getUnreadCount((int)$_SESSION['idUser']);
+}
 
-if (isset($_GET['page'])) {
-    $page = ucfirst($_GET['page']);
-    if (isset($_SESSION['idUser'])) {
-        $_SESSION['unreadCount'] = notif_getUnreadCount((int) $_SESSION['idUser']);
-    }
+$publicPages = [
+    'auth',
+    'connexionetu',
+    'connexionpersonnel',
+    'selectprofil',
+    'deconnexion'
+];
 
-    $publicPages = [
-        'Auth',
-        'ConnexionEtu',
-        'ConnexionPersonnel',
-        'SelectProfil',
-        'Deconnexion'
-    ];
+if (!in_array($page, $publicPages, true) && empty($_SESSION['idUser'])) {
+    header('Location: ./');
+    exit;
+}
 
-    if (!in_array($page, $publicPages) && empty($_SESSION['idUser'])) {
-        header('Location: ./');
-        exit;
-    }
+switch ($page) {
 
-    switch ($page) {
-        case 'auth':
-            require_once 'Controller/Autre/authController.php';
-            break;
-        case 'Signalement':
-            require_once 'Controller/Autre/signalementController.php';
-            break;
-        case 'ConseilRecyclage':
-            require_once 'Controller/Autre/ConseilRecyclageController.php';
-            break;
-        case 'Accueil':
-            require_once 'Controller/Autre/contrAccueil.php';
-            break;
-        case 'Evenement':
-            require_once 'Controller/Autre/EventController.php';
-            break;
-        case 'Notifications':
-            require_once 'Controller/Autre/NotifController.php';
-            break;
-        case 'Carte':
-            require_once 'Controller/Autre/pageCarteController.php';
-            break;
-        case 'Communication':
-            require_once 'Controller/Com/ComController.php';
-            break;
-        case 'DetailCommunication':
-            require_once 'Controller/Com/PageComController.php';
-            break;
-        case 'AjoutCom':
-            require_once 'Controller/Com/AjoutComController.php';
-            break;
-        case 'AjoutCommunication':
-            require_once 'Controller/Com/AjoutComController.php';
-            break;
-        case 'ConnexionEtu':
-            require_once 'Controller/Connexion/pageConnexionEtuController.php';
-            break;
-        case 'ConnexionPersonnel':
-            require_once 'Controller/Connexion/pageConnexionPersoController.php';
-            break;
-        case 'Catalogue':
-            require_once 'Controller/Objet/CatalogueArticleController.php';
-            break;
-        case 'Image':
-            require_once 'Controller/Objet/ImageObjet.php';
-            break;
-        case 'DetailObjet':
-            require_once 'Controller/Objet/DetaillObjetController.php';
-            break;
-        case 'Profil':
-            require_once 'Controller/Autre/ProfilController.php';
-            break;
-        case 'Reservation':
-            require_once 'Controller/Objet/ListReservationController.php';
-            break;
-        case 'MesDons':
-            require_once 'Controller/Objet/donsActifsController.php';
-            break;
-        case 'Donner':
-            require_once 'Controller/Objet/donController.php';
-            break;
-        case 'Rapport':
-            require_once 'Controller/Com/rapport.php';
-            break;
-        case 'Politique':
-            require_once 'Controller/Autre/PolitiqueController.php';
-            break;
-        case 'Deconnexion':
-            require_once 'Controller/Autre/authController.php';
-            logout();
-            break;
-        default:
-            require_once 'Controller/Connexion/SelectProfilController.php';
-            break;
-    }
-} else {
-    require_once 'Controller/Connexion/SelectProfilController.php';
+    case 'auth':
+        require_once 'Controller/Autre/authController.php';
+        break;
+
+    case 'conseilrecyclage':
+        require_once 'Controller/Autre/ConseilRecyclageController.php';
+        break;
+
+    case 'accueil':
+        require_once 'Controller/Autre/contrAccueil.php';
+        break;
+
+    case 'evenement':
+        require_once 'Controller/Autre/EventController.php';
+        break;
+
+    case 'notifications':
+        require_once 'Controller/Autre/NotifController.php';
+        break;
+
+    case 'carte':
+        require_once 'Controller/Autre/pageCarteController.php';
+        break;
+
+    /* ================= COMMUNICATIONS ================= */
+    case 'communication':
+        require_once 'Controller/Com/ComController.php';
+        break;
+
+    case 'detailcommunication':
+        require_once 'Controller/Com/PageComController.php';
+        break;
+
+    case 'ajoutcom':
+        require_once 'Controller/Com/AjoutComController.php';
+        break;
+    /* ================================================== */
+
+    case 'connexionetu':
+        require_once 'Controller/Connexion/pageConnexionEtuController.php';
+        break;
+
+    case 'connexionpersonnel':
+        require_once 'Controller/Connexion/pageConnexionPersoController.php';
+        break;
+
+    case 'catalogue':
+        require_once 'Controller/Objet/CatalogueArticleController.php';
+        break;
+
+    case 'image':
+        require_once 'Controller/Objet/ImageObjet.php';
+        break;
+
+    case 'detailobjet':
+        require_once 'Controller/Objet/DetaillObjetController.php';
+        break;
+
+    case 'profil':
+        require_once 'Controller/Autre/ProfilController.php';
+        break;
+
+    case 'reservation':
+        require_once 'Controller/Objet/ListReservationController.php';
+        break;
+
+    case 'mesdons':
+        require_once 'Controller/Objet/donsActifsController.php';
+        break;
+
+    case 'donner':
+        require_once 'Controller/Objet/donController.php';
+        break;
+
+    case 'rapport':
+        require_once 'Controller/Com/rapport.php';
+        break;
+
+    case 'politique':
+        require_once 'Controller/Autre/PolitiqueController.php';
+        break;
+
+    case 'deconnexion':
+        require_once 'Controller/ConnexionController.php';
+        break;
+
+    default:
+        require_once 'Controller/Connexion/SelectProfilController.php';
+        break;
 }

@@ -1,7 +1,8 @@
-/* Page création publication */
+/* VERSION CSS: AJOUCOM 2026-01-05 20:05 */
+
 .eg-ajout-page {
   padding: 24px 40px 40px;
-  background: #ffffff; /* Fond de page blanc */
+  background: #ffffff;
   box-sizing: border-box;
   font-family: "DM Sans", sans-serif;
 }
@@ -23,7 +24,7 @@
 
 .eg-ajout-left,
 .eg-ajout-right {
-  background: #f3f4f6; /* Gris clair (même teinte que les autres pages) */
+  background: #f3f4f6;
   border-radius: 24px;
   padding: 20px 24px 28px;
 }
@@ -105,28 +106,58 @@
   word-break: break-all;
 }
 
-/* Destination + bouton publier */
+/* Destination */
 .eg-ajout-destination {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 6px;
   font-size: 14px;
+  margin-top: 8px;
 }
 
 .eg-ajout-dest-label {
   font-weight: 600;
 }
 
-.eg-ajout-dest-value {
-  color: #D4451B;
-  font-size: 13px;
-  text-transform: uppercase;
+.eg-roles-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
 }
 
+.eg-role-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  user-select: none;
+}
+
+.eg-role-pill input {
+  accent-color: #D4451B;
+}
+
+.eg-role-empty {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.eg-ajout-dest-help {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 6px 0 0;
+}
+
+/* Bouton publier / update */
 .eg-ajout-publish {
   display: flex;
   justify-content: flex-start;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .eg-btn-main {
@@ -139,18 +170,11 @@
   color: #ffffff;
 }
 
-.eg-ajout-info {
-  font-size: 12px;
-  color: #6b7280;
-  margin-top: 10px;
+.eg-btn-main:hover {
+  filter: brightness(0.95);
 }
 
-@media (max-width: 1000px) {
-  .eg-ajout-layout {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* Back link */
 .eg-back-link {
   display: inline-flex;
   align-items: center;
@@ -165,17 +189,23 @@
   text-decoration: underline;
 }
 
-.eg-btn-secondary {
-  border-radius: 999px;
-  border: none;
-  padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;
-  background: #e5e7eb;
+/* Debug (à enlever après) */
+.eg-debug {
+  font-size: 12px;
+  color: #6b7280;
+  background: #fff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 6px 10px;
 }
 
-/* Supprimer le gris avant le footer : on force le fond global en blanc
-   pour cette page (si un autre CSS met un body gris). */
+/* Layout responsive */
+@media (max-width: 1000px) {
+  .eg-ajout-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
 body {
   background: #ffffff;
 }

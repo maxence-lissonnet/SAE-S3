@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/BDDModel.php';
 
-function getAllComTypes(): array{
+function getAllComTypes(): array {
     $pdo = get_dtb();
     $sql = "SELECT idTypeCom, nomTypeCom
             FROM TYPE_COMMUNICATION
@@ -9,19 +9,13 @@ function getAllComTypes(): array{
     return $pdo->query($sql)->fetchAll();
 }
 
-/**
- * Alias pour compatibilité avec l’ancien nom getAllTypeCom()
- */
-function getAllTypeCom(): array
-{
+/** Alias pour compatibilité */
+function getAllTypeCom(): array {
     return getAllComTypes();
 }
 
-/**
- * Tous les rôles (si utilisé dans les écrans associés).
- */
-function getAllRoles(): array
-{
+/** Tous les rôles */
+function getAllRoles(): array {
     $pdo = get_dtb();
     $sql = "SELECT idRole, nomRole
             FROM ROLE
@@ -55,34 +49,28 @@ function getCommunicationsFiltered(?int $idTypeCom, ?string $dateFilter): array
             WHERE 1";
     $params = [];
 
-    // Filtre type
     if (!empty($idTypeCom)) {
         $sql .= " AND c.idTypeCom = :idTypeCom";
         $params[':idTypeCom'] = $idTypeCom;
     }
 
-    // Filtre date
     if (!empty($dateFilter)) {
         $dateFilter = trim($dateFilter);
 
         if (preg_match('#^\d{4}$#', $dateFilter)) {
-            // année
             $sql .= " AND YEAR(c.datePubCom) = :year";
             $params[':year'] = $dateFilter;
 
         } elseif (preg_match('#^\d{4}-\d{2}$#', $dateFilter)) {
-            // année-mois
             $sql .= " AND c.datePubCom BETWEEN :d1 AND :d2";
             $params[':d1'] = $dateFilter . '-01';
             $params[':d2'] = $dateFilter . '-31';
 
         } elseif (preg_match('#^\d{4}-\d{2}-\d{2}$#', $dateFilter)) {
-            // date complète
             $sql .= " AND c.datePubCom = :dExact";
             $params[':dExact'] = $dateFilter;
 
         } else {
-            // fallback sur LIKE
             $sql .= " AND c.datePubCom LIKE :dLike";
             $params[':dLike'] = $dateFilter . '%';
         }
@@ -95,9 +83,7 @@ function getCommunicationsFiltered(?int $idTypeCom, ?string $dateFilter): array
     return $stmt->fetchAll();
 }
 
-/**
- * Une communication par son id (pour la page com.php, etc.).
- */
+/** Une communication par id */
 function getCommunicationById(int $idCom): ?array
 {
     $pdo = get_dtb();
@@ -120,10 +106,7 @@ function getCommunicationById(int $idCom): ?array
     return $row ?: null;
 }
 
-/**
- * Dernières communications pour la page d’accueil.
- * $limit = nombre maximum d’actus à afficher.
- */
+/** Dernières communications */
 function getLastCommunications(int $limit = 3): array
 {
     $pdo = get_dtb();
@@ -147,13 +130,8 @@ function getLastCommunications(int $limit = 3): array
     return $stmt->fetchAll();
 }
 
-/* ============================================================
-   ÉCRITURE / CRUD
-   ============================================================ */
+/* ===================== CRUD ===================== */
 
-/**
- * Insertion d’une communication.
- */
 function insertCommunication(array $data): int
 {
     $pdo = get_dtb();
@@ -187,9 +165,6 @@ function insertCommunication(array $data): int
     return (int)$pdo->lastInsertId();
 }
 
-/**
- * Mise à jour d’une communication existante.
- */
 function updateCommunication(int $idCom, array $data): void
 {
     $pdo = get_dtb();
@@ -216,12 +191,30 @@ function updateCommunication(int $idCom, array $data): void
     ]);
 }
 
-/**
- * Suppression d’une communication.
- */
 function deleteCommunication(int $idCom): void
 {
     $pdo = get_dtb();
     $stmt = $pdo->prepare("DELETE FROM COMMUNICATION WHERE idCom = :id");
     $stmt->execute([':id' => $idCom]);
 }
+
+/* ===================== DESTINATAIRES (ROLES) ===================== */
+/* Modif ajoutée : 2 fonctions utilisées par AjoutComController.php */
+
+/* ===================== DESTINATAIRES (ROLES) ===================== */
+/* Version SANS table de liaison => désactivé */
+
+function getRoleIdsForCommunication(int $idCom): array
+{
+    // Pas de table COMMUNICATION_ROLE dans la BDD => rien à pré-cocher
+    return [];
+}
+
+function replaceCommunicationRoles(int $idCom, array $roleIds): void
+{
+    // Pas de table COMMUNICATION_ROLE dans la BDD => on ignore la sauvegarde
+    return;
+}
+
+
+
