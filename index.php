@@ -21,7 +21,7 @@ require_once 'Model/ObjetModel.php';
 require_once 'Model/BDDModel.php';
 require_once 'Model/ReservationModel.php';
 require_once 'Model/DonsActifsModel.php';
-//require_once 'Model/signalementModel.php';
+require_once 'Model/signalementModel.php';
 $page = isset($_GET['page']) ? strtolower($_GET['page']) : 'selectprofil';
 
 if (isset($_SESSION['idUser'])) {
@@ -113,13 +113,21 @@ switch ($page) {
         require_once 'Controller/Objet/donController.php';
         break;
 
-    case 'Rapport':
+    case 'rapport':
         require_once 'Controller/Com/rapportController.php';
+        break;
+
+    case 'signalement':
+        require_once 'Controller/Autre/signalementController.php';
         break;
 
     case 'politique':
         require_once 'Controller/Autre/PolitiqueController.php';
         break;
+    case 'statistique':
+        require_once 'Controller/Autre/statsController.php';
+        break;
+
 
     case 'deconnexion':
         require_once 'Controller/Autre/authController.php';

@@ -3,18 +3,18 @@
 <link rel="stylesheet" href="Asset/style/DetailObjetStyle.css">
 
 <div class="detail-container">
-    <img src="index.php?page=Image&id=<?php echo (int)$article['idObjet']; ?>" alt="">
+    <img src="Image&id=<?php echo (int)$article['idObjet']; ?>" alt="">
     <div class="detail-card">
-        <h1 class='position-signaler'> 
-            <div class='titre-objet'> 
-                <?php echo htmlspecialchars($article['nomObjet']); ?> 
-                <div class="date">- <?php echo htmlspecialchars($article['dateDispoObjet']); ?> 
-                </div> 
-            </div> 
-            <a href='index.php?page=Signalement&id=<?= (int) $article['idObjet'] ?>'>
-            <img src="../../Asset/image/logo/logo white flag.png" class="signaler"></button> 
+        <h1 class='position-signaler'>
+            <div class='titre-objet'>
+                <?php echo htmlspecialchars($article['nomObjet']); ?>
+                <div class="date">- <?php echo htmlspecialchars($article['dateDispoObjet']); ?>
+                </div>
+            </div>
+            <a href='index.php?page=Signalement&id=<?php echo $article['idObjet']; ?>'>
+                <img src="../../Asset/image/logo/logo white flag.png" class="signaler">
             </a>
-            
+
         </h1>
         <div class="divider"></div>
 
@@ -39,7 +39,7 @@
             </form>
         <?php else: ?>
             <a href="index.php?page=ConnexionEtu" class="button">Se connecter pour réserver</a>
-        <?php endif; ?>    
+        <?php endif; ?>
     </div>
 </div>
 

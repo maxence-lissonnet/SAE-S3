@@ -220,8 +220,8 @@
             <p class="eg-home-news-excerpt">
               <?= nl2br(htmlspecialchars($extrait)) ?>
             </p>
-            <a href="Communication?id=<?= (int) $news['idCom'] ?>" class="eg-home-news-link">
-              Voir l’article
+            <a href="?page=DetailCommunication&id=<?= (int) $news['idCom'] ?>" class="eg-home-news-link">
+              Voir l’actualité
             </a>
           </article>
         <?php endforeach; ?>
