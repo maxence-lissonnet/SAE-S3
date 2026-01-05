@@ -21,6 +21,7 @@
                 <p class="idText">Prénom</p>
                 <div class="box"><?php echo $_SESSION['prenom'] ?></div>
             </div>
+
         </div>
 
         <div class="ligne">
