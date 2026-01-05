@@ -104,7 +104,7 @@
         'rapports' => 'Rapport',
         'catalogue' => 'Catalogue',
         'points-collecte' => 'Carte',
-        'signalements' => 'signalement',
+        'signalements' => 'Signalement',
         'evenements' => 'Evenement',
         'donner' => '../Vue/donner.php',
         'donnees-recyclage' => '../Vue/donnees-recyclage.php',
