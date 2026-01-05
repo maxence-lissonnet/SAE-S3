@@ -16,9 +16,7 @@ $com = $com ?? null;
     <div class="eg-com-full-container">
       <p>Communication introuvable.</p>
       <p>
-        <a href="?page=Communication" class="eg-btn-secondary">
-          Retour aux communications
-        </a>
+        <a href="?page=Communication" class="eg-btn-secondary">Retour aux communications</a>
       </p>
     </div>
 
@@ -28,13 +26,9 @@ $com = $com ?? null;
 
       <header class="eg-com-full-header">
         <div>
-          <h1 class="eg-com-full-title">
-            <?= htmlspecialchars($com['titreCom']) ?>
-          </h1>
+          <h1 class="eg-com-full-title"><?= htmlspecialchars($com['titreCom']) ?></h1>
           <p class="eg-com-full-meta">
-            publié à
-            <?= htmlspecialchars(substr($com['heurePubCom'], 0, 5)) ?>
-            –
+            publié à <?= htmlspecialchars(substr($com['heurePubCom'], 0, 5)) ?> –
             <?php
             $d = new DateTime($com['datePubCom']);
             echo htmlspecialchars($d->format('d/m/Y'));

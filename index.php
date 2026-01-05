@@ -21,120 +21,114 @@ require_once 'Model/BDDModel.php';
 require_once 'Model/ReservationModel.php';
 require_once 'Model/DonsActifsModel.php';
 
+$page = isset($_GET['page']) ? strtolower($_GET['page']) : 'selectprofil';
 
+if (isset($_SESSION['idUser'])) {
+    $_SESSION['unreadCount'] = notif_getUnreadCount((int)$_SESSION['idUser']);
+}
 
-if (isset($_GET['page'])) {
-    $page = ucfirst($_GET['page']);
-    if (isset($_SESSION['idUser'])) {
-        $_SESSION['unreadCount'] = notif_getUnreadCount((int)$_SESSION['idUser']);
-    }
+$publicPages = [
+    'auth',
+    'connexionetu',
+    'connexionpersonnel',
+    'selectprofil',
+    'deconnexion'
+];
 
-    $publicPages = [
-        'Auth',
-        'ConnexionEtu',
-        'ConnexionPersonnel',
-        'SelectProfil',
-        'Deconnexion'
-    ];
+if (!in_array($page, $publicPages, true) && empty($_SESSION['idUser'])) {
+    header('Location: ./');
+    exit;
+}
 
-    if (!in_array($page, $publicPages) && empty($_SESSION['idUser'])) {
-        header('Location: ./');
-        exit;
-    }
-
-    // ...
 switch ($page) {
+
     case 'auth':
         require_once 'Controller/Autre/authController.php';
         break;
 
-    case 'ConseilRecyclage':
+    case 'conseilrecyclage':
         require_once 'Controller/Autre/ConseilRecyclageController.php';
         break;
 
-    case 'Accueil':
+    case 'accueil':
         require_once 'Controller/Autre/contrAccueil.php';
         break;
 
-    case 'Evenement':
+    case 'evenement':
         require_once 'Controller/Autre/EventController.php';
         break;
 
-    case 'Notifications':
+    case 'notifications':
         require_once 'Controller/Autre/NotifController.php';
         break;
 
-    case 'Carte':
+    case 'carte':
         require_once 'Controller/Autre/pageCarteController.php';
         break;
 
     /* ================= COMMUNICATIONS ================= */
-    case 'Communication':
+    case 'communication':
         require_once 'Controller/Com/ComController.php';
         break;
 
-    case 'DetailCommunication':
+    case 'detailcommunication':
         require_once 'Controller/Com/PageComController.php';
         break;
 
-    case 'AjoutCom':
+    case 'ajoutcom':
         require_once 'Controller/Com/AjoutComController.php';
         break;
     /* ================================================== */
 
-    case 'ConnexionEtu':
+    case 'connexionetu':
         require_once 'Controller/Connexion/pageConnexionEtuController.php';
         break;
 
-    case 'ConnexionPersonnel':
+    case 'connexionpersonnel':
         require_once 'Controller/Connexion/pageConnexionPersoController.php';
         break;
 
-    case 'Catalogue':
+    case 'catalogue':
         require_once 'Controller/Objet/CatalogueArticleController.php';
         break;
 
-    case 'Image':
+    case 'image':
         require_once 'Controller/Objet/ImageObjet.php';
         break;
 
-    case 'DetailObjet':
+    case 'detailobjet':
         require_once 'Controller/Objet/DetaillObjetController.php';
         break;
 
-    case 'Profil':
+    case 'profil':
         require_once 'Controller/Autre/ProfilController.php';
         break;
 
-    case 'Reservation':
+    case 'reservation':
         require_once 'Controller/Objet/ListReservationController.php';
         break;
 
-    case 'MesDons':
+    case 'mesdons':
         require_once 'Controller/Objet/donsActifsController.php';
         break;
 
-    case 'Donner':
+    case 'donner':
         require_once 'Controller/Objet/donController.php';
         break;
 
-    case 'Rapport':
+    case 'rapport':
         require_once 'Controller/Com/rapport.php';
         break;
 
-    case 'Politique':
+    case 'politique':
         require_once 'Controller/Autre/PolitiqueController.php';
         break;
 
-    case 'Deconnexion':
+    case 'deconnexion':
         require_once 'Controller/ConnexionController.php';
         break;
 
     default:
         require_once 'Controller/Connexion/SelectProfilController.php';
         break;
-}
-
-} else {
-    require_once 'Controller/Connexion/SelectProfilController.php';
 }

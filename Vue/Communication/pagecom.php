@@ -16,7 +16,6 @@ $dateCom   = $dateCom   ?? null;
 
   <section class="eg-com-layout">
 
-    <!-- LISTE GAUCHE -->
     <section class="eg-com-list">
       <?php if (empty($comList)): ?>
         <p>Aucune communication ne correspond à vos filtres.</p>
@@ -28,9 +27,7 @@ $dateCom   = $dateCom   ?? null;
                 <div class="eg-com-thumb-circle"></div>
               </div>
               <div class="eg-com-item-text">
-                <h2 class="eg-com-item-title">
-                  <?= htmlspecialchars($com['titreCom']) ?>
-                </h2>
+                <h2 class="eg-com-item-title"><?= htmlspecialchars($com['titreCom']) ?></h2>
                 <div class="eg-com-item-meta">
                   <?php
                   $d = new DateTime($com['datePubCom']);
@@ -49,7 +46,6 @@ $dateCom   = $dateCom   ?? null;
       <?php endif; ?>
     </section>
 
-    <!-- COLONNE DROITE -->
     <aside class="eg-com-sidebar">
 
       <div class="eg-com-publish-block">
@@ -67,7 +63,7 @@ $dateCom   = $dateCom   ?? null;
           <select name="type">
             <option value="">Tous les types</option>
             <?php foreach ($typesCom as $type): ?>
-              <option value="<?= $type['idTypeCom'] ?>"
+              <option value="<?= (int)$type['idTypeCom'] ?>"
                 <?= ($idTypeCom === (int)$type['idTypeCom']) ? 'selected' : '' ?>>
                 <?= htmlspecialchars($type['nomTypeCom']) ?>
               </option>
@@ -85,9 +81,7 @@ $dateCom   = $dateCom   ?? null;
 
         <div class="eg-com-filter-actions">
           <button type="submit" class="eg-btn-main">Appliquer les filtres</button>
-          <button type="submit" name="reset" value="1" class="eg-btn-secondary">
-            Supprimer les filtres
-          </button>
+          <button type="submit" name="reset" value="1" class="eg-btn-secondary">Supprimer les filtres</button>
         </div>
 
       </form>
@@ -97,6 +91,5 @@ $dateCom   = $dateCom   ?? null;
 </main>
 
 <?php require __DIR__ . '/../Header Footer/footer.php'; ?>
-
 </body>
 </html>

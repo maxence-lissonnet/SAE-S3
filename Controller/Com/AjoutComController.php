@@ -10,7 +10,7 @@ $editId     = null;
 $typesCom = getAllTypeCom();
 $roles    = getAllRoles();
 
-/* ========= MODE ÉDITION (GET AjoutCom&idCom=XX) ========= */
+/* ========= MODE ÉDITION ========= */
 if (
     $_SERVER['REQUEST_METHOD'] === 'GET'
     && isset($_GET['idCom'])
@@ -24,13 +24,13 @@ if (
             'titreCom'   => $current['titreCom'],
             'idTypeCom'  => $current['idTypeCom'],
             'contenuCom' => $current['contenuCom'],
-            'imageUrl'   => '', // tu t'en fous pour l'instant
-            'roles'      => getRoleIdsForCommunication($editId), // ✅ pré-cocher
+            'imageUrl'   => '',
+            'roles'      => [],
         ];
     }
 }
 
-/* ========= SOUMISSION FORMULAIRE (POST) ========= */
+/* ========= SOUMISSION FORMULAIRE ========= */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['idCom']) && ctype_digit($_POST['idCom'])) {
@@ -47,18 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         : [],
     ];
 
-    // ---- VALIDATION ----
-    if ($formData['titreCom'] === '') {
-        $formErrors[] = "Le titre de la publication est obligatoire.";
-    }
-    if (empty($formData['idTypeCom'])) {
-        $formErrors[] = "La catégorie de publication est obligatoire.";
-    }
-    if ($formData['contenuCom'] === '') {
-        $formErrors[] = "La description est obligatoire.";
-    }
+    if ($formData['titreCom'] === '') $formErrors[] = "Le titre de la publication est obligatoire.";
+    if (empty($formData['idTypeCom'])) $formErrors[] = "La catégorie de publication est obligatoire.";
+    if ($formData['contenuCom'] === '') $formErrors[] = "La description est obligatoire.";
 
-    // ---- PERSISTENCE ----
     if (empty($formErrors)) {
 
         $dataPersist = [
@@ -75,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $idCom = insertCommunication($dataPersist);
         }
 
-        // ✅ sauvegarde des destinataires
         replaceCommunicationRoles($idCom, $formData['roles']);
 
         header('Location: ?page=DetailCommunication&id=' . $idCom);

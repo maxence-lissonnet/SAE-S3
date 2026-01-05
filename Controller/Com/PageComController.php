@@ -5,7 +5,6 @@ require_once __DIR__ . '/../../Model/ComModel.php';
 
 $com = null;
 
-/* ======= SUPPRESSION (POST) ======= */
 if (
     $_SERVER['REQUEST_METHOD'] === 'POST'
     && isset($_POST['delete'], $_POST['idCom'])
@@ -18,7 +17,6 @@ if (
     exit;
 }
 
-/* ======= AFFICHAGE DÉTAIL (GET ?id=...) ======= */
 if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
     $idCom = (int) $_GET['id'];
     $com   = getCommunicationById($idCom);

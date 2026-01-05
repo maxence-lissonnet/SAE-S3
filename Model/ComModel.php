@@ -201,32 +201,20 @@ function deleteCommunication(int $idCom): void
 /* ===================== DESTINATAIRES (ROLES) ===================== */
 /* Modif ajoutée : 2 fonctions utilisées par AjoutComController.php */
 
+/* ===================== DESTINATAIRES (ROLES) ===================== */
+/* Version SANS table de liaison => désactivé */
+
 function getRoleIdsForCommunication(int $idCom): array
 {
-    $pdo = get_dtb();
-    $stmt = $pdo->prepare("SELECT idRole FROM COMMUNICATION_ROLE WHERE idCom = :id");
-    $stmt->execute([':id' => $idCom]);
-    return array_map('intval', $stmt->fetchAll(PDO::FETCH_COLUMN));
+    // Pas de table COMMUNICATION_ROLE dans la BDD => rien à pré-cocher
+    return [];
 }
 
 function replaceCommunicationRoles(int $idCom, array $roleIds): void
 {
-    $pdo = get_dtb();
-
-    // On supprime tout puis on ré-insère
-    $stmt = $pdo->prepare("DELETE FROM COMMUNICATION_ROLE WHERE idCom = :id");
-    $stmt->execute([':id' => $idCom]);
-
-    // Vide = “tous”
-    if (empty($roleIds)) {
-        return;
-    }
-
-    $stmt = $pdo->prepare("INSERT INTO COMMUNICATION_ROLE (idCom, idRole) VALUES (:idCom, :idRole)");
-    foreach ($roleIds as $idRole) {
-        $stmt->execute([
-            ':idCom'  => $idCom,
-            ':idRole' => (int)$idRole
-        ]);
-    }
+    // Pas de table COMMUNICATION_ROLE dans la BDD => on ignore la sauvegarde
+    return;
 }
+
+
+
