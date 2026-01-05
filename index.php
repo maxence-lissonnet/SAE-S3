@@ -28,6 +28,21 @@ if (isset($_GET['page'])) {
     if (isset($_SESSION['idUser'])) {
         $_SESSION['unreadCount'] = notif_getUnreadCount((int)$_SESSION['idUser']);
     }
+
+
+    $publicPages = [
+        'Auth',
+        'ConnexionEtu',
+        'ConnexionPersonnel',
+        'SelectProfil',
+        'Deconnexion'
+    ];
+
+    if (!in_array($page, $publicPages) && empty($_SESSION['idUser'])) {
+        header('Location: ./');
+        exit;
+    }
+
     switch ($page) {
         case 'auth':
             require_once 'Controller/Autre/authController.php';
