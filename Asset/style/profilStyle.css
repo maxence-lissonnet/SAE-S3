@@ -8,28 +8,22 @@ body {
     min-height: 100vh;
     margin: 0;
 
-    /* Ensure no flex centering on body to allow fixed header to sit at top */
     display: block;
     font-family: 'DM Sans', sans-serif;
     color: #44474E;
 }
 
 .container {
-<<<<<<< HEAD
-=======
     margin-top: 55px;
     margin-bottom: 55px;
->>>>>>> 545b62527ee61abf078830a3812950a436f43cff
     background-color: white;
     width: 90%;
     max-width: 1200px;
     min-height: 60vh;
-    /* 150px top to clear the fixed header, auto for horizontal centering */
     margin: 150px auto 40px auto !important;
 
     display: flex;
     align-items: center;
-    /* Vertical center of content inside container */
     border-radius: 30px;
     padding: 40px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -95,7 +89,6 @@ img {
 
     .box {
         width: 100%;
-        /* Adapts to container/screen width */
         max-width: 400px;
         height: 50px;
         border: solid 3px #44474E;
