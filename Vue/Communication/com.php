@@ -7,7 +7,7 @@ $com = $com ?? null;
 
 <main class="eg-com-full-page">
 
-  <a href="pagecom.php" class="eg-back-btn">
+  <a href="Communication" class="eg-back-btn">
     ← Retour aux communications
   </a>
 
@@ -44,22 +44,18 @@ $com = $com ?? null;
         </div>
 
         <div class="eg-com-full-actions">
-          <!-- Bouton "Modifier" dans le style des autres boutons principaux -->
-          <a href="ajoucom.php?id=<?= (int)$com['idCom'] ?>"
+          <a href="AjoutCom?id=<?= (int)$com['idCom'] ?>"
              class="eg-com-action-btn eg-com-action-primary">
             Modifier
           </a>
 
-          <!-- Bouton "Supprimer" dans le style des boutons secondaires -->
           <form id="deleteForm"
                 class="eg-com-delete-form"
                 method="post"
-                action="com.php?id=<?= (int)$com['idCom'] ?>">
+                action="DetailCommunication?id=<?= (int)$com['idCom'] ?>">
             <input type="hidden" name="idCom" value="<?= (int)$com['idCom'] ?>">
             <input type="hidden" name="delete" value="1">
-            <button type="button"
-                    id="deleteButton"
-                    class="eg-com-action-btn eg-com-action-secondary">
+            <button type="button" id="deleteButton" class="eg-com-action-btn eg-com-action-secondary">
               Supprimer
             </button>
           </form>

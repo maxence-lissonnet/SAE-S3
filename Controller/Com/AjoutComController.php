@@ -47,10 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $formData = [
-        'titreCom' => trim($_POST['titreCom'] ?? ''),
-        'idTypeCom' => (int) ($_POST['idTypeCom'] ?? 0),
-        'contenuCom' => trim($_POST['contenuCom'] ?? ''),
-        'imageUrl' => trim($_POST['imageUrl'] ?? ''),
+        'titreCom' => $_POST['titreCom'] ?? '',
+        'idTypeCom' => ($_POST['idTypeCom'] ?? 0),
+        'contenuCom' => $_POST['contenuCom'] ?? '',
+        'imageUrl' => $_POST['imageUrl'] ?? '',
         'roles' => isset($_POST['roles']) && is_array($_POST['roles'])
             ? array_map('intval', $_POST['roles'])
             : [],
