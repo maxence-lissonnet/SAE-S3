@@ -105,7 +105,7 @@ if (isset($_GET['page'])) {
             break;
         case 'Deconnexion':
             require_once 'Controller/ConnexionController.php';
-            logout();
+            //logout();
             break;
         default:
             require_once 'Controller/Connexion/SelectProfilController.php';
