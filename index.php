@@ -66,8 +66,6 @@ switch ($page) {
     case 'carte':
         require_once 'Controller/Autre/pageCarteController.php';
         break;
-
-    /* ================= COMMUNICATIONS ================= */
     case 'communication':
         require_once 'Controller/Com/ComController.php';
         break;
@@ -79,8 +77,6 @@ switch ($page) {
     case 'ajoutcom':
         require_once 'Controller/Com/AjoutComController.php';
         break;
-    /* ================================================== */
-
     case 'connexionetu':
         require_once 'Controller/Connexion/pageConnexionEtuController.php';
         break;
@@ -125,8 +121,9 @@ switch ($page) {
         require_once 'Controller/Autre/PolitiqueController.php';
         break;
 
-    case 'deconnexion':
-        require_once 'Controller/ConnexionController.php';
+    case 'Deconnexion':
+        require_once 'Controller/Autre/authController.php';
+        logout();
         break;
 
     default:

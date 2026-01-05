@@ -16,15 +16,15 @@
 
       <div class="eg-footer-buttons">
         <a href="tel:0243833000" class="eg-footer-btn">
-          <span class="eg-footer-btn-icon">📞</span>
+          <span class="eg-footer-btn-icon"><img src="Asset/image/icon/phone.svg"></span>
           <span>02 43 83 30 00</span>
         </a>
         <a href="#" class="eg-footer-btn">
-          <span class="eg-footer-btn-icon">✉️</span>
+          <span class="eg-footer-btn-icon"><img src="Asset/image/icon/mail.svg"></span>
           <span>Nous contacter</span>
         </a>
         <a href="#" class="eg-footer-btn">
-          <span class="eg-footer-btn-icon">📍</span>
+          <span class="eg-footer-btn-icon"><img src="Asset/image/icon/maps_white.svg"></span>
           <span>Plan des campus</span>
         </a>
       </div>
@@ -34,11 +34,11 @@
     <div class="eg-footer-col eg-footer-middle">
       <h3 class="eg-footer-title">Accès rapide</h3>
       <ul class="eg-footer-links">
-        <li><a href="#">Tous nos sites web</a></li>
-        <li><a href="#">Espace presse</a></li>
-        <li><a href="#">Offres d’emploi</a></li>
-        <li><a href="#">Marchés publics</a></li>
-        <li><a href="#">Charte graphique</a></li>
+        <li><a href="https://www.univ-lemans.fr/fr/pied-de-page/acces-rapide/tous-nos-sites-web.html">Tous nos sites web</a></li>
+        <li><a href="https://www.univ-lemans.fr/fr/pied-de-page/acces-rapide/espace-presse.html">Espace presse</a></li>
+        <li><a href="https://www.univ-lemans.fr/fr/pied-de-page/acces-rapide/offres-d-emploi.html">Offres d’emploi</a></li>
+        <li><a href="https://www.univ-lemans.fr/fr/pied-de-page/acces-rapide/marches-publics.html">Marchés publics</a></li>
+        <li><a href="https://www.univ-lemans.fr/fr/pied-de-page/acces-rapide/charte-graphique.html">Charte graphique</a></li>
       </ul>
     </div>
 
@@ -47,16 +47,16 @@
       <h3 class="eg-footer-title">Restons connectés</h3>
 
       <div class="eg-footer-socials">
-        <a href="#" aria-label="Instagram">
+        <a href="https://www.instagram.com/lemansuniversite/?hl=fr" aria-label="Instagram">
           <img src="Asset/image/footer/Logo Instagram.png" alt="Instagram">
         </a>
-        <a href="#" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/school/universit%C3%A9-du-maine-le-mans-laval/mycompany/" aria-label="LinkedIn">
           <img src="Asset/image/footer/Logo LinkedIn.png" alt="LinkedIn">
         </a>
-        <a href="#" aria-label="YouTube">
+        <a href="https://www.youtube.com/channel/UCGcQ5RW44I0xEIg4pNS69pg" aria-label="YouTube">
           <img src="Asset/image/footer/Logo YT.png" alt="YouTube">
         </a>
-        <a href="#" aria-label="Facebook">
+        <a href="https://www.facebook.com/LeMansUniversite" aria-label="Facebook">
           <img src="Asset/image/footer/Logo Facebook.png" alt="Facebook">
         </a>
       </div>
@@ -95,4 +95,5 @@
 
 <script src="Asset/style/popup.js"></script>
 </body>
+
 </html>
