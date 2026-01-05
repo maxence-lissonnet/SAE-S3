@@ -56,9 +56,9 @@
           ];
 
           $menuCompteLabels = [
-            'profil'      => 'Profil',
+            'profil' => 'Profil',
             'reservation' => 'Réservations',
-            'mes-dons'    => 'Mes dons',
+            'mes-dons' => 'Mes dons',
             'deconnexion' => 'Déconnexion'
           ];
 
@@ -104,50 +104,50 @@
       <?php
       // 1. Définition des URLs
       $allPages = [
-        'statistiques'       => '../Autre/stats.php',
-        'communication'      => 'Communication',
-        'rapports'           => 'Rapport',
-        'catalogue'          => 'Catalogue',
-        'points-collecte'    => 'Carte',
-        'signalements'       => 'Signalement',
-        'evenements'         => 'Evenement',
-        'donner'             => 'Donner',
-        'donnees-recyclage'  => '../Vue/donnees-recyclage.php',
-        'demande-objets'     => '../Vue/demande-objets.php',
+        'statistiques' => 'statistique',
+        'communication' => 'Communication',
+        'rapports' => 'Rapport',
+        'catalogue' => 'Catalogue',
+        'points-collecte' => 'Carte',
+        'signalements' => 'Signalement',
+        'evenements' => 'Evenement',
+        'donner' => 'Donner',
+        'donnees-recyclage' => '../Vue/donnees-recyclage.php',
+        'demande-objets' => 'demandeobjet',
         'conseils-recyclage' => 'ConseilRecyclage',
-        'recyclage'          => '../Vue/recyclage.php',
+        'recyclage' => '../Vue/recyclage.php',
       ];
 
       // 2. Traduction des labels pour le menu burger
       $burgerLabels = [
-        'statistiques'       => 'Statistiques',
-        'communication'      => 'Communication',
-        'rapports'           => 'Rapports',
-        'catalogue'          => 'Catalogue',
-        'points-collecte'    => 'Points de collecte',
-        'signalements'       => 'Signalements',
-        'evenements'         => 'Évènements',
-        'donner'             => 'Donner',
-        'donnees-recyclage'  => 'Données de recyclage',
-        'demande-objets'     => "Demande d'objets",
+        'statistiques' => 'Statistiques',
+        'communication' => 'Communication',
+        'rapports' => 'Rapports',
+        'catalogue' => 'Catalogue',
+        'points-collecte' => 'Points de collecte',
+        'signalements' => 'Signalements',
+        'evenements' => 'Évènements',
+        'donner' => 'Donner',
+        'donnees-recyclage' => 'Données de recyclage',
+        'demande-objets' => "Demande d'objets",
         'conseils-recyclage' => 'Conseils recyclage',
-        'recyclage'          => 'Recyclage',
+        'recyclage' => 'Recyclage',
       ];
 
       // 3. Tags images (identiques à votre code)
       $allLogoPages = [
-        'statistiques'       => '<img src="Asset/image/header/graph.png" alt="" class="logo-icon">',
-        'communication'      => '<img src="Asset/image/header/megaphone.png" alt="" class="logo-icon">',
-        'rapports'           => '<img src="Asset/image/header/rapport.png" alt="" class="logo-icon">',
-        'catalogue'          => '<img src="Asset/image/logo/logo catalogue.png" alt="" class="logo-icon">',
-        'points-collecte'    => '<img src="Asset/image/logo/epingle.png" alt="" class="logo-icon">',
-        'signalements'       => '<img src="Asset/image/header/exclamation-mark.png" alt="" class="logo-icon">',
-        'evenements'         => '<img src="Asset/image/header/calendar.png" alt="" class="logo-icon">',
-        'donner'             => '<img src="Asset/image/header/recycle.png" alt="" class="logo-icon">',
-        'donnees-recyclage'  => '<img src="Asset/image/header/donnees-recyclage.png" alt="" class="logo-icon">',
-        'demande-objets'     => '<img src="Asset/image/header/plus.png" alt="" class="logo-icon">',
+        'statistiques' => '<img src="Asset/image/header/graph.png" alt="" class="logo-icon">',
+        'communication' => '<img src="Asset/image/header/megaphone.png" alt="" class="logo-icon">',
+        'rapports' => '<img src="Asset/image/header/rapport.png" alt="" class="logo-icon">',
+        'catalogue' => '<img src="Asset/image/logo/logo catalogue.png" alt="" class="logo-icon">',
+        'points-collecte' => '<img src="Asset/image/logo/epingle.png" alt="" class="logo-icon">',
+        'signalements' => '<img src="Asset/image/header/exclamation-mark.png" alt="" class="logo-icon">',
+        'evenements' => '<img src="Asset/image/header/calendar.png" alt="" class="logo-icon">',
+        'donner' => '<img src="Asset/image/header/recycle.png" alt="" class="logo-icon">',
+        'donnees-recyclage' => '<img src="Asset/image/header/donnees-recyclage.png" alt="" class="logo-icon">',
+        'demande-objets' => '<img src="Asset/image/header/plus.png" alt="" class="logo-icon">',
         'conseils-recyclage' => '<img src="Asset/image/header/light.png" alt="" class="logo-icon">',
-        'recyclage'          => '<img src="Asset/image/header/recyclage.png" alt="" class="logo-icon">'
+        'recyclage' => '<img src="Asset/image/header/recyclage.png" alt="" class="logo-icon">'
       ];
 
       foreach ($allPages as $page => $link) {
@@ -167,7 +167,7 @@
 
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const burgerBtn = document.getElementById('burgerBtn');
       const burgerMenu = document.getElementById('burgerMenu');
       const profilBtn = document.getElementById('profilBtn');
@@ -175,7 +175,7 @@
 
       // Gestion du menu Burger
       if (burgerBtn && burgerMenu) {
-        burgerBtn.addEventListener('click', function(e) {
+        burgerBtn.addEventListener('click', function (e) {
           e.stopPropagation();
           burgerMenu.classList.toggle('open');
           // Ferme l'autre menu s'il est ouvert
@@ -185,7 +185,7 @@
 
       // Gestion du menu de Compte
       if (profilBtn && menuCompte) {
-        profilBtn.addEventListener('click', function(e) {
+        profilBtn.addEventListener('click', function (e) {
           e.stopPropagation();
           menuCompte.classList.toggle('open');
           // Ferme l'autre menu s'il est ouvert
@@ -194,21 +194,21 @@
       }
 
       // Gestion des clics externes (pour fermer les menus)
-      document.addEventListener('click', function() {
+      document.addEventListener('click', function () {
         if (burgerMenu) burgerMenu.classList.remove('open');
         if (menuCompte) menuCompte.classList.remove('open');
       });
 
       // Empêche la fermeture du menu si on clique DEDANS
       if (burgerMenu) {
-        burgerMenu.addEventListener('click', function(e) {
+        burgerMenu.addEventListener('click', function (e) {
           e.stopPropagation();
         });
       }
 
       // Empêche la fermeture du menu si on clique DEDANS
       if (menuCompte) {
-        menuCompte.addEventListener('click', function(e) {
+        menuCompte.addEventListener('click', function (e) {
           e.stopPropagation();
         });
       }
