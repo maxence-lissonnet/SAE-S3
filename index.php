@@ -26,7 +26,7 @@ require_once 'Model/DonsActifsModel.php';
 if (isset($_GET['page'])) {
     $page = ucfirst($_GET['page']);
     if (isset($_SESSION['idUser'])) {
-        $_SESSION['unreadCount'] = notif_getUnreadCount((int)$_SESSION['idUser']);
+        $_SESSION['unreadCount'] = notif_getUnreadCount((int) $_SESSION['idUser']);
     }
 
     $publicPages = [
@@ -107,8 +107,8 @@ if (isset($_GET['page'])) {
             require_once 'Controller/Autre/PolitiqueController.php';
             break;
         case 'Deconnexion':
-            require_once 'Controller/ConnexionController.php';
-            //logout();
+            require_once 'Controller/Autre/authController.php';
+            logout();
             break;
         default:
             require_once 'Controller/Connexion/SelectProfilController.php';

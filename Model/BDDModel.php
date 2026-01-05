@@ -1,6 +1,4 @@
 <?php
-// Model/BDDModel.php
-
 if (!function_exists('get_dtb')) {
     function get_dtb() {
         // 1. On cherche d'abord dans $_ENV, sinon dans $_SERVER (solution pour XAMPP)
