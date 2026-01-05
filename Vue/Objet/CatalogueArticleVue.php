@@ -16,11 +16,10 @@
             <?php foreach ($articles as $article): ?>
                 <a href="DetailObjet?id=<?php echo $article['idObjet']; ?>">
                     <section class="box_feature">
-                        <div class="inner">
+                        <div>
                             <header>
                                 <div class="image-container">
-                                    <img class="image" src="Controller/ImageObjet.php?id=<?= (int) $article['idObjet'] ?>"
-                                        alt="">
+                                    <img class="image" src="index.php?page=Image&id=<?= (int) $article['idObjet'] ?>" alt="Objet">                                
                                 </div>
                                 <h2><?php echo htmlspecialchars($article['nomObjet']); ?></h2>
                                 <p class="logo"><img src="Asset/image/logo/logo personne.png"

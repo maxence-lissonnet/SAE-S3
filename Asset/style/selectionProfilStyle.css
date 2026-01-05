@@ -6,6 +6,7 @@ body {
 
 body {
     background-image: url("../image/Background/BackgroundSelecProfil.png");
+    background-repeat: no-repeat;
     display: flex;
     justify-content: flex-end;
     align-items: center;

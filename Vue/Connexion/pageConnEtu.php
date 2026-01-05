@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -26,10 +25,11 @@
                 <input type="text" name="id" id="idTextBox">
                 <p id="idText">Mot de passe <span style="color: red;">*</span></p>
                 <input type="password" name="mdp" id="idTextBox">
-                <p style="font-size: 16px;">Mot de passe oublié ?</p>
+                <a href="https://activation.univ-lemans.fr/cgi-bin/activation/mdp-perdu.pl" class="lien">Mot de passe oublié ?</a>
                 <button id="boutonConnexion" type="submit">SE CONNECTER</button>
-                <button id="premiereConnexion">PREMIÈRE CONNEXION ?</button>
             </form>
+            <a href="http://activation.univ-lemans.fr/"><button id="premiereConnexion">PREMIÈRE CONNEXION ?</button></a>
+
             <?php if ($msgErreur != null) : ?>
                 <div class="erreur">
                     <?= htmlspecialchars($msgErreur); ?>
