@@ -21,11 +21,6 @@ $GLOBALS['permissions'] = [
     ],
 ];
 
-function getCurrentUserRole()
-{
-    return $_SESSION['idRole'] ?? 5;
-}
-
 function logout()
 {
     if (session_status() === PHP_SESSION_NONE) {

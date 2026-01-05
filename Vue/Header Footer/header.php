@@ -58,7 +58,7 @@
           $menuCompteLabels = [
             'profil'      => 'Profil',
             'reservation' => 'Réservations',
-            'mes-dons'    => 'MesDons',
+            'mes-dons'    => 'Mes dons',
             'deconnexion' => 'Déconnexion'
           ];
 

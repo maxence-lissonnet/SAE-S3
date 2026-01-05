@@ -68,7 +68,8 @@ body {
 .eg-app-name {
   font-size: 20px;
   letter-spacing: 1.5px;
-  color: #222;
+  color: #44474E;
+  font-weight: bold;
 }
 
 /* Partie droite */

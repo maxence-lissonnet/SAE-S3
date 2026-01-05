@@ -36,14 +36,9 @@ function get_id(string $mail)
 function get_user_info()
 {
     $dtb = get_dtb();
-    $query = $dtb->query('SELECT * FROM UTILISATEUR WHERE emailUser = "' . $_POST['id'] . '";');
+    $query = $dtb->query('SELECT * FROM UTILISATEUR
+     INNER JOIN `ROLE` ON `role`.idRole = utilisateur.idRole WHERE emailUser = "' . $_POST['id'] . '";');
     $items = $query->fetch(PDO::FETCH_ASSOC);
-
-    $query2 = $dtb->query('SELECT nomRole FROM `role` 
-        INNER JOIN utilisateur ON `role`.idRole = utilisateur.idRole
-        WHERE utilisateur.emailUser = "' . $_POST['id'] . '"');
-    $role = $query2->fetch(PDO::FETCH_ASSOC);
-    $items['role'] = $role['nomRole'];
     return $items;
 }
 

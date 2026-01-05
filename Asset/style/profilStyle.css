@@ -20,7 +20,7 @@ body {
     width: 90%;
     max-width: 1200px;
     min-height: 60vh;
-    margin: 150px auto 40px auto !important;
+    margin: 50px auto 40px auto !important;
 
     display: flex;
     align-items: center;

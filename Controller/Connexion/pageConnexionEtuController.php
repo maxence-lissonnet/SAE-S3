@@ -52,12 +52,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if ($msgAcces === true) {
             $user_info = get_user_info();
             $_SESSION['prenom'] = $user_info['prenomUser'];
-            $_SESSION['role'] = $user_info['role'];
+            $_SESSION['role'] = $user_info['nomRole'];
             $_SESSION['nom'] = $user_info['nomUser'];
             $_SESSION['tel'] = $user_info['telUser'];
             $_SESSION['adr'] = $user_info['adrUser'];
             $_SESSION['mail'] = $user_info['emailUser'];
             $_SESSION['idUser'] = $user_info['IdUser'];
+            $_SESSION['idRole'] = $user_info['idRole'];
             header('Location: Accueil');
             exit;
         }

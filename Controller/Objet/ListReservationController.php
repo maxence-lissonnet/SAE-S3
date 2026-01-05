@@ -25,12 +25,12 @@ function change_item($item)
 
 
 if (isset($_GET['id']) && isset($_GET['action']) && $_GET['action'] === 'deleteConfirmation') {
-    $_SESSION['message'] = "<span style='font-size:22px;'><strong>Confirmation</strong></span><br>Voulez-vous vraiment supprimer cet objet ?<br><em><span style='color:#D4451B'><strong>ATTENTION : Cette action est irréversible</strong></em></span>";
+    $_SESSION['message'] = "<span style='font-size:22px;'><strong>Confirmation</strong></span><br>Voulez-vous vraiment annuler cette réservation ?<br><em><span style='color:#D4451B'><strong>ATTENTION : Cette action est irréversible</strong></em></span>";
 }
 
 if (isset($_GET['id']) && isset($_GET['action']) && $_GET['action'] === 'delete') {
     delete_reservation($_GET['id']);
-    $_SESSION['message2'] = "<span style='font-size:22px;'><strong>Succès</strong></span><br>L'objet a été supprimé";
+    $_SESSION['message2'] = "<span style='font-size:22px;'><strong>Succès</strong></span><br>La réservation a été supprimée";
     require_once __DIR__ . '/../../Vue/Objet/ListReservationVue.php';
 }
 
@@ -46,4 +46,3 @@ if (isset($_GET['id'])) {
 }
 
 require __DIR__ . '/../../Vue/Objet/ListReservationVue.php';
-?>

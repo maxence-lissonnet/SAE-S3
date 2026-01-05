@@ -113,8 +113,8 @@ switch ($page) {
         require_once 'Controller/Objet/donController.php';
         break;
 
-    case 'rapport':
-        require_once 'Controller/Com/rapport.php';
+    case 'Rapport':
+        require_once 'Controller/Com/rapportController.php';
         break;
 
     case 'politique':
