@@ -1,0 +1,257 @@
+/* --- PAGE LAYOUT --- */
+.container-rapport-page {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.layout-rapport {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* --- COLONNE GAUCHE (LISTE) --- */
+.col-liste {
+    flex: 1;
+    min-width: 300px;
+}
+
+.col-liste h2 {
+    font-size: 18px;
+    color: #001F3F;
+    border-bottom: 2px solid #E2001A;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.liste-rapports {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-rapport-item {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s, border-left 0.2s;
+    border-left: 4px solid transparent;
+}
+
+.card-rapport-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card-rapport-item.active {
+    border-left-color: #E2001A;
+    background-color: #fff5f5;
+}
+
+.card-rapport-item.nouvelle-saisie {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #001F3F;
+    border: 2px dashed #ccc;
+    background: transparent;
+    justify-content: center;
+}
+
+.card-rapport-item.nouvelle-saisie:hover {
+    border-color: #001F3F;
+    background: white;
+}
+
+.card-rapport-item.nouvelle-saisie .icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.item-header .annee {
+    font-weight: bold;
+    font-size: 16px;
+    color: #001F3F;
+}
+
+.item-header .date-creation {
+    font-size: 12px;
+    color: #888;
+}
+
+.item-desc {
+    font-size: 14px;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- COLONNE DROITE (FORMULAIRE) --- */
+.col-formulaire {
+    flex: 2;
+}
+
+.form-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.form-header h2 {
+    margin: 0;
+    color: #001F3F;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.form-group.flex-2 {
+    flex: 2;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.kpi-grid-inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.input-kpi {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-kpi label {
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: #444;
+}
+
+.input-kpi input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.preview-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.preview-section h3 {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.small-table {
+    font-size: 14px;
+}
+
+.small-table th,
+.small-table td {
+    padding: 8px;
+}
+
+.form-actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-primary {
+    background-color: #001F3F;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #00162d;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-pdf {
+    background-color: #E2001A;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-pdf:hover {
+    background: #c00016;
+}
+
+.btn-pdf.small {
+    font-size: 14px;
+    padding: 6px 12px;
+}

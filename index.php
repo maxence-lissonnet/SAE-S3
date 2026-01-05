@@ -114,7 +114,7 @@ switch ($page) {
         break;
 
     case 'rapport':
-        require_once 'Controller/Com/rapport.php';
+        require_once 'Controller/Com/rapportController.php';
         break;
 
     case 'signalement':
@@ -127,6 +127,7 @@ switch ($page) {
     case 'statistique':
         require_once 'Controller/Autre/statsController.php';
         break;
+
 
     case 'deconnexion':
         require_once 'Controller/Autre/authController.php';
