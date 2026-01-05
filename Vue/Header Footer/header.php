@@ -51,8 +51,15 @@
           $menuCompteLinks = [
             'profil' => ' Profil',
             'reservations' => ' Reservation',
-            'mes-dons' => ' MesDons',
+            'mes-dons' => ' Mes Dons',
             'deconnexion' => ' Deconnexion'
+          ];
+
+          $menuCompteLabels = [
+            'profil'      => 'Profil',
+            'reservation' => 'Réservations',
+            'mes-dons'    => 'Mes dons',
+            'deconnexion' => 'Déconnexion'
           ];
 
           $menuCompteLogos = [
@@ -65,15 +72,13 @@
           // $menuItems contient les clés ('profil', 'reservations', etc.) autorisées par le rôle
           foreach ($menuCompteLinks as $item => $link) {
             if (in_array($item, $menuItems)) {
-              // 1. Créer le label
-              $label = ucfirst(str_replace('-', ' ', $item));
+              $label = $menuCompteLabels[$item] ?? str_replace('-', ' ', ucfirst($item));
+              $logoTag = $menuCompteLogos[$item] ?? '';
 
-              // 2. Récupérer le logo (s'il existe)
-              $logoTag = $menuCompteLogos[$item] ?? ''; // Utilisation de l'opérateur de coalescence
-
-              // 3. Afficher le lien avec le logo et l'URL
-              $content = $logoTag . ' ' . $label;
-              echo '<a href="' . htmlspecialchars($link) . '" class="logo">' . $content . '</a>';
+              echo '<a href="' . htmlspecialchars($link) . '" class="logo">';
+              echo $logoTag;
+              echo '<span>' . htmlspecialchars($label) . '</span>'; // On utilise $label
+              echo '</a>';
             }
           }
           ?>
@@ -97,51 +102,63 @@
 
     <nav class="eg-burger-menu" id="burgerMenu">
       <?php
-      // 1. Définition des liens/URLs des pages (Clé -> URL)
+      // 1. Définition des URLs
       $allPages = [
-        'statistiques' => '../Autre/stats.php',
-        'communication' => 'Communication',
-        'rapports' => 'Rapport',
-        'catalogue' => 'Catalogue',
-        'points-collecte' => 'Carte',
-        'signalements' => '../signalement.php',
-        'evenements' => 'Evenement',
-        'donner' => '../Vue/donner.php',
-        'donnees-recyclage' => '../Vue/donnees-recyclage.php',
-        'demande-objets' => '../Vue/demande-objets.php',
+        'statistiques'       => '../Autre/stats.php',
+        'communication'      => 'Communication',
+        'rapports'           => 'Rapport',
+        'catalogue'          => 'Catalogue',
+        'points-collecte'    => 'Carte',
+        'signalements'       => '../signalement.php',
+        'evenements'         => 'Evenement',
+        'donner'             => '../Vue/donner.php',
+        'donnees-recyclage'  => '../Vue/donnees-recyclage.php',
+        'demande-objets'     => '../Vue/demande-objets.php',
         'conseils-recyclage' => 'ConseilRecyclage',
-        'recyclage' => '../Vue/recyclage.php',
+        'recyclage'          => '../Vue/recyclage.php',
       ];
 
-      // 2. Définition des tags <img> des logos (Clé -> Tag HTML)
+      // 2. Traduction des labels pour le menu burger
+      $burgerLabels = [
+        'statistiques'       => 'Statistiques',
+        'communication'      => 'Communication',
+        'rapports'           => 'Rapports',
+        'catalogue'          => 'Catalogue',
+        'points-collecte'    => 'Points de collecte',
+        'signalements'       => 'Signalements',
+        'evenements'         => 'Évènements',
+        'donner'             => 'Donner',
+        'donnees-recyclage'  => 'Données de recyclage',
+        'demande-objets'     => "Demande d'objets",
+        'conseils-recyclage' => 'Conseils recyclage',
+        'recyclage'          => 'Recyclage',
+      ];
+
+      // 3. Tags images (identiques à votre code)
       $allLogoPages = [
-        // ATTENTION : Mettez à jour tous les chemins d'accès pour qu'ils soient valides.
-        'statistiques' => '<img src="Asset/image/header/graph.png" alt="Statistiques" class="logo-icon">',
-        'communication' => '<img src="Asset/image/header/megaphone.png" alt="Communication" class="logo-icon">',
-        'rapports' => '<img src="Asset/image/header/rapport.png" alt="Rapports" class="logo-icon">',
-        'catalogue' => '<img src="Asset/image/logo/logo catalogue.png" alt="Catalogue" class="logo-icon">',
-        'points-collecte' => '<img src="Asset/image/logo/epingle.png" alt="Points de collecte" class="logo-icon">',
-        'signalements' => '<img src="Asset/image/header/exclamation-mark.png" alt="Signalements" class="logo-icon">',
-        'evenements' => '<img src="Asset/image/header/calendar.png" alt="Évènements" class="logo-icon">',
-        'donner' => '<img src="Asset/image/header/recycle.png" alt="Donner" class="logo-icon">',
-        'donnees-recyclage' => '<img src="Asset/image/header/donnees-recyclage.png" alt="Données de recyclage"  class="logo-icon">',
-        'demande-objets' => '<img src="Asset/image/header/plus.png" alt="Demande d\'objets" class="logo-icon">',
-        'conseils-recyclage' => '<img src="Asset/image/header/light.png" alt="Conseils de recyclage" class="logo-icon">',
-        'recyclage' => '<img src="Asset/image/header/recyclage.png" alt="Recyclage" class="logo-icon">'
+        'statistiques'       => '<img src="Asset/image/header/graph.png" alt="" class="logo-icon">',
+        'communication'      => '<img src="Asset/image/header/megaphone.png" alt="" class="logo-icon">',
+        'rapports'           => '<img src="Asset/image/header/rapport.png" alt="" class="logo-icon">',
+        'catalogue'          => '<img src="Asset/image/logo/logo catalogue.png" alt="" class="logo-icon">',
+        'points-collecte'    => '<img src="Asset/image/logo/epingle.png" alt="" class="logo-icon">',
+        'signalements'       => '<img src="Asset/image/header/exclamation-mark.png" alt="" class="logo-icon">',
+        'evenements'         => '<img src="Asset/image/header/calendar.png" alt="" class="logo-icon">',
+        'donner'             => '<img src="Asset/image/header/recycle.png" alt="" class="logo-icon">',
+        'donnees-recyclage'  => '<img src="Asset/image/header/donnees-recyclage.png" alt="" class="logo-icon">',
+        'demande-objets'     => '<img src="Asset/image/header/plus.png" alt="" class="logo-icon">',
+        'conseils-recyclage' => '<img src="Asset/image/header/light.png" alt="" class="logo-icon">',
+        'recyclage'          => '<img src="Asset/image/header/recyclage.png" alt="" class="logo-icon">'
       ];
 
-      // 3. Boucle et affichage (LOGIQUE OPTIMISÉE)
-      // $userPages est déjà défini en haut du fichier à partir de getCurrentUserRole()
       foreach ($allPages as $page => $link) {
         if (in_array($page, $userPages)) {
-          $label = ucfirst(str_replace('-', ' ', $page));
-
-          // Recherche directe du logo, évite la boucle imbriquée
+          // On utilise le label du tableau burgerLabels, sinon on formate par défaut
+          $label = $burgerLabels[$page] ?? ucfirst(str_replace('-', ' ', $page));
           $logoTag = $allLogoPages[$page] ?? '';
 
-          $content = $logoTag . ' ' . $label;
-          // Utilisation de htmlspecialchars pour l'URL
-          echo '<a class="logo" href="' . htmlspecialchars($link) . '">' . $content . '</a>';
+          echo '<a class="logo" href="' . htmlspecialchars($link) . '">';
+          echo $logoTag . ' <span>' . htmlspecialchars($label) . '</span>';
+          echo '</a>';
         }
       }
       ?>
