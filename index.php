@@ -17,13 +17,28 @@ require_once 'Model/ConnexionModel.php';
 require_once 'Model/EventModel.php';
 require_once 'Model/NotificationModel.php';
 require_once 'Model/ObjetModel.php';
-require_once 'Model/BDDModel.php'; 
+require_once 'Model/BDDModel.php';
 require_once 'Model/ReservationModel.php';
 require_once 'Model/DonsActifsModel.php';
 
 
 if (isset($_GET['page'])) {
     $page = ucfirst($_GET['page']);
+
+
+    $publicPages = [
+        'Auth',
+        'ConnexionEtu',
+        'ConnexionPersonnel',
+        'SelectProfil',
+        'Deconnexion'
+    ];
+
+    if (!in_array($page, $publicPages) && empty($_SESSION['idUser'])) {
+        header('Location: ./');
+        exit;
+    }
+
     switch ($page) {
         case 'auth':
             require_once 'Controller/Autre/authController.php';
