@@ -147,12 +147,7 @@
                                 <?= nl2br(htmlspecialchars($event['descEvent'])) ?>
                             </p>
 
-                            <div class="eg-event-item-actions">
-                                <!-- Lien pour charger l'évènement dans le formulaire de droite -->
-                                <a href="Evenement?edit=<?= (int) $event['idEvent'] ?>" class="eg-btn-link">
-                                    Modifier / détails
-                                </a>
-                            </div>
+                            
                         </article>
 
                         <hr class="eg-event-separator">
