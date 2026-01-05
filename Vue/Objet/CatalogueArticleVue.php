@@ -37,7 +37,7 @@
                 </a>
             <?php endforeach; ?>
         </div>
-
+        <div class="hr"></div>
         <form class="form" method="post">
 
             <label for="name">Categorie :</label><br>
