@@ -82,6 +82,9 @@ if (isset($_GET['page'])) {
         case 'DetailObjet':
             require_once 'Controller/Objet/DetaillObjetController.php';
             break;
+        case 'DemandeObjet':
+            require_once 'Controller/Objet/DemandeObjetController.php';
+            break;
         case 'Profil':
             require_once 'Controller/Autre/ProfilController.php';
             break;
