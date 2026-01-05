@@ -283,10 +283,14 @@
   color: #ffffff;
   font-size: 14px;
   text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .eg-home-section-btn:hover {
   filter: brightness(0.95);
+  background-color: #D4451B;
+  border: black;
 }
 
 .eg-home-events-btn-row,
