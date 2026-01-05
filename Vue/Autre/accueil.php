@@ -29,7 +29,7 @@
               <img src="<?php echo htmlspecialchars($obj['imageObjet']) ?>" alt="Image de l'objet" id="imageAffichage" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
 
               <div class="image-fallback" style="display:none;">
-                <span>Aucune image disponible</span>
+                <span style="font-weight: bolder;">Pas d'image disponible</span>
               </div>
             </div>
 

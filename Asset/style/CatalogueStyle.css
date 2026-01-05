@@ -1,15 +1,22 @@
-.row{
+.row {
     margin-left: 40px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    border-right: solid 5px #282F63;
-    border-radius: 30px;
-    text-decoration: none ;    
+    text-decoration: none;
 }
 
-.box_feature{
+.hr {
+    border-left: 5px solid #44474E;
+    height: 93vh;
+    margin-top: 0px;
+    border-radius: 30px;
+    position: sticky;
+    top: 20px;
+}
+
+.box_feature {
     width: 250px;
     height: 300px;
     margin-right: 50px;
@@ -24,32 +31,32 @@
     font-family: "DM Sans";
 }
 
-.logo-icon{
+.logo-icon {
     width: 25px;
     height: 25px;
     margin-right: 10px;
 }
 
-.logo-icon-titre{
+.logo-icon-titre {
     width: 40px;
     height: 40px;
     margin-right: 10px;
     margin-left: 50px;
 }
 
-.logo{
+.logo {
     display: flex;
     flex-direction: row;
     align-items: center;
-    
+
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: row;
 }
 
-.input-field{
+.input-field {
     width: 200px;
     height: 30px;
     font-family: "DM Sans";
@@ -59,11 +66,11 @@
     border-radius: 30px;
 }
 
-.valeur-option{
-    font-family: "DM Sans", sans-serif; 
+.valeur-option {
+    font-family: "DM Sans", sans-serif;
 }
 
-.image{
+.image {
     align-items: center;
     max-width: 300px;
     max-height: 150px;
@@ -73,7 +80,7 @@
 
 }
 
-.image-container{
+.image-container {
     width: 300px;
     height: 150px;
     text-align: center;
@@ -82,13 +89,17 @@
     border-top-right-radius: 50px;
     position: relative;
     left: -25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .form {
     position: sticky;
     width: 300px;
-    top: 20px;               
-    align-self: flex-start;  /* évite l'étirement si parent en flex */
+    top: 20px;
+    align-self: flex-start;
+    /* évite l'étirement si parent en flex */
     font-family: "DM Sans";
     padding-left: 40px;
     padding-right: 20px;
@@ -121,4 +132,3 @@
 #features-wrapper a * {
     text-decoration: none;
 }
-
