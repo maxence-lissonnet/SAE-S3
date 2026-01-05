@@ -24,7 +24,7 @@
                 <p id="idText">Adresse mail<span style="color: red;">*</span></p>
                 <input type="text" name="id" id="idTextBox">
                 <p id="idText">Mot de passe <span style="color: red;">*</span></p>
-                <input type="password" name="mdp" id="idTextBox">
+                <input type="password" name="mdp" id="idTextBox"><br>
                 <a href="https://activation.univ-lemans.fr/cgi-bin/activation/mdp-perdu.pl" class="lien">Mot de passe oublié ?</a>
                 <button id="boutonConnexion" type="submit">SE CONNECTER</button>
             </form>
