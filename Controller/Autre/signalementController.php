@@ -88,4 +88,6 @@ function getObjetsByCategorie($idCategorie)
 {
     return db_getObjetsByCategorie($idCategorie);
 }
+
+require_once __DIR__ . '/../../Vue/Autre/signalement.php';
 ?>

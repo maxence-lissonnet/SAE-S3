@@ -1,7 +1,4 @@
-<?php
-require_once __DIR__ . '/../../Model/signalementModel.php';
-require_once __DIR__ . '/../../Controller/signalementController.php';
-require_once __DIR__ . '/../Header Footer/header.php';
+<?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; 
 
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
@@ -31,7 +28,7 @@ $categories = getCategories();
 $types = getTypesSignalement();
 ?>
 
-<link rel="stylesheet" href="../../Asset/style/signalementstyle.css">
+<link rel="stylesheet" href="Asset/style/signalementstyle.css">
 
 <main>
   <h1>Signalements</h1>

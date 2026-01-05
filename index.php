@@ -20,6 +20,8 @@ require_once 'Model/ObjetModel.php';
 require_once 'Model/BDDModel.php';
 require_once 'Model/ReservationModel.php';
 require_once 'Model/DonsActifsModel.php';
+require_once 'Model/signalementModel.php';
+
 
 
 
@@ -45,6 +47,9 @@ if (isset($_GET['page'])) {
     switch ($page) {
         case 'auth':
             require_once 'Controller/Autre/authController.php';
+            break;
+        case 'Signalement':
+            require_once 'Controller/Autre/signalementController.php';
             break;
         case 'ConseilRecyclage':
             require_once 'Controller/Autre/ConseilRecyclageController.php';
