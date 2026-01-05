@@ -1,27 +1,27 @@
 <?php
-// Controller/contrcom.php
+// Controller/Com/ComController.php
+
+require_once __DIR__ . '/../../Model/ComModel.php';
 
 $idTypeCom = null;
 $dateCom   = null;
 
-
-// Filtre par type de communication
+// Filtre type
 if (isset($_GET['type']) && $_GET['type'] !== '') {
     $idTypeCom = (int) $_GET['type'];
 }
 
-// Filtre par date (année, année-mois ou date complète)
+// Filtre date
 if (isset($_GET['date']) && $_GET['date'] !== '') {
     $dateCom = trim($_GET['date']);
 }
 
-// Réinitialisation des filtres
+// Reset des filtres
 if (isset($_GET['reset'])) {
     $idTypeCom = null;
     $dateCom   = null;
 }
 
-// Données pour la vue
 $typesCom = getAllTypeCom();
 $comList  = getCommunicationsFiltered($idTypeCom, $dateCom);
 

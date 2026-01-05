@@ -1,16 +1,15 @@
 <?php
-
 $formErrors = $formErrors ?? [];
 $formData   = $formData   ?? [];
 $typesCom   = $typesCom   ?? [];
 $roles      = $roles      ?? [];
-$editId     = $editId     ?? null;     // id de la com si on est en mode édition
+$editId     = $editId     ?? null;
 ?>
 <link rel="stylesheet" href="Asset/style/ajouecomstyle.css">
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
 <main class="eg-ajout-page">
-  <a href="PageComController.php" class="eg-back-link">
+  <a href="?page=Communication" class="eg-back-link">
     ← Retour aux communications
   </a>
 
@@ -26,8 +25,6 @@ $editId     = $editId     ?? null;     // id de la com si on est en mode éditio
     </ul>
   <?php endif; ?>
 
-  <!-- Formulaire PRINCIPAL : création / mise à jour -->
-  <!-- IMPORTANT : on ajoute l'id="publishForm" -->
   <form method="post" class="eg-ajout-form" id="publishForm">
 
     <?php if ($editId): ?>
@@ -36,7 +33,7 @@ $editId     = $editId     ?? null;     // id de la com si on est en mode éditio
 
     <section class="eg-ajout-layout">
 
-      <!-- COLONNE GAUCHE : champs texte -->
+      <!-- COLONNE GAUCHE -->
       <section class="eg-ajout-left">
 
         <label class="eg-field-group">
@@ -66,10 +63,9 @@ $editId     = $editId     ?? null;     // id de la com si on est en mode éditio
 
       </section>
 
-      <!-- COLONNE DROITE : Illustration + destination + publier -->
+      <!-- COLONNE DROITE -->
       <aside class="eg-ajout-right">
 
-        <!-- Illustration via URL -->
         <div class="eg-ajout-illu-block">
           <span class="eg-ajout-label">Illustration publication</span>
 
@@ -97,7 +93,6 @@ $editId     = $editId     ?? null;     // id de la com si on est en mode éditio
           <?php endif; ?>
         </div>
 
-        <!-- Destination : rôles -->
         <div class="eg-ajout-destination">
           <span class="eg-ajout-dest-label">Destination</span>
 
@@ -122,12 +117,8 @@ $editId     = $editId     ?? null;     // id de la com si on est en mode éditio
           </p>
         </div>
 
-        <!-- BOUTON PUBLIER / METTRE À JOUR -->
         <div class="eg-ajout-publish">
-          <!-- type="button" pour laisser JS gérer la soumission -->
-          <button type="button"
-                  id="publishButton"
-                  class="eg-btn-main">
+          <button type="submit" class="eg-btn-main">
             <?= $editId ? 'Mettre à jour' : 'Publier' ?>
           </button>
         </div>
