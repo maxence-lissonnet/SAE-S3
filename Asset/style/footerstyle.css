@@ -2,12 +2,15 @@
 .eg-footer {
   width: 100%;
   margin: 40px 0 0;
-  background: #040823;            /* bleu nuit très foncé */
+  background: #040823;
+  /* bleu nuit très foncé */
   color: #ffffff;
-  border-radius: 24px 24px 0 0;   /* coins arrondis en haut */
-  padding: 32px 80px 18px;        /* marge interne gauche/droite */
+  border-radius: 24px 24px 0 0;
+  /* coins arrondis en haut */
+  padding: 32px 80px 18px;
+  /* marge interne gauche/droite */
   box-sizing: border-box;
-  font-family: system-ui, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: 'DM Sans', sans-serif;
 }
 
 
@@ -18,10 +21,12 @@
   /* 3 colonnes de même largeur → milieu bien centré */
   grid-template-columns: 1fr 1fr 1fr;
 
-  column-gap: 300px;          /* espace entre les 3 colonnes */
+  column-gap: 300px;
+  /* espace entre les 3 colonnes */
   align-items: flex-start;
   margin-bottom: 24px;
 }
+
 /* Colonnes */
 
 
@@ -69,8 +74,7 @@
   padding: 10px 22px;
   border-radius: 999px;
   border: none;
-  background: #D4451B
-  ;
+  background: #D4451B;
   color: #ffffff;
   font-size: 14px;
   text-decoration: none;
@@ -158,5 +162,3 @@
 .eg-footer-bottom a:hover {
   text-decoration: underline;
 }
-
-

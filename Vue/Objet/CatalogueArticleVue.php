@@ -20,10 +20,12 @@
                             <header>
                                 <div class="image-container">
                                     <img class="image" src="index.php?page=Image&id=<?= (int) $article['idObjet'] ?>" alt="Objet" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                                    <div class="image-fallback" style="display:none;"><span>Aucune image disponible</span></div>
+                                    <div class="image-fallback" style="display:none;">
+                                        <span style="font-weight: bold" ;>Pas d'image disponible</span>
+                                    </div>
                                 </div>
                                 <h2><?php echo htmlspecialchars($article['nomObjet']); ?></h2>
-                                <p class="logo"><img src="Asset/image/logo/logo personne.png"
+                                <p class=" logo"><img src="Asset/image/logo/logo personne.png"
                                         class="logo-icon"><?php echo htmlspecialchars($article['nomUser']) . ' ' . htmlspecialchars($article['prenomUser']); ?>
                                 </p>
                                 <p class="logo"><img src="Asset/image/logo/logo point maps.png"

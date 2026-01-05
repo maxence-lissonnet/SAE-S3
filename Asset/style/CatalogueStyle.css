@@ -89,6 +89,9 @@
     border-top-right-radius: 50px;
     position: relative;
     left: -25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .form {

@@ -21,7 +21,7 @@ require_once 'Model/ObjetModel.php';
 require_once 'Model/BDDModel.php';
 require_once 'Model/ReservationModel.php';
 require_once 'Model/DonsActifsModel.php';
-require_once 'Model/signalementModel.php';
+/*require_once 'Model/signalementModel.php';*/
 $page = isset($_GET['page']) ? strtolower($_GET['page']) : 'selectprofil';
 
 if (isset($_SESSION['idUser'])) {
