@@ -22,9 +22,12 @@ require_once 'Model/ReservationModel.php';
 require_once 'Model/DonsActifsModel.php';
 
 
+
 if (isset($_GET['page'])) {
     $page = ucfirst($_GET['page']);
-
+    if (isset($_SESSION['idUser'])) {
+        $_SESSION['unreadCount'] = notif_getUnreadCount((int)$_SESSION['idUser']);
+    }
 
     $publicPages = [
         'Auth',
@@ -105,7 +108,7 @@ if (isset($_GET['page'])) {
             break;
         case 'Deconnexion':
             require_once 'Controller/ConnexionController.php';
-            logout();
+            //logout();
             break;
         default:
             require_once 'Controller/Connexion/SelectProfilController.php';
@@ -114,4 +117,3 @@ if (isset($_GET['page'])) {
 } else {
     require_once 'Controller/Connexion/SelectProfilController.php';
 }
-?>

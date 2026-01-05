@@ -18,9 +18,9 @@ $_SESSION['notif_deleted'] = $_SESSION['notif_deleted'] ?? [];
 $_SESSION['notif_archived'] = $_SESSION['notif_archived'] ?? [];
 $_SESSION['notif_read'] = $_SESSION['notif_read'] ?? [];
 
-$deleted =& $_SESSION['notif_deleted'];
-$archived =& $_SESSION['notif_archived'];
-$read =& $_SESSION['notif_read'];
+$deleted = &$_SESSION['notif_deleted'];
+$archived = &$_SESSION['notif_archived'];
+$read = &$_SESSION['notif_read'];
 
 // 3) Traitement des actions POST (delete / archive / unarchive / mark_read / mark_unread)
 if (
@@ -92,14 +92,14 @@ foreach ($allNotifications as $n) {
 $notifications = ($box === 'archive') ? $notificationsArchive : $notificationsInbox;
 
 // 6) Nombre de non lues (sur tout ce qui n’est pas supprimé)
-$unreadCount = 0;
+$_SESSION['unreadCount'] = 0;
 foreach ($allNotifications as $n) {
     $id = $n['id'];
     if (!empty($deleted[$id])) {
         continue;
     }
     if (empty($read[$id])) {
-        $unreadCount++;
+        $_SESSION['unreadCount']++;
     }
 }
 

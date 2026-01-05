@@ -5,7 +5,7 @@
 
   <h1 class="eg-notif-title">Notifications</h1>
   <p class="eg-notif-subtitle">
-    <?= $unreadCount ?> non lues – <?= $totalCount ?> au total<br>
+    <?= $_SESSION['unreadCount'] ?> non lues – <?= $totalCount ?> au total<br>
     <span class="eg-notif-sub-sub">Cliquez sur une notification pour la lire.</span>
   </p>
 
