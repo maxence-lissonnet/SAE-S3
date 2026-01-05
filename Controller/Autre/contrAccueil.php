@@ -43,16 +43,16 @@ if (!empty($_GET['month']) && preg_match('#^\d{4}-\d{2}$#', $_GET['month'])) {
 $homeCalRefDate = $homeMonth . '-01';
 
 // Jours qui contiennent au moins un évènement (pour colorer le mini-calendrier)
+// ⚠️ ces fonctions doivent exister dans EventModel.php
 $homeCalEventsRaw = getEventsForMonth($homeMonth, null, null);
 
 // Liste détaillée des évènements du mois affiché
-// (équivalent à ce que tu vois dans la colonne bleue de la page évènements)
 $homeEvents = getEventsFiltered(null, $homeMonth, null);
 
 // ------------------------------------------------------------------
 // Dernières communications pour la zone "Actualités"
+// (getLastCommunications doit être dans ComModel.php)
 // ------------------------------------------------------------------
 $homeNews = getLastCommunications(3);
 
 require_once __DIR__ . '/../../Vue/Autre/accueil.php';
-?>
