@@ -167,4 +167,15 @@ function get_number_of_objects() {
     return $result['total'];
 }
 
+function add_reservation($idObjet, $idUser) {
+    $bdd = get_dtb();
+    $sqlReservation = "INSERT INTO RESERVATION (dateDebReservation, dateExpReservation, idStatutReservation) 
+                       VALUES (NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY), 1)";
+        $bdd->exec($sqlReservation);
+    $idReservation = $bdd->lastInsertId();
+    $sqlLien = "INSERT INTO RESERVER (IdUser, idReservation, idObjet) VALUES (?, ?, ?)";
+    $stmt = $bdd->prepare($sqlLien);
+    return $stmt->execute([$idUser, $idReservation, $idObjet]);
+}
+
 ?>

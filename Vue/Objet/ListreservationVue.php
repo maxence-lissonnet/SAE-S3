@@ -46,7 +46,7 @@
                     <div class="object clickable" data-id="<?= $object['idObjet'] ?>">
                         <p class=" name"><?php echo htmlspecialchars($object['nomObjet']); ?></p>
                         <p class="address"><em><?php echo htmlspecialchars($object['nomLieuRetrait']); ?></em></p>
-                        <p class="date">Publié le <?php echo htmlspecialchars($object['dateAffichage']); ?></p>
+                        <p class="date">Passé le <?php echo htmlspecialchars($object['dateAffichage']); ?></p>
                         <hr>
                     </div>
                 <?php endforeach; ?>
