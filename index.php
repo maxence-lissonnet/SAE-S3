@@ -79,6 +79,9 @@ if (isset($_GET['page'])) {
         case 'Catalogue':
             require_once 'Controller/Objet/CatalogueArticleController.php';
             break;
+        case 'Image':
+            require_once 'Controller/Objet/ImageObjet.php';
+            break;
         case 'DetailObjet':
             require_once 'Controller/Objet/DetaillObjetController.php';
             break;

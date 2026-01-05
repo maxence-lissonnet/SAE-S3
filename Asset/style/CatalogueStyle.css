@@ -14,7 +14,10 @@
     height: 300px;
     margin-right: 50px;
     margin-bottom: 50px;
-    padding: 50px;
+    padding-top: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 80px;
     background-color: #282F63;
     border-radius: 50px;
     color: white;
@@ -72,9 +75,9 @@
     width: 300px;
     height: 150px;
     text-align: center;
-    background-color: rgb(189, 186, 186);
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    background-color: #44474E;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
     position: relative;
     left: -25px;
 }
