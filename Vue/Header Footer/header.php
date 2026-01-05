@@ -51,14 +51,14 @@
           $menuCompteLinks = [
             'profil' => ' Profil',
             'reservations' => ' Reservation',
-            'mes-dons' => ' Mes Dons',
+            'mes-dons' => ' MesDons',
             'deconnexion' => ' Deconnexion'
           ];
 
           $menuCompteLabels = [
             'profil'      => 'Profil',
             'reservation' => 'Réservations',
-            'mes-dons'    => 'Mes dons',
+            'mes-dons'    => 'MesDons',
             'deconnexion' => 'Déconnexion'
           ];
 
@@ -111,7 +111,7 @@
         'points-collecte'    => 'Carte',
         'signalements'       => 'Signalement',
         'evenements'         => 'Evenement',
-        'donner'             => '../Vue/donner.php',
+        'donner'             => 'Donner',
         'donnees-recyclage'  => '../Vue/donnees-recyclage.php',
         'demande-objets'     => '../Vue/demande-objets.php',
         'conseils-recyclage' => 'ConseilRecyclage',
