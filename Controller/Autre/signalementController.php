@@ -4,8 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/../../Model/signalementModel.php';
-
 function getTypesSignalement()
 {
     return getTypesSignalementFromDB();
@@ -18,7 +16,6 @@ function traiterSignalement()
         'message' => '',
     ];
 
-    // Fix: Key is sensitive and usually lowercase 'idUser' in other controllers
     if (empty($_SESSION['idUser'])) {
         $result['message'] = "Vous devez être connecté pour faire un signalement.";
         return $result;
@@ -62,7 +59,6 @@ function traiterSignalement()
 
         $result['success'] = true;
         $result['message'] = 'Signalement enregistré avec succès !';
-
     } catch (Exception $e) {
         $result['message'] = $e->getMessage();
     }
@@ -114,4 +110,3 @@ $categories = getCategories();
 $types = getTypesSignalement();
 
 require_once __DIR__ . '/../../Vue/Autre/signalement.php';
-?>
