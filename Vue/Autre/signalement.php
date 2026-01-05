@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/../../Model/SignalementModel.php';
 require_once __DIR__ . '/../../Controller/Autre/signalementController.php';
-require_once __DIR__ . '/../../Controller/Autre/HeaderController.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -11,15 +10,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $response = traiterSignalement();
     if ($response['success']) {
         $_SESSION['message_success'] = $response['message'];
-        header('Location: ' . $_SERVER['PHP_SELF']);
+        header('Location: ' . $_SERVER['REQUEST_URI']);
         exit;
     } else {
         $_SESSION['message_error'] = $response['message'];
         $_SESSION['form_data'] = $_POST;
-        header('Location: ' . $_SERVER['PHP_SELF']);
+        header('Location: ' . $_SERVER['REQUEST_URI']);
         exit;
     }
 }
+
+require_once __DIR__ . '/../../Controller/Autre/HeaderController.php';
 
 $message_success = $_SESSION['message_success'] ?? '';
 $message_error = $_SESSION['message_error'] ?? '';
@@ -31,7 +32,7 @@ $categories = getCategories();
 $types = getTypesSignalement();
 ?>
 
-<link rel="stylesheet" href="../../Asset/style/signalementstyle.css">
+<link rel="stylesheet" href="Asset/style/signalementStyle.css">
 
 <main>
     <h1>Signalements</h1>
@@ -90,8 +91,7 @@ $types = getTypesSignalement();
 
             <div class="signalement-image-section">
                 <label for="imageUpload" class="image-upload-area" id="imageUploadArea">
-                    <div class="upload-icon"><img src="../../Asset/image/header/image_televerser.png"
-                            alt="Image_televerser_ici">
+                    <div class="upload-icon"><img src="Asset/image/header/plus.png" alt="Image_televerser_ici">
                     </div>
                     <div class="upload-text">Cliquer sur le rectangle pour choisir un fichier</div>
                     <input type="file" id="imageUpload" name="image" accept="image/png, image/jpeg, image/gif"
@@ -140,7 +140,7 @@ $types = getTypesSignalement();
     </form>
 </main>
 
-<script src="../../Asset/js/signalement.js" defer></script>
+<script src="Asset/js/signalement.js" defer></script>
 
 <?php
 include_once __DIR__ . '/../Header Footer/footer.php';

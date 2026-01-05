@@ -12,12 +12,12 @@ function traiterSignalement()
         'message' => '',
     ];
 
-    if (empty($_SESSION['IdUser'])) {
+    if (empty($_SESSION['idUser'])) {
         $result['message'] = "Vous devez être connecté pour faire un signalement.";
         return $result;
     }
 
-    $idUserConnecte = $_SESSION['IdUser'];
+    $idUserConnecte = $_SESSION['idUser'];
 
     try {
         $imageData = null;
