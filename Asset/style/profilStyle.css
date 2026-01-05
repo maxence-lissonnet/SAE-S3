@@ -15,6 +15,11 @@ body {
 }
 
 .container {
+<<<<<<< HEAD
+=======
+    margin-top: 55px;
+    margin-bottom: 55px;
+>>>>>>> 545b62527ee61abf078830a3812950a436f43cff
     background-color: white;
     width: 90%;
     max-width: 1200px;
