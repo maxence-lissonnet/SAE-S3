@@ -25,4 +25,4 @@ if (isset($_GET['reset'])) {
 $typesCom = getAllTypeCom();
 $comList  = getCommunicationsFiltered($idTypeCom, $dateCom);
 
-require_once __DIR__ . '/../../Vue/Communication/com.php';
+require_once __DIR__ . '/../../Vue/Communication/pagecom.php';

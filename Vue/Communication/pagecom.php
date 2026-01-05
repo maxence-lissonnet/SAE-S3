@@ -22,7 +22,7 @@ $dateCom   = $dateCom   ?? null;
       <?php else: ?>
         <?php foreach ($comList as $com): ?>
           <article class="eg-com-item">
-            <a href="com.php?id=<?= (int)$com['idCom'] ?>" class="eg-com-item-main">
+            <a href="DetailCommunication?id=<?= (int)$com['idCom'] ?>" class="eg-com-item-main">
               <div class="eg-com-thumb">
                 <!-- on met juste un fond gris pour rappeler la maquette -->
                 <div class="eg-com-thumb-circle"></div>

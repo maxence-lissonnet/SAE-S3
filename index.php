@@ -46,6 +46,12 @@ if (isset($_GET['page'])) {
         case 'Communication':
             require_once 'Controller/Com/ComController.php';
             break;
+        case 'DetailCommunication':
+            require_once 'Controller/Com/PageComController.php';
+            break;
+        case 'AjoutCom':
+            require_once 'Controller/Com/AjoutComController.php';
+            break;
         case 'AjoutCommunication':
             require_once 'Controller/Com/AjoutComController.php';
             break;
