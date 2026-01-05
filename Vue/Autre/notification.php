@@ -16,10 +16,12 @@
 
       <!-- Onglets boîte de réception / archivées -->
       <div class="eg-notif-tabs">
-        <a href="Notifications?box=inbox" class="eg-notif-tab <?= $box === 'inbox' ? 'is-active' : '' ?>">
+        <a href="?page=notifications&box=inbox"
+           class="eg-notif-tab <?= $box === 'inbox' ? 'is-active' : '' ?>">
           Boîte de réception
         </a>
-        <a href="Notifications?box=archive" class="eg-notif-tab <?= $box === 'archive' ? 'is-active' : '' ?>">
+        <a href="?page=notifications&box=archive"
+           class="eg-notif-tab <?= $box === 'archive' ? 'is-active' : '' ?>">
           Archivées
         </a>
       </div>
@@ -30,8 +32,8 @@
         <?php else: ?>
           <?php foreach ($notifications as $notif): ?>
             <?php $isActive = ($currentNotif && $notif['id'] === $currentNotif['id']); ?>
-            <a href="Notifications?box=<?= htmlspecialchars($box) ?>&id=<?= (int) $notif['id'] ?>"
-              class="eg-notif-item <?= $isActive ? 'is-active' : '' ?>">
+            <a href="?page=notifications&box=<?= htmlspecialchars($box) ?>&id=<?= (int) $notif['id'] ?>"
+               class="eg-notif-item <?= $isActive ? 'is-active' : '' ?>">
               <div class="eg-notif-dot <?= $notif['isUnread'] ? 'is-unread' : '' ?>"></div>
 
               <div class="eg-notif-item-content">
@@ -84,16 +86,11 @@
             🗑️ <span>Supprimer</span>
           </button>
 
-          <button type="button" class="eg-notif-action" disabled>
-            📌 <span>Épingler</span>
-          </button>
-
           <button type="button" id="btnNotifArchive" class="eg-notif-action">
             📁 <span><?= $box === 'archive' ? 'Désarchiver' : 'Archiver' ?></span>
           </button>
         </div>
 
-        <!-- Carte de notification -->
         <!-- Carte de notification -->
         <article class="eg-notif-card">
           <header class="eg-notif-card-header">
@@ -127,23 +124,25 @@
           <?php endif; ?>
         </article>
 
-
-
         <!-- Formulaires cachés pour POST -->
-        <form id="notifDeleteForm" method="post" style="display:none;">
+        <form id="notifDeleteForm"
+              method="post"
+              action="?page=notifications&box=<?= htmlspecialchars($box) ?>&id=<?= (int) $currentNotif['id'] ?>"
+              style="display:none;">
           <input type="hidden" name="notif_id" value="<?= (int) $currentNotif['id'] ?>">
           <input type="hidden" name="action" value="delete">
         </form>
 
-        <form id="notifArchiveForm" method="post" style="display:none;">
+        <form id="notifArchiveForm"
+              method="post"
+              action="?page=notifications&box=<?= htmlspecialchars($box) ?>&id=<?= (int) $currentNotif['id'] ?>"
+              style="display:none;">
           <input type="hidden" name="notif_id" value="<?= (int) $currentNotif['id'] ?>">
           <input type="hidden" name="action" value="<?= $box === 'archive' ? 'unarchive' : 'archive' ?>">
         </form>
 
       <?php else: ?>
-
         <p class="eg-notif-empty-detail">Aucune notification à afficher.</p>
-
       <?php endif; ?>
 
     </section>
@@ -154,7 +153,6 @@
 
 <?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 
-<script src="../../Asset/js/notif.js"></script>
+<script src="Asset/js/notif.js"></script>
 </body>
-
 </html>
