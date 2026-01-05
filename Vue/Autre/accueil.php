@@ -18,7 +18,7 @@
   <section class="eg-home-latest">
     <div class="eg-home-section-title-row">
       <h2 class="eg-home-section-title">Mis en ligne récemment</h2>
-      <a href="Catalogue" class="eg-home-link-all">Voir tous les objets mis en ligne</a>
+      <a href="Catalogue" class="eg-home-section-btn" style="font-weight: bold;">Voir tous les objets mis en ligne</a>
     </div>
 
     <div class="eg-home-latest-grid">
@@ -183,7 +183,7 @@
         <?php endif; ?>
 
         <div class="eg-home-events-btn-row">
-          <a href="Evenement" class="eg-home-section-btn">
+          <a href="Evenement" class="eg-home-section-btn" style="font-weight: bold;">
             Voir tous les évènements
           </a>
         </div>
@@ -228,7 +228,7 @@
       </div>
 
       <div class="eg-home-news-btn-row">
-        <a href="Communication" class="eg-home-section-btn">
+        <a href="Communication" class="eg-home-section-btn" style="font-weight: bold;">
           Voir toutes les actualités
         </a>
       </div>
