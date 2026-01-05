@@ -63,6 +63,7 @@
 }
 
 .image{
+    align-items: center;
     max-width: 300px;
     max-height: 150px;
     border-top-left-radius: 20px;
