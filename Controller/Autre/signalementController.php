@@ -102,7 +102,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Header is included AFTER redirects
 require_once __DIR__ . '/../../Controller/Autre/HeaderController.php';
 
 $message_success = $_SESSION['message_success'] ?? '';

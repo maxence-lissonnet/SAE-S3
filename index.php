@@ -124,6 +124,9 @@ switch ($page) {
     case 'politique':
         require_once 'Controller/Autre/PolitiqueController.php';
         break;
+    case 'statistique':
+        require_once 'Controller/Autre/statsController.php';
+        break;
 
     case 'deconnexion':
         require_once 'Controller/Autre/authController.php';
