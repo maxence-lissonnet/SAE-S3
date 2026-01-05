@@ -5,7 +5,17 @@
 <div class="detail-container">
     <img src="index.php?page=Image&id=<?php echo (int)$article['idObjet']; ?>" alt="">
     <div class="detail-card">
-        <h1 class='position-signaler'> <div class='titre-objet'> <?php echo htmlspecialchars($article['nomObjet']); ?> <div class="date">- <?php echo htmlspecialchars($article['dateDispoObjet']); ?> </div> </div> <img src="../../Asset/image/logo/logo white flag.png" class="signaler"></button> </a></h1>
+        <h1 class='position-signaler'> 
+            <div class='titre-objet'> 
+                <?php echo htmlspecialchars($article['nomObjet']); ?> 
+                <div class="date">- <?php echo htmlspecialchars($article['dateDispoObjet']); ?> 
+                </div> 
+            </div> 
+            <a href='index.php?page=Signalement&id=<?= (int) $article['idObjet'] ?>'>
+            <img src="../../Asset/image/logo/logo white flag.png" class="signaler"></button> 
+            </a>
+            
+        </h1>
         <div class="divider"></div>
 
         <p class="logo"><img src="Asset/image/logo/logo personne.png" class="logo-icon"><span class="text"><?php echo htmlspecialchars($article['nomUser']) . ' ' . htmlspecialchars($article['prenomUser']); ?></span></p>
@@ -29,7 +39,8 @@
             </form>
         <?php else: ?>
             <a href="index.php?page=ConnexionEtu" class="button">Se connecter pour réserver</a>
-        <?php endif; ?>    </div>
+        <?php endif; ?>    
+    </div>
 </div>
 
 <?php require __DIR__ . '/../Header Footer/footer.php'; ?>
