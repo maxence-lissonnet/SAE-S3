@@ -1,33 +1,30 @@
 body {
-    background-image: url("../image/Background/BackgroundSelecProfil.png");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-image: url("../image/Background/BackgroundSelecProfil.png") !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
 
     min-height: 100vh;
     margin: 0;
 
-    display: flex;
-    justify-content: center;
-    /* horizontal */
-    align-items: center;
-    /* vertical */
+    /* Ensure no flex centering on body to allow fixed header to sit at top */
+    display: block;
     font-family: 'DM Sans', sans-serif;
     color: #44474E;
 }
 
 .container {
-    margin-top: 55px;
     background-color: white;
     width: 90%;
     max-width: 1200px;
     min-height: 60vh;
-    margin: 120px auto 40px auto;
-    /* 120px top to clear fixed header */
+    /* 150px top to clear the fixed header, auto for horizontal centering */
+    margin: 150px auto 40px auto !important;
 
     display: flex;
     align-items: center;
+    /* Vertical center of content inside container */
     border-radius: 30px;
     padding: 40px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -35,6 +32,7 @@ body {
 
 .contenu {
     margin-left: 40px;
+    width: 100%;
 }
 
 img {
@@ -91,7 +89,9 @@ img {
     }
 
     .box {
-        width: 40vw;
+        width: 100%;
+        /* Adapts to container/screen width */
+        max-width: 400px;
         height: 50px;
         border: solid 3px #44474E;
         border-radius: 30px;
@@ -107,11 +107,15 @@ img {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 750px;
+        height: auto;
+        min-height: 60vh;
     }
 
     .contenu {
         margin-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .contenu img {
@@ -119,10 +123,21 @@ img {
         margin: 0 auto 10px auto;
     }
 
+    .ligne {
+        width: 100%;
+        align-items: center;
+    }
+
+    .elt {
+        width: 100%;
+        align-items: center;
+    }
+
     #retourPage {
         margin: 15px auto 0 auto;
         display: block;
-        width: 40vw;
+        width: 100%;
+        max-width: 200px;
     }
 }
 
