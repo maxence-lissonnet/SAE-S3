@@ -85,13 +85,14 @@
 
 .detail-container .back-link {
     display: inline-block;
+    text-decoration: none;
     cursor: pointer;
     margin-top: 18px;
     color: rgba(255,255,255,0.9);
     font-size: 14px;
     background: rgba(255,255,255,0.04);
     padding: 8px 12px;
-    border-radius: 10px;
+    border-radius: 30px;
 }
 
 
@@ -165,7 +166,7 @@
     text-decoration: none;
     font-size: 14px;
     padding: 10px 16px;
-    border-radius: 10px;
+    border-radius: 30px;
     border: none;
     cursor: pointer;
     font-weight: 600;
