@@ -23,25 +23,35 @@
 
     <div class="eg-home-latest-grid">
       <?php foreach ($latestObjects as $obj): ?>
-        <article class="eg-home-object-card">
-          <div class="eg-home-object-image"></div>
+        <a href="DetailObjet?id=<?php echo htmlspecialchars($obj['idObjet']) ?>" class="case">
+          <article class="eg-home-object-card">
+            <div class="eg-home-object-image">
+              <img src="<?php echo htmlspecialchars($obj['imageObjet']) ?>" alt="Image de l'objet" id="imageAffichage" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
 
-          <div class="eg-home-object-body">
-            <h3 class="eg-home-object-title">
-              <?= htmlspecialchars($obj['titre']) ?>
-            </h3>
-            <p class="eg-home-object-meta">
-              <?= htmlspecialchars($obj['auteur']) ?><br>
-              <?= htmlspecialchars($obj['lieu']) ?>
-            </p>
-            <p class="eg-home-object-state">
-              <?= htmlspecialchars($obj['etat']) ?>
-            </p>
-            <p class="eg-home-object-time">
-              <?= htmlspecialchars($obj['moment']) ?>
-            </p>
-          </div>
-        </article>
+              <div class="image-fallback" style="display:none;">
+                <span>Aucune image disponible</span>
+              </div>
+            </div>
+
+            <div class="eg-home-object-body">
+              <h2 class="eg-home-object-title">
+                <?php echo htmlspecialchars($obj['nomObjet']) ?>
+              </h2>
+              <p class="eg-home-object-name">
+                <?php echo htmlspecialchars(strtoupper($obj['nomUser'])) ?> <?php echo htmlspecialchars($obj['prenomUser']) ?>
+              </p>
+              <p class="eg-home-object-pickup">
+                <?php echo htmlspecialchars($obj['nomLieuRetrait']) ?> - <?php echo htmlspecialchars(($obj['adresseLieuRetrait'])) ?>
+              </p>
+              <p class="eg-home-object-state">
+                <?php echo htmlspecialchars($obj['nomEtatObjet']) ?>
+              </p>
+              <p class="eg-home-object-time">
+                <?php echo htmlspecialchars($obj['dateAffichage']) ?>
+              </p>
+            </div>
+          </article>
+        </a>
       <?php endforeach; ?>
     </div>
   </section>

@@ -11,6 +11,7 @@ try {
 }
 
 require_once 'utils.php';
+require_once 'Model/AccueilModel.php';
 require_once 'Model/CarteModel.php';
 require_once 'Model/ComModel.php';
 require_once 'Model/ConnexionModel.php';
@@ -20,8 +21,6 @@ require_once 'Model/ObjetModel.php';
 require_once 'Model/BDDModel.php';
 require_once 'Model/ReservationModel.php';
 require_once 'Model/DonsActifsModel.php';
-
-
 
 if (isset($_GET['page'])) {
     $page = ucfirst($_GET['page']);

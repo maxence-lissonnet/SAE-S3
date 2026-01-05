@@ -5,30 +5,24 @@ $nbObjetsEnLigne = get_number_of_objects();
 // ------------------------------------------------------------------
 // Objets récents (pour l’instant : données factices)
 // ------------------------------------------------------------------
-$latestObjects = [
-    [
-        'titre'   => 'Commode années 60',
-        'auteur'  => 'Nathalie VEILLARD',
-        'lieu'    => 'IUT de Laval – Dpt. INFO',
-        'etat'    => 'Très bon état',
-        'moment'  => 'Il y a 2 heures',
-    ],
-    [
-        'titre'   => '24 crayons aquarellables',
-        'auteur'  => 'Hugo CHAUVET – INFO2',
-        'lieu'    => 'Rue du Pont de Mayenne – Laval',
-        'etat'    => 'Bon état',
-        'moment'  => 'Il y a 7 heures',
-    ],
-    [
-        'titre'   => 'Tableau blanc',
-        'auteur'  => 'Secrétariat IUT Le Mans',
-        'lieu'    => 'IUT du Mans',
-        'etat'    => 'Très bon état',
-        'moment'  => 'Il y a 18 heures',
-    ],
-];
+$latestObjects = get_latest_objects();
 
+foreach ($latestObjects as $key => $object) {
+    if (!empty($object['imageObjet'])) {
+        $latestObjects[$key] = change_item($object);
+    }
+}
+
+function change_item($item)
+{
+    $item['dateAffichage'] = date('d/m/Y', strtotime($item['dateDispoObjet']));
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $type = $finfo->buffer($item['imageObjet']);
+    $base = base64_encode($item['imageObjet']);
+    $item['imageObjet'] = 'data:' . $type . ';base64,' . $base;
+
+    return $item;
+}
 // ------------------------------------------------------------------
 // Gestion du mois du mini-calendrier de la page d’accueil
 //   - paramètre GET ?month=YYYY-MM
@@ -55,4 +49,3 @@ $homeEvents = getEventsFiltered(null, $homeMonth, null);
 $homeNews = getLastCommunications(3);
 
 require_once __DIR__ . '/../../Vue/Autre/accueil.php';
-?>

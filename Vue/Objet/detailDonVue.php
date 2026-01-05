@@ -1,9 +1,17 @@
 <h2><?php echo htmlspecialchars($item['nomObjet']); ?></h2>
-<p class="date">Publié le <?php echo htmlspecialchars($item['dateAffichage']); ?></p>
+<?php if ($item['dateDispoObjet'] <= $date): ?>
+    <p class="date">Publié le <?php echo htmlspecialchars($item['dateAffichage']); ?></p>
+<?php else: ?>
+    <div class="dateDiv">Sera publié le <?php echo htmlspecialchars($item['dateAffichage']); ?></p><img src="Asset/image/donsActifs/clock.svg"></div>
+<?php endif; ?>
 <div class="hr-right"></div>
 <div class="content">
     <div class="left-image">
-        <img src="<?php echo htmlspecialchars($item['imageObjet']) ?>" alt="Image de l'objet" id="imageAffichage">
+        <img src="<?php echo htmlspecialchars($item['imageObjet']) ?>" alt="Image de l'objet" id="imageAffichage" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+        <div class="image-fallback" style="display:none;">
+            <span style="font-weight: bold;">Aucune image disponible</span>
+        </div>
     </div>
     <div class="right-text">
         <div class="element">
