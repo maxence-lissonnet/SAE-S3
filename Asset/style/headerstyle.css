@@ -11,18 +11,22 @@ body {
 /* Barre du header : pleine largeur */
 .eg-header {
   position: fixed;
+  /* Impératif pour rester en haut */
   top: 0;
+  left: 0;
+  /* Assure le calage à gauche */
   width: 100%;
+  z-index: 2000;
+  /* Valeur très haute pour dominer les menus */
+
+  /* Gardez vos styles existants */
   padding: 12px 48px;
   background: #D9D9D9;
   border-radius: 0 0 18px 18px;
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: bolder;
   justify-content: space-between;
-  z-index: 1000;
 }
 
 /* Partie gauche : logo + nom appli */
@@ -86,6 +90,7 @@ body {
 .eg-user-name {
   font-size: 14px;
   color: #111;
+  font-weight: bolder;
 }
 
 .eg-user-role {
@@ -94,6 +99,7 @@ body {
   text-transform: uppercase;
   color: #555;
   text-align: right;
+  font-weight: bolder;
 }
 
 /* Boutons icônes */
@@ -161,11 +167,10 @@ body {
   display: none;
   position: absolute;
   top: 100%;
-  right: 48px;
-  background: #e3e3e3;
+  right: 0;
+  background: #D9D9D9;
   border-radius: 0 0 12px 12px;
-  padding: 16px 0;
-  min-width: 200px;
+  min-width: 180px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   margin-top: 0;
@@ -176,10 +181,10 @@ body {
 }
 
 .eg-burger-menu a {
-  display: block;
   padding: 12px 20px;
   color: #222;
   text-decoration: none;
+  font-weight: bold;
   font-size: 14px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   transition: background 0.2s ease;
@@ -199,13 +204,12 @@ body {
   position: absolute;
   top: 100%;
   right: 0;
-  background: #e3e3e3;
+  background: #D9D9D9;
   border-radius: 0 0 12px 12px;
-  padding: 16px 0;
   min-width: 180px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  margin-top: 0;
+  margin-top: 19px;
 }
 
 .eg-menu-compte.open {
@@ -213,10 +217,10 @@ body {
 }
 
 .eg-menu-compte a {
-  display: block;
   padding: 12px 20px;
   color: #222;
   text-decoration: none;
+  font-weight: bold;
   font-size: 14px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   transition: background 0.2s ease;
@@ -233,12 +237,11 @@ body {
 .logo-icon {
   width: 25px;
   height: 25px;
-  margin-right: 10px;
 }
 
 .logo {
   display: flex;
   flex-direction: row;
   align-items: center;
-
+  gap: 12px;
 }

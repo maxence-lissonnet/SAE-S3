@@ -7,6 +7,8 @@ body {
 body {
     background-image: url("../image/Background/BackgroundSelecProfil.png");
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: flex-end;
     align-items: center;

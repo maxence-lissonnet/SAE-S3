@@ -19,7 +19,7 @@
                         <div>
                             <header>
                                 <div class="image-container">
-                                    <img class="image" src="index.php?page=Image&id=<?= (int) $article['idObjet'] ?>" alt="Objet">                                
+                                    <img class="image" src="index.php?page=Image&id=<?= (int) $article['idObjet'] ?>" alt="Objet" onerror="this.style.display='none'">                                
                                 </div>
                                 <h2><?php echo htmlspecialchars($article['nomObjet']); ?></h2>
                                 <p class="logo"><img src="Asset/image/logo/logo personne.png"

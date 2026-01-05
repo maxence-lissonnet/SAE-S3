@@ -1,10 +1,16 @@
 body {
     background-image: url("../image/Background/BackgroundSelecProfil.png");
+<<<<<<< HEAD
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
+=======
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+>>>>>>> a1c185731cd34a919e482d52a9f71672bdc442b9
     min-height: 100vh;
     margin: 0;
 
