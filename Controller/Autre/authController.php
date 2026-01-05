@@ -52,5 +52,3 @@ function logout()
     header("Location: ./");
     exit;
 }
-
-?>

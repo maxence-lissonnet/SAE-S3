@@ -21,11 +21,11 @@ require_once 'Model/ObjetModel.php';
 require_once 'Model/BDDModel.php';
 require_once 'Model/ReservationModel.php';
 require_once 'Model/DonsActifsModel.php';
-/*require_once 'Model/signalementModel.php';*/
+//require_once 'Model/signalementModel.php';
 $page = isset($_GET['page']) ? strtolower($_GET['page']) : 'selectprofil';
 
 if (isset($_SESSION['idUser'])) {
-    $_SESSION['unreadCount'] = notif_getUnreadCount((int)$_SESSION['idUser']);
+    $_SESSION['unreadCount'] = notif_getUnreadCount((int) $_SESSION['idUser']);
 }
 
 $publicPages = [
@@ -66,8 +66,6 @@ switch ($page) {
     case 'carte':
         require_once 'Controller/Autre/pageCarteController.php';
         break;
-
-    /* ================= COMMUNICATIONS ================= */
     case 'communication':
         require_once 'Controller/Com/ComController.php';
         break;
@@ -79,8 +77,6 @@ switch ($page) {
     case 'ajoutcom':
         require_once 'Controller/Com/AjoutComController.php';
         break;
-    /* ================================================== */
-
     case 'connexionetu':
         require_once 'Controller/Connexion/pageConnexionEtuController.php';
         break;
@@ -126,7 +122,8 @@ switch ($page) {
         break;
 
     case 'deconnexion':
-        require_once 'Controller/ConnexionController.php';
+        require_once 'Controller/Autre/authController.php';
+        logout();
         break;
 
     default:
