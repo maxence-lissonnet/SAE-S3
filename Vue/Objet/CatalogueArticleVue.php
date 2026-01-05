@@ -19,7 +19,8 @@
                         <div>
                             <header>
                                 <div class="image-container">
-                                    <img class="image" src="index.php?page=Image&id=<?= (int) $article['idObjet'] ?>" alt="Objet" onerror="this.style.display='none'">                                
+                                    <img class="image" src="index.php?page=Image&id=<?= (int) $article['idObjet'] ?>" alt="Objet" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                    <div class="image-fallback" style="display:none;"><span>Aucune image disponible</span></div>
                                 </div>
                                 <h2><?php echo htmlspecialchars($article['nomObjet']); ?></h2>
                                 <p class="logo"><img src="Asset/image/logo/logo personne.png"
@@ -42,11 +43,11 @@
             <label for="name">Categorie :</label><br>
             <select name="categorie" class="input-field">
                 <option value="Tous" <?php if (($selectedCategorie ?? 'Tous') === 'Tous')
-                    echo 'selected'; ?>>Tous
+                                            echo 'selected'; ?>>Tous
                 </option>
                 <?php foreach ($categories as $categorie): ?>
                     <option class='valeur-option' value="<?php echo htmlspecialchars($categorie['idCategorie']); ?>" <?php if (($selectedCategorie ?? 'Tous') == $categorie['idCategorie'])
-                           echo 'selected'; ?>>
+                                                                                                                            echo 'selected'; ?>>
                         <?php echo htmlspecialchars($categorie['nomCategorie']); ?>
                     </option>
                 <?php endforeach; ?>
@@ -55,12 +56,12 @@
             <label for="name">Localisation :</label><br>
             <select name="localisation" class="input-field">
                 <option value="Tous" <?php if (($selectedLocalisation ?? 'Tous') === 'Tous')
-                    echo 'selected'; ?>>Tous
+                                            echo 'selected'; ?>>Tous
                 </option>
                 <?php foreach ($locations as $location): ?>
                     <?php $val = $location['adresseLieuRetrait']; ?>
                     <option value="<?php echo htmlspecialchars($val, ENT_QUOTES); ?>" <?php if (($selectedLocalisation ?? 'Tous') == $val)
-                            echo 'selected'; ?>>
+                                                                                            echo 'selected'; ?>>
                         <?php echo htmlspecialchars($val); ?>
                     </option>
                 <?php endforeach; ?>
@@ -69,11 +70,11 @@
             <label for="name">Etat :</label><br>
             <select name="etat" class="input-field">
                 <option value="Tous" <?php if (($selectedEtat ?? 'Tous') === 'Tous')
-                    echo 'selected'; ?>>Tous</option>
+                                            echo 'selected'; ?>>Tous</option>
                 <?php foreach ($etats as $etat): ?>
                     <?php $val = $etat['nomEtatObjet']; ?>
                     <option value="<?php echo htmlspecialchars($val, ENT_QUOTES); ?>" <?php if (($selectedEtat ?? 'Tous') == $val)
-                            echo 'selected'; ?>>
+                                                                                            echo 'selected'; ?>>
                         <?php echo htmlspecialchars($val); ?>
                     </option>
                 <?php endforeach; ?>

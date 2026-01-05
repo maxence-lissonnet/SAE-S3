@@ -43,7 +43,7 @@
         <div class="left-container">
             <?php if (count($objects) != 0): ?>
                 <?php foreach ($objects as $object): ?>
-                    <div class="object clickable" data-id="<?= $object['idObjet'] ?>">
+                    <div class="object clickable" data-id="<?= $object['idObjet'] ?>" data-idreservation="<?= $object['idreservation'] ?>">
                         <p class=" name"><?php echo htmlspecialchars($object['nomObjet']); ?></p>
                         <p class="address"><em><?php echo htmlspecialchars($object['nomLieuRetrait']); ?></em></p>
                         <p class="date">Passé le <?php echo htmlspecialchars($object['dateAffichage']); ?></p>
@@ -80,7 +80,7 @@
     <?php endif; ?>
 </body>
 
-<?php require __DIR__ . '/../Header Footer/footer.php';?>
+<?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 
 
 

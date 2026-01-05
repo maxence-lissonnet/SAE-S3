@@ -1,5 +1,5 @@
 <?php
-// Vue/com.php
+// Vue/Communication/com.php
 $com = $com ?? null;
 ?>
 <link rel="stylesheet" href="Asset/style/comstyle.css">
@@ -7,7 +7,7 @@ $com = $com ?? null;
 
 <main class="eg-com-full-page">
 
-  <a href="Communication" class="eg-back-btn">
+  <a href="?page=Communication" class="eg-back-btn">
     ← Retour aux communications
   </a>
 
@@ -16,9 +16,7 @@ $com = $com ?? null;
     <div class="eg-com-full-container">
       <p>Communication introuvable.</p>
       <p>
-        <a href="pagecom.php" class="eg-btn-secondary">
-          Retour aux communications
-        </a>
+        <a href="?page=Communication" class="eg-btn-secondary">Retour aux communications</a>
       </p>
     </div>
 
@@ -28,13 +26,9 @@ $com = $com ?? null;
 
       <header class="eg-com-full-header">
         <div>
-          <h1 class="eg-com-full-title">
-            <?= htmlspecialchars($com['titreCom']) ?>
-          </h1>
+          <h1 class="eg-com-full-title"><?= htmlspecialchars($com['titreCom']) ?></h1>
           <p class="eg-com-full-meta">
-            publié à
-            <?= htmlspecialchars(substr($com['heurePubCom'], 0, 5)) ?>
-            –
+            publié à <?= htmlspecialchars(substr($com['heurePubCom'], 0, 5)) ?> –
             <?php
             $d = new DateTime($com['datePubCom']);
             echo htmlspecialchars($d->format('d/m/Y'));
@@ -44,7 +38,7 @@ $com = $com ?? null;
         </div>
 
         <div class="eg-com-full-actions">
-          <a href="AjoutCom?id=<?= (int)$com['idCom'] ?>"
+          <a href="?page=AjoutCom&idCom=<?= (int)$com['idCom'] ?>"
              class="eg-com-action-btn eg-com-action-primary">
             Modifier
           </a>
@@ -52,10 +46,11 @@ $com = $com ?? null;
           <form id="deleteForm"
                 class="eg-com-delete-form"
                 method="post"
-                action="DetailCommunication?id=<?= (int)$com['idCom'] ?>">
+                action="?page=DetailCommunication&id=<?= (int)$com['idCom'] ?>">
             <input type="hidden" name="idCom" value="<?= (int)$com['idCom'] ?>">
             <input type="hidden" name="delete" value="1">
-            <button type="button" id="deleteButton" class="eg-com-action-btn eg-com-action-secondary">
+            <button type="button" id="deleteButton"
+                    class="eg-com-action-btn eg-com-action-secondary">
               Supprimer
             </button>
           </form>
@@ -68,7 +63,6 @@ $com = $com ?? null;
         </article>
 
         <aside class="eg-com-full-side">
-          <!-- Illustration (pour l’instant, juste un bloc stylé) -->
           <div class="eg-com-full-illustration"></div>
         </aside>
       </section>
@@ -80,6 +74,20 @@ $com = $com ?? null;
 </main>
 
 <?php require __DIR__ . '/../Header Footer/footer.php'; ?>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const btn  = document.getElementById('deleteButton');
+  const form = document.getElementById('deleteForm');
+  if (btn && form) {
+    btn.addEventListener('click', () => {
+      if (confirm('Supprimer cette communication ?')) {
+        form.submit();
+      }
+    });
+  }
+});
+</script>
 
 </body>
 </html>

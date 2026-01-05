@@ -8,7 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // TEMPORAIRE : utilisateur de test qui a des notifications en BDD
 // (dans ton script SQL, l'utilisateur 6 a plusieurs notifs)
-$idUser = $_SESSION['idUser'] ?? 6;
+$idUser = $_SESSION['idUser'] ?? 5;
 
 // 1) Récupération de toutes les notifications de la BDD
 $allNotifications = notif_getAllForUser($idUser) ?? [];

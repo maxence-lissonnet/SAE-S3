@@ -1,5 +1,6 @@
 <?php
-// Sécurisation au cas où
+// Vue/Communication/pagecom.php
+
 $comList   = $comList   ?? [];
 $typesCom  = $typesCom  ?? [];
 $idTypeCom = $idTypeCom ?? null;
@@ -15,22 +16,18 @@ $dateCom   = $dateCom   ?? null;
 
   <section class="eg-com-layout">
 
-    <!-- ====== COLONNE GAUCHE : LISTE ====== -->
     <section class="eg-com-list">
       <?php if (empty($comList)): ?>
         <p>Aucune communication ne correspond à vos filtres.</p>
       <?php else: ?>
         <?php foreach ($comList as $com): ?>
           <article class="eg-com-item">
-            <a href="DetailCommunication?id=<?= (int)$com['idCom'] ?>" class="eg-com-item-main">
+            <a href="?page=DetailCommunication&id=<?= (int)$com['idCom'] ?>" class="eg-com-item-main">
               <div class="eg-com-thumb">
-                <!-- on met juste un fond gris pour rappeler la maquette -->
                 <div class="eg-com-thumb-circle"></div>
               </div>
               <div class="eg-com-item-text">
-                <h2 class="eg-com-item-title">
-                  <?= htmlspecialchars($com['titreCom']) ?>
-                </h2>
+                <h2 class="eg-com-item-title"><?= htmlspecialchars($com['titreCom']) ?></h2>
                 <div class="eg-com-item-meta">
                   <?php
                   $d = new DateTime($com['datePubCom']);
@@ -49,24 +46,24 @@ $dateCom   = $dateCom   ?? null;
       <?php endif; ?>
     </section>
 
-    <!-- ====== COLONNE DROITE : BOUTON + FILTRES ====== -->
     <aside class="eg-com-sidebar">
 
       <div class="eg-com-publish-block">
         <span class="eg-com-publish-label">Publier</span>
-        <a href="../../Controller/Com/AjoutComController.php" class="eg-btn-publish">Créer une publication</a>
+        <a href="?page=AjoutCom" class="eg-btn-publish">Créer une publication</a>
       </div>
 
       <h2 class="eg-com-filter-title">Filtrer par</h2>
 
-      <form method="get" action="pagecom.php" class="eg-com-filter-form">
+      <form method="get" class="eg-com-filter-form">
+        <input type="hidden" name="page" value="Communication">
 
         <label class="eg-field-group">
           <span>Type de publication</span>
           <select name="type">
             <option value="">Tous les types</option>
             <?php foreach ($typesCom as $type): ?>
-              <option value="<?= $type['idTypeCom'] ?>"
+              <option value="<?= (int)$type['idTypeCom'] ?>"
                 <?= ($idTypeCom === (int)$type['idTypeCom']) ? 'selected' : '' ?>>
                 <?= htmlspecialchars($type['nomTypeCom']) ?>
               </option>
@@ -84,9 +81,7 @@ $dateCom   = $dateCom   ?? null;
 
         <div class="eg-com-filter-actions">
           <button type="submit" class="eg-btn-main">Appliquer les filtres</button>
-          <button type="submit" name="reset" value="1" class="eg-btn-secondary">
-            Supprimer les filtres
-          </button>
+          <button type="submit" name="reset" value="1" class="eg-btn-secondary">Supprimer les filtres</button>
         </div>
 
       </form>
@@ -95,5 +90,6 @@ $dateCom   = $dateCom   ?? null;
   </section>
 </main>
 
-
 <?php require __DIR__ . '/../Header Footer/footer.php'; ?>
+</body>
+</html>

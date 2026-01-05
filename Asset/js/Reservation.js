@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const popup = document.getElementById('popup');
     const popupMessage = document.getElementById('popupMessage');
 
-    // Si PHP a injecté un message, on ouvre le popup immédiatement
     if (popup && popupMessage && popupMessage.innerHTML.trim() !== "") {
         popup.showModal();
     }
@@ -10,15 +9,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.querySelectorAll('.object.clickable').forEach(item => {
     item.addEventListener('click', function () {
-        const id = this.getAttribute('data-id');
+        // 1. On récupère l'ID de l'OBJET pour l'affichage (fetch)
+        const idObjet = this.getAttribute('data-id');
+        
+        // 2. On récupère l'ID de la RÉSERVATION pour la suppression
+        const idReservation = this.getAttribute('data-idreservation');
+
         const rightContainer = document.querySelector('.right-container');
-        fetch(`index.php?page=Reservation&id=${id}`)
+        
+        // On garde idObjet ici pour afficher les détails correctement
+        fetch(`index.php?page=Reservation&id=${idObjet}`)
             .then(response => response.text())
             .then(html => { rightContainer.innerHTML = html; })
+        
         const deleteBtn = document.getElementById('delete');
         deleteBtn.style.display = 'flex';
-        deleteBtn.href = `index.php?page=Reservation&id=${id}&action=deleteConfirmation`;
-
-
+        
+        // 3. IMPORTANT : On utilise idReservation pour le lien de suppression
+        deleteBtn.href = `index.php?page=Reservation&id=${idReservation}&action=deleteConfirmation`;
     });
 });
