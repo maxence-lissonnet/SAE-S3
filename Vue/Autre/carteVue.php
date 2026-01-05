@@ -41,5 +41,8 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="Asset/js/map.js"></script>
 </body>
+<footer>
+    <?php require __DIR__ . '/../Header Footer/footer.php'; ?>
+</footer>
 
 </html>
