@@ -9,7 +9,7 @@ $GLOBALS['roles'] = [
 $GLOBALS['permissions'] = [
     1 => [
         'pages' => ['statistiques', 'communication', 'rapports', 'catalogue', 'points-collecte', 'signalements', 'evenements'],
-        'menu' => ['profil', 'reservations', 'mes-dons', 'deconnexion']
+        'menu' => ['profil', 'reservations', 'deconnexion']
     ],
     5 => [
         'pages' => ['catalogue', 'donner', 'demande-objets', 'conseils-recyclage', 'points-collecte', 'communication', 'signalements', 'evenements'],
