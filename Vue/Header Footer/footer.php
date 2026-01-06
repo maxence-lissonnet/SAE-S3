@@ -19,11 +19,11 @@
           <span class="eg-footer-btn-icon"><img src="Asset/image/icon/phone.svg"></span>
           <span>02 43 83 30 00</span>
         </a>
-        <a href="#" class="eg-footer-btn">
+        <a href="https://www.univ-lemans.fr/fr/contact-1.html" class="eg-footer-btn">
           <span class="eg-footer-btn-icon"><img src="Asset/image/icon/mail.svg"></span>
           <span>Nous contacter</span>
         </a>
-        <a href="#" class="eg-footer-btn">
+        <a href="https://www.univ-lemans.fr/fr/pied-de-page/plans-des-campus.html" class="eg-footer-btn">
           <span class="eg-footer-btn-icon"><img src="Asset/image/icon/maps_white.svg"></span>
           <span>Plan des campus</span>
         </a>
