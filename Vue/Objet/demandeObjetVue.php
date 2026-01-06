@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../Controller/Autre/HeaderController.php';
-
 ?>
 
 <link rel="stylesheet" href="Asset/style/demandeObjetStyle.css">
@@ -74,8 +73,9 @@ require_once __DIR__ . '/../../Controller/Autre/HeaderController.php';
                     demande a été effectuée.</p>
                 <p>Une fois un objet correspondant à vos critères a été publié, vous recevrez une notification vous le
                     signalant.</p>
-
-                <button type="submit" class="submit-btn">EFFECTUER LA DEMANDE</button>
+                <form method="post">
+                    <button type="submit" class="submit-btn">EFFECTUER LA DEMANDE</button>
+                </form>
             </div>
         </div>
     </form>

@@ -41,4 +41,35 @@ function createDemande($nomObjet, $quantite, $idLieuRetrait, $mesures, $idCatego
 
     return $stmt->execute();
 }
-?>
+
+// Ajoutez cette fonction dans DemandeObjetModel.php
+
+function notification_demande($nomObjet, $quantite, $idUserAuteur)
+{
+    $pdo = get_dtb();
+
+    $titre = "Nouvelle recherche d'objet";
+    $message = "Un utilisateur recherche : " . $quantite . " x " . $nomObjet . ". Aidez-le si vous possédez cet objet !";
+
+    $pdo->beginTransaction();
+    $sqlNotif = "INSERT INTO NOTIFICATION (titreNotif, descriptionNotif, dateNotification, idTypeNotification) 
+                     VALUES (:titre, :msg, NOW(), (SELECT idTypeNotification FROM TYPE_NOTIFICATION LIMIT 1))";
+
+    $stmt = $pdo->prepare($sqlNotif);
+    $stmt->execute([
+        'titre' => $titre,
+        'msg'   => $message
+    ]);
+
+    $idNotif = $pdo->lastInsertId();
+    $sqlReception = "INSERT INTO RECEPTION (IdUser, idNotif) 
+                         SELECT IdUser, :idNotif FROM UTILISATEUR";
+
+    $stmtRec = $pdo->prepare($sqlReception);
+    $stmtRec->execute([
+        'idNotif' => $idNotif
+    ]);
+
+    $pdo->commit();
+    return true;
+}

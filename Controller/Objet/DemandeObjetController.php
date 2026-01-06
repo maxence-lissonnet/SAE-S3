@@ -24,6 +24,7 @@ function processDemande()
 
         try {
             if (createDemande($nom, $qte, $idLieuRetrait, $mesures, $categorie, $_SESSION['idUser'])) {
+                notification_demande($nom, $qte, $_SESSION['idUser']);
                 $result['success'] = true;
                 $result['message'] = "Votre demande a bien été enregistrée.";
             } else {
@@ -51,5 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+
+
 require_once __DIR__ . '/../../Vue/Objet/demandeObjetVue.php';
-?>
