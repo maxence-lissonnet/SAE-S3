@@ -11,6 +11,7 @@ try {
 }
 
 require_once 'utils.php';
+
 require_once 'Model/AccueilModel.php';
 require_once 'Model/CarteModel.php';
 require_once 'Model/ComModel.php';
@@ -23,9 +24,11 @@ require_once 'Model/ReservationModel.php';
 require_once 'Model/DonsActifsModel.php';
 require_once 'Model/signalementModel.php';
 
+require_once 'Controller/Autre/authController.php';
+
 $page = isset($_GET['page']) ? strtolower($_GET['page']) : (isset($_SESSION['idUser']) ? 'accueil' : 'selectprofil');
 
-// Redirection si connecté et tente d'accéder aux pages de connexion
+// Redirection si le user est connecté et tente d'accéder aux pages de connexion
 $loginPages = ['selectprofil', 'auth', 'connexionetu', 'connexionpersonnel'];
 if (isset($_SESSION['idUser']) && in_array($page, $loginPages, true)) {
     header('Location: ?page=accueil');
@@ -35,8 +38,6 @@ if (isset($_SESSION['idUser']) && in_array($page, $loginPages, true)) {
 if (isset($_SESSION['idUser'])) {
     $_SESSION['unreadCount'] = notif_getUnreadCount((int) $_SESSION['idUser']);
 }
-
-require_once 'Controller/Autre/authController.php';
 
 $publicPages = [
     'auth',
@@ -52,20 +53,16 @@ if (!in_array($page, $publicPages, true) && empty($_SESSION['idUser'])) {
 }
 
 if (!in_array($page, $publicPages, true) && isset($_SESSION['idRole'])) {
-    // Pages accessibles à tous les utilisateurs connectés
+    // Liste des pages pour tous les utilisateurs connectés
     $commonPages = ['accueil', 'profil', 'reservation', 'mesdons', 'notifications'];
 
-    if (in_array($page, $commonPages, true)) {
-        // Accès autorisé
-    } else {
+    if (!in_array($page, $commonPages, true)) {
         $roleId = $_SESSION['idRole'];
-        // On combine les pages et le menu pour ce rôle
         $allowed = array_merge(
             $GLOBALS['permissions'][$roleId]['pages'] ?? [],
             $GLOBALS['permissions'][$roleId]['menu'] ?? []
         );
 
-        // Mapping URL -> Clé authController (si différent)
         $pageToPermission = [
             'statistique' => 'statistiques',
             'rapport' => 'rapports',
@@ -74,8 +71,6 @@ if (!in_array($page, $publicPages, true) && isset($_SESSION['idRole'])) {
             'evenement' => 'evenements',
             'demandeobjet' => 'demande-objets',
             'conseilrecyclage' => 'conseils-recyclage',
-
-            // Mapping des pages de détail/action vers les permissions principales
             'detailcommunication' => 'communication',
             'ajoutcom' => 'communication',
             'detailobjet' => 'catalogue',
