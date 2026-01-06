@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/SAE-S3/Asset/style/statsstyle.css">
+<link rel="stylesheet" href="Asset/style/statsstyle.css">
 
 <?php
 require_once __DIR__ . '/../../Controller/Autre/HeaderController.php';

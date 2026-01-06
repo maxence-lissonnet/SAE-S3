@@ -82,7 +82,7 @@
                 <?php endforeach; ?>
             </select>
             <button class="boutonFiltre" type="submit">Rechercher</button>
-            <button class="boutonFiltre" type="submit" name="reset" value="1">Supprimer filtre</button>
+            <button class="boutonFiltre" type="submit" name="reset" value="1">Supprimer filtres</button>
         </form>
     </div>
 </div>
