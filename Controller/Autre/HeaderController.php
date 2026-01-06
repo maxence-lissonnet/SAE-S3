@@ -1,5 +1,5 @@
 <?php
-include 'authController.php';
+require_once 'authController.php';
 
 // Toujours TOUT en haut, avant le moindre HTML
 if (session_status() === PHP_SESSION_NONE) {
@@ -8,13 +8,13 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Valeurs à afficher dans le header
 $prenom = $_SESSION['prenom'] ?? 'Utilisateur';
-$role   = isset($_SESSION['role']) ? strtoupper($_SESSION['role']) : 'VISITEUR';
+$role = isset($_SESSION['role']) ? strtoupper($_SESSION['role']) : 'VISITEUR';
 
 // Vérifiez que ce chemin est correct par rapport à l'emplacement de ce fichier.
 // Récupère les items de menu (profil, reservations, etc.) et les pages (stats, catalogue, etc.) 
 // basés sur le rôle de l'utilisateur.
-$menuItems = $GLOBALS['permissions'][$_SESSION['idRole']]['menu'] ?? [];
-$userPages = $GLOBALS['permissions'][$_SESSION['idRole']]['pages'] ?? [];
+$menuItems = $GLOBALS['permissions'][(int) $_SESSION['idRole']]['menu'] ?? [];
+$userPages = $GLOBALS['permissions'][(int) $_SESSION['idRole']]['pages'] ?? [];
 
 if (session_status() != 2) {
   session_start();
