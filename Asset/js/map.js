@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const visibles = getVisibleMarkers().map(m => m.lieu);
         updateInfos(visibles);
 
-        // optionnel : envoyer au serveur
+
         fetch("Controller/pageCarteController.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },

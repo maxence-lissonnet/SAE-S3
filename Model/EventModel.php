@@ -1,9 +1,7 @@
 <?php
 require_once __DIR__ . '/BDDModel.php';
 
-/**
- * Tous les types d'évènements (pour les listes déroulantes).
- */
+
 function getAllEventTypes(): array
 {
     $pdo = get_dtb();
@@ -13,13 +11,7 @@ function getAllEventTypes(): array
     return $pdo->query($sql)->fetchAll();
 }
 
-/**
- * Filtre sur type / date partielle / lieu (LIKE).
- * $dateFilter peut être :
- *   - "2025"        -> tous les évènements de 2025
- *   - "2025-11"     -> tous les évènements de nov. 2025
- *   - "2025-11-15"  -> ce jour précis
- */
+
 function getEventsFiltered(?int $idTypeEvent, ?string $dateFilter, ?string $lieuSearch): array
 {
     $pdo = get_dtb();
@@ -78,11 +70,7 @@ function getEventsFiltered(?int $idTypeEvent, ?string $dateFilter, ?string $lieu
     return $stmt->fetchAll();
 }
 
-/**
- * Dates d'évènements pour un mois donné (pour le calendrier).
- * $yearMonth doit être au format "YYYY-MM".
- * On applique éventuellement les filtres type / lieu.
- */
+
 function getEventsForMonth(string $yearMonth, ?int $idTypeEvent, ?string $lieuSearch): array
 {
     $pdo = get_dtb();
@@ -115,9 +103,7 @@ function getEventsForMonth(string $yearMonth, ?int $idTypeEvent, ?string $lieuSe
     return $stmt->fetchAll();
 }
 
-/**
- * Un évènement par son id (pour pré-remplir le formulaire).
- */
+
 function getEventById(int $idEvent): ?array
 {
     $pdo = get_dtb();
@@ -131,10 +117,7 @@ function getEventById(int $idEvent): ?array
     return $row ?: null;
 }
 
-/**
- * Création d'un évènement.
- * Retourne l'id créé.
- */
+
 function insertEvent(array $data): int
 {
     $pdo = get_dtb();
@@ -145,20 +128,18 @@ function insertEvent(array $data): int
               (:nom, :descr, :date, :lieu, :hDeb, :hFin, :type)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        ':nom'   => $data['nomEvent'],
+        ':nom' => $data['nomEvent'],
         ':descr' => $data['descEvent'] ?? 'Pas de contenu',
-        ':date'  => $data['dateEvent'],
-        ':lieu'  => $data['lieuEvent'] ?? null,
-        ':hDeb'  => $data['heureDebEvent'],
-        ':hFin'  => $data['heureFinEvent'] ?: null,
-        ':type'  => $data['idTypeEvent'],
+        ':date' => $data['dateEvent'],
+        ':lieu' => $data['lieuEvent'] ?? null,
+        ':hDeb' => $data['heureDebEvent'],
+        ':hFin' => $data['heureFinEvent'] ?: null,
+        ':type' => $data['idTypeEvent'],
     ]);
-    return (int)$pdo->lastInsertId();
+    return (int) $pdo->lastInsertId();
 }
 
-/**
- * Mise à jour d'un évènement existant.
- */
+
 function updateEvent(int $idEvent, array $data): void
 {
     $pdo = get_dtb();
@@ -173,30 +154,25 @@ function updateEvent(int $idEvent, array $data): void
             WHERE idEvent = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        ':nom'   => $data['nomEvent'],
+        ':nom' => $data['nomEvent'],
         ':descr' => $data['descEvent'] ?? 'Pas de contenu',
-        ':date'  => $data['dateEvent'],
-        ':lieu'  => $data['lieuEvent'] ?? null,
-        ':hDeb'  => $data['heureDebEvent'],
-        ':hFin'  => $data['heureFinEvent'] ?: null,
-        ':type'  => $data['idTypeEvent'],
-        ':id'    => $idEvent,
+        ':date' => $data['dateEvent'],
+        ':lieu' => $data['lieuEvent'] ?? null,
+        ':hDeb' => $data['heureDebEvent'],
+        ':hFin' => $data['heureFinEvent'] ?: null,
+        ':type' => $data['idTypeEvent'],
+        ':id' => $idEvent,
     ]);
 }
 
-/**
- * Suppression d’un évènement.
- */
+
 function deleteEvent(int $idEvent): void
 {
     $pdo = get_dtb();
     $stmt = $pdo->prepare("DELETE FROM EVENEMENT WHERE idEvent = :id");
     $stmt->execute([':id' => $idEvent]);
 }
-/**
- * Prochains évènements (pour l’accueil).
- * $limit = nombre d’évènements à retourner.
- */
+
 function getNextEvents(int $limit = 2): array
 {
     $pdo = get_dtb();

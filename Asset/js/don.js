@@ -8,7 +8,6 @@ const limiteCarac = 150;
 inputNom.addEventListener('input', () => {
     const longueur = inputNom.value.length;
 
-    // Optionnel : changer la couleur si on approche de la limite
     if (longueur >= limiteCarac) {
         affichageCompteurNom.textContent = 'Limite atteinte'
         affichageCompteurNom.style.color = 'red';

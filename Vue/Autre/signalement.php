@@ -1,5 +1,4 @@
 <?php
-// Logic and cleanup handling is now in Controller/Autre/signalementController.php
 ?>
 
 <link rel="stylesheet" href="Asset/style/signalementstyle.css">
