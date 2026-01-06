@@ -53,7 +53,7 @@ if (!in_array($page, $publicPages, true) && empty($_SESSION['idUser'])) {
 
 if (!in_array($page, $publicPages, true) && isset($_SESSION['idRole'])) {
     // Pages accessibles à tous les utilisateurs connectés
-    $commonPages = ['accueil', 'profil', 'reservation', 'mesdons', 'notifications'];
+    $commonPages = ['accueil', 'profil', 'reservation', 'mesdons', 'notifications', 'politique'];
 
     if (in_array($page, $commonPages, true)) {
         // Accès autorisé
