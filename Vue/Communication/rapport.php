@@ -48,7 +48,7 @@
                                 class="card-rapport-item <?php echo $isActive; ?>">
                                 <div class="item-header">
                                     <span class="annee"><?php echo $annee; ?></span>
-                                    <span class="date-creation">Créé le <?php echo $dateObj->format('d/m/Y'); ?></span>
+                                    <span class="date-creation">Date : <?php echo $dateObj->format('d/m/Y'); ?></span>
                                 </div>
                                 <div class="item-desc"><?php echo $descCourt; ?></div>
                             </a>

@@ -6,7 +6,10 @@ $stats = getLastThreeStats();
 ?>
 
 <main>
-    <h1>Statistiques</h1>
+    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <img src="Asset/image/header/graph.png" alt="Icone statistiques" style="width: 50px; height: 50px;">
+        <h1 style="margin: 0;">Statistiques</h1>
+    </div>
 
     <?php if (count($stats) > 0): ?>
         <div class="stats-container">

@@ -4,9 +4,7 @@
 require_once __DIR__ . '/BDDModel.php';
 
 
-/**
- * Toutes les notifications d’un utilisateur.
- */
+
 function notif_getAllForUser(int $idUser): array
 {
     $pdo = get_dtb();
@@ -35,26 +33,24 @@ function notif_getAllForUser(int $idUser): array
 
     foreach ($rows as $row) {
         $date = new DateTime($row['dateNotification']);
-        $dateTxt  = $date->format('d/m/Y');
-        $typeNom  = $row['nomTypeNotification'];
+        $dateTxt = $date->format('d/m/Y');
+        $typeNom = $row['nomTypeNotification'];
 
-        // 👉 on considère "objet" comme type réservable
         $labelLower = strtolower($typeNom);
         $canReserve = (strpos($labelLower, 'objet') !== false);
 
         $notifications[] = [
-            'id'          => (int) $row['idNotif'],
-            'titre'       => $row['titreNotif'],
-            'source'      => $typeNom,
-            'dateTxt'     => $dateTxt,
-            'type'        => $typeNom,
+            'id' => (int) $row['idNotif'],
+            'titre' => $row['titreNotif'],
+            'source' => $typeNom,
+            'dateTxt' => $dateTxt,
+            'type' => $typeNom,
 
-            'resume'      => $row['descriptionNotif'],
+            'resume' => $row['descriptionNotif'],
             'detailTitre' => $row['titreNotif'],
             'detailTexte' => $row['descriptionNotif'],
 
-            // flag utilisé par la vue pour afficher / cacher le bouton
-            'canReserve'  => $canReserve,
+            'canReserve' => $canReserve,
         ];
     }
 
@@ -63,22 +59,19 @@ function notif_getAllForUser(int $idUser): array
 
 // Dans NotificationModel.php
 
-/**
- * Calcule le nombre de notifications non lues en tenant compte de la session
- */
+
 function notif_getUnreadCount(int $idUser): int
 {
     $pdo = get_dtb();
 
-    // 1. On compte tout ce qui est en base pour l'utilisateur
     $sql = "SELECT idNotif FROM RECEPTION WHERE idUser = :idUser";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':idUser' => $idUser]);
     $allIds = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-    if (!$allIds) return 0;
+    if (!$allIds)
+        return 0;
 
-    // 2. On récupère les états en session (comme dans votre controller)
     $deleted = $_SESSION['notif_deleted'] ?? [];
     $read = $_SESSION['notif_read'] ?? [];
 
