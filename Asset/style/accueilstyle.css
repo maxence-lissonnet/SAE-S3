@@ -13,18 +13,23 @@
 }
 
 .eg-home-hello {
-  font-size: 20px;
+  font-size: 32px;
   margin: 0 0 4px;
+  font-weight: bolder;
+  color: #47474E;
 }
 
 .eg-home-counter {
   margin: 0;
   font-size: 16px;
+  color: #47474E;
+  font-weight: 600;
 }
 
 .eg-home-counter-number {
   font-weight: 700;
   font-size: 20px;
+  color: #D4451B;
 }
 
 /* TITRES + liens ---------------------------------------- */

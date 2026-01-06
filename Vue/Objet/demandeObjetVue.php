@@ -27,7 +27,7 @@ require_once __DIR__ . '/../../Controller/Autre/HeaderController.php';
 
                     <div class="form-group">
                         <label for="quantite">Quantité souhaitée<span class="required">*</span></label>
-                        <input type="number" id="quantite" name="quantite" min="1" required
+                        <input type="number" id="quantite" name="quantite" min="1" max="99" required
                             value="<?php echo htmlspecialchars($_POST['quantite'] ?? ''); ?>">
                     </div>
 

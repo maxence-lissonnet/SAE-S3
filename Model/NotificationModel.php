@@ -35,7 +35,7 @@ function notif_getAllForUser(int $idUser): array
 
     foreach ($rows as $row) {
         $date = new DateTime($row['dateNotification']);
-        $dateTxt  = $date->format('d/m/Y H:i');
+        $dateTxt  = $date->format('d/m/Y');
         $typeNom  = $row['nomTypeNotification'];
 
         // 👉 on considère "objet" comme type réservable

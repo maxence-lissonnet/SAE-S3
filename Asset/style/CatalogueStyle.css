@@ -48,7 +48,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.titre {
     color: #44474E;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .container {
@@ -74,10 +80,6 @@
     align-items: center;
     max-width: 300px;
     max-height: 150px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    margin-bottom: 10px;
-
 }
 
 .image-container {
@@ -92,6 +94,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .form {
