@@ -7,10 +7,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['save_metrics'])) {
         $idRapport = !empty($_POST['idRapport']) ? (int) $_POST['idRapport'] : null;
-        $periode = $_POST['annee'] . '-01-01';
-
+        $yearInput = (int) $_POST['annee'];
         $description = trim($_POST['desc'] ?? '');
 
+        $periode = $yearInput . '-01-01';
+
+        if ($idRapport) {
+            $existing = getRapportById($idRapport);
+            if ($existing && !empty($existing['periodeRapport'])) {
+                try {
+                    $d = new DateTime($existing['periodeRapport']);
+                    $d->setDate($yearInput, (int) $d->format('m'), (int) $d->format('d'));
+                    $periode = $d->format('Y-m-d');
+                } catch (Exception $e) {
+                    $periode = $yearInput . '-01-01';
+                }
+            }
+        } else {
+            if ($yearInput === (int) date('Y')) {
+                $periode = date('Y-m-d');
+            } else {
+                $periode = $yearInput . '-01-01';
+            }
+        }
 
         $newId = saveRapportMetrics($idRapport, $periode, $description, $idUser);
 
