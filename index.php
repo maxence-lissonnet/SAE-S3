@@ -22,11 +22,21 @@ require_once 'Model/BDDModel.php';
 require_once 'Model/ReservationModel.php';
 require_once 'Model/DonsActifsModel.php';
 require_once 'Model/signalementModel.php';
-$page = isset($_GET['page']) ? strtolower($_GET['page']) : 'selectprofil';
+
+$page = isset($_GET['page']) ? strtolower($_GET['page']) : (isset($_SESSION['idUser']) ? 'accueil' : 'selectprofil');
+
+// Redirection si connecté et tente d'accéder aux pages de connexion
+$loginPages = ['selectprofil', 'auth', 'connexionetu', 'connexionpersonnel'];
+if (isset($_SESSION['idUser']) && in_array($page, $loginPages, true)) {
+    header('Location: ?page=accueil');
+    exit;
+}
 
 if (isset($_SESSION['idUser'])) {
     $_SESSION['unreadCount'] = notif_getUnreadCount((int) $_SESSION['idUser']);
 }
+
+require_once 'Controller/Autre/authController.php';
 
 $publicPages = [
     'auth',
@@ -39,6 +49,46 @@ $publicPages = [
 if (!in_array($page, $publicPages, true) && empty($_SESSION['idUser'])) {
     header('Location: ./');
     exit;
+}
+
+if (!in_array($page, $publicPages, true) && isset($_SESSION['idRole'])) {
+    // Pages accessibles à tous les utilisateurs connectés
+    $commonPages = ['accueil', 'profil', 'reservation', 'mesdons', 'notifications'];
+
+    if (in_array($page, $commonPages, true)) {
+        // Accès autorisé
+    } else {
+        $roleId = $_SESSION['idRole'];
+        // On combine les pages et le menu pour ce rôle
+        $allowed = array_merge(
+            $GLOBALS['permissions'][$roleId]['pages'] ?? [],
+            $GLOBALS['permissions'][$roleId]['menu'] ?? []
+        );
+
+        // Mapping URL -> Clé authController (si différent)
+        $pageToPermission = [
+            'statistique' => 'statistiques',
+            'rapport' => 'rapports',
+            'carte' => 'points-collecte',
+            'signalement' => 'signalements',
+            'evenement' => 'evenements',
+            'demandeobjet' => 'demande-objets',
+            'conseilrecyclage' => 'conseils-recyclage',
+
+            // Mapping des pages de détail/action vers les permissions principales
+            'detailcommunication' => 'communication',
+            'ajoutcom' => 'communication',
+            'detailobjet' => 'catalogue',
+            'image' => 'catalogue',
+        ];
+
+        $permissionKey = $pageToPermission[$page] ?? $page;
+
+        if (!in_array($permissionKey, $allowed, true)) {
+            header('Location: ./');
+            exit;
+        }
+    }
 }
 
 switch ($page) {
@@ -111,6 +161,10 @@ switch ($page) {
 
     case 'donner':
         require_once 'Controller/Objet/donController.php';
+        break;
+
+    case 'demandeobjet':
+        require_once 'Controller/Objet/DemandeObjetController.php';
         break;
 
     case 'rapport':
