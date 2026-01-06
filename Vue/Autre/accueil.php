@@ -6,7 +6,7 @@
   <!-- ========= BLOC HERO / COMPTEUR D’OBJETS ========= -->
   <section class="eg-home-hero">
     <p class="eg-home-hello">
-      Bonjour <?= htmlspecialchars($_SESSION['prenom'] ?? 'Emma') ?> !
+      Bonjour <?= htmlspecialchars($_SESSION['prenom']) ?> !
     </p>
     <p class="eg-home-counter">
       Il y a actuellement <span class="eg-home-counter-number"><?= (int) $nbObjetsEnLigne ?></span>
@@ -41,7 +41,7 @@
                 <?php echo htmlspecialchars(strtoupper($obj['nomUser'])) ?> <?php echo htmlspecialchars($obj['prenomUser']) ?>
               </p>
               <p class="eg-home-object-pickup">
-                <?php echo htmlspecialchars($obj['nomLieuRetrait']) ?> - <?php echo htmlspecialchars(($obj['adresseLieuRetrait'])) ?>
+                <?php echo htmlspecialchars($obj['nomLieuRetrait']) ?><br /><?php echo htmlspecialchars(($obj['adresseLieuRetrait'])) ?>
               </p>
               <p class="eg-home-object-state">
                 <?php echo htmlspecialchars($obj['nomEtatObjet']) ?>

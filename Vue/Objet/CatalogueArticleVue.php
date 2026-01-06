@@ -5,7 +5,7 @@
     <div id="banner" class="box container">
         <div>
             <div class="col-7 col-12-medium">
-                <h1 class="logo"><img src="Asset/image/logo/logo catalogue.png" class="logo-icon-titre">Catalogue</h1>
+                <h1 class="titre"><img src="Asset/image/logo/logo catalogue.png" class="logo-icon-titre">Catalogue</h1>
             </div>
         </div>
     </div>

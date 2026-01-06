@@ -12,7 +12,8 @@
 
 .eg-event-layout {
   display: grid;
-  grid-template-columns: 1.1fr 1.3fr 1fr; /* gauche / centre / droite */
+  grid-template-columns: 1.1fr 1.3fr 1fr;
+  /* gauche / centre / droite */
   gap: 32px;
 }
 
@@ -100,6 +101,22 @@
   color: #fff;
   max-height: 460px;
   overflow-y: auto;
+}
+
+.eg-event-list-card::-webkit-scrollbar-thumb {
+  background-color: #D4451B;
+  border-radius: 10px;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  height: 30px;
+}
+
+.eg-event-list-card::-webkit-scrollbar {
+  width: 16px;
+}
+
+.eg-event-list-card::-webkit-scrollbar-track {
+  margin: 30px 0;
 }
 
 .eg-event-item-header {
