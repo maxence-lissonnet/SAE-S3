@@ -1,3 +1,5 @@
+<title>Evenement - EcoGestUM</title>
+
 <link rel="stylesheet" href="Asset/style/eventstyle.css">
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
@@ -82,7 +84,7 @@
                     $firstDay = new DateTime($refDateObj->format('Y-m-01'));
                     $month = (int) $firstDay->format('m');
                     $dayOfWeek = (int) $firstDay->format('N'); // 1 = lundi
-                    
+
                     // Cases vides avant le 1er
                     for ($i = 1; $i < $dayOfWeek; $i++) {
                         echo '<span class="eg-event-day empty"></span>';
@@ -147,7 +149,7 @@
                                 <?= nl2br(htmlspecialchars($event['descEvent'])) ?>
                             </p>
 
-                            
+
                         </article>
 
                         <hr class="eg-event-separator">
@@ -199,8 +201,8 @@
 
             <hr class="eg-event-divider">
 
-      
-            
+
+
         </aside>
 
     </section>

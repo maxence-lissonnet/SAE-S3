@@ -1,5 +1,6 @@
 <?php
 ?>
+<title>Signalement - EcoGestUM</title>
 
 <link rel="stylesheet" href="Asset/style/signalementstyle.css">
 

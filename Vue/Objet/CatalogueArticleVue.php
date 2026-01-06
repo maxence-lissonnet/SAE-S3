@@ -1,4 +1,5 @@
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
+<title>Catalogue - EcoGestUM</title>
 
 <link rel="stylesheet" href="Asset/style/CatalogueStyle.css">
 <div id="banner-wrapper">

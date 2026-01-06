@@ -1,3 +1,4 @@
+<title>Notification - EcoGestUM</title>
 <link rel="stylesheet" href="Asset/style/notificationstyle.css">
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
@@ -17,11 +18,11 @@
       <!-- Onglets boîte de réception / archivées -->
       <div class="eg-notif-tabs">
         <a href="?page=notifications&box=inbox"
-           class="eg-notif-tab <?= $box === 'inbox' ? 'is-active' : '' ?>">
+          class="eg-notif-tab <?= $box === 'inbox' ? 'is-active' : '' ?>">
           Boîte de réception
         </a>
         <a href="?page=notifications&box=archive"
-           class="eg-notif-tab <?= $box === 'archive' ? 'is-active' : '' ?>">
+          class="eg-notif-tab <?= $box === 'archive' ? 'is-active' : '' ?>">
           Archivées
         </a>
       </div>
@@ -33,7 +34,7 @@
           <?php foreach ($notifications as $notif): ?>
             <?php $isActive = ($currentNotif && $notif['id'] === $currentNotif['id']); ?>
             <a href="?page=notifications&box=<?= htmlspecialchars($box) ?>&id=<?= (int) $notif['id'] ?>"
-               class="eg-notif-item <?= $isActive ? 'is-active' : '' ?>">
+              class="eg-notif-item <?= $isActive ? 'is-active' : '' ?>">
               <div class="eg-notif-dot <?= $notif['isUnread'] ? 'is-unread' : '' ?>"></div>
 
               <div class="eg-notif-item-content">
@@ -126,17 +127,17 @@
 
         <!-- Formulaires cachés pour POST -->
         <form id="notifDeleteForm"
-              method="post"
-              action="?page=notifications&box=<?= htmlspecialchars($box) ?>&id=<?= (int) $currentNotif['id'] ?>"
-              style="display:none;">
+          method="post"
+          action="?page=notifications&box=<?= htmlspecialchars($box) ?>&id=<?= (int) $currentNotif['id'] ?>"
+          style="display:none;">
           <input type="hidden" name="notif_id" value="<?= (int) $currentNotif['id'] ?>">
           <input type="hidden" name="action" value="delete">
         </form>
 
         <form id="notifArchiveForm"
-              method="post"
-              action="?page=notifications&box=<?= htmlspecialchars($box) ?>&id=<?= (int) $currentNotif['id'] ?>"
-              style="display:none;">
+          method="post"
+          action="?page=notifications&box=<?= htmlspecialchars($box) ?>&id=<?= (int) $currentNotif['id'] ?>"
+          style="display:none;">
           <input type="hidden" name="notif_id" value="<?= (int) $currentNotif['id'] ?>">
           <input type="hidden" name="action" value="<?= $box === 'archive' ? 'unarchive' : 'archive' ?>">
         </form>
@@ -155,4 +156,5 @@
 
 <script src="Asset/js/notif.js"></script>
 </body>
+
 </html>

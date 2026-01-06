@@ -1,3 +1,5 @@
+<title>Statistiques - EcoGestUM</title>
+
 <link rel="stylesheet" href="Asset/style/statsstyle.css">
 
 <?php

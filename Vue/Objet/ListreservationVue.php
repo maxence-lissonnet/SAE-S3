@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dons actifs - EcoGestUM</title>
+    <title>Reservation - EcoGestUM</title>
     <link rel="stylesheet" href="Asset/style/listReservationStyle.css">
 
     <!-- Inclusion des polices -->

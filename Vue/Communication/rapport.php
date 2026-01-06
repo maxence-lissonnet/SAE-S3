@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ÉcoGestUM - Rapports</title>
+    <title>Rapports - ÉcoGestUM</title>
     <link rel="stylesheet" href="Asset/style/rapportStyle.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="Asset/js/pdfDownload.js"></script>
@@ -94,7 +94,7 @@
                                         $currentYear = date('Y');
                                         $selectedYear = $reportToEdit['periode'] ?? $currentYear;
                                         for ($y = $currentYear; $y >= $currentYear - 5; $y--):
-                                            ?>
+                                        ?>
                                             <option value="<?php echo $y; ?>" <?php echo ($selectedYear == $y) ? 'selected' : ''; ?>>
                                                 <?php echo $y; ?>
                                             </option>

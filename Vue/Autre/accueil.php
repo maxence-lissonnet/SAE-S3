@@ -1,3 +1,4 @@
+<title>Accueil - EcoGestUM</title>
 <link rel="stylesheet" href="Asset/style/accueilstyle.css">
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 

@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Points de collecte</title>
+    <title>Points de collecte - EcoGestUM</title>
     <link rel="icon" href="Asset/image/favicon.ico">
     <link rel="stylesheet" href="Asset/style/carteStyle.css">
 

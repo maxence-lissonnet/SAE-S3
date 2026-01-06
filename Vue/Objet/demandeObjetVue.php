@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../../Controller/Autre/HeaderController.php';
 ?>
+<title>Demande objet - EcoGestUM</title>
 
 <link rel="stylesheet" href="Asset/style/demandeObjetStyle.css">
 

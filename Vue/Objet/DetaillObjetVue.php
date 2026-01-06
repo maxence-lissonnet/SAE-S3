@@ -1,4 +1,5 @@
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
+<title>Objet - EcoGestUM</title>
 
 <link rel="stylesheet" href="Asset/style/DetailObjetStyle.css">
 

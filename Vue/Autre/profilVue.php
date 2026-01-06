@@ -1,3 +1,4 @@
+<title>Profil - EcoGestUM</title>
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
 <!-- Inclusion du style spécifique -->

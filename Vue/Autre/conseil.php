@@ -1,3 +1,4 @@
+<title>Conseils - EcoGestUM</title>
 <link rel="stylesheet" href="Asset/style/conseilstyle.css">
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
@@ -16,8 +17,8 @@
     <div class="eg-tips-hero-right">
       <!-- Mets l’image que tu veux ici -->
       <img src="Asset/image/conseil/main.png"
-           alt="Objets du quotidien prêts à être recyclés"
-           class="eg-tips-main-img">
+        alt="Objets du quotidien prêts à être recyclés"
+        class="eg-tips-main-img">
     </div>
   </section>
 
@@ -95,7 +96,7 @@
       <div class="eg-tips-logos">
         <!-- remplace les src par tes vraies images si tu en as -->
         <img src="Asset/image/conseil/tri.png" alt="Pictogramme réemploi">
-       
+
       </div>
     </aside>
 
@@ -103,6 +104,7 @@
 
 </main>
 
-<?php require __DIR__ . '/../Header Footer/footer.php'; ?> 
+<?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 </body>
+
 </html>

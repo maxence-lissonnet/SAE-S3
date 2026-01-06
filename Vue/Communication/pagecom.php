@@ -6,6 +6,8 @@ $typesCom  = $typesCom  ?? [];
 $idTypeCom = $idTypeCom ?? null;
 $dateCom   = $dateCom   ?? null;
 ?>
+<title>Communication - EcoGestUM</title>
+
 <link rel="stylesheet" href="Asset/style/pagecomstyle.css">
 <?php require __DIR__ . '/../../Controller/Autre/HeaderController.php'; ?>
 
@@ -74,9 +76,9 @@ $dateCom   = $dateCom   ?? null;
         <label class="eg-field-group">
           <span>Date</span>
           <input type="text"
-                 name="date"
-                 placeholder="AAAA, AAAA-MM ou AAAA-MM-JJ"
-                 value="<?= htmlspecialchars($dateCom ?? '') ?>">
+            name="date"
+            placeholder="AAAA, AAAA-MM ou AAAA-MM-JJ"
+            value="<?= htmlspecialchars($dateCom ?? '') ?>">
         </label>
 
         <div class="eg-com-filter-actions">
@@ -92,4 +94,5 @@ $dateCom   = $dateCom   ?? null;
 
 <?php require __DIR__ . '/../Header Footer/footer.php'; ?>
 </body>
+
 </html>
