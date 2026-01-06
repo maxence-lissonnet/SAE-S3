@@ -128,6 +128,9 @@ switch ($page) {
         require_once 'Controller/Autre/statsController.php';
         break;
 
+    case 'demandeobjet':
+        require_once 'Controller/Objet/DemandeObjetController.php';
+        break;
 
     case 'deconnexion':
         require_once 'Controller/Autre/authController.php';
